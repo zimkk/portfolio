@@ -104,79 +104,79 @@ const FloatingNav = () => {
     <>
       {/* Desktop Navigation */}
       <aside className="fixed left-6 top-1/2 transform -translate-y-1/2 z-[9999] hidden md:block" style={{ pointerEvents: 'auto' }}>
-        <nav className="bg-black/20 backdrop-blur-xl border border-white/20 rounded-2xl px-4 py-6 shadow-2xl" style={{ pointerEvents: 'auto' }}>
-          <div className="flex flex-col items-center gap-6">
+                 <nav className="bg-black/20 backdrop-blur-xl border border-white/20 rounded-lg px-1.5 py-2.5 shadow-2xl" style={{ pointerEvents: 'auto' }}>
+                     <div className="flex flex-col items-center gap-2.5">
           {/* Logo/Brand */}
-          <div className="flex flex-col items-center gap-2 pb-4 border-b border-white/20">
-            <div className="w-3 h-3 rounded-full bg-white animate-pulse"></div>
-            <span className="text-sm font-bold text-white">HN</span>
+          <div className="flex flex-col items-center gap-1 pb-2 border-b border-white/20">
+            <div className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></div>
+            <span className="text-xs font-bold text-white">HN</span>
           </div>
           
-          {/* Navigation Links */}
-          <div className="flex flex-col items-center gap-3">
+                     {/* Navigation Links */}
+           <div className="flex flex-col items-center gap-1.5">
             <button 
               onClick={(e) => handleNavigation('/', e)}
-              className={`relative group p-3 rounded-xl text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
+              className={`relative group p-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
                 isActive('/') ? 'bg-white/10 scale-110' : ''
               }`}
               style={{ pointerEvents: 'auto', zIndex: 10000 }}
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className={`relative flex flex-col items-center gap-1 transition-colors duration-300 ${
                 isActive('/') ? 'text-white' : 'text-gray-300 group-hover:text-white'
               }`}>
-                <HomeIcon size={20} />
+                <HomeIcon size={18} />
                 <span className="text-xs">Home</span>
               </div>
             </button>
             
             <button 
               onClick={(e) => handleNavigation('/work', e)}
-              className={`relative group p-3 rounded-xl text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
+              className={`relative group p-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
                 isActive('/work') ? 'bg-white/10 scale-110' : ''
               }`}
               style={{ pointerEvents: 'auto', zIndex: 10000 }}
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className={`relative flex flex-col items-center gap-1 transition-colors duration-300 ${
                 isActive('/work') ? 'text-white' : 'text-gray-300 group-hover:text-white'
               }`}>
-                <BriefcaseIcon size={20} />
+                <BriefcaseIcon size={18} />
                 <span className="text-xs">Work</span>
               </div>
             </button>
             
             <button 
               onClick={(e) => handleNavigation('/blogs', e)}
-              className={`relative group p-3 rounded-xl text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
+              className={`relative group p-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
                 isActive('/blogs') ? 'bg-white/10 scale-110' : ''
               }`}
               style={{ pointerEvents: 'auto', zIndex: 10000 }}
             >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+              <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               <div className={`relative flex flex-col items-center gap-1 transition-colors duration-300 ${
                 isActive('/blogs') ? 'text-white' : 'text-gray-300 group-hover:text-white'
               }`}>
-                <BookOpenIcon size={20} />
+                <BookOpenIcon size={18} />
                 <span className="text-xs">Blog</span>
               </div>
             </button>
             
-            <button 
-              onClick={(e) => handleNavigation('/#contact', e)}
-              className={`relative group p-3 rounded-xl text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
-                isActive('/#contact') ? 'bg-white/10 scale-110' : ''
-              }`}
-              style={{ pointerEvents: 'auto', zIndex: 10000 }}
-            >
-              <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              <div className={`relative flex flex-col items-center gap-1 transition-colors duration-300 ${
-                isActive('/#contact') ? 'text-white' : 'text-gray-300 group-hover:text-white'
-              }`}>
-                <PhoneIcon size={20} />
-                <span className="text-xs">Contact</span>
-              </div>
-            </button>
+                         <button 
+               onClick={(e) => handleNavigation('/#contact', e)}
+               className={`relative group p-2.5 rounded-lg text-sm font-medium transition-all duration-300 hover:bg-white/10 hover:scale-110 cursor-pointer ${
+                 isActive('/#contact') ? 'bg-white/10 scale-110' : ''
+               }`}
+               style={{ pointerEvents: 'auto', zIndex: 10000 }}
+             >
+               <div className="absolute inset-0 rounded-lg bg-gradient-to-b from-white/0 via-white/20 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+               <div className={`relative flex flex-col items-center gap-1 transition-colors duration-300 ${
+                 isActive('/#contact') ? 'text-white' : 'text-gray-300 group-hover:text-white'
+               }`}>
+                 <PhoneIcon size={18} />
+                 <span className="text-xs">Contact</span>
+               </div>
+             </button>
           </div>
           
           {/* Location Indicator */}
