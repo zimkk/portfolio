@@ -1,5 +1,6 @@
 import React from 'react';
 import { BookOpenIcon, GraduationCapIcon } from 'lucide-react';
+import { GlowingEffect } from '../ui/GlowingEffect';
 const Education = ({
   darkMode
 }) => {
@@ -8,7 +9,13 @@ const Education = ({
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12 text-white">Education</h2>
-          <div className="rounded-lg overflow-hidden bg-black border border-gray-700">
+          <div className="rounded-lg overflow-hidden bg-black border border-gray-700 relative">
+            <GlowingEffect 
+              variant="white" 
+              proximity={100} 
+              spread={30} 
+              movementDuration={1.5}
+            />
             <div className="p-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-full bg-gray-900 text-white">

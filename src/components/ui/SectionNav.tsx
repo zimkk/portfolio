@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HomeIcon, UserIcon, BriefcaseIcon, CodeIcon, AwardIcon, GraduationCapIcon, FolderIcon, MailIcon } from 'lucide-react';
+import { HomeIcon, UserIcon, BriefcaseIcon, CodeIcon, AwardIcon, GraduationCapIcon, FolderIcon, PhoneIcon } from 'lucide-react';
 
 const SectionNav = () => {
   const [activeSection, setActiveSection] = useState('home');
@@ -12,7 +12,7 @@ const SectionNav = () => {
     { id: 'certifications', icon: AwardIcon, label: 'Certifications' },
     { id: 'education', icon: GraduationCapIcon, label: 'Education' },
     { id: 'projects', icon: FolderIcon, label: 'Projects' },
-    { id: 'contact', icon: MailIcon, label: 'Contact' },
+    { id: 'contact', icon: PhoneIcon, label: 'Contact' },
   ];
 
   // Track which section is currently visible

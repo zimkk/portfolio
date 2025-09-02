@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import { GithubIcon, LinkedinIcon, MailIcon, CalendarIcon, ChevronRightIcon } from 'lucide-react';
+import BookingModal from '../ui/BookingModal';
 const Hero = ({
 }) => {
   const [isVisible, setIsVisible] = useState(false);
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
   useEffect(() => {
     setIsVisible(true);
   }, []);
@@ -23,20 +25,21 @@ const Hero = ({
               <div className="w-4 h-4 rounded-full bg-[#FF5C00]"></div>
               <span className="text-sm">Asia/Pakistan</span>
             </div>
-            <div className="flex gap-2 mb-8">
-              <button className="px-4 py-1 rounded-full text-sm bg-gray-900 border border-gray-800">
-                English
-              </button>
-              <button className="px-4 py-1 rounded-full text-sm bg-transparent border border-gray-700 text-gray-400">
-                Urdu
-              </button>
-            </div>
-            <button className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-colors">
+
+            <button 
+              onClick={() => setIsBookingOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-full bg-gray-900 border border-gray-800 hover:bg-gray-800 transition-colors"
+            >
               <CalendarIcon size={18} />
               <span>Schedule a call</span>
               <ChevronRightIcon size={18} />
             </button>
           </div>
+          
+          <BookingModal 
+            isOpen={isBookingOpen} 
+            onClose={() => setIsBookingOpen(false)} 
+          />
           {/* Content */}
           <div className="lg:max-w-2xl">
             <div className={`transform transition-all duration-1000 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>

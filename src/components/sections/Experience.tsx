@@ -112,10 +112,10 @@ const Experience = ({ darkMode }) => {
   };
 
   return (
-    <section id="experience" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
+    <section id="experience" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
       <div className="container mx-auto">
         <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-white text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-12 text-white text-center">
             Work Experience
           </h2>
           
@@ -147,7 +147,7 @@ const Experience = ({ darkMode }) => {
                   
                   {/* Content Card */}
                   <div 
-                    className="ml-16 md:ml-24 bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-6 hover:border-gray-600/50 transition-all duration-300 transform hover:translate-x-1"
+                    className="ml-12 sm:ml-16 md:ml-24 bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-lg p-4 sm:p-6 hover:border-gray-600/50 transition-all duration-300 transform hover:translate-x-1"
                     style={{
                       transitionDelay: `${200 + index * 100}ms`
                     }}

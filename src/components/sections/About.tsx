@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrainIcon, CodeIcon, ServerIcon, ZapIcon, RocketIcon, ShieldIcon, GitBranchIcon, DatabaseIcon } from 'lucide-react';
+import { GlowingEffect } from '../ui/GlowingEffect';
 
 const About = ({ darkMode }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -39,7 +40,7 @@ const About = ({ darkMode }) => {
   ];
 
   return (
-    <section id="about" className="py-20 px-6 md:px-12 lg:px-20 bg-black relative overflow-hidden">
+    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-black relative overflow-hidden">
       {/* Background Graphics */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute top-10 left-10 w-32 h-32 border border-white rounded-full"></div>
@@ -53,29 +54,29 @@ const About = ({ darkMode }) => {
         <div className="absolute top-20 left-1/4 text-white font-mono text-sm animate-pulse opacity-40 font-semibold">
           {'{ "role": "AI Engineer" }'}
         </div>
-        <div className="absolute top-60 right-1/3 text-white font-mono text-sm animate-pulse delay-1000 opacity-10">
-          {'const skills = ["Python", "AI", "DevOps"];'}
-        </div>
-        <div className="absolute bottom-40 left-1/3 text-white font-mono text-sm animate-pulse delay-2000 opacity-10">
-          {'npm install innovation'}
-        </div>
       </div>
 
       <div className="container mx-auto relative z-10">
         <div className="max-w-6xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-white">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
               About Me
             </h2>
             <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
             {/* Left Column - Main Content */}
-            <div className="space-y-8">
+                          <div className="space-y-6 lg:space-y-8">
               {/* Introduction Card */}
-              <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-xl p-8 hover:border-gray-600/50 transition-all duration-300">
+              <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 sm:p-8 hover:border-gray-600/50 transition-all duration-300 relative">
+                <GlowingEffect 
+                  variant="white" 
+                  proximity={100} 
+                  spread={30} 
+                  movementDuration={1.5}
+                />
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-white/10 rounded-lg">
                     <RocketIcon className="w-6 h-6 text-white" />
@@ -93,7 +94,13 @@ const About = ({ darkMode }) => {
               </div>
 
               {/* Philosophy Card */}
-              <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-xl p-8 hover:border-gray-600/50 transition-all duration-300">
+              <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-xl p-6 sm:p-8 hover:border-gray-600/50 transition-all duration-300 relative">
+                <GlowingEffect 
+                  variant="white" 
+                  proximity={100} 
+                  spread={30} 
+                  movementDuration={1.5}
+                />
                 <div className="flex items-center gap-3 mb-6">
                   <div className="p-2 bg-white/10 rounded-lg">
                     <GitBranchIcon className="w-6 h-6 text-white" />

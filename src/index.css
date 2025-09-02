@@ -44,11 +44,17 @@
 /* Smooth scrolling for the whole page */
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 /* Black and white theme */
 body {
   background-color: #000000;
   color: #ffffff;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 /* Custom black and white theme variables */
@@ -62,4 +68,17 @@ body {
   --color-border: #333333;
   --color-accent: #ffffff;
   --color-accent-hover: #f0f0f0;
+}
+
+/* Mobile touch target improvements */
+@media (max-width: 768px) {
+  button, a {
+    min-height: 44px;
+  }
+  
+  /* Improve tap targets for small buttons */
+  .mobile-touch-target {
+    min-height: 44px;
+    min-width: 44px;
+  }
 }

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { GithubIcon, LinkedinIcon, MailIcon, CalendarIcon, ChevronRightIcon } from 'lucide-react';
 import { cn } from "../../lib/utils";
+import BookingModal from './BookingModal';
 
 export function LampDemo() {
+  const [isBookingOpen, setIsBookingOpen] = useState(false);
+
   return (
     <LampContainer>
       <div className="flex flex-col items-center text-center max-w-4xl mx-auto px-4">
@@ -16,7 +19,7 @@ export function LampDemo() {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="w-28 h-28 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-8"
+          className="w-36 h-36 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-8"
         >
                                 <img 
             src="/images/profile.png" 
@@ -49,7 +52,7 @@ export function LampDemo() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="mt-4 bg-gradient-to-br from-white to-gray-300 py-4 bg-clip-text text-center text-5xl md:text-7xl font-bold tracking-tight text-transparent mb-4"
+          className="mt-4 bg-gradient-to-br from-white to-gray-300 py-4 bg-clip-text text-center text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight text-transparent mb-4"
         >
           Hassan Nazir
         </motion.h1>
@@ -62,7 +65,7 @@ export function LampDemo() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="text-xl md:text-2xl text-white mb-8 font-medium font-mono"
+          className="text-lg sm:text-xl md:text-2xl text-white mb-8 font-medium font-mono px-4"
         >
           {"{ \"role\": \"AI Engineer\" }"}
         </motion.p>
@@ -131,22 +134,22 @@ export function LampDemo() {
           }}
           className="flex flex-col sm:flex-row gap-4 items-center"
         >
-          <button className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-gray-300 text-black font-medium transition-all duration-300 transform hover:scale-105">
+          <button 
+            onClick={() => setIsBookingOpen(true)}
+            className="flex items-center gap-3 px-6 py-3 rounded-full bg-gradient-to-r from-white to-gray-200 hover:from-gray-100 hover:to-gray-300 text-black font-medium transition-all duration-300 transform hover:scale-105"
+          >
             <CalendarIcon size={20} />
             <span>Schedule a call</span>
             <ChevronRightIcon size={20} />
           </button>
-          
-          <div className="flex gap-2">
-            <button className="px-4 py-2 rounded-full text-sm bg-gray-800/30 text-gray-200 hover:bg-gray-700/50 transition-all shadow-md hover:shadow-white/20">
-              English
-            </button>
-            <button className="px-4 py-2 rounded-full text-sm bg-gray-800/20 text-gray-400 hover:bg-gray-700/30 hover:text-gray-300 transition-all shadow-md">
-              Urdu
-            </button>
-          </div>
+
         </motion.div>
       </div>
+      
+      <BookingModal 
+        isOpen={isBookingOpen} 
+        onClose={() => setIsBookingOpen(false)} 
+      />
     </LampContainer>
   );
 }

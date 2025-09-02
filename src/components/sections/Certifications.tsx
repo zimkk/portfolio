@@ -1,5 +1,6 @@
 import React from 'react';
 import { AwardIcon, ShieldIcon, CheckCircleIcon } from 'lucide-react';
+import { GlowingEffect } from '../ui/GlowingEffect';
 
 const certifications = [
   {
@@ -38,8 +39,14 @@ const Certifications = ({ darkMode }) => {
             {certifications.map((cert, index) => (
               <div 
                 key={index} 
-                className="bg-black border border-gray-700 rounded-lg p-6 hover:border-white transition-colors duration-300"
+                className="bg-black border border-gray-700 rounded-lg p-6 hover:border-white transition-colors duration-300 relative"
               >
+                <GlowingEffect 
+                  variant="white" 
+                  proximity={100} 
+                  spread={30} 
+                  movementDuration={1.5}
+                />
                 <div className="flex items-start gap-4">
                   <div className="p-3 rounded-full bg-gray-900 text-white flex-shrink-0">
                     {cert.icon}

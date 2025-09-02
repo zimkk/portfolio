@@ -1,5 +1,6 @@
 import React from 'react';
 import { GithubIcon, ExternalLinkIcon, CodeIcon, FolderIcon } from 'lucide-react';
+import { GlowingEffect } from '../ui/GlowingEffect';
 const projects = [{
   title: 'AI Document Processor',
   description: 'An LLM-powered system that extracts, categorizes, and summarizes information from various document formats using LangChain and Hugging Face transformers.',
@@ -40,15 +41,21 @@ const projects = [{
 const Projects = ({
   darkMode
 }) => {
-  return <section id="projects" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
+  return <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-12 text-white">
             Projects & Research
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {projects.map((project, index) => <div key={index} className="group rounded-lg overflow-hidden h-full flex flex-col transition-all duration-300 bg-black border border-gray-700 hover:border-white">
-                <div className="p-6 flex-1 flex flex-col">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+            {projects.map((project, index) => <div key={index} className="group rounded-lg h-full flex flex-col transition-all duration-300 bg-black border border-gray-700 hover:border-white relative">
+                <GlowingEffect 
+                  variant="white" 
+                  proximity={100} 
+                  spread={30} 
+                  movementDuration={1.5}
+                />
+                <div className="p-4 sm:p-6 flex-1 flex flex-col rounded-lg">
                   <div className="flex justify-between items-center mb-4">
                     <div className="p-2 rounded-md bg-gray-900 text-white">
                       <FolderIcon size={24} />

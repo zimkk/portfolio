@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, ExternalLinkIcon, GithubIcon, CalendarIcon, TagIcon, UserIcon, BriefcaseIcon } from 'lucide-react';
 import FloatingNav from '../components/ui/FloatingNav';
+import PageTransition from '../components/ui/PageTransition';
 
 const workProjects = [
   {
@@ -99,15 +100,28 @@ const workProjects = [
 const WorkPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All');
   const categories = ['All', 'AI/Automation', 'DevOps/Security', 'QA/Testing'];
+  const navigate = useNavigate();
+
+  const handleContactNavigation = () => {
+    // Navigate to home page and scroll to contact
+    navigate('/');
+    setTimeout(() => {
+      const contactElement = document.getElementById('contact');
+      if (contactElement) {
+        contactElement.scrollIntoView({ behavior: 'smooth' });
+      }
+    }, 100);
+  };
 
   const filteredProjects = selectedCategory === 'All' 
     ? workProjects 
     : workProjects.filter(project => project.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating Navigation */}
-      <FloatingNav />
+    <PageTransition>
+      <div className="min-h-screen bg-black text-white">
+        {/* Floating Navigation */}
+        <FloatingNav />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
         <div className="container mx-auto px-6 py-4">
@@ -128,13 +142,13 @@ const WorkPage = () => {
       </header>
 
       {/* Hero Section */}
-      <section className="pt-24 pb-12 px-6 md:px-12 lg:px-20">
+      <section className="pt-20 sm:pt-24 pb-8 sm:pb-12 px-4 sm:px-6 md:px-12 lg:px-20">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Selected Work
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto px-4">
               A showcase of recent projects where I've helped businesses automate processes, 
               enhance security, and improve operational efficiency through AI and modern technology.
             </p>
@@ -164,13 +178,13 @@ const WorkPage = () => {
       </section>
 
       {/* Projects Grid */}
-      <section className="px-6 md:px-12 lg:px-20 pb-20">
+      <section className="px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20">
         <div className="container mx-auto">
-          <div className="space-y-16">
+          <div className="space-y-12 sm:space-y-16">
             {filteredProjects.map((project, index) => (
               <div 
                 key={project.id} 
-                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center ${
                   index % 2 === 1 ? 'lg:grid-flow-col-dense' : ''
                 }`}
               >
@@ -258,27 +272,28 @@ const WorkPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="px-6 md:px-12 lg:px-20 pb-20">
+      <section className="px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20">
         <div className="container mx-auto">
-          <div className="bg-gradient-to-r from-gray-900/50 to-black/50 border border-gray-800/50 rounded-2xl p-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+          <div className="bg-gradient-to-r from-gray-900/50 to-black/50 border border-gray-800/50 rounded-2xl p-6 sm:p-8 md:p-12 text-center">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-white">
               Ready to Start Your Project?
             </h2>
-            <p className="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 mb-8 max-w-2xl mx-auto px-4">
               Let's discuss how I can help automate your processes, enhance your security, 
               or build the AI solution your business needs.
             </p>
-            <Link 
-              to="/#contact"
+            <button 
+              onClick={handleContactNavigation}
               className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors"
             >
               <span>Get In Touch</span>
               <ExternalLinkIcon size={20} />
-            </Link>
+            </button>
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 

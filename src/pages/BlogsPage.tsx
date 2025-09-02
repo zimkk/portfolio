@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { GlowingEffect } from '../components/ui/GlowingEffect';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon, BookOpenIcon, ArrowRightIcon } from 'lucide-react';
 import FloatingNav from '../components/ui/FloatingNav';
+import PageTransition from '../components/ui/PageTransition';
 
 export const blogPosts = [
   {
@@ -921,9 +923,10 @@ const BlogsPage = () => {
     : blogPosts.filter(post => post.category === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating Navigation */}
-      <FloatingNav />
+    <PageTransition>
+      <div className="min-h-screen bg-black text-white">
+        {/* Floating Navigation */}
+        <FloatingNav />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
         <div className="container mx-auto px-6 py-4">
@@ -947,10 +950,10 @@ const BlogsPage = () => {
       <section className="pt-24 pb-12 px-6 md:px-12 lg:px-20">
         <div className="container mx-auto">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               AI Research & Security Insights
             </h1>
-            <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
+            <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto px-4">
               Deep dives into artificial intelligence, machine learning, cybersecurity, and the intersection of technology and security.
             </p>
           </div>
@@ -958,14 +961,14 @@ const BlogsPage = () => {
       </section>
 
       {/* Filter Categories */}
-      <section className="px-6 md:px-12 lg:px-20 mb-12">
+      <section className="px-4 sm:px-6 md:px-12 lg:px-20 mb-8 sm:mb-12">
         <div className="container mx-auto">
-          <div className="flex justify-center gap-4 flex-wrap">
+          <div className="flex justify-center gap-2 sm:gap-4 flex-wrap">
             {categories.map((category) => (
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-6 py-3 rounded-full text-sm font-medium transition-all duration-300 ${
+                className={`px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 ${
                   selectedCategory === category
                     ? 'bg-white text-black'
                     : 'bg-gray-900/50 text-gray-300 hover:bg-gray-800/50 hover:text-white border border-gray-700/50'
@@ -1032,18 +1035,24 @@ const BlogsPage = () => {
       )}
 
       {/* All Posts */}
-      <section className="px-6 md:px-12 lg:px-20 pb-20">
+      <section className="px-4 sm:px-6 md:px-12 lg:px-20 pb-16 sm:pb-20">
         <div className="container mx-auto">
           <h2 className="text-2xl font-bold mb-8 text-white">
             {selectedCategory === 'All' ? 'All Articles' : `${selectedCategory} Articles`}
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {filteredPosts.map((post) => (
               <Link
                 key={post.id}
                 to={`/blogs/${post.slug}`}
-                className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105"
+                className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105 relative"
               >
+                <GlowingEffect 
+                  variant="white" 
+                  proximity={100} 
+                  spread={30} 
+                  movementDuration={1.5}
+                />
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-4 text-sm text-gray-400">
                     <span className="flex items-center gap-1">
@@ -1111,7 +1120,8 @@ const BlogsPage = () => {
           </div>
         </div>
       </section>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 

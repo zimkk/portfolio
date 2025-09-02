@@ -6,6 +6,7 @@ import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import FloatingNav from '../components/ui/FloatingNav';
+import PageTransition from '../components/ui/PageTransition';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -13,19 +14,21 @@ const BlogPost = () => {
 
   if (!post) {
     return (
-      <div className="min-h-screen bg-black text-white flex items-center justify-center">
-        <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
-          <p className="text-gray-400 mb-8">The blog post you're looking for doesn't exist.</p>
-          <Link 
-            to="/blogs" 
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors"
-          >
-            <ArrowLeftIcon size={20} />
-            Back to Blog
-          </Link>
+      <PageTransition>
+        <div className="min-h-screen bg-black text-white flex items-center justify-center">
+          <div className="text-center">
+            <h1 className="text-4xl font-bold mb-4">Post Not Found</h1>
+            <p className="text-gray-400 mb-8">The blog post you're looking for doesn't exist.</p>
+            <Link 
+              to="/blogs" 
+              className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors"
+            >
+              <ArrowLeftIcon size={20} />
+              Back to Blog
+            </Link>
+          </div>
         </div>
-      </div>
+      </PageTransition>
     );
   }
 
@@ -34,9 +37,10 @@ const BlogPost = () => {
     .slice(0, 2);
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      {/* Floating Navigation */}
-      <FloatingNav />
+    <PageTransition>
+      <div className="min-h-screen bg-black text-white">
+        {/* Floating Navigation */}
+        <FloatingNav />
       {/* Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
         <div className="container mx-auto px-6 py-4">
@@ -275,7 +279,8 @@ const BlogPost = () => {
           </div>
         </div>
       </article>
-    </div>
+      </div>
+    </PageTransition>
   );
 };
 

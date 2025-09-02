@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { GlowingEffect } from '../ui/GlowingEffect';
 
 const skillCategories = [{
   id: 'languages',
@@ -102,13 +103,13 @@ const Skills = ({ darkMode }) => {
   }, []);
 
   return (
-    <section id="skills" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
+    <section id="skills" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
       <div className="container mx-auto">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-4xl font-bold mb-4 text-white text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-white text-center">
             Technical Skills
           </h2>
-          <p className="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+          <p className="text-gray-400 text-center mb-8 md:mb-12 max-w-2xl mx-auto px-4">
             Proficient in modern technologies and frameworks for AI automation, cloud infrastructure, and full-stack development
           </p>
 
@@ -130,7 +131,13 @@ const Skills = ({ darkMode }) => {
           </div>
 
           {/* Skills Grid */}
-          <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8">
+          <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 sm:p-8 relative">
+            <GlowingEffect 
+              variant="white" 
+              proximity={100} 
+              spread={30} 
+              movementDuration={1.5}
+            />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {skillCategories.find(c => c.id === activeCategory).skills.map((skill, index) => (
                 <div 
