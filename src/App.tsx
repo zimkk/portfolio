@@ -23,7 +23,7 @@ export function App() {
         <SectionNav />
         <div className="flex">
           {/* Main Content */}
-          <main className="w-full pt-4 pb-20 md:pb-4 md:pl-20 lg:pl-24 lg:pr-20">
+          <main className="w-full pt-20 pb-20 md:pb-4 md:pl-20 lg:pl-24 lg:pr-20">
             <div id="home">
               <LampDemo />
             </div>

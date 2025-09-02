@@ -19,7 +19,7 @@ export function LampDemo() {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="w-36 h-36 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-8"
+          className="w-36 h-36 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-16"
         >
                                 <img 
             src="/images/profile.png" 
@@ -226,7 +226,7 @@ export const LampContainer = ({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-black "></div>
       </div>
 
-      <div className="relative z-50 flex -translate-y-60 flex-col items-center px-5 pt-20">
+      <div className="relative z-50 flex -translate-y-40 flex-col items-center px-5 pt-32">
         {children}
       </div>
     </div>
