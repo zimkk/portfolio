@@ -1,0 +1,95 @@
+{
+  "name": "Hassan Nazir - AI & Automation Engineer",
+  "short_name": "Hassan Nazir",
+  "description": "AI & Automation Engineer specializing in machine learning, process automation, and innovative technology solutions.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#000000",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "scope": "/",
+  "lang": "en",
+  "categories": ["productivity", "business", "technology"],
+  "icons": [
+    {
+      "src": "/images/profile.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "72x72",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "96x96",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "144x144",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "152x152",
+      "type": "image/png"
+    },
+    {
+      "src": "/images/profile.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Work Experience",
+      "short_name": "Work",
+      "description": "View my professional work experience",
+      "url": "/work",
+      "icons": [
+        {
+          "src": "/images/profile.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Blog Posts",
+      "short_name": "Blog",
+      "description": "Read my latest blog posts",
+      "url": "/blogs",
+      "icons": [
+        {
+          "src": "/images/profile.png",
+          "sizes": "96x96"
+        }
+      ]
+    },
+    {
+      "name": "Contact Me",
+      "short_name": "Contact",
+      "description": "Get in touch with me",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/images/profile.png",
+          "sizes": "96x96"
+        }
+      ]
+    }
+  ]
+}

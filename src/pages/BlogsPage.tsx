@@ -4,6 +4,7 @@ import { GlowingEffect } from '../components/ui/GlowingEffect';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon, BookOpenIcon, ArrowRightIcon } from 'lucide-react';
 import FloatingNav from '../components/ui/FloatingNav';
 import PageTransition from '../components/ui/PageTransition';
+import SEOHead from '../components/ui/SEOHead';
 
 export const blogPosts = [
   {
@@ -924,6 +925,7 @@ const BlogsPage = () => {
 
   return (
     <PageTransition>
+      <SEOHead page="blogs" />
       <div className="min-h-screen bg-black text-white">
         {/* Floating Navigation */}
         <FloatingNav />

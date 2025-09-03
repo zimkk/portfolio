@@ -1,6 +1,7 @@
 import React from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import { HelmetProvider } from "react-helmet-async";
 import { App } from "./App";
 import WorkPage from "./pages/WorkPage";
 import BlogsPage from "./pages/BlogsPage";
@@ -29,9 +30,11 @@ function AnimatedRoutes() {
 
 export function AppRouter() {
   return (
-    <BrowserRouter>
-      <RouteDebugger />
-      <AnimatedRoutes />
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <RouteDebugger />
+        <AnimatedRoutes />
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

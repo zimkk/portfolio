@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeftIcon, ExternalLinkIcon, GithubIcon, CalendarIcon, TagIcon, UserIcon, BriefcaseIcon } from 'lucide-react';
 import FloatingNav from '../components/ui/FloatingNav';
 import PageTransition from '../components/ui/PageTransition';
+import SEOHead from '../components/ui/SEOHead';
 
 const workProjects = [
   {
@@ -119,6 +120,7 @@ const WorkPage = () => {
 
   return (
     <PageTransition>
+      <SEOHead page="work" />
       <div className="min-h-screen bg-black text-white">
         {/* Floating Navigation */}
         <FloatingNav />

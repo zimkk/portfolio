@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { BrainIcon, CodeIcon, ServerIcon, ZapIcon, RocketIcon, ShieldIcon, GitBranchIcon, DatabaseIcon } from 'lucide-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
 
-const About = ({ darkMode }) => {
+const About = ({ }) => {
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {

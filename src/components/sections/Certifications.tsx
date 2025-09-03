@@ -26,7 +26,7 @@ const certifications = [
   }
 ];
 
-const Certifications = ({ darkMode }) => {
+const Certifications = ({ }) => {
   return (
     <section id="certifications" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
       <div className="container mx-auto">
