@@ -57,7 +57,7 @@ const Hero = ({
                 <a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer" className="p-2 rounded-md bg-gray-900 hover:bg-gray-800 transition-colors">
                   <LinkedinIcon size={20} />
                 </a>
-                <a href="mailto:hassannazir955@gmail.com" className="p-2 rounded-md bg-gray-900 hover:bg-gray-800 transition-colors">
+                <a href="mailto:hassannazir955@gmail.com" target="_self" className="p-2 rounded-md bg-gray-900 hover:bg-gray-800 transition-colors">
                   <MailIcon size={20} />
                 </a>
               </div>

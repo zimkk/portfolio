@@ -29,7 +29,7 @@ const Contact = ({ darkMode }) => {
       const result = await emailjs.sendForm(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
-        form.current,
+        form.current!,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
       
@@ -96,6 +96,7 @@ const Contact = ({ darkMode }) => {
               <div className="space-y-6">
                   <a 
                     href="mailto:hassannazir955@gmail.com" 
+                    target="_self"
                     className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
                   >
                     <div className="p-3 rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
@@ -144,7 +145,7 @@ const Contact = ({ darkMode }) => {
                   </a>
 
                   <a 
-                    href="https://hassannazir.vercel.app" 
+                    href="https://hassannazir.dev" 
                     target="_blank" 
                     rel="noopener noreferrer" 
                     className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"

@@ -14,7 +14,7 @@ const workProjects = [
     year: '2025',
     category: 'AI/Automation',
     description: 'Developed a comprehensive AI-powered automation platform that streamlined business processes across multiple departments, resulting in 60% reduction in manual tasks.',
-    image: '/api/placeholder/600/400',
+    image: '/images/ai-automation.jpg',
     technologies: ['Python', 'n8n', 'LangChain', 'OpenAI API', 'PostgreSQL', 'Docker'],
     challenges: [
       'Integration with legacy systems',
@@ -34,6 +34,10 @@ const workProjects = [
     testimonial: {
       text: "Hassan's automation solution transformed our workflow efficiency beyond our expectations.",
       author: "Project Manager, NDT Legacy Group"
+    },
+    externalLink: {
+      url: 'https://n8n-library.hassannazir.dev',
+      text: 'View 2000+ n8n Workflows Library'
     }
   },
   {
@@ -44,7 +48,7 @@ const workProjects = [
     year: '2024-2025',
     category: 'DevOps/Security',
     description: 'Built a comprehensive security monitoring and threat detection system for cloud infrastructure with automated incident response capabilities.',
-    image: '/api/placeholder/600/400',
+    image: '/images/cloud.jpg',
     technologies: ['Python', 'AWS', 'Terraform', 'Grafana', 'ElasticSearch', 'Docker'],
     challenges: [
       'Real-time threat detection across multiple cloud environments',
@@ -74,7 +78,7 @@ const workProjects = [
     year: '2025',
     category: 'QA/Testing',
     description: 'Designed and implemented a comprehensive automated testing framework that reduced manual testing time by 70% while improving test coverage.',
-    image: '/api/placeholder/600/400',
+    image: '/images/software-testing.jpg',
     technologies: ['Python', 'Selenium', 'Pytest', 'Jenkins', 'Allure Reports', 'Docker'],
     challenges: [
       'Complex gaming application testing scenarios',
@@ -256,6 +260,21 @@ const WorkPage = () => {
                       ))}
                     </ul>
                   </div>
+
+                  {/* External Link */}
+                  {project.externalLink && (
+                    <div>
+                      <a 
+                        href={project.externalLink.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-xl hover:bg-gray-200 transition-colors"
+                      >
+                        <span>{project.externalLink.text}</span>
+                        <ExternalLinkIcon size={18} />
+                      </a>
+                    </div>
+                  )}
 
                   {/* Testimonial */}
                   <div className="bg-gray-900/30 border border-gray-800/50 rounded-xl p-6">

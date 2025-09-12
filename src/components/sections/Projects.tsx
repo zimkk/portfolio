@@ -5,38 +5,38 @@ const projects = [{
   title: 'AI Document Processor',
   description: 'An LLM-powered system that extracts, categorizes, and summarizes information from various document formats using LangChain and Hugging Face transformers.',
   technologies: ['Python', 'LangChain', 'Hugging Face', 'FastAPI'],
-  github: 'https://github.com/zimkk/ai-doc-processor',
+  github: 'https://n8n-library.hassannazir.dev',
   demo: null
 }, {
   title: 'DevOps Automation Pipeline',
   description: 'End-to-end CI/CD pipeline with automated testing, deployment, and monitoring for containerized applications.',
   technologies: ['Docker', 'Jenkins', 'AWS', 'Terraform'],
-  github: 'https://github.com/zimkk/devops-pipeline',
+  github: 'https://n8n-library.hassannazir.dev',
   demo: null
 }, {
   title: 'Intelligent Workflow Automation',
   description: 'No-code/low-code platform integration that automates business processes with AI-powered decision making.',
   technologies: ['n8n', 'Python', 'Make', 'REST APIs'],
-  github: 'https://github.com/zimkk/workflow-automation',
-  demo: 'https://hassannazir.vercel.app/demos/workflow'
+  github: 'https://n8n-library.hassannazir.dev',
+  demo: 'https://n8n-library.hassannazir.dev'
 }, {
   title: 'QA Test Automation Framework',
   description: 'Comprehensive test automation framework for web applications with reporting and CI integration.',
   technologies: ['Selenium', 'Python', 'Jenkins', 'Allure'],
-  github: 'https://github.com/zimkk/qa-automation',
+  github: 'https://n8n-library.hassannazir.dev',
   demo: null
 }, {
   title: 'Custom LLM Fine-tuning Pipeline',
   description: 'End-to-end pipeline for fine-tuning large language models on specialized datasets with parameter-efficient methods.',
   technologies: ['PyTorch', 'Hugging Face', 'PEFT', 'Python'],
-  github: 'https://github.com/zimkk/llm-finetuning',
+  github: 'https://n8n-library.hassannazir.dev',
   demo: null
 }, {
   title: 'Cloud Resource Optimizer',
   description: 'Tool that analyzes and optimizes cloud resource usage to reduce costs while maintaining performance.',
   technologies: ['Python', 'AWS SDK', 'Terraform', 'Docker'],
-  github: 'https://github.com/zimkk/cloud-optimizer',
-  demo: 'https://hassannazir.vercel.app/demos/cloud-optimizer'
+  github: 'https://n8n-library.hassannazir.dev',
+  demo: 'https://n8n-library.hassannazir.dev'
 }];
 const Projects = ({
   darkMode

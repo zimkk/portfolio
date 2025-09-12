@@ -99,6 +99,7 @@ export function LampDemo() {
           </a>
           <a 
             href="mailto:hassannazir955@gmail.com" 
+            target="_self"
             className="p-3 rounded-full bg-gray-800/30 hover:bg-gray-700/50 transition-all duration-300 group shadow-lg hover:shadow-white/30"
           >
             <MailIcon size={24} className="text-gray-300 group-hover:text-white transition-colors" />
@@ -168,7 +169,7 @@ export const LampContainer = ({
         className
       )}
     >
-             <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 translate-y-32">
+             <div className="relative flex w-full flex-1 scale-y-125 items-center justify-center isolate z-0 translate-y-32 pointer-events-none">
         <motion.div
           initial={{ opacity: 0.5, width: "15rem" }}
           whileInView={{ opacity: 1, width: "30rem" }}
@@ -226,7 +227,7 @@ export const LampContainer = ({
         <div className="absolute inset-auto z-40 h-44 w-full -translate-y-[12.5rem] bg-black "></div>
       </div>
 
-             <div className="relative z-50 flex -translate-y-20 flex-col items-center px-5 pt-60">
+             <div className="relative z-50 flex -translate-y-20 flex-col items-center px-5 pt-60 pointer-events-auto">
         {children}
       </div>
     </div>
