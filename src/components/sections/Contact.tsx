@@ -156,7 +156,7 @@ const Contact = ({ darkMode }) => {
                     <div>
                       <h4 className="font-medium text-white group-hover:text-white">Website</h4>
                       <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        hassannazir.vercel.app
+                        hassannazir.dev
                       </p>
                     </div>
                   </a>

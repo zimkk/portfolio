@@ -103,7 +103,7 @@ Progressive Web App manifest with:
 ```
 User-agent: *
 Allow: /
-Sitemap: https://hassannazir.vercel.app/sitemap.xml
+Sitemap: https://hassannazir.dev/sitemap.xml
 ```
 
 ### sitemap.js
@@ -118,7 +118,7 @@ Dynamic sitemap with:
 ### Google Search Console
 1. Add your domain to Google Search Console
 2. Verify ownership using the provided meta tag
-3. Submit your sitemap: `https://hassannazir.vercel.app/sitemap.xml`
+3. Submit your sitemap: `https://hassannazir.dev/sitemap.xml`
 
 ### Social Media Verification
 Update verification codes in `src/config/metadata.ts`:

@@ -1,4 +1,4 @@
-const baseUrl = 'https://hassannazir.vercel.app';
+const baseUrl = 'https://hassannazir.dev';
 
 export default function sitemap() {
   return [

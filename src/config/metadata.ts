@@ -2,8 +2,8 @@ export const siteConfig = {
   name: "Hassan Nazir",
   title: "Hassan Nazir - AI & Automation Engineer",
   description: "AI & Automation Engineer specializing in machine learning, process automation, and innovative technology solutions. Building the future with intelligent systems.",
-  url: "https://hassannazir.vercel.app",
-  ogImage: "https://hassannazir.vercel.app/images/profile.png",
+  url: "https://hassannazir.dev",
+  ogImage: "https://hassannazir.dev/images/profile.png",
   links: {
     twitter: "https://twitter.com/hassannazir",
     github: "https://github.com/hassannazir",
