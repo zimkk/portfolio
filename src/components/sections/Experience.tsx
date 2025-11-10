@@ -7,6 +7,8 @@ const experiences = [{
   company: 'Schmoozzer',
   companyRole: 'Senior AI Engineer',
   period: 'Oct 2025 - Present',
+  jobType: 'Full-time',
+  location: 'Remote',
   description: 'Leading AI engineering initiatives and developing sophisticated automation solutions using both code and low-code platforms like n8n.',
   achievements: [
     'Develop and architect AI-powered automation solutions using advanced coding techniques',
@@ -20,6 +22,8 @@ const experiences = [{
   company: 'NDT Legacy Group',
   companyRole: 'AI Automation Engineer',
   period: 'Jun 2025 - Present',
+  jobType: 'Contract',
+  location: 'Hybrid',
   description: 'Design and implement end-to-end automation solutions using n8n and AI integrations. Streamline workflows across social media, DevOps, and business processes to help clients achieve their goals efficiently.',
   achievements: [
     'Design and implement end-to-end automation solutions using n8n and AI integrations',
@@ -30,8 +34,10 @@ const experiences = [{
   id: 3,
   role: 'QA & Automation Engineer',
   company: 'Brilliant Gaming',
-  companyRole: 'QA & Automation Engineer (Remote)',
-  period: 'Feb 2025 - Present',
+  companyRole: 'QA & Automation Engineer',
+  period: 'Feb 2025 - Oct 2025',
+  jobType: 'Contract',
+  location: 'Remote',
   description: 'Leading quality assurance processes and implementing test automation frameworks for gaming applications.',
   achievements: [
     'Developed and maintained automated test suites for web applications and backend services',
@@ -40,10 +46,12 @@ const experiences = [{
   ]
 }, {
   id: 4,
-  role: 'DevOps Engineer',
+  role: 'CTO',
   company: 'Gridcore',
-  companyRole: 'DevOps Engineer (Remote)',
-  period: 'Dec 2024 - May 2025',
+  companyRole: 'CTO',
+  period: 'Dec 2024 - Present',
+  jobType: 'Part-time',
+  location: 'Remote',
   description: 'Managing cloud infrastructure and CI/CD pipelines for seamless deployments.',
   achievements: [
     'Automation testing of applications',
@@ -52,11 +60,13 @@ const experiences = [{
     'Ensured system reliability and adhered to best DevOps practices'
   ]
 }, {
-  id: 4,
+  id: 5,
   role: 'Technical Support L2',
   company: 'IDITECH (Mexico)',
   companyRole: 'Technical Support L2',
   period: 'Jul 2023 - Apr 2024',
+  jobType: 'Full-time',
+  location: 'Remote',
   description: 'Provided advanced technical support and managed cloud infrastructure for Mexican operations.',
   achievements: [
     'Maintained and managed the company\'s AWS cloud platform',
@@ -67,11 +77,13 @@ const experiences = [{
     'Contributed to improving system reliability and uptime'
   ]
 }, {
-  id: 5,
+  id: 6,
   role: 'Quality Assurance Executive',
   company: 'Touchstone Communications',
   companyRole: 'Quality Assurance Executive',
   period: 'Dec 2023 - Nov 2024',
+  jobType: 'Full-time',
+  location: 'Hybrid',
   description: 'Quality control and assurance for automotive transcription campaigns.',
   achievements: [
     'QC on Non-Voice (Transcription) Automotive campaign',
@@ -81,11 +93,13 @@ const experiences = [{
     'Provided feedback to improve productivity and performance'
   ]
 }, {
-  id: 6,
+  id: 7,
   role: 'Freelancer',
   company: 'Fiverr/Upwork',
   companyRole: 'Freelance Developer',
   period: '2019 - Present',
+  jobType: 'Freelance',
+  location: 'Remote',
   description: 'Providing various technical services as an independent contractor.',
   achievements: [
     'DevOps services (CI/CD pipelines, containerization, Deployment testing, AWS, Jenkins, Docker, etc)',
@@ -172,6 +186,14 @@ const Experience = ({ darkMode }) => {
                         </h3>
                         <p className="text-white text-sm font-medium">{exp.companyRole}</p>
                         <p className="text-gray-400 text-sm mt-2 font-mono">{exp.period}</p>
+                        <div className="flex flex-wrap gap-2 mt-3">
+                          <span className="px-2 py-1 bg-blue-500/20 text-blue-300 text-xs rounded-full border border-blue-500/30">
+                            {exp.jobType}
+                          </span>
+                          <span className="px-2 py-1 bg-green-500/20 text-green-300 text-xs rounded-full border border-green-500/30">
+                            {exp.location}
+                          </span>
+                        </div>
                       </div>
                       <div className="md:w-2/3">
                         <ul className="space-y-3 text-gray-300">
