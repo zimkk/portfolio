@@ -3,6 +3,19 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 const experiences = [{
   id: 1,
+  role: 'Senior AI Engineer',
+  company: 'Schmoozzer',
+  companyRole: 'Senior AI Engineer',
+  period: 'Oct 2025 - Present',
+  description: 'Leading AI engineering initiatives and developing sophisticated automation solutions using both code and low-code platforms like n8n.',
+  achievements: [
+    'Develop and architect AI-powered automation solutions using advanced coding techniques',
+    'Design and implement low-code automation workflows using n8n platform',
+    'Lead AI engineering projects from conception to deployment',
+    'Optimize and scale automation systems for enterprise-level performance'
+  ]
+}, {
+  id: 2,
   role: 'AI Automation Engineer',
   company: 'NDT Legacy Group',
   companyRole: 'AI Automation Engineer',
@@ -14,7 +27,7 @@ const experiences = [{
     'Help clients achieve their goals efficiently through intelligent automation'
   ]
 }, {
-  id: 2,
+  id: 3,
   role: 'QA & Automation Engineer',
   company: 'Brilliant Gaming',
   companyRole: 'QA & Automation Engineer (Remote)',
@@ -26,7 +39,7 @@ const experiences = [{
     'Conducted performance and regression testing to ensure system stability across updates'
   ]
 }, {
-  id: 3,
+  id: 4,
   role: 'DevOps Engineer',
   company: 'Gridcore',
   companyRole: 'DevOps Engineer (Remote)',
