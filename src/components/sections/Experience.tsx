@@ -46,18 +46,19 @@ const experiences = [{
   ]
 }, {
   id: 4,
-  role: 'CTO',
+  role: 'Chief Technology Officer',
   company: 'Gridcore',
-  companyRole: 'CTO',
+  companyRole: 'Chief Technology Officer',
   period: 'Dec 2024 - Present',
   jobType: 'Part-time',
   location: 'Remote',
-  description: 'Managing cloud infrastructure and CI/CD pipelines for seamless deployments.',
+  description: 'Leading technology strategy and overseeing technical operations for a company providing comprehensive software and AI solutions across all domains.',
   achievements: [
-    'Automation testing of applications',
-    'Deployed web applications in Docker containers across multiple VPS environments',
-    'Utilized shell scripting for smooth deployments and configuration management',
-    'Ensured system reliability and adhered to best DevOps practices'
+    'Define and execute technology roadmap for software and AI service offerings',
+    'Oversee technical architecture and infrastructure decisions across multiple domains',
+    'Lead development teams in delivering cutting-edge software and AI solutions',
+    'Drive innovation in emerging technologies and maintain competitive technical advantage',
+    'Ensure scalability and reliability of systems supporting diverse client needs'
   ]
 }, {
   id: 5,
