@@ -12,6 +12,7 @@ const experiences = [{
   description: 'Leading AI engineering initiatives and developing sophisticated automation solutions using both code and low-code platforms like n8n.',
   achievements: [
     'Develop and architect AI-powered automation solutions using advanced coding techniques',
+    'QA Testing the workflows and automations built by the teammates and deploying them into production. ',
     'Design and implement low-code automation workflows using n8n platform',
     'Lead AI engineering projects from conception to deployment',
     'Optimize and scale automation systems for enterprise-level performance'
@@ -87,11 +88,10 @@ const experiences = [{
   location: 'Hybrid',
   description: 'Quality control and assurance for automotive transcription campaigns.',
   achievements: [
-    'QC on Non-Voice (Transcription) Automotive campaign',
-    'Reviewed and verified agent-submitted data',
-    'Generated compliance and performance reports',
-    'Conducted weekly software testing for quality and functionality',
-    'Provided feedback to improve productivity and performance'
+  'led company-wide compliance checks and manual/automated testing',
+  'Performed risk-based audits to identify process gaps',
+  'Executed test cases to validate system reliability',
+  'Delivered concise reports and recommendations to reduce risk'
   ]
 }, {
   id: 7,
