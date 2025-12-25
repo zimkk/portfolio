@@ -41,6 +41,9 @@ const skillCategories = [{
   }, {
     name: 'Selenium',
     level: 80
+  }, {
+    name: 'Playwright',
+    level: 75
   }]
 }, {
   id: 'tools',

@@ -1,9 +1,12 @@
 export const siteConfig = {
   name: "Hassan Nazir",
-  title: "Hassan Nazir - AI & Automation Engineer",
-  description: "AI & Automation Engineer specializing in machine learning, process automation, and innovative technology solutions. Building the future with intelligent systems.",
+  title: "Hassan Nazir - Senior AI Engineer & CTO | Official Website",
+  description: "Hassan Nazir is a Senior AI Engineer & CTO with 3+ years of experience in LLM fine-tuning, custom model training, and intelligent workflow orchestration. Hassan Nazir has proven expertise in LangChain, Hugging Face, n8n, and Make with measurable results: 40% cost reduction, 60% efficiency improvement, and 99.9% system uptime. Contact Hassan Nazir for AI automation services.",
   url: "https://hassannazir.dev",
   ogImage: "https://hassannazir.dev/images/profile.png",
+  location: "Pakistan",
+  phone: "+92 331 5892488",
+  email: "hassannazir955@gmail.com",
   links: {
     twitter: "https://twitter.com/hassannazir",
     github: "https://github.com/hassannazir",
@@ -18,18 +21,30 @@ export const defaultMetadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "AI Engineer",
-    "Automation Engineer", 
-    "Machine Learning",
-    "Process Automation",
-    "Artificial Intelligence",
-    "Software Engineer",
-    "Full Stack Developer",
-    "React",
-    "TypeScript",
-    "Python",
-    "Automation",
-    "Portfolio",
+    "Hassan Nazir",
+    "Hassan Nazir AI Engineer",
+    "Hassan Nazir CTO",
+    "Hassan Nazir Pakistan",
+    "Hassan Nazir Senior AI Engineer",
+    "Hassan Nazir Schmoozzer",
+    "Hassan Nazir NDT Legacy Group",
+    "Hassan Nazir Portfolio",
+    "Hassan Nazir Resume",
+    "Hassan Nazir CV",
+    "Hassan Nazir Contact",
+    "Hassan Nazir LinkedIn",
+    "Hassan Nazir GitHub",
+    "Hassan Nazir Freelancer",
+    "Hassan Nazir AI Automation",
+    "Hassan Nazir LLM",
+    "Hassan Nazir Machine Learning",
+    "Hassan Nazir DevOps",
+    "Hassan Nazir QA Engineer",
+    "Hassan Nazir Python Developer",
+    "Hassan Nazir Certified Ethical Hacker",
+    "Senior AI Engineer",
+    "CTO Pakistan",
+    "AI Engineer Pakistan",
   ],
   authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
@@ -80,14 +95,14 @@ export const defaultMetadata = {
 
 export const pageMetadata = {
   home: {
-    title: "Hassan Nazir - AI & Automation Engineer",
-    description: "AI & Automation Engineer specializing in machine learning, process automation, and innovative technology solutions. Building the future with intelligent systems.",
-    keywords: ["AI Engineer", "Automation Engineer", "Machine Learning", "Portfolio"],
+    title: "Hassan Nazir - Official Website | Senior AI Engineer & CTO",
+    description: "Hassan Nazir is a Senior AI Engineer & CTO with 3+ years of experience. Hassan Nazir specializes in LLM fine-tuning, AI automation, and machine learning. Currently working at Schmoozzer and NDT Legacy Group. Contact Hassan Nazir for AI consulting and automation services.",
+    keywords: ["Hassan Nazir", "Hassan Nazir AI Engineer", "Hassan Nazir CTO", "Hassan Nazir Pakistan", "Hassan Nazir Portfolio", "Hassan Nazir Contact"],
   },
   work: {
-    title: "Work Experience",
-    description: "Explore my professional journey, projects, and achievements in AI, automation, and software engineering.",
-    keywords: ["Work Experience", "Projects", "Career", "Professional"],
+    title: "Hassan Nazir Work Experience | Professional Journey",
+    description: "Explore Hassan Nazir's professional journey, projects, and achievements in AI, automation, and software engineering. Hassan Nazir has worked with top companies like Schmoozzer, NDT Legacy Group, and Brilliant Gaming.",
+    keywords: ["Hassan Nazir Work", "Hassan Nazir Experience", "Hassan Nazir Career", "Hassan Nazir Projects"],
   },
   blogs: {
     title: "Blog Posts",
@@ -95,14 +110,14 @@ export const pageMetadata = {
     keywords: ["Blog", "Articles", "AI", "Technology", "Tutorials"],
   },
   contact: {
-    title: "Contact Me",
-    description: "Get in touch with me for collaborations, opportunities, or just to say hello. Let's build something amazing together.",
-    keywords: ["Contact", "Get in Touch", "Collaboration", "Opportunities"],
+    title: "Contact Hassan Nazir | Get in Touch",
+    description: "Get in touch with Hassan Nazir for AI consulting, automation projects, collaborations, or job opportunities. Hassan Nazir is available for freelance and full-time positions. Email: hassannazir955@gmail.com, Phone: +92 331 5892488",
+    keywords: ["Contact Hassan Nazir", "Hassan Nazir Email", "Hassan Nazir Phone", "Hassan Nazir Hire", "Hassan Nazir Consulting"],
   },
   about: {
-    title: "About Me",
-    description: "Learn more about my background, passion for technology, and journey in AI and automation engineering.",
-    keywords: ["About", "Background", "Story", "Journey"],
+    title: "About Hassan Nazir | AI Engineer & CTO Background",
+    description: "Learn more about Hassan Nazir's background, passion for technology, and journey in AI and automation engineering. Hassan Nazir is a certified ethical hacker and experienced AI professional.",
+    keywords: ["About Hassan Nazir", "Hassan Nazir Background", "Hassan Nazir Story", "Hassan Nazir Biography"],
   },
   experience: {
     title: "Experience",
@@ -136,24 +151,110 @@ export const structuredData = {
     "@context": "https://schema.org",
     "@type": "Person",
     name: siteConfig.name,
-    jobTitle: "AI & Automation Engineer",
+    alternateName: ["Hassan Nazir AI Engineer", "Hassan Nazir CTO", "Hassan Nazir Pakistan"],
+    jobTitle: "Senior AI Engineer & CTO",
     description: siteConfig.description,
     url: siteConfig.url,
-    image: siteConfig.ogImage,
+    mainEntityOfPage: siteConfig.url,
+    image: {
+      "@type": "ImageObject",
+      url: siteConfig.ogImage,
+      width: 1200,
+      height: 630,
+      caption: "Hassan Nazir - Senior AI Engineer & CTO"
+    },
+    email: siteConfig.email,
+    telephone: siteConfig.phone,
+    nationality: "Pakistani",
+    birthPlace: "Pakistan",
+    homeLocation: {
+      "@type": "Place",
+      name: "Pakistan",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "PK",
+        addressRegion: "Punjab",
+        addressLocality: "Lahore"
+      }
+    },
+    address: {
+      "@type": "PostalAddress",
+      addressCountry: "PK",
+      addressRegion: "Punjab",
+      addressLocality: "Lahore"
+    },
     sameAs: [
       siteConfig.links.twitter,
       siteConfig.links.github,
       siteConfig.links.linkedin,
+      "https://www.fiverr.com/hassannazir",
+      "https://www.upwork.com/freelancers/hassannazir"
+    ],
+    worksFor: [
+      {
+        "@type": "Organization",
+        name: "Schmoozzer",
+        jobTitle: "Senior AI Engineer",
+        startDate: "2025-10"
+      },
+      {
+        "@type": "Organization", 
+        name: "NDT Legacy Group",
+        jobTitle: "AI Automation Engineer",
+        startDate: "2025-08"
+      }
     ],
     knowsAbout: [
-      "Artificial Intelligence",
-      "Machine Learning",
-      "Process Automation",
-      "Software Engineering",
-      "Full Stack Development",
-      "React",
-      "TypeScript",
+      "LLM Fine-tuning",
+      "LangChain",
+      "Hugging Face",
+      "n8n Automation",
+      "RAG Systems",
+      "Vector Databases",
+      "AI Agents",
+      "MLOps",
+      "DevOps",
+      "QA Automation",
       "Python",
+      "JavaScript",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "Machine Learning",
+      "Artificial Intelligence",
+      "Process Automation"
+    ],
+    hasCredential: [
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "Certified Ethical Hacker - Practical (CEH-P)",
+        credentialCategory: "Certification",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "NUST-NCAI / NAVTTC"
+        },
+        dateCreated: "2024"
+      },
+      {
+        "@type": "EducationalOccupationalCredential", 
+        name: "Practical Ethical Hacking (PEH)",
+        credentialCategory: "Certification",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "TCM Security Academy"
+        },
+        dateCreated: "2023"
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        name: "ISO/IEC 27001 Information Security Associate", 
+        credentialCategory: "Certification",
+        recognizedBy: {
+          "@type": "Organization",
+          name: "SkillFront"
+        },
+        dateCreated: "2023"
+      }
     ],
   },
   website: {
@@ -175,4 +276,34 @@ export const structuredData = {
     logo: siteConfig.ogImage,
     description: siteConfig.description,
   },
+  breadcrumb: {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Home",
+        item: siteConfig.url
+      }
+    ]
+  },
+  professionalService: {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Hassan Nazir - AI & Automation Services",
+    description: "Professional AI engineering and automation services including LLM fine-tuning, custom AI agents, and workflow automation.",
+    provider: {
+      "@type": "Person",
+      name: siteConfig.name
+    },
+    areaServed: "Worldwide",
+    serviceType: [
+      "AI Engineering",
+      "Automation Development", 
+      "LLM Fine-tuning",
+      "DevOps Services",
+      "QA Automation"
+    ]
+  }
 };

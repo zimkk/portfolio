@@ -33,7 +33,7 @@ const About = ({ }) => {
   ];
 
   const stats = [
-    { number: "5+", label: "Years Experience" },
+    { number: "3+", label: "Years Experience" },
     { number: "50+", label: "Projects Completed" },
     { number: "10+", label: "Technologies Mastered" },
     { number: "100%", label: "Client Satisfaction" }

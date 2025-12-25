@@ -68,6 +68,22 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
       <meta name="theme-color" content="#000000" />
       <meta name="msapplication-TileColor" content="#000000" />
+      <meta name="format-detection" content="telephone=no" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+      <meta name="apple-mobile-web-app-title" content={siteConfig.name} />
+      
+      {/* Performance Hints */}
+      <meta httpEquiv="x-dns-prefetch-control" content="on" />
+      <meta name="referrer" content="strict-origin-when-cross-origin" />
+      
+      {/* Geographic Meta Tags */}
+      <meta name="geo.region" content="PK-PB" />
+      <meta name="geo.country" content="PK" />
+      <meta name="ICBM" content="31.5204, 74.3587" />
+      <meta name="geo.position" content="31.5204;74.3587" />
+      <meta name="geo.placename" content="Lahore, Pakistan" />
       
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -75,6 +91,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       </script>
       <script type="application/ld+json">
         {JSON.stringify(structuredData.website)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData.professionalService)}
+      </script>
+      <script type="application/ld+json">
+        {JSON.stringify(structuredData.breadcrumb)}
       </script>
       
       {/* Favicon */}
@@ -85,6 +107,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
       <link rel="preconnect" href="https://app.cal.com" />
+      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+      <link rel="dns-prefetch" href="https://api.github.com" />
+      <link rel="dns-prefetch" href="https://linkedin.com" />
     </Helmet>
   );
 };

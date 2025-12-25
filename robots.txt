@@ -4,13 +4,25 @@ Allow: /
 # Allow all search engines to crawl the site
 # This is appropriate for a personal portfolio website that you want to be discoverable
 
-# Sitemap location (uncomment and update if you have a sitemap)
+# Sitemap location
 Sitemap: https://hassannazir.dev/sitemap.xml
 
-# Optional: Disallow specific paths if needed
+# Specific bot instructions
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+User-agent: LinkedInBot
+Allow: /
+
+# Disallow specific paths if needed (none for portfolio site)
 # Disallow: /admin/
 # Disallow: /private/
 # Disallow: /api/
 
-# Crawl-delay (optional - some bots respect this)
-# Crawl-delay: 1
+# Host directive (helps with canonicalization)
+Host: https://hassannazir.dev

@@ -9,105 +9,88 @@ const experiences = [{
   period: 'Oct 2025 - Present',
   jobType: 'Full-time',
   location: 'Remote',
-  description: 'Leading AI engineering initiatives and developing sophisticated automation solutions using both code and low-code platforms like n8n.',
+  description: 'Designed end-to-end AI automation workflows for client operations.',
   achievements: [
-    'Develop and architect AI-powered automation solutions using advanced coding techniques',
-    'QA Testing the workflows and automations built by the teammates and deploying them into production. ',
-    'Design and implement low-code automation workflows using n8n platform',
-    'Lead AI engineering projects from conception to deployment',
-    'Optimize and scale automation systems for enterprise-level performance'
+    'Designed end-to-end AI automation workflows for client operations',
+    'QA Testing the workflows and automations built by the teammates and deploying them into production',
+    'Built custom LLM-powered applications for task automation and data processing',
+    'Engineered workflow integrations using n8n and advanced AI model APIs',
+    'Implemented quality control processes to ensure accuracy and reliability across AI systems'
   ]
 }, {
   id: 2,
   role: 'AI Automation Engineer',
   company: 'NDT Legacy Group',
   companyRole: 'AI Automation Engineer',
-  period: 'Jun 2025 - Present',
-  jobType: 'Contract',
+  period: 'Aug 2025 - Present',
+  jobType: 'Full-time',
   location: 'Hybrid',
-  description: 'Design and implement end-to-end automation solutions using n8n and AI integrations. Streamline workflows across social media, DevOps, and business processes to help clients achieve their goals efficiently.',
+  description: 'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation.',
   achievements: [
-    'Design and implement end-to-end automation solutions using n8n and AI integrations',
-    'Streamline workflows across social media, DevOps, and business processes',
-    'Help clients achieve their goals efficiently through intelligent automation'
+    'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation',
+    'Created n8n workflows with the latest Language model APIs, processing 10K+ daily transactions',
+    'Implemented RAG systems with vector databases for document processing',
+    'Developed multi-modal AI solutions serving 5,000+ users'
   ]
 }, {
   id: 3,
-  role: 'QA & Automation Engineer',
+  role: 'QA Automation Engineer',
   company: 'Brilliant Gaming',
-  companyRole: 'QA & Automation Engineer',
-  period: 'Feb 2025 - Oct 2025',
+  companyRole: 'QA Automation Engineer',
+  period: 'Feb 2025 - Sep 2025',
   jobType: 'Contract',
   location: 'Remote',
-  description: 'Leading quality assurance processes and implementing test automation frameworks for gaming applications.',
+  description: 'Led an 8-person QA team managing $2M+ monthly payment transactions.',
   achievements: [
-    'Developed and maintained automated test suites for web applications and backend services',
-    'Integrated testing workflows into CI/CD pipelines to ensure rapid and reliable deployments',
-    'Conducted performance and regression testing to ensure system stability across updates'
+    'Led an 8-person QA team managing $2M+ monthly payment transactions',
+    'Built automated testing frameworks, reducing testing time by half',
+    'Created an AI-powered test generation identifying 200+ security scenarios',
+    'Implemented automated reporting systems'
   ]
 }, {
   id: 4,
-  role: 'Chief Technology Officer',
+  role: 'DevOps Engineer',
   company: 'Gridcore',
-  companyRole: 'Chief Technology Officer',
-  period: 'Dec 2024 - Present',
+  companyRole: 'DevOps Engineer',
+  period: 'Dec 2023 - Sep 2024',
   jobType: 'Part-time',
-  location: 'Remote',
-  description: 'Leading technology strategy and overseeing technical operations for a company providing comprehensive software and AI solutions across all domains.',
+  location: 'Hybrid',
+  description: 'Architected 20+ containerized AI model pipelines with Docker/Kubernetes.',
   achievements: [
-    'Define and execute technology roadmap for software and AI service offerings',
-    'Oversee technical architecture and infrastructure decisions across multiple domains',
-    'Lead development teams in delivering cutting-edge software and AI solutions',
-    'Drive innovation in emerging technologies and maintain competitive technical advantage',
-    'Ensure scalability and reliability of systems supporting diverse client needs'
+    'Architected 20+ containerized AI model pipelines with Docker/Kubernetes',
+    'Built ML serving infrastructure supporting 1M+ daily API requests',
+    'Created CI/CD pipelines, achieving 99.9% uptime for ML deployments',
+    'Optimized cloud costs across 3 AWS regions'
   ]
 }, {
   id: 5,
-  role: 'Technical Support L2',
-  company: 'IDITECH (Mexico)',
-  companyRole: 'Technical Support L2',
-  period: 'Jul 2023 - Apr 2024',
-  jobType: 'Full-time',
-  location: 'Remote',
-  description: 'Provided advanced technical support and managed cloud infrastructure for Mexican operations.',
+  role: 'QA Executive',
+  company: 'Touchstone Communications',
+  companyRole: 'QA Executive',
+  period: 'Dec 2022 - Nov 2023',
+  jobType: 'Part-time',
+  location: 'On-site',
+  description: 'Led company-wide compliance checks and manual/automated testing.',
   achievements: [
-    'Maintained and managed the company\'s AWS cloud platform',
-    'Deployed and administered web applications',
-    'Implemented monitoring tool (Grafana) for performance optimization',
-    'Supported CI/CD processes and automated tasks via shell scripting',
-    'Provided technical support for business-critical services',
-    'Contributed to improving system reliability and uptime'
+    'Led company-wide compliance checks and manual/automated testing',
+    'Performed risk-based audits to identify process gaps',
+    'Executed test cases to validate system reliability',
+    'Delivered concise reports and recommendations to reduce risk'
   ]
 }, {
   id: 6,
-  role: 'Quality Assurance Executive',
-  company: 'Touchstone Communications',
-  companyRole: 'Quality Assurance Executive',
-  period: 'Dec 2023 - Nov 2024',
-  jobType: 'Full-time',
-  location: 'Hybrid',
-  description: 'Quality control and assurance for automotive transcription campaigns.',
-  achievements: [
-  'led company-wide compliance checks and manual/automated testing',
-  'Performed risk-based audits to identify process gaps',
-  'Executed test cases to validate system reliability',
-  'Delivered concise reports and recommendations to reduce risk'
-  ]
-}, {
-  id: 7,
-  role: 'Freelancer',
+  role: 'Independent Specialist',
   company: 'Fiverr/Upwork',
-  companyRole: 'Freelance Developer',
+  companyRole: 'Independent Specialist',
   period: '2019 - Present',
-  jobType: 'Freelance',
+  jobType: 'Part-time',
   location: 'Remote',
-  description: 'Providing various technical services as an independent contractor.',
+  description: 'Delivered 50+ custom LLM fine-tuning projects and 100+ AI automation solutions.',
   achievements: [
-    'DevOps services (CI/CD pipelines, containerization, Deployment testing, AWS, Jenkins, Docker, etc)',
-    'Automation using different platforms and also custom automation scripting',
-    'Application Deployment and Testing',
-    'Python Bot development and script writing for Automation',
-    'Developing, Training, modeling, and integrating ML/AI tools'
+    'Delivered 50+ custom LLM fine-tuning projects using Hugging Face',
+    'Built 100+ AI automation solutions with LangChain and vector databases',
+    'Created no-code AI workflows serving 10K+ users',
+    'Executed 30+ computer vision projects'
   ]
 }];
 

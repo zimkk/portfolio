@@ -1,0 +1,36 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Hassan Nazir -- Senior AI Engineer & CTO -- hassannazir955@gmail.com
+
+# THANKS
+
+    All the amazing open source contributors and the AI/ML community
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, JavaScript, TypeScript
+    React, Vite, Tailwind CSS
+    AI/ML: LangChain, Hugging Face, n8n
+    DevOps: Docker, Kubernetes, AWS
+    Testing: Selenium, Playwright
+    
+# SITE
+
+    Last update: 2025/12/26
+    Language: English
+    Doctype: HTML5
+    IDE: Cursor, VS Code
+    
+# CONTACT
+
+    Website: https://hassannazir.dev
+    Email: hassannazir955@gmail.com
+    Phone: +92 331 5892488
+    Location: Pakistan
+    
+    LinkedIn: https://linkedin.com/in/hassannazir
+    GitHub: https://github.com/hassannazir
+    Twitter: https://twitter.com/hassannazir

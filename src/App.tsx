@@ -11,6 +11,7 @@ import Projects from './components/sections/Projects';
 import Contact from './components/sections/Contact';
 import PageTransition from './components/ui/PageTransition';
 import SEOHead from './components/ui/SEOHead';
+import NameSEO from './components/ui/NameSEO';
 
 export function App() {
   const [darkMode, setDarkMode] = useState(true);
@@ -18,6 +19,7 @@ export function App() {
   return (
     <PageTransition>
       <SEOHead page="home" />
+      <NameSEO />
       <div className="min-h-screen bg-black text-white">
         {/* Floating Navigation */}
         <FloatingNav />

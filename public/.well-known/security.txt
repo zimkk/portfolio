@@ -1,0 +1,17 @@
+Contact: mailto:hassannazir955@gmail.com
+Contact: https://hassannazir.dev/contact
+Expires: 2025-12-31T23:59:59.000Z
+Encryption: https://hassannazir.dev/pgp-key.txt
+Preferred-Languages: en, ur
+Canonical: https://hassannazir.dev/.well-known/security.txt
+Policy: https://hassannazir.dev/security-policy
+
+# Security Contact Information for Hassan Nazir's Website
+# Hassan Nazir - Senior AI Engineer & CTO
+# Certified Ethical Hacker (CEH-P)
+# 
+# If you discover any security vulnerabilities, please report them
+# responsibly to Hassan Nazir using the contact information above.
+#
+# Hassan Nazir takes security seriously and will respond promptly
+# to legitimate security reports.
