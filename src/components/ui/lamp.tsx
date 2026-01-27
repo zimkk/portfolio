@@ -19,7 +19,7 @@ export function LampDemo() {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="w-28 h-28 rounded-full overflow-visible border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-6 p-0.5 shadow-lg shadow-white/10"
+          className="w-44 h-44 rounded-full overflow-visible border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-6 p-0.5 shadow-lg shadow-white/10"
         >
           <div className="w-full h-full rounded-full overflow-hidden">
             <img 
