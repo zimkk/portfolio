@@ -19,13 +19,15 @@ export function LampDemo() {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="w-28 h-28 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-2 shadow-lg shadow-white/10"
+          className="w-28 h-28 rounded-full overflow-visible border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-6 p-0.5 shadow-lg shadow-white/10"
         >
-                                <img 
-            src="/images/profile.png" 
-            alt="Hassan Nazir Profile" 
-            className="w-full h-full object-cover"
-          />
+          <div className="w-full h-full rounded-full overflow-hidden">
+            <img 
+              src="/images/profile.png" 
+              alt="Hassan Nazir Profile" 
+              className="w-full h-full object-cover"
+            />
+          </div>
         </motion.div>
 
         {/* Location Badge */}

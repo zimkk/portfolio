@@ -1275,7 +1275,7 @@ The key is to stay focused on practical applications while keeping an eye on eme
 ---
 
 *What deep learning techniques are you most excited about? Share your experiences with LoRA fine-tuning or other PEFT methods in the comments below!*`,
-    category: 'AI Research',
+    category: 'Deep Learning',
     readTime: '18 min read',
     publishedAt: '2025-01-25',
     tags: ['Deep Learning', 'Transformers', 'LoRA', 'Neural Networks', 'PyTorch', 'Machine Learning', 'AI'],
@@ -1884,7 +1884,7 @@ As these systems continue to evolve, we'll see agents becoming increasingly capa
 ---
 
 *Have you built AI agents for your business? What challenges did you face? Share your experiences with LangChain agents or AutoGPT implementations in the comments!*`,
-    category: 'AI Research',
+    category: 'Agentic AI',
     readTime: '20 min read',
     publishedAt: '2025-01-27',
     tags: ['Agentic AI', 'LangChain', 'AutoGPT', 'AI Agents', 'Multi-Agent Systems', 'Python', 'Autonomous AI'],
@@ -2535,7 +2535,7 @@ The key is understanding which model fits your use case and how to efficiently d
 ---
 
 *What computer vision applications are you building? Share your experiences with SAM, DINOv2, or other vision foundation models in the comments!*`,
-    category: 'AI Research',
+    category: 'Computer Vision',
     readTime: '22 min read',
     publishedAt: '2025-01-26',
     tags: ['Computer Vision', 'SAM', 'DINOv2', 'CLIP', 'Vision Transformers', 'Object Detection', 'Image Segmentation'],
