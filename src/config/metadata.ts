@@ -105,9 +105,9 @@ export const pageMetadata = {
     keywords: ["Hassan Nazir Work", "Hassan Nazir Experience", "Hassan Nazir Career", "Hassan Nazir Projects"],
   },
   blogs: {
-    title: "Blog Posts",
-    description: "Insights, tutorials, and thoughts on AI, automation, and technology. Sharing knowledge and experiences.",
-    keywords: ["Blog", "Articles", "AI", "Technology", "Tutorials"],
+    title: "Hassan Nazir Blog | AI, Deep Learning, Computer Vision & Agentic AI Tutorials",
+    description: "Expert insights from Hassan Nazir on AI, deep learning, computer vision, agentic AI, and cybersecurity. Learn about LLM fine-tuning, transformers, SAM, DINOv2, LangChain agents, and enterprise AI adoption with practical code examples.",
+    keywords: ["Hassan Nazir Blog", "AI Tutorials", "Deep Learning Guide", "Computer Vision", "Agentic AI", "LangChain Tutorial", "SAM Model", "DINOv2", "Transformer Architecture", "LLM Fine-tuning", "Prompt Engineering", "Zero Trust Security", "AI Trends 2025"],
   },
   contact: {
     title: "Contact Hassan Nazir | Get in Touch",

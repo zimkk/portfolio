@@ -7,6 +7,7 @@ import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import FloatingNav from '../components/ui/FloatingNav';
 import PageTransition from '../components/ui/PageTransition';
+import SEOHead from '../components/ui/SEOHead';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -38,6 +39,13 @@ const BlogPost = () => {
 
   return (
     <PageTransition>
+      <SEOHead 
+        title={`${post.title} | Hassan Nazir Blog`}
+        description={post.excerpt}
+        keywords={post.seoKeywords || post.tags}
+        image={post.image}
+        type="article"
+      />
       <div className="min-h-screen bg-black text-white">
         {/* Floating Navigation */}
         <FloatingNav />
