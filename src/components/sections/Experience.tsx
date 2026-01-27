@@ -3,6 +3,36 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 const experiences = [{
   id: 1,
+  role: 'AI Automation Engineer',
+  company: 'NDT Legacy Group',
+  companyRole: 'AI Automation Engineer',
+  period: 'Aug 2025 - Present',
+  jobType: 'Full-time',
+  location: 'Hybrid',
+  description: 'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation.',
+  achievements: [
+    'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation',
+    'Created n8n workflows with the latest Language model APIs, processing 10K+ daily transactions',
+    'Implemented RAG systems with vector databases for document processing',
+    'Developed multi-modal AI solutions serving 5,000+ users'
+  ]
+}, {
+  id: 2,
+  role: 'CTO - DevOps Engineer',
+  company: 'Gridcore',
+  companyRole: 'CTO - DevOps Engineer',
+  period: 'Dec 2023 - Present',
+  jobType: 'Part-time',
+  location: 'Hybrid',
+  description: 'Architected 20+ containerized AI model pipelines with Docker/Kubernetes.',
+  achievements: [
+    'Architected 20+ containerized AI model pipelines with Docker/Kubernetes',
+    'Built ML serving infrastructure supporting 1M+ daily API requests',
+    'Created CI/CD pipelines, achieving 99.9% uptime for ML deployments',
+    'Optimized cloud costs across 3 AWS regions'
+  ]
+}, {
+  id: 3,
   role: 'Senior AI Engineer',
   company: 'Schmoozzer',
   companyRole: 'Senior AI Engineer',
@@ -18,22 +48,7 @@ const experiences = [{
     'Implemented quality control processes to ensure accuracy and reliability across AI systems'
   ]
 }, {
-  id: 2,
-  role: 'AI Automation Engineer',
-  company: 'NDT Legacy Group',
-  companyRole: 'AI Automation Engineer',
-  period: 'Aug 2025 - Present',
-  jobType: 'Full-time',
-  location: 'Hybrid',
-  description: 'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation.',
-  achievements: [
-    'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation',
-    'Created n8n workflows with the latest Language model APIs, processing 10K+ daily transactions',
-    'Implemented RAG systems with vector databases for document processing',
-    'Developed multi-modal AI solutions serving 5,000+ users'
-  ]
-}, {
-  id: 3,
+  id: 4,
   role: 'QA Automation Engineer',
   company: 'Brilliant Gaming',
   companyRole: 'QA Automation Engineer',
@@ -46,21 +61,6 @@ const experiences = [{
     'Built automated testing frameworks, reducing testing time by half',
     'Created an AI-powered test generation identifying 200+ security scenarios',
     'Implemented automated reporting systems'
-  ]
-}, {
-  id: 4,
-  role: 'CTO - DevOps Engineer',
-  company: 'Gridcore',
-  companyRole: 'CTO - DevOps Engineer',
-  period: 'Dec 2023 - Present',
-  jobType: 'Part-time',
-  location: 'Hybrid',
-  description: 'Architected 20+ containerized AI model pipelines with Docker/Kubernetes.',
-  achievements: [
-    'Architected 20+ containerized AI model pipelines with Docker/Kubernetes',
-    'Built ML serving infrastructure supporting 1M+ daily API requests',
-    'Created CI/CD pipelines, achieving 99.9% uptime for ML deployments',
-    'Optimized cloud costs across 3 AWS regions'
   ]
 }, {
   id: 5,
@@ -94,7 +94,7 @@ const experiences = [{
   ]
 }];
 
-const Experience = ({ darkMode }) => {
+const Experience = ({  }) => {
   const [expandedId, setExpandedId] = useState(1);
   const [isVisible, setIsVisible] = useState(false);
 
@@ -118,7 +118,7 @@ const Experience = ({ darkMode }) => {
     };
   }, []);
 
-  const toggleExpand = id => {
+  const toggleExpand = (id: any) => {
     setExpandedId(expandedId === id ? null : id);
   };
 
