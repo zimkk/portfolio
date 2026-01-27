@@ -19,7 +19,7 @@ export function LampDemo() {
             duration: 0.6,
             ease: "easeInOut",
           }}
-          className="w-28 h-28 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-0"
+          className="w-28 h-28 rounded-full overflow-hidden border-4 border-gray-300/30 mb-4 bg-gradient-to-br from-white/20 to-gray-800 mt-2 shadow-lg shadow-white/10"
         >
                                 <img 
             src="/images/profile.png" 

@@ -129,7 +129,8 @@ As we continue to push the boundaries of what's possible with AI, remember that 
     readTime: '8 min read',
     publishedAt: '2025-01-15',
     tags: ['LLM', 'Prompt Engineering', 'AI Research', 'Machine Learning'],
-    featured: true
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80'
   },
   {
     id: 2,
@@ -386,7 +387,8 @@ Remember: Zero Trust is not about distrust—it's about building systems resilie
     readTime: '12 min read',
     publishedAt: '2025-01-10',
     tags: ['Zero Trust', 'Cloud Security', 'Cybersecurity', 'AWS', 'Azure'],
-    featured: true
+    featured: true,
+    image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80'
   },
   {
     id: 3,
@@ -911,7 +913,8 @@ Success in this domain comes from treating AI as a tool to augment human experti
     readTime: '15 min read',
     publishedAt: '2025-01-05',
     tags: ['AI', 'Machine Learning', 'Cybersecurity', 'Threat Detection', 'Python'],
-    featured: false
+    featured: false,
+    image: 'https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80'
   }
 ];
 
@@ -993,9 +996,24 @@ const BlogsPage = () => {
                 <Link
                   key={post.id}
                   to={`/blogs/${post.slug}`}
-                  className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-300"
+                  className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl overflow-hidden hover:border-gray-600/50 transition-all duration-300 flex flex-col"
                 >
-                  <div className="p-8">
+                  {/* Blog Image */}
+                  <div className="relative h-64 overflow-hidden">
+                    <img 
+                      src={post.image} 
+                      alt={post.title}
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                    <div className="absolute top-4 right-4">
+                      <span className="px-3 py-1 bg-black/80 backdrop-blur-sm rounded-full text-xs text-white border border-gray-700">
+                        {post.category}
+                      </span>
+                    </div>
+                  </div>
+
+                  <div className="p-8 flex-1 flex flex-col">
                     <div className="flex items-center gap-4 mb-4 text-sm text-gray-400">
                       <span className="flex items-center gap-2">
                         <CalendarIcon size={16} />
@@ -1005,14 +1023,11 @@ const BlogsPage = () => {
                         <ClockIcon size={16} />
                         {post.readTime}
                       </span>
-                      <span className="px-3 py-1 bg-gray-900/50 rounded-full text-xs">
-                        {post.category}
-                      </span>
                     </div>
                     <h3 className="text-2xl font-bold mb-4 text-white group-hover:text-gray-300 transition-colors">
                       {post.title}
                     </h3>
-                    <p className="text-gray-300 leading-relaxed mb-6">
+                    <p className="text-gray-300 leading-relaxed mb-6 flex-1">
                       {post.excerpt}
                     </p>
                     <div className="flex items-center justify-between">
@@ -1047,7 +1062,7 @@ const BlogsPage = () => {
               <Link
                 key={post.id}
                 to={`/blogs/${post.slug}`}
-                className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105 relative"
+                className="group bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl hover:border-gray-600/50 transition-all duration-300 hover:transform hover:scale-105 relative overflow-hidden flex flex-col"
               >
                 <GlowingEffect 
                   variant="white" 
@@ -1055,8 +1070,24 @@ const BlogsPage = () => {
                   spread={30} 
                   movementDuration={1.5}
                 />
-                <div className="p-6">
-                  <div className="flex items-center gap-3 mb-4 text-sm text-gray-400">
+                
+                {/* Blog Image */}
+                <div className="relative h-48 overflow-hidden">
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60"></div>
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 bg-black/80 backdrop-blur-sm rounded-full text-xs text-gray-300 border border-gray-700">
+                      {post.category}
+                    </span>
+                  </div>
+                </div>
+
+                <div className="p-6 flex-1 flex flex-col">
+                  <div className="flex items-center gap-3 mb-3 text-sm text-gray-400">
                     <span className="flex items-center gap-1">
                       <CalendarIcon size={14} />
                       {new Date(post.publishedAt).toLocaleDateString()}
@@ -1066,16 +1097,10 @@ const BlogsPage = () => {
                       {post.readTime}
                     </span>
                   </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <TagIcon size={16} className="text-gray-500" />
-                    <span className="px-2 py-1 bg-gray-900/50 rounded-md text-xs text-gray-400">
-                      {post.category}
-                    </span>
-                  </div>
                   <h3 className="text-xl font-bold mb-3 text-white group-hover:text-gray-300 transition-colors line-clamp-2">
                     {post.title}
                   </h3>
-                  <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3">
+                  <p className="text-gray-300 text-sm leading-relaxed mb-4 line-clamp-3 flex-1">
                     {post.excerpt}
                   </p>
                   <div className="flex items-center justify-between">

@@ -6,8 +6,8 @@ const experiences = [{
   role: 'Senior AI Engineer',
   company: 'Schmoozzer',
   companyRole: 'Senior AI Engineer',
-  period: 'Oct 2025 - Present',
-  jobType: 'Full-time',
+  period: 'Oct 2025 - Jan 2026',
+  jobType: 'Contract',
   location: 'Remote',
   description: 'Designed end-to-end AI automation workflows for client operations.',
   achievements: [
@@ -49,10 +49,10 @@ const experiences = [{
   ]
 }, {
   id: 4,
-  role: 'DevOps Engineer',
+  role: 'CTO - DevOps Engineer',
   company: 'Gridcore',
-  companyRole: 'DevOps Engineer',
-  period: 'Dec 2023 - Sep 2024',
+  companyRole: 'CTO - DevOps Engineer',
+  period: 'Dec 2023 - Present',
   jobType: 'Part-time',
   location: 'Hybrid',
   description: 'Architected 20+ containerized AI model pipelines with Docker/Kubernetes.',
@@ -79,9 +79,9 @@ const experiences = [{
   ]
 }, {
   id: 6,
-  role: 'Independent Specialist',
+  role: 'Independent Consultant',
   company: 'Fiverr/Upwork',
-  companyRole: 'Independent Specialist',
+  companyRole: 'Independent Consultant',
   period: '2019 - Present',
   jobType: 'Part-time',
   location: 'Remote',
