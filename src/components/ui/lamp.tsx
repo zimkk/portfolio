@@ -69,7 +69,7 @@ export function LampDemo() {
           }}
           className="text-lg sm:text-xl md:text-2xl text-white mb-8 font-medium font-mono px-4"
         >
-          {"{ \"role\": \"AI Engineer\" }"}
+          {'{role: "AI Engineer"}'}
         </motion.p>
 
         {/* Social Links */}
@@ -120,9 +120,7 @@ export function LampDemo() {
           className="max-w-3xl mb-8"
         >
           <p className="text-gray-300 leading-relaxed text-lg">
-            AI & Automation Engineer skilled in building intelligent workflows with both code and no-code tools (n8n, Make, GHL). 
-            I have extensive experience in fine-tuning LLMs, Python automation, and integrating frameworks like LangChain and Hugging Face. 
-            My strong background in cloud (AWS, Docker, CI/CD) and QA ensures scalable, reliable, and efficient AI-driven solutions.
+            AI Systems Architect & Full-Stack Engineer specializing in scalable AI automation platforms and LLM-powered systems. Designing end-to-end solutions from backend orchestration to frontend applications, serving thousands of users with high availability. Expertise in Python, LangChain, OpenAI APIs, Hugging Face, n8n, Make, GHL, and cloud-native DevOps (AWS, Docker, CI/CD), delivering production-grade AI systems that drive measurable business impact.
           </p>
         </motion.div>
 

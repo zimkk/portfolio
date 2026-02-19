@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { BrainIcon, CodeIcon, ServerIcon, ZapIcon, RocketIcon, ShieldIcon, GitBranchIcon, DatabaseIcon } from 'lucide-react';
+import { BrainIcon, CodeIcon, ServerIcon, ZapIcon, RocketIcon, LayersIcon, GitBranchIcon, DatabaseIcon } from 'lucide-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
 
 const About = ({ }) => {
@@ -28,8 +28,8 @@ const About = ({ }) => {
   const highlights = [
     { icon: <BrainIcon className="w-6 h-6" />, text: "AI & Machine Learning" },
     { icon: <ZapIcon className="w-6 h-6" />, text: "Automation Workflows" },
-    { icon: <ServerIcon className="w-6 h-6" />, text: "DevOps Engineering" },
-    { icon: <ShieldIcon className="w-6 h-6" />, text: "Cybersecurity" }
+    { icon: <LayersIcon className="w-6 h-6" />, text: "Full Stack" },
+    { icon: <ServerIcon className="w-6 h-6" />, text: "DevOps Engineering" }
   ];
 
   const stats = [
@@ -47,13 +47,6 @@ const About = ({ }) => {
         <div className="absolute top-40 right-20 w-24 h-24 border border-white rounded-full"></div>
         <div className="absolute bottom-20 left-1/4 w-16 h-16 border border-white rounded-full"></div>
         <div className="absolute bottom-40 right-10 w-20 h-20 border border-white rounded-full"></div>
-      </div>
-
-      {/* Floating Code Elements */}
-      <div className="absolute inset-0 overflow-hidden">
-        <div className="absolute top-20 left-1/4 text-white font-mono text-sm animate-pulse opacity-40 font-semibold">
-          {'{ "role": "AI Engineer" }'}
-        </div>
       </div>
 
       <div className="container mx-auto relative z-10">
@@ -85,10 +78,10 @@ const About = ({ }) => {
                 </div>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    I am <span className="text-white font-semibold">Hassan Nazir</span>, an AI & Automation Engineer skilled in building intelligent workflows with both code and no-code tools (n8n, Make, GHL). I have extensive experience in fine-tuning LLMs, Python automation, and integrating frameworks like LangChain and Hugging Face.
+                    I am <span className="text-white font-semibold">Hassan Nazir</span>, an AI Systems Architect & Engineering Lead with 3+ years of experience designing and scaling enterprise AI automation platforms across cloud environments. I have architected LLM-powered systems serving 10K+ users, processing 10K+ daily transactions, and delivering 99.9% uptime.
                   </p>
                   <p>
-                    My strong background in cloud (AWS, Docker, CI/CD) and QA ensures scalable, reliable, and efficient AI-driven solutions. I continuously explore cutting-edge technologies to deliver innovative automation solutions.
+                    My proven impact includes 40% operational cost reduction and 60% efficiency gains through intelligent automation. I'm experienced in leading cross-functional teams, defining AI roadmaps, and deploying production-grade solutions using LangChain, OpenAI APIs, Hugging Face, and modern DevOps stacks.
                   </p>
                 </div>
               </div>

@@ -3,18 +3,19 @@ import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
 
 const experiences = [{
   id: 1,
-  role: 'AI Automation Engineer',
+  role: 'SR. AI ENGINEER',
   company: 'NDT Legacy Group',
-  companyRole: 'AI Automation Engineer',
+  companyRole: 'SR. AI ENGINEER',
   period: 'Aug 2025 - Present',
   jobType: 'Full-time',
   location: 'Hybrid',
-  description: 'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation.',
+  description: 'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime.',
   achievements: [
-    'Built 15+ custom AI agents using LangChain and fine-tuned LLMs for business automation',
-    'Created n8n workflows with the latest Language model APIs, processing 10K+ daily transactions',
-    'Implemented RAG systems with vector databases for document processing',
-    'Developed multi-modal AI solutions serving 5,000+ users'
+    'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime',
+    'Designed scalable LLM and multi-agent systems using LangChain and fine-tuned models',
+    'Led cross-functional AI, DevOps, and QA teams from design to production deployment',
+    'Reduced operational costs by 40% and improved workflow efficiency by 60% through intelligent automation',
+    'Established system governance, monitoring, and performance optimization frameworks'
   ]
 }, {
   id: 2,
@@ -24,12 +25,12 @@ const experiences = [{
   period: 'Dec 2023 - Present',
   jobType: 'Part-time',
   location: 'Hybrid',
-  description: 'Architected 20+ containerized AI model pipelines with Docker/Kubernetes.',
+  description: 'Defined company-wide technology strategy and AI adoption roadmap.',
   achievements: [
-    'Architected 20+ containerized AI model pipelines with Docker/Kubernetes',
-    'Built ML serving infrastructure supporting 1M+ daily API requests',
-    'Created CI/CD pipelines, achieving 99.9% uptime for ML deployments',
-    'Optimized cloud costs across 3 AWS regions'
+    'Defined company-wide technology strategy and AI adoption roadmap',
+    'Architected scalable cloud infrastructure and ML deployment pipelines',
+    'Led engineering and DevOps functions, achieving 99.9% system reliability',
+    'Directed client solution architecture aligning technology with business objectives'
   ]
 }, {
   id: 3,
@@ -39,13 +40,11 @@ const experiences = [{
   period: 'Oct 2025 - Jan 2026',
   jobType: 'Contract',
   location: 'Remote',
-  description: 'Designed end-to-end AI automation workflows for client operations.',
+  description: 'Designed and deployed AI-driven automation workflows for enterprise clients.',
   achievements: [
-    'Designed end-to-end AI automation workflows for client operations',
-    'QA Testing the workflows and automations built by the teammates and deploying them into production',
-    'Built custom LLM-powered applications for task automation and data processing',
-    'Engineered workflow integrations using n8n and advanced AI model APIs',
-    'Implemented quality control processes to ensure accuracy and reliability across AI systems'
+    'Designed and deployed AI-driven automation workflows for enterprise clients',
+    'Engineered LLM-powered conversational and document-processing systems',
+    'Integrated AI platforms with n8n and external APIs for production use'
   ]
 }, {
   id: 4,
@@ -67,14 +66,14 @@ const experiences = [{
   role: 'QA Executive',
   company: 'Touchstone Communications',
   companyRole: 'QA Executive',
-  period: 'Dec 2022 - Nov 2023',
-  jobType: 'Part-time',
+  period: 'Dec 2023 - Nov 2024',
+  jobType: 'Full-time',
   location: 'On-site',
-  description: 'Led company-wide compliance checks and manual/automated testing.',
+  description: 'QC for Non-voice campaign.',
   achievements: [
-    'Led company-wide compliance checks and manual/automated testing',
+    'QC for Non-voice campaign',
     'Performed risk-based audits to identify process gaps',
-    'Executed test cases to validate system reliability',
+    'Executed test cases to validate parameter assessments',
     'Delivered concise reports and recommendations to reduce risk'
   ]
 }, {
@@ -85,12 +84,12 @@ const experiences = [{
   period: '2019 - Present',
   jobType: 'Part-time',
   location: 'Remote',
-  description: 'Delivered 50+ custom LLM fine-tuning projects and 100+ AI automation solutions.',
+  description: 'Delivered 20+ custom LLM fine-tuning projects and 100+ AI automation solutions.',
   achievements: [
-    'Delivered 50+ custom LLM fine-tuning projects using Hugging Face',
+    'Delivered 20+ custom LLM fine-tuning projects using Hugging Face & Unsloth',
     'Built 100+ AI automation solutions with LangChain and vector databases',
     'Created no-code AI workflows serving 10K+ users',
-    'Executed 30+ computer vision projects'
+    'Executed 10+ computer vision projects'
   ]
 }];
 
