@@ -8,29 +8,26 @@ const skillCategories = [{
     name: 'Python',
     level: 90
   }, {
+    name: 'JavaScript',
+    level: 85
+  }, {
+    name: 'TypeScript',
+    level: 82
+  }, {
     name: 'SQL',
     level: 85
   }, {
     name: 'C/C++',
     level: 75
-  }, {
-    name: 'JavaScript',
-    level: 80
   }]
 }, {
   id: 'frameworks',
   name: 'Frameworks & Libraries',
   skills: [{
-    name: 'Numpy/Pandas',
-    level: 85
+    name: 'React',
+    level: 88
   }, {
-    name: 'Scikit-learn',
-    level: 80
-  }, {
-    name: 'NLTK',
-    level: 75
-  }, {
-    name: 'LLaMA',
+    name: 'Next.js',
     level: 85
   }, {
     name: 'LangChain',
@@ -39,11 +36,17 @@ const skillCategories = [{
     name: 'Hugging Face',
     level: 85
   }, {
-    name: 'Selenium',
+    name: 'FastAPI / Express',
+    level: 82
+  }, {
+    name: 'Numpy/Pandas',
+    level: 85
+  }, {
+    name: 'Scikit-learn',
     level: 80
   }, {
-    name: 'Playwright',
-    level: 75
+    name: 'Selenium / Playwright',
+    level: 78
   }]
 }, {
   id: 'tools',
@@ -189,12 +192,12 @@ const Skills = ({ darkMode }) => {
               <div className="text-center">
                 {activeCategory === 'languages' && (
                   <p className="text-gray-400 text-sm">
-                    Core programming languages for automation, data processing, and application development
+                    Full-stack and scripting: Python, JavaScript, TypeScript, SQL for web, automation, and data
                   </p>
                 )}
                 {activeCategory === 'frameworks' && (
                   <p className="text-gray-400 text-sm">
-                    AI/ML frameworks and libraries for intelligent automation and data science workflows
+                    Full-stack (React, Next.js) and AI/ML frameworks for web applications, automation, and data science
                   </p>
                 )}
                 {activeCategory === 'tools' && (
