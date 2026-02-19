@@ -19,18 +19,18 @@ const experiences = [{
   ]
 }, {
   id: 2,
-  role: 'CTO - DevOps Engineer',
+  role: 'Full Stack Engineer',
   company: 'Gridcore',
-  companyRole: 'CTO - DevOps Engineer',
+  companyRole: 'Full Stack Engineer',
   period: 'Dec 2023 - Present',
   jobType: 'Part-time',
   location: 'Hybrid',
-  description: 'Defined company-wide technology strategy and AI adoption roadmap.',
+  description: 'Design and build end-to-end web applications and APIs, from React/Next.js frontends to backend services and cloud deployment.',
   achievements: [
-    'Defined company-wide technology strategy and AI adoption roadmap',
-    'Architected scalable cloud infrastructure and ML deployment pipelines',
-    'Led engineering and DevOps functions, achieving 99.9% system reliability',
-    'Directed client solution architecture aligning technology with business objectives'
+    'Developed full-stack web applications using React, Next.js, and TypeScript with RESTful and API-driven backends',
+    'Built and maintained scalable backend services and APIs using Python (FastAPI) and Node.js (Express)',
+    'Designed and deployed cloud infrastructure (AWS) with Docker and CI/CD pipelines for reliable delivery',
+    'Drove technology strategy and client solution architecture, aligning full-stack solutions with business goals'
   ]
 }, {
   id: 3,
