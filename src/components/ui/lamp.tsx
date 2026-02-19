@@ -133,7 +133,7 @@ export function LampDemo() {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="flex flex-col sm:flex-row gap-4 items-center"
+          className="flex flex-col sm:flex-row gap-4 items-center justify-center"
         >
           <button 
             onClick={() => setIsBookingOpen(true)}
@@ -143,7 +143,15 @@ export function LampDemo() {
             <span>Schedule a call</span>
             <ChevronRightIcon size={20} />
           </button>
-
+          <a
+            href="https://n8nhub.hassannazir.dev"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 px-6 py-3 rounded-full border-2 border-white/60 text-white hover:bg-white/10 hover:border-white font-medium transition-all duration-300 transform hover:scale-105"
+          >
+            <span>Join my Platform</span>
+            <ChevronRightIcon size={20} />
+          </a>
         </motion.div>
       </div>
       
