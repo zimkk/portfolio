@@ -84,7 +84,7 @@ const skillCategories = [{
   }]
 }];
 
-const Skills = ({ darkMode }) => {
+const Skills = ({  }: { darkMode: boolean }) => {
   const [activeCategory, setActiveCategory] = useState('languages');
   const [isVisible, setIsVisible] = useState(false);
 
@@ -145,7 +145,7 @@ const Skills = ({ darkMode }) => {
               movementDuration={1.5}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {skillCategories.find(c => c.id === activeCategory).skills.map((skill, index) => (
+              {(skillCategories.find(c => c.id === activeCategory)?.skills ?? []).map((skill, index) => (
                 <div 
                   key={index} 
                   className="group"
