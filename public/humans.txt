@@ -3,7 +3,7 @@
 
 # TEAM
 
-    Hassan Nazir -- Senior AI Engineer & CTO -- hassannazir955@gmail.com
+    Hassan Nazir -- AI Systems Architect & Engineering Lead -- hassannazir955@gmail.com
 
 # THANKS
 
@@ -19,7 +19,7 @@
     
 # SITE
 
-    Last update: 2025/12/26
+    Last update: 2025/02/21
     Language: English
     Doctype: HTML5
     IDE: Cursor, VS Code

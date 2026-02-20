@@ -11,6 +11,12 @@ interface SEOHeadProps {
   type?: 'website' | 'article';
   page?: keyof typeof pageMetadata;
   noindex?: boolean;
+  /** ISO date for articles — helps crawlers and AI agents get fresh content */
+  publishedTime?: string;
+  /** ISO date for articles */
+  modifiedTime?: string;
+  /** Page-specific structured data (e.g. BlogPosting) */
+  jsonLd?: object | object[];
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
@@ -22,6 +28,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   type = 'website',
   page,
   noindex = false,
+  publishedTime,
+  modifiedTime,
+  jsonLd,
 }) => {
   // Get page-specific metadata if page is provided
   const pageMeta = page ? pageMetadata[page] : null;
@@ -31,7 +40,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   const finalDescription = description || pageMeta?.description || defaultMetadata.description;
   const finalKeywords = [...(pageMeta?.keywords || []), ...keywords, ...defaultMetadata.keywords];
   const finalImage = image || defaultMetadata.openGraph.images[0].url;
-  const finalUrl = url || `${siteConfig.url}${window.location.pathname}`;
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
+  const finalUrl = url || (pathname ? `${siteConfig.url}${pathname}` : siteConfig.url);
+
+  const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
 
   return (
     <Helmet>
@@ -41,6 +53,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="keywords" content={finalKeywords.join(', ')} />
       <meta name="author" content={defaultMetadata.creator} />
       <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
+      {/* Hint for crawlers and AI agents: content freshness */}
+      {(siteConfig as { lastUpdated?: string }).lastUpdated && (
+        <meta name="updated" content={(siteConfig as { lastUpdated: string }).lastUpdated} />
+      )}
       
       {/* Canonical URL */}
       <link rel="canonical" href={finalUrl} />
@@ -56,6 +72,9 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:image:alt" content={siteConfig.name} />
       <meta property="og:site_name" content={siteConfig.name} />
       <meta property="og:locale" content="en_US" />
+      {publishedTime && <meta property="article:published_time" content={publishedTime} />}
+      {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
+      {type === 'article' && <meta property="article:author" content={siteConfig.name} />}
       
       {/* Twitter Card */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -98,6 +117,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <script type="application/ld+json">
         {JSON.stringify(structuredData.breadcrumb)}
       </script>
+      {jsonLdList.map((ld, i) => (
+        <script key={i} type="application/ld+json">
+          {JSON.stringify(ld)}
+        </script>
+      ))}
       
       {/* Favicon */}
       <link rel="icon" type="image/svg+xml" href="/vite.svg" />

@@ -8,6 +8,7 @@ import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
 import FloatingNav from '../components/ui/FloatingNav';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
+import { siteConfig } from '../config/metadata';
 
 const BlogPost = () => {
   const { slug } = useParams();
@@ -37,6 +38,22 @@ const BlogPost = () => {
     .filter(p => p.id !== post.id && (p.category === post.category || p.tags.some(tag => post.tags.includes(tag))))
     .slice(0, 2);
 
+  const articleUrl = `${siteConfig.url}/blogs/${post.slug}`;
+  const publishedTime = post.publishedAt ? `${post.publishedAt}T00:00:00Z` : undefined;
+  const blogPostingSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: post.title,
+    description: post.excerpt,
+    image: post.image,
+    url: articleUrl,
+    datePublished: publishedTime,
+    dateModified: publishedTime,
+    author: { '@type': 'Person', name: siteConfig.name, url: siteConfig.url },
+    publisher: { '@type': 'Person', name: siteConfig.name },
+    mainEntityOfPage: { '@type': 'WebPage', '@id': articleUrl },
+  };
+
   return (
     <PageTransition>
       <SEOHead 
@@ -44,7 +61,11 @@ const BlogPost = () => {
         description={post.excerpt}
         keywords={post.seoKeywords || post.tags}
         image={post.image}
+        url={articleUrl}
         type="article"
+        publishedTime={publishedTime}
+        modifiedTime={publishedTime}
+        jsonLd={blogPostingSchema}
       />
       <div className="min-h-screen bg-black text-white">
         {/* Floating Navigation */}

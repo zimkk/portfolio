@@ -1,40 +1,28 @@
 # robots.txt for hassannazir.dev
 # Allows web crawlers and AI agents to index content for up-to-date discovery.
-# Update sitemap and Host when deploying.
 
 User-agent: *
 Allow: /
 
-# Sitemap (crawlers use this to discover URLs and lastmod for freshness)
 Sitemap: https://hassannazir.dev/sitemap.xml
 
-# Allow common AI/assistant crawlers so they can surface your content
 User-agent: GPTBot
 Allow: /
-
 User-agent: ChatGPT-User
 Allow: /
-
 User-agent: Google-Extended
 Allow: /
-
 User-agent: PerplexityBot
 Allow: /
-
 User-agent: Claude-Web
 Allow: /
-
 User-agent: Anthropic-AI
 Allow: /
-
 User-agent: Bingbot
 Allow: /
-
 User-agent: Googlebot
 Allow: /
-
 User-agent: Googlebot-Image
 Allow: /
 
-# Host directive (canonical base URL)
 Host: https://hassannazir.dev
