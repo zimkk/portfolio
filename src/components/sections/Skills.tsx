@@ -3,84 +3,75 @@ import { GlowingEffect } from '../ui/GlowingEffect';
 
 const skillCategories = [{
   id: 'languages',
-  name: 'Languages',
+  name: 'Backend & APIs',
   skills: [{
     name: 'Python',
+    level: 95
+  }, {
+    name: 'REST API Design & Versioning',
+    level: 92
+  }, {
+    name: 'Microservices Architecture',
     level: 90
   }, {
-    name: 'JavaScript',
-    level: 85
+    name: 'Event-Driven Systems',
+    level: 88
   }, {
-    name: 'TypeScript',
-    level: 82
+    name: 'FastAPI / Node.js',
+    level: 90
   }, {
-    name: 'SQL',
-    level: 85
-  }, {
-    name: 'C/C++',
-    level: 75
+    name: 'Java / Spring Boot (Upskilling)',
+    level: 65
   }]
 }, {
   id: 'frameworks',
-  name: 'Frameworks & Libraries',
+  name: 'Data & AI/ML',
   skills: [{
-    name: 'React',
+    name: 'PostgreSQL / MySQL',
     level: 88
   }, {
-    name: 'Next.js',
+    name: 'MongoDB',
     level: 85
   }, {
-    name: 'LangChain',
+    name: 'Redis / Queues',
     level: 90
   }, {
-    name: 'Hugging Face',
-    level: 85
+    name: 'LangChain / RAG',
+    level: 90
   }, {
-    name: 'FastAPI / Express',
+    name: 'OpenAI / Claude APIs',
+    level: 88
+  }, {
+    name: 'PyTorch / TensorFlow',
     level: 82
   }, {
-    name: 'Numpy/Pandas',
+    name: 'Hugging Face Fine-tuning',
     level: 85
-  }, {
-    name: 'Scikit-learn',
-    level: 80
-  }, {
-    name: 'Selenium / Playwright',
-    level: 78
   }]
 }, {
   id: 'tools',
-  name: 'Tools & Platforms',
+  name: 'Cloud, Security & Quality',
   skills: [{
-    name: 'n8n',
-    level: 95
+    name: 'AWS / GCP',
+    level: 85
   }, {
-    name: 'Zapier',
+    name: 'Docker / Kubernetes',
+    level: 86
+  }, {
+    name: 'GitHub Actions / Jenkins',
+    level: 84
+  }, {
+    name: 'OAuth2 / JWT Security',
+    level: 85
+  }, {
+    name: 'Audit Logging & Monitoring',
     level: 90
   }, {
-    name: 'Make',
+    name: 'Selenium / Playwright',
     level: 85
   }, {
-    name: 'Docker',
-    level: 80
-  }, {
-    name: 'Nginx',
-    level: 75
-  }, {
-    name: 'Git',
-    level: 85
-  }, {
-    name: 'Linux',
-    level: 80
-  }, {
-    name: 'AWS',
-    level: 75
-  }, {
-    name: 'Jenkins (CI/CD)',
-    level: 70
-  }, {
-    name: 'Jira',
-    level: 80
+    name: 'Linux Administration',
+    level: 84
   }]
 }];
 
@@ -192,17 +183,17 @@ const Skills = ({  }: { darkMode: boolean }) => {
               <div className="text-center">
                 {activeCategory === 'languages' && (
                   <p className="text-gray-400 text-sm">
-                    Full-stack and scripting: Python, JavaScript, TypeScript, SQL for web, automation, and data
+                    Core backend engineering stack for distributed systems, API design, and production services
                   </p>
                 )}
                 {activeCategory === 'frameworks' && (
                   <p className="text-gray-400 text-sm">
-                    Full-stack (React, Next.js) and AI/ML frameworks for web applications, automation, and data science
+                    Databases, LLM tooling, and ML frameworks for applied AI systems and intelligent automation
                   </p>
                 )}
                 {activeCategory === 'tools' && (
                   <p className="text-gray-400 text-sm">
-                    DevOps tools, automation platforms, and cloud technologies for scalable solutions
+                    Cloud, DevOps, security, and testing practices for reliable and compliance-aware delivery
                   </p>
                 )}
               </div>

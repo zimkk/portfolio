@@ -1,6 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { ChevronDownIcon, ChevronUpIcon } from 'lucide-react';
-
 const experiences = [{
   id: 1,
   role: 'SR. AI ENGINEER',
@@ -11,11 +9,11 @@ const experiences = [{
   location: 'Hybrid',
   description: 'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime.',
   achievements: [
-    'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime',
-    'Designed scalable LLM and multi-agent systems using LangChain and fine-tuned models',
-    'Led cross-functional AI, DevOps, and QA teams from design to production deployment',
-    'Reduced operational costs by 40% and improved workflow efficiency by 60% through intelligent automation',
-    'Established system governance, monitoring, and performance optimization frameworks'
+    'Designed and deployed a microservice-based AI automation platform processing 10K+ daily transactions at 99.9% uptime',
+    'Built RESTful APIs and event-driven workflows integrating internal services, third-party APIs, Redis queues, and webhooks',
+    'Implemented governance controls, audit logging, monitoring, and alerting for reliability and traceability',
+    'Led cross-functional engineering, DevOps, and QA teams through architecture, delivery, and production operations',
+    'Reduced operational costs by 40% and improved workflow efficiency by 60% through backend service optimization'
   ]
 }, {
   id: 2,
@@ -25,12 +23,12 @@ const experiences = [{
   period: 'Dec 2023 - Present',
   jobType: 'Part-time',
   location: 'Hybrid',
-  description: 'Design and build end-to-end web applications and APIs, from React/Next.js frontends to backend services and cloud deployment.',
+  description: 'Defined backend strategy and delivered scalable full-stack systems with strong reliability and compliance alignment.',
   achievements: [
-    'Developed full-stack web applications using React, Next.js, and TypeScript with RESTful and API-driven backends',
-    'Built and maintained scalable backend services and APIs using Python (FastAPI) and Node.js (Express)',
-    'Designed and deployed cloud infrastructure (AWS) with Docker and CI/CD pipelines for reliable delivery',
-    'Drove technology strategy and client solution architecture, aligning full-stack solutions with business goals'
+    'Defined company-wide technology strategy, including backend architecture standards and API design guidelines',
+    'Architected cloud infrastructure and model deployment pipelines with 99.9% system reliability',
+    'Led engineering and DevOps functions including container orchestration, CI/CD automation, and incident response',
+    'Directed client-facing solution architecture aligned with business and compliance requirements'
   ]
 }, {
   id: 3,
@@ -40,11 +38,11 @@ const experiences = [{
   period: 'Oct 2025 - Jan 2026',
   jobType: 'Contract',
   location: 'Remote',
-  description: 'Designed and deployed AI-driven automation workflows for enterprise clients.',
+  description: 'Delivered backend automation systems and API services for enterprise-grade asynchronous workloads.',
   achievements: [
-    'Designed and deployed AI-driven automation workflows for enterprise clients',
-    'Engineered LLM-powered conversational and document-processing systems',
-    'Integrated AI platforms with n8n and external APIs for production use'
+    'Designed and deployed backend automation workflows including document-processing pipelines and conversational APIs',
+    'Engineered LLM-powered REST integrations with n8n orchestration and external services',
+    'Delivered scalable, idempotent backend services for high-frequency asynchronous workloads'
   ]
 }, {
   id: 4,
@@ -56,28 +54,12 @@ const experiences = [{
   location: 'Remote',
   description: 'Led an 8-person QA team managing $2M+ monthly payment transactions.',
   achievements: [
-    'Led an 8-person QA team managing $2M+ monthly payment transactions',
-    'Built automated testing frameworks, reducing testing time by half',
-    'Created an AI-powered test generation identifying 200+ security scenarios',
-    'Implemented automated reporting systems'
+    'Led an 8-person QA team validating $2M+ in monthly payment transactions with direct exposure to payment system workflows',
+    'Built automated testing frameworks (unit, integration, regression) that reduced testing time by 50%',
+    'Engineered AI-powered test generation identifying 200+ security edge cases across API endpoints'
   ]
 }, {
   id: 5,
-  role: 'QA Executive',
-  company: 'Touchstone Communications',
-  companyRole: 'QA Executive',
-  period: 'Dec 2023 - Nov 2024',
-  jobType: 'Full-time',
-  location: 'On-site',
-  description: 'QC for Non-voice campaign.',
-  achievements: [
-    'QC for Non-voice campaign',
-    'Performed risk-based audits to identify process gaps',
-    'Executed test cases to validate parameter assessments',
-    'Delivered concise reports and recommendations to reduce risk'
-  ]
-}, {
-  id: 6,
   role: 'Independent Consultant',
   company: 'Fiverr/Upwork',
   companyRole: 'Independent Consultant',
@@ -86,10 +68,9 @@ const experiences = [{
   location: 'Remote',
   description: 'Delivered 20+ custom LLM fine-tuning projects and 100+ AI automation solutions.',
   achievements: [
-    'Delivered 20+ custom LLM fine-tuning projects using Hugging Face & Unsloth',
-    'Built 100+ AI automation solutions with LangChain and vector databases',
-    'Created no-code AI workflows serving 10K+ users',
-    'Executed 10+ computer vision projects'
+    'Built 100+ backend automation solutions integrating REST APIs, vector databases, and async task queues',
+    'Developed and deployed scalable API services serving 10K+ users with high reliability',
+    'Delivered 20+ LLM fine-tuning and model deployment projects on cloud infrastructure'
   ]
 }];
 

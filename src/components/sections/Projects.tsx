@@ -2,47 +2,47 @@ import React from 'react';
 import { GithubIcon, ExternalLinkIcon, CodeIcon, FolderIcon } from 'lucide-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
 const projects = [{
-  title: 'AI Document Processor',
-  description: 'An LLM-powered system that extracts, categorizes, and summarizes information from various document formats using LangChain and Hugging Face transformers.',
-  technologies: ['Python', 'LangChain', 'Hugging Face', 'FastAPI'],
-  github: 'https://github.com/zimkk',
+  title: 'erdman-ny-county',
+  description: 'Backend-focused project with Python services and structured workflows for production-style application logic.',
+  technologies: ['Python', 'Backend', 'APIs', 'Automation'],
+  github: 'https://github.com/zimkk/erdman-ny-county',
   demo: null,
-  image: 'https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80'
+  image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
-  title: 'DevOps Automation Pipeline',
-  description: 'End-to-end CI/CD pipeline with automated testing, deployment, and monitoring for containerized applications.',
-  technologies: ['Docker', 'Jenkins', 'AWS', 'Terraform'],
-  github: 'https://github.com/zimkk',
+  title: 'legal-Document-Summerizer',
+  description: 'Application for summarizing legal documents using a fine-tuned LLM pipeline focused on domain-specific outputs.',
+  technologies: ['Python', 'LLM', 'NLP', 'Model Fine-tuning'],
+  github: 'https://github.com/zimkk/legal-Document-Summerizer',
   demo: null,
-  image: 'https://images.unsplash.com/photo-1667372393119-3d4c48d07fc9?w=800&q=80'
+  image: 'https://images.pexels.com/photos/7247416/pexels-photo-7247416.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
-  title: 'Intelligent Workflow Automation',
-  description: 'No-code/low-code platform integration that automates business processes with AI-powered decision making.',
-  technologies: ['n8n', 'Python', 'Make', 'REST APIs'],
-  github: 'https://n8nhub.hassannazir.dev',
-  demo: 'https://n8nhub.hassannazir.dev',
-  image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80'
-}, {
-  title: 'QA Test Automation Framework',
-  description: 'Comprehensive test automation framework for web applications with reporting and CI integration.',
-  technologies: ['Selenium', 'Python', 'Jenkins', 'Allure'],
-  github: 'https://github.com/zimkk',
+  title: 'Anomaly-Detection-System',
+  description: 'Python-based anomaly detection project for identifying unusual network behavior using data science techniques.',
+  technologies: ['Python', 'Data Science', 'Anomaly Detection', 'Security'],
+  github: 'https://github.com/zimkk/Anomaly-Detection-System',
   demo: null,
-  image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&q=80'
+  image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
-  title: 'Custom LLM Fine-tuning Pipeline',
-  description: 'End-to-end pipeline for fine-tuning large language models on specialized datasets with parameter-efficient methods.',
-  technologies: ['PyTorch', 'Hugging Face', 'PEFT', 'Python'],
-  github: 'https://github.com/zimkk',
+  title: 'genAi',
+  description: 'Experimental generative AI workspace for prototypes and practical GenAI implementation ideas.',
+  technologies: ['TypeScript', 'GenAI', 'Automation', 'APIs'],
+  github: 'https://github.com/zimkk/genAi',
   demo: null,
-  image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80'
+  image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80&auto=format&fit=crop'
 }, {
-  title: 'Cloud Resource Optimizer',
-  description: 'Tool that analyzes and optimizes cloud resource usage to reduce costs while maintaining performance.',
-  technologies: ['Python', 'AWS SDK', 'Terraform', 'Docker'],
-  github: 'https://github.com/zimkk',
-  demo: 'https://github.com/zimkk',
-  image: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80'
+  title: 'Flutter-installation-Script-for-Windows-Linux',
+  description: 'Cross-platform automation script to simplify Flutter SDK installation on Windows and Linux environments.',
+  technologies: ['Python', 'Automation', 'CLI', 'Developer Tooling'],
+  github: 'https://github.com/zimkk/Flutter-installation-Script-for-Windows-Linux',
+  demo: null,
+  image: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Flutter_logo.svg'
+}, {
+  title: 'openclaw--hehe',
+  description: 'Personal AI assistant project focused on cross-platform execution and practical automation workflows.',
+  technologies: ['TypeScript', 'AI Assistant', 'Automation', 'Cross-Platform'],
+  github: 'https://github.com/zimkk/openclaw--hehe',
+  demo: 'https://openclaw.ai',
+  image: 'https://openclaw.ai/og-image.png'
 }];
 const Projects = ({
   darkMode
@@ -51,7 +51,7 @@ const Projects = ({
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-12 text-white">
-            Projects & Research
+            GitHub Projects
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.map((project, index) => <div key={index} className="group rounded-lg h-full flex flex-col transition-all duration-300 bg-black border border-gray-700 hover:border-white relative overflow-hidden">

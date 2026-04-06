@@ -26,17 +26,17 @@ const About = ({ }) => {
   }, []);
 
   const highlights = [
-    { icon: <BrainIcon className="w-6 h-6" />, text: "AI & Machine Learning" },
-    { icon: <ZapIcon className="w-6 h-6" />, text: "Automation Workflows" },
-    { icon: <LayersIcon className="w-6 h-6" />, text: "Full Stack" },
-    { icon: <ServerIcon className="w-6 h-6" />, text: "DevOps Engineering" }
+    { icon: <BrainIcon className="w-6 h-6" />, text: "AI Systems Architecture" },
+    { icon: <ZapIcon className="w-6 h-6" />, text: "Event-Driven Automation" },
+    { icon: <LayersIcon className="w-6 h-6" />, text: "Microservices & APIs" },
+    { icon: <ServerIcon className="w-6 h-6" />, text: "Cloud & DevOps" }
   ];
 
   const stats = [
     { number: "3+", label: "Years Experience" },
-    { number: "50+", label: "Projects Completed" },
-    { number: "10+", label: "Technologies Mastered" },
-    { number: "100%", label: "Client Satisfaction" }
+    { number: "100+", label: "Solutions Delivered" },
+    { number: "10K+", label: "Daily Transactions" },
+    { number: "99.9%", label: "Platform Uptime" }
   ];
 
   return (
@@ -78,10 +78,10 @@ const About = ({ }) => {
                 </div>
                 <div className="space-y-4 text-gray-300 leading-relaxed">
                   <p>
-                    I am <span className="text-white font-semibold">Hassan Nazir</span>, an AI Systems Architect & Engineering Lead with 3+ years of experience designing and scaling enterprise AI automation platforms across cloud environments. I have architected LLM-powered systems serving 10K+ users, processing 10K+ daily transactions, and delivering 99.9% uptime.
+                    I am <span className="text-white font-semibold">Hassan Nazir</span>, a full-stack engineer and AI systems architect with 3+ years of experience building scalable distributed systems, microservices, and high-availability backend platforms. I design REST and event-driven architectures that handle 10K+ daily transactions with 99.9% uptime.
                   </p>
                   <p>
-                    My proven impact includes 40% operational cost reduction and 60% efficiency gains through intelligent automation. I'm experienced in leading cross-functional teams, defining AI roadmaps, and deploying production-grade solutions using LangChain, OpenAI APIs, Hugging Face, and modern DevOps stacks.
+                    My proven impact includes 40% operational cost reduction and 60% workflow efficiency improvement through intelligent backend automation. I focus on security, observability, and compliance-sensitive systems, while actively expanding Java and Spring Boot expertise alongside deep Python and API engineering work.
                   </p>
                 </div>
               </div>
@@ -101,10 +101,7 @@ const About = ({ }) => {
                   <h3 className="text-xl font-semibold text-white">My Approach</h3>
                 </div>
                 <p className="text-gray-300 leading-relaxed">
-                  With a strong foundation in computer science and cybersecurity, I
-                  bring not only technical depth but also a problem-solving mindset,
-                  adaptability, and collaboration skills that help me thrive in
-                  fast-paced, innovation-driven environments.
+                  I build reliable systems end-to-end: architecture, APIs, infrastructure, monitoring, and delivery. I prioritize clean service boundaries, production readiness, and measurable outcomes so teams can ship faster with confidence.
                 </p>
               </div>
             </div>

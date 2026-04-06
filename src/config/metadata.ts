@@ -9,8 +9,8 @@ export const siteConfig = {
   email: "hassannazir955@gmail.com",
   links: {
     twitter: "https://twitter.com/hassannazir",
-    github: "https://github.com/hassannazir",
-    linkedin: "https://linkedin.com/in/hassannazir",
+    github: "https://github.com/zimkk",
+    linkedin: "https://linkedin.com/in/hassannazirrr",
   },
   /** ISO date when site content was last updated — helps crawlers and AI agents get fresh data */
   lastUpdated: "2025-02-21",
@@ -123,7 +123,7 @@ export const pageMetadata = {
   },
   experience: {
     title: "Work Experience | Hassan Nazir",
-    description: "Professional experience: Sr. AI Engineer (NDT Legacy Group), Full Stack Engineer (Gridcore), Senior AI Engineer (Schmoozzer), QA Automation (Brilliant Gaming), QA Executive (Touchstone), Independent Consultant (Fiverr/Upwork).",
+    description: "Professional experience: Sr. AI Engineer (NDT Legacy Group), Full Stack Engineer (Gridcore), Senior AI Engineer (Schmoozzer), QA Automation Engineer (Brilliant Gaming), Independent Consultant (Fiverr/Upwork).",
     keywords: ["Experience", "NDT Legacy", "Gridcore", "Schmoozzer", "Brilliant Gaming", "Career"],
   },
   education: {
