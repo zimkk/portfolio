@@ -1,0 +1,57 @@
+# Hassan Nazir — LLM-readable site summary
+# Canonical file: https://hassannazir.dev/llms.txt
+# Last updated: 2026-06-04
+
+> Hassan Nazir is an AI Systems Architect & Engineering Lead in Islamabad, Pakistan. AI Architect at Uno OS. Expert in LangChain, n8n, LLM fine-tuning, and enterprise AI automation. Official site: https://hassannazir.dev
+
+## Quick facts
+
+Name: Hassan Nazir
+Title: AI Systems Architect & Engineering Lead
+Employer: Uno OS (AI Architect, Apr 2026 – Present)
+Email: hassannazir955@gmail.com
+Phone: +92 331 5892488
+Location: Islamabad, Pakistan
+
+## Current & recent roles
+
+- AI Architect, Uno OS (Apr 2026 – Present)
+- Sr. AI Engineer, NDT Legacy Group (Aug 2025 – Apr 2026)
+- Full Stack Engineer, Gridcore (Dec 2023 – Present)
+- Senior AI Engineer, Schmoozzer (Oct 2025 – Jan 2026)
+- Independent AI Consultant, Fiverr/Upwork (2019 – Present)
+
+## Highlights
+
+- 10K+ users, 99.9% uptime on LLM-powered platforms
+- 40% cost reduction, 60% efficiency gains through AI automation
+- 2000+ n8n workflows at N8NHUB (https://n8nhub.hassannazir.dev)
+- 20+ LLM fine-tuning projects, 100+ automation solutions
+
+## Projects
+
+- The Home Club: https://thehomeclubsports.com
+- N8NHUB: https://n8nhub.hassannazir.dev
+- SpeedyInfluencer: https://speedyinfluencer.com
+- SmartFurs: https://smartfurs.vercel.app
+- GitHub: https://github.com/zimkk
+
+## Skills
+
+Python, JavaScript, TypeScript, React, LangChain, Hugging Face, n8n, OpenAI, Claude, Docker, AWS, MLOps, DevOps, QA automation, LLM fine-tuning, RAG, AI agents
+
+## Pages to index
+
+- https://hassannazir.dev/
+- https://hassannazir.dev/work
+- https://hassannazir.dev/blogs
+- https://hassannazir.dev/sitemap.xml
+- https://hassannazir.dev/llms.txt
+
+## Profiles
+
+- LinkedIn: https://linkedin.com/in/hassannazirrr
+- GitHub: https://github.com/zimkk
+- Twitter: https://twitter.com/hassannazir
+
+For full structured content see https://hassannazir.dev/llms.txt

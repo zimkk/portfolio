@@ -3,7 +3,13 @@
 
 # TEAM
 
-    Hassan Nazir -- AI Systems Architect & Engineering Lead -- hassannazir955@gmail.com
+    Hassan Nazir -- AI Architect at Uno OS | AI Systems Architect & Engineering Lead -- hassannazir955@gmail.com
+
+# AI / LLM RESOURCES
+
+    llms.txt: https://hassannazir.dev/llms.txt
+    llm.txt:  https://hassannazir.dev/llm.txt
+    robots.txt allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and other AI crawlers
 
 # THANKS
 
@@ -13,24 +19,31 @@
 
     HTML5, CSS3, JavaScript, TypeScript
     React, Vite, Tailwind CSS
-    AI/ML: LangChain, Hugging Face, n8n
+    AI/ML: LangChain, Hugging Face, n8n, OpenAI, Claude
     DevOps: Docker, Kubernetes, AWS
     Testing: Selenium, Playwright
     
 # SITE
 
-    Last update: 2025/02/21
+    Last update: 2026/06/04
     Language: English
     Doctype: HTML5
-    IDE: Cursor, VS Code
+
     
 # CONTACT
 
     Website: https://hassannazir.dev
     Email: hassannazir955@gmail.com
     Phone: +92 331 5892488
-    Location: Pakistan
+    Location: Islamabad, Pakistan
     
-    LinkedIn: https://linkedin.com/in/hassannazir
-    GitHub: https://github.com/hassannazir
+    LinkedIn: https://linkedin.com/in/hassannazirrr
+    GitHub: https://github.com/zimkk
     Twitter: https://twitter.com/hassannazir
+
+# DEPLOYED PROJECTS
+
+    The Home Club: https://thehomeclubsports.com
+    N8NHUB: https://n8nhub.hassannazir.dev
+    SpeedyInfluencer: https://speedyinfluencer.com
+    SmartFurs: https://smartfurs.vercel.app

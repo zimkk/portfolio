@@ -1,49 +1,72 @@
 import React from 'react';
-import { GithubIcon, ExternalLinkIcon, CodeIcon, FolderIcon } from 'lucide-react';
+import { GithubIcon, ExternalLinkIcon } from 'lucide-react';
 import { GlowingEffect } from '../ui/GlowingEffect';
+
 const projects = [{
+  title: 'The Home Club',
+  description: 'Sports club platform for memberships, programs, and community engagement with a polished public-facing web experience.',
+  technologies: ['React', 'Web App', 'Sports', 'Full Stack'],
+  github: null,
+  demo: 'https://thehomeclubsports.com',
+  image: '/images/projects/the-home-club.jpg'
+}, {
+  title: 'N8NHUB',
+  description: 'Curated library of 2000+ n8n workflow templates for automation builders, with searchable categories and ready-to-use integrations.',
+  technologies: ['n8n', 'Automation', 'Workflows', 'No-Code'],
+  github: null,
+  demo: 'https://n8nhub.hassannazir.dev',
+  image: '/images/projects/n8nhub.jpg'
+}, {
+  title: 'SpeedyInfluencer',
+  description: 'Influencer marketing platform connecting brands and creators with campaign tools, analytics, and streamlined collaboration workflows.',
+  technologies: ['React', 'Marketing', 'SaaS', 'Full Stack'],
+  github: null,
+  demo: 'https://speedyinfluencer.com',
+  image: '/images/projects/speedyinfluencer.png'
+}, {
+  title: 'SmartFurs',
+  description: 'E-commerce platform for purebred puppies with breed listings, buyer discovery, and a modern storefront experience.',
+  technologies: ['React', 'E-commerce', 'Vercel', 'Web App'],
+  github: null,
+  demo: 'https://smartfurs.vercel.app',
+  image: '/images/projects/smartfurs.jpg'
+}, {
+  title: 'Fooocus',
+  description: 'SDXL-based image generation tool focused on prompting and generating high-quality visuals with a streamlined, minimal setup.',
+  technologies: ['Python', 'SDXL', 'GenAI', 'Gradio'],
+  github: 'https://github.com/zimkk/Fooocus',
+  demo: null,
+  image: 'https://raw.githubusercontent.com/lllyasviel/Fooocus/main/sdxl_styles/samples/artstyle_hyperrealism.jpg'
+}, {
   title: 'erdman-ny-county',
   description: 'Backend-focused project with Python services and structured workflows for production-style application logic.',
   technologies: ['Python', 'Backend', 'APIs', 'Automation'],
   github: 'https://github.com/zimkk/erdman-ny-county',
   demo: null,
-  image: 'https://images.pexels.com/photos/1181271/pexels-photo-1181271.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  image: 'https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
   title: 'legal-Document-Summerizer',
   description: 'Application for summarizing legal documents using a fine-tuned LLM pipeline focused on domain-specific outputs.',
   technologies: ['Python', 'LLM', 'NLP', 'Model Fine-tuning'],
   github: 'https://github.com/zimkk/legal-Document-Summerizer',
   demo: null,
-  image: 'https://images.pexels.com/photos/7247416/pexels-photo-7247416.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  image: 'https://images.pexels.com/photos/5668777/pexels-photo-5668777.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
   title: 'Anomaly-Detection-System',
   description: 'Python-based anomaly detection project for identifying unusual network behavior using data science techniques.',
   technologies: ['Python', 'Data Science', 'Anomaly Detection', 'Security'],
   github: 'https://github.com/zimkk/Anomaly-Detection-System',
   demo: null,
-  image: 'https://images.pexels.com/photos/5380664/pexels-photo-5380664.jpeg?auto=compress&cs=tinysrgb&w=1200'
+  image: 'https://images.pexels.com/photos/163100/circuit-circuit-board-resistor-computer-163100.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }, {
   title: 'genAi',
   description: 'Experimental generative AI workspace for prototypes and practical GenAI implementation ideas.',
   technologies: ['TypeScript', 'GenAI', 'Automation', 'APIs'],
   github: 'https://github.com/zimkk/genAi',
   demo: null,
-  image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?w=1200&q=80&auto=format&fit=crop'
-}, {
-  title: 'Flutter-installation-Script-for-Windows-Linux',
-  description: 'Cross-platform automation script to simplify Flutter SDK installation on Windows and Linux environments.',
-  technologies: ['Python', 'Automation', 'CLI', 'Developer Tooling'],
-  github: 'https://github.com/zimkk/Flutter-installation-Script-for-Windows-Linux',
-  demo: null,
-  image: 'https://upload.wikimedia.org/wikipedia/commons/7/79/Flutter_logo.svg'
-}, {
-  title: 'openclaw--hehe',
-  description: 'Personal AI assistant project focused on cross-platform execution and practical automation workflows.',
-  technologies: ['TypeScript', 'AI Assistant', 'Automation', 'Cross-Platform'],
-  github: 'https://github.com/zimkk/openclaw--hehe',
-  demo: 'https://openclaw.ai',
-  image: 'https://openclaw.ai/og-image.png'
+  image: 'https://images.pexels.com/photos/7942665/pexels-photo-7942665.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }];
+
 const Projects = ({
   darkMode
 }) => {
@@ -51,7 +74,7 @@ const Projects = ({
       <div className="container mx-auto">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-4xl font-bold mb-8 md:mb-12 text-white">
-            GitHub Projects
+            Just Projects
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {projects.map((project, index) => <div key={index} className="group rounded-lg h-full flex flex-col transition-all duration-300 bg-black border border-gray-700 hover:border-white relative overflow-hidden">

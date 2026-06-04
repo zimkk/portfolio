@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from 'react';
 const experiences = [{
   id: 1,
-  role: 'SR. AI ENGINEER',
-  company: 'NDT Legacy Group',
-  companyRole: 'SR. AI ENGINEER',
-  period: 'Aug 2025 - Present',
+  role: 'AI Architect',
+  company: 'Uno OS',
+  companyRole: 'AI Architect',
+  period: 'Apr 2026 - Present',
   jobType: 'Full-time',
   location: 'Hybrid',
-  description: 'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime.',
+  description: 'Leading AI architecture and platform design for next-generation operating system capabilities.',
   achievements: [
-    'Designed and deployed a microservice-based AI automation platform processing 10K+ daily transactions at 99.9% uptime',
-    'Built RESTful APIs and event-driven workflows integrating internal services, third-party APIs, Redis queues, and webhooks',
-    'Implemented governance controls, audit logging, monitoring, and alerting for reliability and traceability',
-    'Led cross-functional engineering, DevOps, and QA teams through architecture, delivery, and production operations',
-    'Reduced operational costs by 40% and improved workflow efficiency by 60% through backend service optimization'
+    'Define AI system architecture, model integration patterns, and platform-level AI service boundaries',
+    'Architect LLM and agent workflows aligned with OS-level reliability, security, and performance requirements',
+    'Partner with engineering and product teams on roadmap planning, technical standards, and production delivery'
   ]
 }, {
   id: 2,
@@ -32,6 +30,22 @@ const experiences = [{
   ]
 }, {
   id: 3,
+  role: 'SR. AI ENGINEER',
+  company: 'NDT Legacy Group',
+  companyRole: 'SR. AI ENGINEER',
+  period: 'Aug 2025 - Apr 2026',
+  jobType: 'Full-time',
+  location: 'Hybrid',
+  description: 'Architected enterprise AI automation platforms processing 10K+ daily transactions with 99.9% uptime.',
+  achievements: [
+    'Designed and deployed a microservice-based AI automation platform processing 10K+ daily transactions at 99.9% uptime',
+    'Built RESTful APIs and event-driven workflows integrating internal services, third-party APIs, Redis queues, and webhooks',
+    'Implemented governance controls, audit logging, monitoring, and alerting for reliability and traceability',
+    'Led cross-functional engineering, DevOps, and QA teams through architecture, delivery, and production operations',
+    'Reduced operational costs by 40% and improved workflow efficiency by 60% through backend service optimization'
+  ]
+}, {
+  id: 4,
   role: 'Senior AI Engineer',
   company: 'Schmoozzer',
   companyRole: 'Senior AI Engineer',
@@ -45,7 +59,7 @@ const experiences = [{
     'Delivered scalable, idempotent backend services for high-frequency asynchronous workloads'
   ]
 }, {
-  id: 4,
+  id: 5,
   role: 'QA Automation Engineer',
   company: 'Brilliant Gaming',
   companyRole: 'QA Automation Engineer',
@@ -59,7 +73,7 @@ const experiences = [{
     'Engineered AI-powered test generation identifying 200+ security edge cases across API endpoints'
   ]
 }, {
-  id: 5,
+  id: 6,
   role: 'Independent Consultant',
   company: 'Fiverr/Upwork',
   companyRole: 'Independent Consultant',

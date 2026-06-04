@@ -1,53 +1,15 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { HomeIcon, BriefcaseIcon, BookOpenIcon, PhoneIcon } from 'lucide-react';
 import { DockNavigation } from './DockNavigation';
+import useScrollSpy from '../../hooks/useScrollSpy';
+
+const HOME_SECTION_IDS = ['home', 'about', 'experience', 'skills', 'certifications', 'education', 'projects', 'contact'];
 
 const FloatingNav = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState('home');
-
-  // Track which section is currently visible
-  useEffect(() => {
-    // Only run intersection observer on home page
-    if (location.pathname !== '/') {
-      setActiveSection('');
-      return;
-    }
-
-    const observerOptions = {
-      root: null,
-      rootMargin: '-20% 0px -20% 0px',
-      threshold: 0.3,
-    };
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          setActiveSection(entry.target.id);
-        }
-      });
-    }, observerOptions);
-
-    // Observe home page sections
-    const sections = ['home', 'about', 'experience', 'skills', 'certifications', 'education', 'projects', 'contact'];
-    sections.forEach((sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
-      sections.forEach((sectionId) => {
-        const element = document.getElementById(sectionId);
-        if (element) {
-          observer.unobserve(element);
-        }
-      });
-    };
-  }, [location.pathname]);
+  const activeSection = useScrollSpy(HOME_SECTION_IDS, location.pathname === '/');
 
   const isActive = (path: string) => {
     if (path === '/' && location.pathname === '/' && activeSection !== 'contact') return true;

@@ -17,8 +17,9 @@ export const NameSEO: React.FC = () => {
         </p>
         <h3>Hassan Nazir Professional Experience</h3>
         <p>
-          Hassan Nazir is Sr. AI Engineer at NDT Legacy Group (Aug 2025 – Present) and Full Stack Engineer 
-          at Gridcore (Dec 2023 – Present). Previously: Senior AI Engineer at Schmoozzer (Oct 2025 – Jan 2026), 
+          Hassan Nazir is AI Architect at Uno OS (Apr 2026 – Present) and Full Stack Engineer 
+          at Gridcore (Dec 2023 – Present). Previously: Sr. AI Engineer at NDT Legacy Group (Aug 2025 – Apr 2026), 
+          Senior AI Engineer at Schmoozzer (Oct 2025 – Jan 2026), 
           QA Automation Engineer at Brilliant Gaming, QA Executive at Touchstone Communications, and 
           Independent Consultant on Fiverr/Upwork. Delivered 20+ LLM fine-tuning projects, 100+ AI automation 
           solutions, no-code workflows serving 10K+ users.
@@ -37,7 +38,7 @@ export const NameSEO: React.FC = () => {
         </p>
         <h3>Hassan Nazir Location</h3>
         <p>
-          Hassan Nazir is based in Pakistan (Lahore) and works with clients worldwide. AI engineering, 
+          Hassan Nazir is based in Islamabad, Pakistan and works with clients worldwide. AI engineering, 
           automation consulting, and technical leadership.
         </p>
         <h3>Hassan Nazir Education and Certifications</h3>
@@ -48,14 +49,16 @@ export const NameSEO: React.FC = () => {
         </p>
         <h3>Hassan Nazir Projects</h3>
         <p>
-          AI Document Processor (LangChain, Hugging Face), DevOps Automation Pipeline, Intelligent 
-          Workflow Automation (n8n), QA Test Automation Framework, Custom LLM Fine-tuning Pipeline, 
-          Cloud Resource Optimizer. Portfolio and case studies at /work and /blogs.
+          Deployed: The Home Club (thehomeclubsports.com), N8NHUB (n8nhub.hassannazir.dev, 2000+ workflows),
+          SpeedyInfluencer (speedyinfluencer.com), SmartFurs (smartfurs.vercel.app).
+          Open source: Fooocus, erdman-ny-county, legal-Document-Summerizer, Anomaly-Detection-System, genAi.
+          Case studies at /work. AI-readable summary at /llms.txt and /llm.txt.
         </p>
         <div>
           <span>Hassan Nazir AI Engineer</span>
           <span>Hassan Nazir AI Systems Architect</span>
           <span>Hassan Nazir Pakistan</span>
+          <span>Hassan Nazir Uno OS</span>
           <span>Hassan Nazir NDT Legacy Group</span>
           <span>Hassan Nazir Gridcore</span>
           <span>Hassan Nazir LangChain</span>

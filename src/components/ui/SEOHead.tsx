@@ -98,11 +98,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       
       {/* Geographic Meta Tags */}
-      <meta name="geo.region" content="PK-PB" />
+      <meta name="geo.region" content="PK-IS" />
       <meta name="geo.country" content="PK" />
-      <meta name="ICBM" content="31.5204, 74.3587" />
-      <meta name="geo.position" content="31.5204;74.3587" />
-      <meta name="geo.placename" content="Lahore, Pakistan" />
+      <meta name="ICBM" content="33.6844, 73.0479" />
+      <meta name="geo.position" content="33.6844;73.0479" />
+      <meta name="geo.placename" content="Islamabad, Pakistan" />
       
       {/* Structured Data */}
       <script type="application/ld+json">
@@ -135,6 +135,11 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
       <link rel="dns-prefetch" href="https://api.github.com" />
       <link rel="dns-prefetch" href="https://linkedin.com" />
+
+      {/* AI crawler resources */}
+      <link type="text/plain" rel="author" href="/humans.txt" />
+      <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt - AI-readable site summary" />
+      <link rel="alternate" type="text/plain" href="/llm.txt" title="LLM.txt - AI-readable site summary" />
     </Helmet>
   );
 };

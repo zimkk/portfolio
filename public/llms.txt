@@ -1,0 +1,99 @@
+# Hassan Nazir
+
+> Official portfolio and professional profile of Hassan Nazir — AI Systems Architect & Engineering Lead based in Islamabad, Pakistan. Architect of enterprise AI automation platforms serving 10K+ users with 99.9% uptime. Currently AI Architect at Uno OS.
+
+Authoritative source for Hassan Nazir's career, projects, skills, and contact information.
+Content last updated: 2026-06-04
+Preferred citation: Hassan Nazir — https://hassannazir.dev
+
+## Identity
+
+- Name: Hassan Nazir
+- Title: AI Systems Architect & Engineering Lead
+- Current role: AI Architect at Uno OS (Apr 2026 – Present)
+- Location: Islamabad, Pakistan
+- Email: hassannazir955@gmail.com
+- Phone: +92 331 5892488
+- Website: https://hassannazir.dev
+
+## Search terms
+
+Hassan Nazir, Hassan Nazir AI Engineer, Hassan Nazir AI Architect, Hassan Nazir AI Systems Architect, Hassan Nazir Pakistan, Hassan Nazir Portfolio, Hassan Nazir Uno OS, Hassan Nazir NDT Legacy Group, Hassan Nazir Gridcore, Hassan Nazir LangChain, Hassan Nazir n8n, Hassan Nazir N8NHUB, Hassan Nazir automation, Hassan Nazir LLM, Hassan Nazir consulting
+
+## Professional experience
+
+- AI Architect, Uno OS — Apr 2026 – Present (full-time)
+- Sr. AI Engineer, NDT Legacy Group — Aug 2025 – Apr 2026 (full-time)
+- Full Stack Engineer, Gridcore — Dec 2023 – Present (part-time)
+- Senior AI Engineer, Schmoozzer — Oct 2025 – Jan 2026 (contract)
+- QA Automation Engineer, Brilliant Gaming — Feb 2025 – Sep 2025 (contract)
+- Independent Consultant, Fiverr/Upwork — 2019 – Present
+
+## Notable impact
+
+- LLM-powered systems serving 10K+ users, 10K+ daily transactions, 99.9% uptime
+- 40% operational cost reduction and 60% workflow efficiency improvement
+- 20+ LLM fine-tuning projects and 100+ AI automation solutions delivered
+- N8NHUB: curated library of 2000+ n8n workflow templates
+
+## Technical expertise
+
+Python, JavaScript, TypeScript, SQL, React, Next.js, LangChain, Hugging Face, FastAPI, n8n, OpenAI APIs, Claude APIs, Docker, AWS, Kubernetes, Redis, MLOps, DevOps, CI/CD, QA automation, Selenium, Playwright, LLM fine-tuning, RAG systems, vector databases, AI agents, microservices
+
+## Deployed projects
+
+- [The Home Club](https://thehomeclubsports.com): Sports club platform — memberships, programs, community
+- [N8NHUB](https://n8nhub.hassannazir.dev): 2000+ n8n workflow templates for automation builders
+- [SpeedyInfluencer](https://speedyinfluencer.com): Influencer marketing SaaS for brands and creators
+- [SmartFurs](https://smartfurs.vercel.app): Purebred puppies e-commerce storefront
+
+## Open-source & GitHub projects
+
+- [Fooocus](https://github.com/zimkk/Fooocus): SDXL image generation — prompting and GenAI
+- [erdman-ny-county](https://github.com/zimkk/erdman-ny-county): Python backend services and APIs
+- [legal-Document-Summerizer](https://github.com/zimkk/legal-Document-Summerizer): Legal document summarization with fine-tuned LLMs
+- [Anomaly-Detection-System](https://github.com/zimkk/Anomaly-Detection-System): Network anomaly detection with data science
+- [genAi](https://github.com/zimkk/genAi): Generative AI prototypes and implementations
+
+## Site pages
+
+- [Home / Portfolio](https://hassannazir.dev/): About, experience, skills, certifications, education, projects, contact
+- [Work & case studies](https://hassannazir.dev/work): Enterprise AI automation, DevOps, QA case studies
+- [Blog](https://hassannazir.dev/blogs): AI, deep learning, computer vision, agentic AI, prompt engineering
+- [Sitemap](https://hassannazir.dev/sitemap.xml): Full list of indexable URLs
+
+## Blog articles
+
+- [Advanced Prompt Engineering for LLMs](https://hassannazir.dev/blogs/advanced-prompt-engineering-llms)
+- [Zero Trust Architecture Implementation](https://hassannazir.dev/blogs/zero-trust-architecture-implementation)
+- [AI-Powered Threat Detection](https://hassannazir.dev/blogs/ai-powered-threat-detection)
+- [Deep Learning Transformers & Attention Mechanisms](https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025)
+- [Agentic AI & LangChain](https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt)
+- [Computer Vision: SAM & DINOv2](https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025)
+- [AI Trends 2025](https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption)
+
+## Social profiles
+
+- LinkedIn: https://linkedin.com/in/hassannazirrr
+- GitHub: https://github.com/zimkk
+- Twitter: https://twitter.com/hassannazir
+- Fiverr: https://www.fiverr.com/hassannazir
+- Upwork: https://www.upwork.com/freelancers/hassannazir
+
+## Services
+
+Enterprise AI automation, LLM fine-tuning, custom AI agents, workflow automation (n8n, Make, Zapier), full-stack development, DevOps, QA automation, AI consulting, technical leadership
+
+## Education & certifications
+
+- Associate Degree in Computer Science, Air University Islamabad (2020–2025)
+- Certified Ethical Hacker - Practical (CEH-P), NUST-NCAI / NAVTTC
+- Practical Ethical Hacking (PEH), TCM Security Academy
+- ISO/IEC 27001 Information Security Associate, SkillFront
+
+## Crawler resources
+
+- [llms.txt](https://hassannazir.dev/llms.txt): This file — machine-readable site summary for LLMs
+- [llm.txt](https://hassannazir.dev/llm.txt): Alias of this file for AI crawlers
+- [humans.txt](https://hassannazir.dev/humans.txt): Human-readable site colophon
+- [robots.txt](https://hassannazir.dev/robots.txt): Crawler permissions — AI bots explicitly allowed

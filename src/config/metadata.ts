@@ -1,10 +1,10 @@
 export const siteConfig = {
   name: "Hassan Nazir",
   title: "Hassan Nazir - AI Systems Architect & Engineering Lead | Official Website",
-  description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience designing and scaling enterprise AI automation platforms. Architected LLM-powered systems serving 10K+ users, 10K+ daily transactions, 99.9% uptime. Proven impact: 40% cost reduction, 60% efficiency gains. Expertise in LangChain, Hugging Face, n8n, OpenAI APIs, and modern DevOps. Based in Pakistan. Contact for AI consulting and automation.",
+  description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience designing and scaling enterprise AI automation platforms. Architected LLM-powered systems serving 10K+ users, 10K+ daily transactions, 99.9% uptime. Proven impact: 40% cost reduction, 60% efficiency gains. Expertise in LangChain, Hugging Face, n8n, OpenAI APIs, and modern DevOps. Based in Islamabad, Pakistan. Contact for AI consulting and automation.",
   url: "https://hassannazir.dev",
   ogImage: "https://hassannazir.dev/images/profile.png",
-  location: "Pakistan",
+  location: "Islamabad, Pakistan",
   phone: "+92 331 5892488",
   email: "hassannazir955@gmail.com",
   links: {
@@ -13,7 +13,7 @@ export const siteConfig = {
     linkedin: "https://linkedin.com/in/hassannazirrr",
   },
   /** ISO date when site content was last updated — helps crawlers and AI agents get fresh data */
-  lastUpdated: "2025-02-21",
+  lastUpdated: "2026-06-04",
 };
 
 export const defaultMetadata = {
@@ -29,6 +29,7 @@ export const defaultMetadata = {
     "Hassan Nazir Pakistan",
     "Hassan Nazir Senior AI Engineer",
     "Hassan Nazir Schmoozzer",
+    "Hassan Nazir Uno OS",
     "Hassan Nazir NDT Legacy Group",
     "Hassan Nazir Portfolio",
     "Hassan Nazir Resume",
@@ -98,8 +99,8 @@ export const defaultMetadata = {
 export const pageMetadata = {
   home: {
     title: "Hassan Nazir - Official Website | AI Systems Architect & Engineering Lead",
-    description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience. Architected enterprise AI automation platforms (10K+ users, 99.9% uptime). Currently Sr. AI Engineer at NDT Legacy Group, Full Stack Engineer at Gridcore. Contact for AI consulting and automation.",
-    keywords: ["Hassan Nazir", "Hassan Nazir AI Engineer", "Hassan Nazir Pakistan", "Hassan Nazir Portfolio", "Hassan Nazir Contact", "AI Systems Architect", "NDT Legacy Group", "Gridcore"],
+    description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience. Architected enterprise AI automation platforms (10K+ users, 99.9% uptime). Currently AI Architect at Uno OS, Full Stack Engineer at Gridcore. Contact for AI consulting and automation.",
+    keywords: ["Hassan Nazir", "Hassan Nazir AI Engineer", "Hassan Nazir Pakistan", "Hassan Nazir Portfolio", "Hassan Nazir Contact", "AI Systems Architect", "Uno OS", "NDT Legacy Group", "Gridcore"],
   },
   work: {
     title: "Hassan Nazir Work & Case Studies | AI, DevOps, QA Projects",
@@ -123,8 +124,8 @@ export const pageMetadata = {
   },
   experience: {
     title: "Work Experience | Hassan Nazir",
-    description: "Professional experience: Sr. AI Engineer (NDT Legacy Group), Full Stack Engineer (Gridcore), Senior AI Engineer (Schmoozzer), QA Automation Engineer (Brilliant Gaming), Independent Consultant (Fiverr/Upwork).",
-    keywords: ["Experience", "NDT Legacy", "Gridcore", "Schmoozzer", "Brilliant Gaming", "Career"],
+    description: "Professional experience: AI Architect (Uno OS), Sr. AI Engineer (NDT Legacy Group), Full Stack Engineer (Gridcore), Senior AI Engineer (Schmoozzer), QA Automation Engineer (Brilliant Gaming), Independent Consultant (Fiverr/Upwork).",
+    keywords: ["Experience", "Uno OS", "NDT Legacy", "Gridcore", "Schmoozzer", "Brilliant Gaming", "Career"],
   },
   education: {
     title: "Education | Hassan Nazir",
@@ -176,15 +177,15 @@ export const structuredData = {
       address: {
         "@type": "PostalAddress",
         addressCountry: "PK",
-        addressRegion: "Punjab",
-        addressLocality: "Lahore"
+        addressRegion: "Islamabad Capital Territory",
+        addressLocality: "Islamabad"
       }
     },
     address: {
       "@type": "PostalAddress",
       addressCountry: "PK",
-      addressRegion: "Punjab",
-      addressLocality: "Lahore"
+      addressRegion: "Islamabad Capital Territory",
+      addressLocality: "Islamabad"
     },
     sameAs: [
       siteConfig.links.twitter,
@@ -196,9 +197,16 @@ export const structuredData = {
     worksFor: [
       {
         "@type": "Organization",
+        name: "Uno OS",
+        jobTitle: "AI Architect",
+        startDate: "2026-04"
+      },
+      {
+        "@type": "Organization",
         name: "NDT Legacy Group",
         jobTitle: "Sr. AI Engineer",
-        startDate: "2025-08"
+        startDate: "2025-08",
+        endDate: "2026-04"
       },
       {
         "@type": "Organization",
