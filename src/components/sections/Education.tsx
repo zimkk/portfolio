@@ -1,51 +1,49 @@
 import React from 'react';
-import { BookOpenIcon, GraduationCapIcon } from 'lucide-react';
-import { GlowingEffect } from '../ui/GlowingEffect';
-const Education = ({
-  darkMode
-}) => {
-  const courses = ['Data Science', 'Cloud Computing', 'Machine Learning', 'Artificial Intelligence', 'Design and Analysis Of Algorithms', 'Database Systems'];
-  return <section id="education" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-white">Education</h2>
-          <div className="rounded-lg overflow-hidden bg-black border border-gray-700 relative">
-            <GlowingEffect 
-              variant="white" 
-              proximity={100} 
-              spread={30} 
-              movementDuration={1.5}
-            />
-            <div className="p-6">
-              <div className="flex items-start gap-4">
-                <div className="p-3 rounded-full bg-gray-900 text-white">
-                  <GraduationCapIcon size={24} />
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-white">
-                    Associate Degree in Computer Science
-                  </h3>
-                  <p className="text-gray-300">Air University, Islamabad</p>
-                  <p className="text-sm text-gray-400">2020 – 2025</p>
-                </div>
-              </div>
-              <div className="mt-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <BookOpenIcon size={20} className="text-white" />
-                  <h4 className="font-medium text-white">
-                    Relevant Coursework
-                  </h4>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {courses.map((course, index) => <div key={index} className="px-3 py-1 rounded-full text-sm bg-gray-900 text-gray-300">
-                      {course}
-                    </div>)}
-                </div>
-              </div>
+import SectionHeader from '../ui/SectionHeader';
+import Reveal from '../ui/Reveal';
+
+const courses = [
+  'Data Science',
+  'Cloud Computing',
+  'Machine Learning',
+  'Artificial Intelligence',
+  'Design and Analysis of Algorithms',
+  'Database Systems'
+];
+
+const Education = ({ }) => {
+  return (
+    <section id="education" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader index="05" label="Education" title="Academic background" />
+
+        <Reveal className="border-t border-b border-neutral-900 py-8 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-12">
+          <div>
+            <p className="text-sm font-mono text-neutral-500">2020 — 2025</p>
+            <p className="mt-2 text-xs text-neutral-600">Air University, Islamabad</p>
+          </div>
+          <div>
+            <h3 className="text-lg font-medium text-white">
+              Associate Degree in Computer Science
+            </h3>
+            <p className="mt-4 text-xs font-mono uppercase tracking-[0.2em] text-neutral-500 mb-3">
+              Relevant Coursework
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {courses.map(course => (
+                <span
+                  key={course}
+                  className="px-3 py-1.5 text-sm text-neutral-300 border border-neutral-800 rounded-md"
+                >
+                  {course}
+                </span>
+              ))}
             </div>
           </div>
-        </div>
+        </Reveal>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default Education;

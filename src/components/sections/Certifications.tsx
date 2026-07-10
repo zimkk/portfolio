@@ -1,80 +1,49 @@
 import React from 'react';
-import { AwardIcon, ShieldIcon, CheckCircleIcon } from 'lucide-react';
-import { GlowingEffect } from '../ui/GlowingEffect';
+import SectionHeader from '../ui/SectionHeader';
+import Reveal from '../ui/Reveal';
 
 const certifications = [
   {
-    name: "Certified Ethical Hacker - Practical (CEH-P)",
-    issuer: "NUST-NCAI / NAVTTC",
-    date: "2024",
-    description: "Completed the NAVTTC course Of Certified Ethical Hacker assembled by the EC Council. The course contained detailed information and practicals on up-to-date Cyber Security operations and Protocols. The main points from the course are Active Directory, Network Security, and OSINT.",
-    icon: <ShieldIcon size={20} />
+    name: 'Certified Ethical Hacker — Practical (CEH-P)',
+    issuer: 'NUST-NCAI / NAVTTC',
+    date: '2024',
+    description: 'EC-Council curriculum covering current cybersecurity operations and protocols, with hands-on work in Active Directory, network security, and OSINT.'
   },
   {
-    name: "Practical Ethical Hacking (PEH)",
-    issuer: "TCM Security Academy",
-    date: "2024",
-    description: "Completed the TCM Academy's Course on Practical Ethical Hacking which contained detailed practicals on intermediate-level Cyber Security operation and protocols. The main takeaways from the certification were Networking, python scripting, and Malware Analysis.",
-    icon: <CheckCircleIcon size={20} />
+    name: 'Practical Ethical Hacking (PEH)',
+    issuer: 'TCM Security Academy',
+    date: '2024',
+    description: 'Intermediate-level practical coursework in networking, Python scripting, and malware analysis.'
   },
   {
-    name: "ISO/IEC 27001 Information Security Associate",
-    issuer: "SkillFront",
-    date: "2024",
-    description: "Comprehensive certification covering Information Security Management System (ISMS) implementation, Risk Assessment, Security policies and procedures development, Risk management processes, and ISMS effectiveness review.",
-    icon: <AwardIcon size={20} />
+    name: 'ISO/IEC 27001 Information Security Associate',
+    issuer: 'SkillFront',
+    date: '2024',
+    description: 'ISMS implementation, risk assessment and management, security policy development, and effectiveness review.'
   }
 ];
 
 const Certifications = ({ }) => {
   return (
-    <section id="certifications" className="py-20 px-6 md:px-12 lg:px-20 bg-black">
-      <div className="container mx-auto">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-4xl font-bold mb-12 text-white">
-            Certifications
-          </h2>
-          
-          <div className="grid gap-6">
-            {certifications.map((cert, index) => (
-              <div 
-                key={index} 
-                className="bg-black border border-gray-700 rounded-lg p-6 hover:border-white transition-colors duration-300 relative"
-              >
-                <GlowingEffect 
-                  variant="white" 
-                  proximity={100} 
-                  spread={30} 
-                  movementDuration={1.5}
-                />
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-full bg-gray-900 text-white flex-shrink-0">
-                    {cert.icon}
-                  </div>
-                  
-                  <div className="flex-1">
-                    <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-2 mb-3">
-                      <div>
-                        <h3 className="text-xl font-bold text-white">
-                          {cert.name}
-                        </h3>
-                        <p className="text-gray-300">
-                          {cert.issuer}
-                        </p>
-                      </div>
-                      <span className="text-sm text-gray-400 font-mono">
-                        {cert.date}
-                      </span>
-                    </div>
-                    
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      {cert.description}
-                    </p>
-                  </div>
-                </div>
+    <section id="certifications" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader index="04" label="Credentials" title="Certifications" />
+
+        <div className="divide-y divide-neutral-900 border-t border-b border-neutral-900">
+          {certifications.map(cert => (
+            <Reveal key={cert.name} className="py-8 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-12">
+              <div>
+                <p className="text-sm font-mono text-neutral-500">{cert.date}</p>
+                <p className="mt-2 text-xs text-neutral-600">{cert.issuer}</p>
               </div>
-            ))}
-          </div>
+              <div>
+                <h3 className="text-lg font-medium text-white">{cert.name}</h3>
+                <p className="mt-3 text-sm text-neutral-400 leading-relaxed">
+                  {cert.description}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>

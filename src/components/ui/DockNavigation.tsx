@@ -78,7 +78,7 @@ export function DockNavigation({
     <div
       ref={outsideClickRef}
       className={cn(
-        "flex items-center gap-1 rounded-2xl border border-white/20 bg-black/90 backdrop-blur-xl p-1 shadow-2xl",
+        "flex items-center gap-1 rounded-lg border border-neutral-800 bg-black/80 backdrop-blur-md p-1",
         className
       )}
     >
@@ -102,12 +102,12 @@ export function DockNavigation({
             onClick={() => handleSelect(index, tab.onClick)}
             transition={transition}
             className={cn(
-              "relative flex items-center rounded-xl px-4 py-2 text-sm font-medium transition-colors duration-300",
+              "relative flex items-center rounded-md px-4 py-2 text-sm font-medium transition-colors duration-300",
               isCurrentlySelected
-                ? cn("bg-white/15", activeColor)
-                : isActive 
-                  ? "bg-white/10 text-white"
-                  : "text-gray-300 hover:bg-white/10 hover:text-white"
+                ? cn("bg-white/10", activeColor)
+                : isActive
+                  ? "bg-white text-black"
+                  : "text-neutral-500 hover:bg-white/5 hover:text-white"
             )}
           >
             <Icon size={20} />

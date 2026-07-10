@@ -1,47 +1,44 @@
 import React, { useState, useRef } from 'react';
-import { MailIcon, GithubIcon, LinkedinIcon, GlobeIcon, SendIcon, CheckCircleIcon, UserIcon, MessageSquareIcon } from 'lucide-react';
-import { GlowingEffect } from '../ui/GlowingEffect';
+import { MailIcon, GithubIcon, LinkedinIcon, GlobeIcon, CheckCircleIcon } from 'lucide-react';
 import emailjs from '@emailjs/browser';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
+import SectionHeader from '../ui/SectionHeader';
+import Reveal from '../ui/Reveal';
 
-const Contact = ({ darkMode }) => {
-  const form = useRef();
-  const [formState, setFormState] = useState({
-    name: '',
-    email: '',
-    message: ''
-  });
+const links = [
+  { label: 'Email', value: 'hassannazir955@gmail.com', href: 'mailto:hassannazir955@gmail.com', icon: MailIcon, external: false },
+  { label: 'GitHub', value: 'github.com/zimkk', href: 'https://github.com/zimkk', icon: GithubIcon, external: true },
+  { label: 'LinkedIn', value: 'linkedin.com/in/hassannazirrr', href: 'https://linkedin.com/in/hassannazirrr', icon: LinkedinIcon, external: true },
+  { label: 'Website', value: 'hassannazir.dev', href: 'https://hassannazir.dev', icon: GlobeIcon, external: true }
+];
+
+const inputClasses =
+  'w-full px-4 py-3 rounded-md bg-transparent border border-neutral-800 text-white placeholder-neutral-600 focus:outline-none focus:border-neutral-500 transition-colors duration-200';
+
+const Contact = ({ }) => {
+  const form = useRef<HTMLFormElement>(null);
+  const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleChange = (e) => {
-    setFormState({
-      ...formState,
-      [e.target.name]: e.target.value
-    });
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    setFormState({ ...formState, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    
+
     try {
-      const result = await emailjs.sendForm(
+      await emailjs.sendForm(
         EMAILJS_CONFIG.SERVICE_ID,
         EMAILJS_CONFIG.TEMPLATE_ID,
         form.current!,
         EMAILJS_CONFIG.PUBLIC_KEY
       );
-      
-      console.log('Email sent successfully:', result);
       setIsSubmitted(true);
       setIsLoading(false);
-      setFormState({
-        name: '',
-        email: '',
-        message: ''
-      });
-      // Reset form status after 5 seconds
+      setFormState({ name: '', email: '', message: '' });
       setTimeout(() => setIsSubmitted(false), 5000);
     } catch (error) {
       console.error('Email sending failed:', error);
@@ -51,234 +48,119 @@ const Contact = ({ darkMode }) => {
   };
 
   return (
-    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-12 lg:px-20 bg-black relative overflow-hidden">
-      {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        <div className="absolute top-20 left-10 w-32 h-32 border border-white/10 rounded-full animate-pulse"></div>
-        <div className="absolute bottom-20 right-10 w-24 h-24 border border-white/10 rounded-full animate-pulse delay-1000"></div>
-        <div className="absolute top-1/2 left-1/4 w-2 h-2 bg-white/20 rounded-full animate-pulse delay-500"></div>
-        <div className="absolute top-1/3 right-1/3 w-1 h-1 bg-white/30 rounded-full animate-pulse delay-700"></div>
-      </div>
+    <section id="contact" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
+      <div className="max-w-5xl mx-auto">
+        <SectionHeader
+          index="07"
+          label="Contact"
+          title="Let's work together"
+          description="Open to collaborations, opportunities, and new projects. Reach out directly or send a message below."
+        />
 
-      <div className="container mx-auto relative z-10">
-        <div className="max-w-6xl mx-auto">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-white">
-              Let's Connect
-            </h2>
-            <div className="w-24 h-1 bg-gradient-to-r from-transparent via-white to-transparent mx-auto mb-8"></div>
-            <p className="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto px-4">
-              Ready to bring your next project to life? Let's discuss how we can work together.
-            </p>
-          </div>
+        <div className="grid grid-cols-1 lg:grid-cols-[220px_1fr] gap-12 md:gap-16">
+          {/* Links */}
+          <Reveal className="space-y-1">
+            {links.map(link => (
+              <a
+                key={link.label}
+                href={link.href}
+                {...(link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                className="group flex items-center gap-3 py-3 text-neutral-400 hover:text-white transition-colors duration-200"
+              >
+                <link.icon size={16} className="text-neutral-600 group-hover:text-white transition-colors duration-200 flex-shrink-0" />
+                <span className="text-sm">{link.value}</span>
+              </a>
+            ))}
+          </Reveal>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-start">
-            {/* Contact Info */}
-            <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 sm:p-8 hover:border-gray-600/50 transition-all duration-300 relative h-full">
-              <GlowingEffect 
-                variant="white" 
-                proximity={100} 
-                spread={30} 
-                movementDuration={1.5}
-              />
-              <div className="flex items-center gap-3 mb-6">
-                <div className="p-2 bg-white/10 rounded-lg">
-                  <MessageSquareIcon className="w-6 h-6 text-white" />
-                </div>
-                <h3 className="text-xl font-semibold text-white">Get in Touch</h3>
+          {/* Form */}
+          <Reveal delay={0.15}>
+            {isSubmitted ? (
+              <div className="flex flex-col items-center justify-center py-16 text-center border border-neutral-900 rounded-lg">
+                <CheckCircleIcon size={32} className="text-white mb-4" />
+                <h3 className="text-lg font-medium text-white mb-2">Message sent</h3>
+                <p className="text-sm text-neutral-400">
+                  Thanks for reaching out — I'll get back to you soon.
+                </p>
               </div>
-              <p className="text-gray-300 leading-relaxed mb-8">
-                Feel free to reach out for collaborations, opportunities, or just to say hello! 
-                I'm always open to discussing new projects and innovative ideas.
-              </p>
-
-              <div className="space-y-6">
-                  <a 
-                    href="mailto:hassannazir955@gmail.com" 
-                    target="_self"
-                    className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
-                  >
-                    <div className="p-3 rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
-                      <MailIcon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-white group-hover:text-white">Email</h4>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        hassannazir955@gmail.com
-                      </p>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="https://github.com/zimkk" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
-                  >
-                    <div className="p-3 rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
-                      <GithubIcon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-white group-hover:text-white">GitHub</h4>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        github.com/zimkk
-                      </p>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="https://linkedin.com/in/hassannazirrr" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
-                  >
-                    <div className="p-3 rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
-                      <LinkedinIcon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-white group-hover:text-white">LinkedIn</h4>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        linkedin.com/in/hassannazirrr
-                      </p>
-                    </div>
-                  </a>
-
-                  <a 
-                    href="https://hassannazir.dev" 
-                    target="_blank" 
-                    rel="noopener noreferrer" 
-                    className="flex items-center gap-4 group p-4 rounded-xl hover:bg-white/5 transition-all duration-300"
-                  >
-                    <div className="p-3 rounded-full bg-white/10 text-white group-hover:bg-white group-hover:text-black transition-all duration-300">
-                      <GlobeIcon size={20} />
-                    </div>
-                    <div>
-                      <h4 className="font-medium text-white group-hover:text-white">Website</h4>
-                      <p className="text-gray-400 group-hover:text-gray-300 transition-colors">
-                        hassannazir.dev
-                      </p>
-                    </div>
-                  </a>
-              </div>
-            </div>
-
-            {/* Contact Form */}
-            <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-6 sm:p-8 hover:border-gray-600/50 transition-all duration-300 relative h-full">
-              <GlowingEffect 
-                variant="white" 
-                proximity={100} 
-                spread={30} 
-                movementDuration={1.5}
-              />
-              {isSubmitted ? (
-                <div className="flex flex-col items-center justify-center py-16 text-center">
-                  <div className="p-4 rounded-full mb-6 bg-white/10 text-white animate-pulse">
-                    <CheckCircleIcon size={48} />
+            ) : (
+              <form ref={form} onSubmit={handleSubmit} className="space-y-5">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  <div>
+                    <label htmlFor="name" className="block mb-2 text-sm text-neutral-400">
+                      Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formState.name}
+                      onChange={handleChange}
+                      required
+                      className={inputClasses}
+                      placeholder="Your name"
+                    />
                   </div>
-                  <h3 className="text-2xl font-bold mb-4 text-white">
-                    Message Sent Successfully!
-                  </h3>
-                  <p className="text-gray-300 leading-relaxed">
-                    Thank you for reaching out. I'll get back to you as soon as possible.
-                  </p>
+                  <div>
+                    <label htmlFor="email" className="block mb-2 text-sm text-neutral-400">
+                      Email
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formState.email}
+                      onChange={handleChange}
+                      required
+                      className={inputClasses}
+                      placeholder="you@example.com"
+                    />
+                  </div>
                 </div>
-              ) : (
-                <form ref={form} onSubmit={handleSubmit} className="space-y-6">
-                  <div className="flex items-center gap-3 mb-8">
-                    <div className="p-2 bg-white/10 rounded-lg">
-                      <UserIcon className="w-6 h-6 text-white" />
-                    </div>
-                    <h3 className="text-xl font-semibold text-white">Send a Message</h3>
-                  </div>
 
-                  <div className="space-y-6">
-                    <div className="relative">
-                      <label htmlFor="name" className="block mb-3 text-sm font-medium text-gray-300">
-                        Full Name
-                      </label>
-                      <input 
-                        type="text" 
-                        id="name" 
-                        name="name" 
-                        value={formState.name} 
-                        onChange={handleChange} 
-                        required 
-                        className="w-full px-4 py-4 rounded-xl bg-black/30 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300 hover:border-gray-600/50" 
-                        placeholder="Enter your full name" 
-                      />
-                    </div>
+                <div>
+                  <label htmlFor="message" className="block mb-2 text-sm text-neutral-400">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formState.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    className={`${inputClasses} resize-none`}
+                    placeholder="Tell me about your project..."
+                  />
+                </div>
 
-                    <div className="relative">
-                      <label htmlFor="email" className="block mb-3 text-sm font-medium text-gray-300">
-                        Email Address
-                      </label>
-                      <input 
-                        type="email" 
-                        id="email" 
-                        name="email" 
-                        value={formState.email} 
-                        onChange={handleChange} 
-                        required 
-                        className="w-full px-4 py-4 rounded-xl bg-black/30 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300 hover:border-gray-600/50" 
-                        placeholder="your.email@example.com" 
-                      />
-                    </div>
+                <button
+                  type="submit"
+                  disabled={isLoading}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md font-medium text-sm bg-white text-black hover:bg-neutral-200 transition-colors duration-200 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isLoading ? (
+                    <>
+                      <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                      Sending…
+                    </>
+                  ) : (
+                    'Send message'
+                  )}
+                </button>
+              </form>
+            )}
+          </Reveal>
+        </div>
 
-                    <div className="relative">
-                      <label htmlFor="message" className="block mb-3 text-sm font-medium text-gray-300">
-                        Your Message
-                      </label>
-                      <textarea 
-                        id="message" 
-                        name="message" 
-                        value={formState.message} 
-                        onChange={handleChange} 
-                        required 
-                        rows={6} 
-                        className="w-full px-4 py-4 rounded-xl bg-black/30 border border-gray-700/50 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-white/50 focus:border-white/50 transition-all duration-300 hover:border-gray-600/50 resize-none" 
-                        placeholder="Tell me about your project or just say hello..." 
-                      />
-                    </div>
-
-                    <button 
-                      type="submit" 
-                      disabled={isLoading}
-                      className="w-full flex items-center justify-center gap-3 px-6 py-4 rounded-xl font-medium transition-all duration-300 bg-white hover:bg-gray-200 text-black hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 group"
-                    >
-                      {isLoading ? (
-                        <>
-                          <div className="w-5 h-5 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                          <span>Sending...</span>
-                        </>
-                      ) : (
-                        <>
-                          <SendIcon size={20} className="group-hover:translate-x-1 transition-transform duration-300" />
-                          <span>Send Message</span>
-                        </>
-                      )}
-                    </button>
-                  </div>
-                </form>
-              )}
-            </div>
-          </div>
-
-          {/* Bottom Quote */}
-          <div className="mt-16 text-center">
-            <div className="bg-black/50 backdrop-blur-sm border border-gray-800/50 rounded-2xl p-8 max-w-4xl mx-auto relative">
-              <GlowingEffect 
-                variant="white" 
-                proximity={100} 
-                spread={30} 
-                movementDuration={1.5}
-              />
-              <p className="text-gray-300 italic text-lg leading-relaxed">
-                "Great projects start with great conversations. Let's build something amazing together."
-              </p>
-              <div className="mt-4 text-white font-semibold">— Hassan Nazir</div>
-            </div>
-          </div>
+        {/* Footer */}
+        <div className="mt-20 pt-8 border-t border-neutral-900 flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-sm text-neutral-600">
+            © {new Date().getFullYear()} Hassan Nazir
+          </p>
+          <p className="text-xs font-mono text-neutral-700">
+            Islamabad, Pakistan
+          </p>
         </div>
       </div>
     </section>
