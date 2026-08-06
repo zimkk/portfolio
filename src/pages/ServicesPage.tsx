@@ -32,7 +32,7 @@ const servicePages: ServicePage[] = [
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     hero: 'Put an engineer where the ambiguity lives.',
     directAnswer: 'A Forward Deployed Engineer works inside the operating context, not from a detached specification. I join the team, learn the workflow, build against real constraints, integrate with existing systems, and remain accountable through deployment.',
-    image: '/images/forward-deployed-services.png',
+    image: '/images/forward-deployed-services.webp',
     imageAlt: 'Engineer working with an operations team inside a production control environment',
     fit: [
       'The requirement is still changing because the operation is not fully understood.',
@@ -116,7 +116,7 @@ const servicePages: ServicePage[] = [
     description: 'Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.',
     hero: 'Agents need an operating system, not another demo.',
     directAnswer: 'Production agents require more than a model and a prompt. I build the tool contracts, retrieval, memory, permissions, durable execution, evaluation, cost accounting, fallbacks, and product surface that make agent behavior usable.',
-    image: '/images/cloud.jpg',
+    image: '/images/cloud.webp',
     imageAlt: 'Cloud infrastructure supporting production AI agent systems',
     fit: [
       'A team wants an agent that can act across real tools and business systems.',
@@ -158,7 +158,7 @@ const servicePages: ServicePage[] = [
     description: 'n8n automation consulting for reliable AI workflows, API integrations, data pipelines, lead operations, document processing, and self-hosted production delivery.',
     hero: 'Automate the operation, not just the happy path.',
     directAnswer: 'Reliable n8n work requires workflow design, API engineering, data contracts, retries, credentials, queues, observability, and a plan for exceptions. I build automations that can be understood and operated after launch.',
-    image: '/images/projects/n8nhub.jpg',
+    image: '/images/projects/n8nhub.webp',
     imageAlt: 'n8nHub workflow discovery and automation platform interface',
     fit: [
       'Manual work moves data repeatedly between CRM, email, documents, and internal systems.',
@@ -224,7 +224,7 @@ const ServicesPage = () => {
               <p>I work with US and European teams that need one engineer to connect discovery, models, software, integration, and production ownership.</p>
               <div><a href="/#contact">Discuss the system <ArrowUpRight size={16} /></a><Link to="/work">Review case studies <ArrowRight size={16} /></Link></div>
             </div>
-            <figure><img src="/images/forward-deployed-services.png" alt="Engineer embedded with an operations team in a production environment" /></figure>
+            <figure><img src="/images/forward-deployed-services.webp" width="1440" height="810" fetchPriority="high" decoding="async" alt="Engineer embedded with an operations team in a production environment" /></figure>
           </section>
 
           <section className="services-index" aria-labelledby="services-index-title">
@@ -281,7 +281,7 @@ const ServicesPage = () => {
             <p>{service.directAnswer}</p>
             <div><a href="/#contact">Discuss your system <ArrowUpRight size={16} /></a><a href={service.proof.href} target="_blank" rel="noopener noreferrer"><Github size={16} /> Review public proof</a></div>
           </div>
-          <figure><img src={service.image} alt={service.imageAlt} /></figure>
+          <figure><img src={service.image} width="1440" height="810" fetchPriority="high" decoding="async" alt={service.imageAlt} /></figure>
         </section>
 
         <section className="service-fit">
@@ -295,7 +295,7 @@ const ServicesPage = () => {
         </section>
 
         <section className="service-proof">
-          <figure><img src={service.image} alt={service.imageAlt} /></figure>
+          <figure><img src={service.image} width="1440" height="810" loading="lazy" decoding="async" alt={service.imageAlt} /></figure>
           <div><h2>{service.proof.title}</h2><p>{service.proof.body}</p><a href={service.proof.href} target="_blank" rel="noopener noreferrer">{service.proof.label} <ArrowUpRight size={16} /></a></div>
         </section>
 

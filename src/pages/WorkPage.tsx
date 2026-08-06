@@ -28,7 +28,7 @@ const workProjects = [
     year: '2024—2025',
     category: 'Cloud / Security',
     description: 'A threat-detection and incident-response layer for distributed cloud infrastructure, designed to improve signal quality without interrupting legitimate operations.',
-    image: '/images/cloud.jpg',
+    image: '/images/cloud.webp',
     technologies: ['Python', 'AWS', 'Terraform', 'Grafana', 'Elasticsearch', 'Docker'],
     challenges: ['Cross-environment threat detection', 'Reducing false-positive noise', 'Safe automated response'],
     solutions: ['ML-assisted anomaly detection', 'Context-aware alert filtering', 'Graduated response with manual override'],
@@ -99,7 +99,7 @@ const WorkPage = () => {
                 <h2>{project.title}</h2>
                 <div><span>{project.client}</span><span>{project.duration}</span></div>
               </div>
-              <div className="study-media"><img src={project.image} alt={project.title} /></div>
+              <div className="study-media"><img src={project.image} loading="lazy" decoding="async" alt={project.title} /></div>
               <div className="study-overview">
                 <p>{project.description}</p>
                 <ul>{project.technologies.map((technology) => <li key={technology}>{technology}</li>)}</ul>

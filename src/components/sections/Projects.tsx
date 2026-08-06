@@ -9,28 +9,28 @@ const projects = [{
   technologies: ['React', 'Web App', 'Full Stack'],
   github: null,
   demo: 'https://thehomeclubsports.com',
-  image: '/images/projects/the-home-club.jpg'
+  image: '/images/projects/the-home-club.webp'
 }, {
   title: 'N8NHUB',
   description: 'Curated library of 2000+ n8n workflow templates for automation builders, with searchable categories and ready-to-use integrations.',
   technologies: ['n8n', 'Automation', 'Workflows'],
   github: null,
   demo: 'https://n8nhub.hassannazir.dev',
-  image: '/images/projects/n8nhub.jpg'
+  image: '/images/projects/n8nhub.webp'
 }, {
   title: 'SpeedyInfluencer',
   description: 'Influencer marketing platform connecting brands and creators with campaign tools, analytics, and streamlined collaboration workflows.',
   technologies: ['React', 'SaaS', 'Full Stack'],
   github: null,
   demo: 'https://speedyinfluencer.com',
-  image: '/images/projects/speedyinfluencer.png'
+  image: '/images/projects/speedyinfluencer.webp'
 }, {
   title: 'SmartFurs',
   description: 'E-commerce platform for purebred puppies with breed listings, buyer discovery, and a modern storefront experience.',
   technologies: ['React', 'E-commerce', 'Web App'],
   github: null,
   demo: 'https://smartfurs.vercel.app',
-  image: '/images/projects/smartfurs.jpg'
+  image: '/images/projects/smartfurs.webp'
 }, {
   title: 'Fooocus',
   description: 'SDXL-based image generation tool focused on prompting and generating high-quality visuals with a streamlined, minimal setup.',
@@ -68,7 +68,7 @@ const projects = [{
   image: 'https://images.pexels.com/photos/7942665/pexels-photo-7942665.jpeg?auto=compress&cs=tinysrgb&w=1200'
 }];
 
-const Projects = ({ }) => {
+const Projects = () => {
   return (
     <section id="projects" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
       <div className="max-w-5xl mx-auto">

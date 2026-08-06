@@ -23,7 +23,7 @@ export function LampDemo() {
         >
           <div className="w-full h-full rounded-full overflow-hidden">
             <img 
-              src="/images/profile.png" 
+              src="/images/profile-hero.webp"
               alt="Hassan Nazir Profile" 
               className="w-full h-full object-cover"
             />

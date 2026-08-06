@@ -1,6 +1,5 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { lazy, Suspense, useEffect, useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import emailjs from '@emailjs/browser';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import {
@@ -14,11 +13,12 @@ import {
   Mail,
   Send,
 } from 'lucide-react';
-import BookingModal from './components/ui/BookingModal';
 import SEOHead from './components/ui/SEOHead';
 import { EMAILJS_CONFIG } from './config/emailjs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
+
+const BookingModal = lazy(() => import('./components/ui/BookingModal'));
 
 const projects = [
   {
@@ -26,7 +26,7 @@ const projects = [
     descriptor: 'Membership and community platform',
     summary: 'A public-facing sports platform that turns memberships, programs, and community activity into one clear journey.',
     contribution: 'Product engineering · Frontend systems · Delivery',
-    image: '/images/projects/the-home-club.jpg',
+    image: '/images/projects/the-home-club.webp',
     href: 'https://thehomeclubsports.com',
   },
   {
@@ -34,7 +34,7 @@ const projects = [
     descriptor: 'Automation workflow library',
     summary: 'More than 2,000 searchable n8n workflows organized for builders who need a working automation pattern, not another tutorial.',
     contribution: 'Information architecture · Automation · Full stack',
-    image: '/images/projects/n8nhub.jpg',
+    image: '/images/projects/n8nhub.webp',
     href: 'https://n8nhub.hassannazir.dev',
   },
   {
@@ -42,7 +42,7 @@ const projects = [
     descriptor: 'Creator operations SaaS',
     summary: 'Campaign management, creator collaboration, and performance data brought into a focused operating surface for brands.',
     contribution: 'SaaS engineering · Product systems · APIs',
-    image: '/images/projects/speedyinfluencer.png',
+    image: '/images/projects/speedyinfluencer.webp',
     href: 'https://speedyinfluencer.com',
   },
   {
@@ -50,7 +50,7 @@ const projects = [
     descriptor: 'Trust-led commerce experience',
     summary: 'A modern storefront for puppy discovery shaped around buyer confidence, clean navigation, and a low-friction enquiry path.',
     contribution: 'Commerce · React · Experience design',
-    image: '/images/projects/smartfurs.jpg',
+    image: '/images/projects/smartfurs.webp',
     href: 'https://smartfurs.vercel.app',
   },
 ];
@@ -192,13 +192,10 @@ export function App() {
 
     const intro = gsap.timeline({ defaults: { ease: 'power4.out' } });
     intro
-      .to('.intro-gate-panel', { yPercent: -102, duration: 1.05, stagger: 0.08, ease: 'expo.inOut' })
-      .set('.intro-gate', { display: 'none' })
-      .from('.masthead-word', { yPercent: 110, duration: 1.1, stagger: 0.1 }, '-=.25')
-      .from('.hero-media', { clipPath: 'inset(100% 0 0 0)', scale: 1.06, duration: 1.25 }, '-=.75')
-      .from('.hero-foreground-word', { xPercent: -14, opacity: 0, duration: 1.05 }, '-=.9')
-      .from('.hero-actions, .hero-intro, .hero-role-note', { opacity: 0, y: 18, duration: 0.65, stagger: 0.08 }, '-=.55')
-      .to('.fde-forward', { scaleX: 1.025, transformOrigin: 'left center', duration: 1.2, ease: 'expo.inOut' }, '-=1');
+      .from('.masthead-word', { yPercent: 110, duration: 0.8, stagger: 0.08 })
+      .from('.hero-foreground-word', { xPercent: -10, opacity: 0, duration: 0.72 }, '-=.55')
+      .from('.hero-actions, .hero-intro, .hero-role-note', { opacity: 0, y: 12, duration: 0.45, stagger: 0.06 }, '-=.4')
+      .to('.fde-forward', { scaleX: 1.02, transformOrigin: 'left center', duration: 0.75, ease: 'expo.inOut' }, '-=.65');
 
     gsap.to('.site-progress i', {
       scaleX: 1,
@@ -340,6 +337,7 @@ export function App() {
     if (!form.current) return;
     setSubmitState('sending');
     try {
+      const { default: emailjs } = await import('@emailjs/browser');
       await emailjs.sendForm(EMAILJS_CONFIG.SERVICE_ID, EMAILJS_CONFIG.TEMPLATE_ID, form.current, EMAILJS_CONFIG.PUBLIC_KEY);
       setFormState({ name: '', email: '', message: '' });
       setSubmitState('sent');
@@ -353,7 +351,6 @@ export function App() {
     <>
       <SEOHead page="home" />
       <main ref={page} className="portfolio-shell w-full max-w-full overflow-x-hidden">
-        <div className="intro-gate" aria-hidden="true"><i className="intro-gate-panel" /><i className="intro-gate-panel" /><i className="intro-gate-panel" /><span>HN / FIELD SYSTEMS</span></div>
         <div className="site-progress" aria-hidden="true"><i /></div>
         <header className="site-nav">
           <a href="#top" className="nav-brand" aria-label="Hassan Nazir, home">HASSAN / NAZIR</a>
@@ -387,7 +384,7 @@ export function App() {
             <button type="button" onClick={() => setBookingOpen(true)} className={`hero-call-orbit hero-booking-origin${bookingFloating ? ' is-origin-hidden' : ''}`}><CalendarDays size={18} /><span>Book a working session</span></button>
           </div>
           <figure className="hero-media">
-            <img src="/images/profile.png" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
+            <img src="/images/profile-hero.webp" width="768" height="768" fetchPriority="high" decoding="async" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
             <div className="hero-media-wash" />
             <figcaption>
               <strong>Hassan Nazir</strong>
@@ -457,7 +454,7 @@ export function App() {
                   <div className="case-browser">
                     <div className="browser-bar"><i /><i /><i /><span>{new URL(project.href).hostname}</span></div>
                     <a href={project.href} target="_blank" rel="noopener noreferrer" className="case-image-link group" aria-label={'Open ' + project.title}>
-                      <img src={project.image} alt={project.title + ' website interface'} />
+                      <img src={project.image} loading="lazy" decoding="async" alt={project.title + ' website interface'} />
                     </a>
                   </div>
                   <div className="case-copy">
@@ -645,7 +642,7 @@ export function App() {
           <span>Book a working session</span>
         </button>
       )}
-      <BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} />
+      {bookingOpen && <Suspense fallback={null}><BookingModal isOpen onClose={() => setBookingOpen(false)} /></Suspense>}
     </>
   );
 }

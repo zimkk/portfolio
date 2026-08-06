@@ -110,11 +110,8 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="geo.position" content="33.6844;73.0479" />
       <meta name="ICBM" content="33.6844, 73.0479" />
 
-      <link rel="icon" type="image/png" href="/images/profile.png" />
-      <link rel="apple-touch-icon" href="/images/profile.png" />
-      <link rel="preconnect" href="https://api.fontshare.com" />
-      <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      <link rel="icon" type="image/png" href="/images/favicon.png" />
+      <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
       {pageSchemas.map((schema, index) => (
         <script key={index} type="application/ld+json">{JSON.stringify(schema)}</script>

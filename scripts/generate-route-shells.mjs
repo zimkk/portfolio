@@ -53,6 +53,7 @@ const articles = [
 const services = [
   {
     slug: 'forward-deployed-engineer',
+    image: '/images/forward-deployed-services.webp',
     title: 'Forward Deployed Engineer for Applied AI and Software Delivery | Hassan Nazir',
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     heading: 'Put an engineer where the ambiguity lives.',
@@ -60,6 +61,7 @@ const services = [
   },
   {
     slug: 'applied-ai-consulting',
+    image: '/images/ai-automation.jpg',
     title: 'Applied AI Consulting for Production Systems | Hassan Nazir',
     description: 'Applied AI consulting for US and European teams that need working LLM applications, document intelligence, automation, evaluation, and production infrastructure.',
     heading: 'Move the AI work from promising to operational.',
@@ -67,6 +69,7 @@ const services = [
   },
   {
     slug: 'ai-agent-development',
+    image: '/images/cloud.webp',
     title: 'AI Agent Development and RAG Engineering Services | Hassan Nazir',
     description: 'Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.',
     heading: 'Agents need an operating system, not another demo.',
@@ -74,6 +77,7 @@ const services = [
   },
   {
     slug: 'n8n-automation-consultant',
+    image: '/images/projects/n8nhub.webp',
     title: 'n8n Automation Consultant for AI Workflows and Integrations | Hassan Nazir',
     description: 'n8n automation consulting for reliable AI workflows, API integrations, data pipelines, lead operations, document processing, and self-hosted production delivery.',
     heading: 'Automate the operation, not just the happy path.',
@@ -84,6 +88,7 @@ const services = [
 const routes = [
   {
     route: '/services',
+    image: '/images/forward-deployed-services.webp',
     title: 'Forward Deployed Engineering and Applied AI Services | Hassan Nazir',
     description: 'Engineering services for US and European teams that need applied AI, agents, RAG, n8n automation, and production software delivered through real operational constraints.',
     type: 'CollectionPage',
@@ -98,6 +103,7 @@ const routes = [
     heading: service.heading,
     summary: service.description,
     serviceType: service.serviceType,
+    image: service.image,
   })),
   {
     route: '/work',
@@ -183,6 +189,10 @@ for (const route of routes) {
     .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, `$1${canonical}$2`)
     .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
     .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback"><h1>${escapeHtml(route.heading)}</h1><p>${escapeHtml(route.summary)}</p><p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Applied AI practitioner.</p><nav aria-label="Site index"><a href="/">Portfolio</a> · <a href="/services">Services</a> · <a href="/work">Work</a> · <a href="/blogs">Field notes</a> · <a href="/llms.txt">AI-readable index</a></nav></main>`);
+
+  html = route.image
+    ? html.replace('/images/profile-hero.webp', route.image)
+    : html.replace(/\s*<link rel="preload" as="image" href="\/images\/profile-hero\.webp" fetchpriority="high" \/>/, '');
 
   html = replaceMeta(html, 'name="description"', route.description);
   html = replaceMeta(html, 'property="og:type"', route.type === 'BlogPosting' ? 'article' : 'website');
