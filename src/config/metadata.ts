@@ -1,20 +1,19 @@
 export const siteConfig = {
-  name: "Hassan Nazir",
-  title: "Hassan Nazir - AI Systems Architect & Engineering Lead | Official Website",
-  description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience designing and scaling enterprise AI automation platforms. Architected LLM-powered systems serving 10K+ users, 10K+ daily transactions, 99.9% uptime. Proven impact: 40% cost reduction, 60% efficiency gains. Expertise in LangChain, Hugging Face, n8n, OpenAI APIs, and modern DevOps. Based in Islamabad, Pakistan. Contact for AI consulting and automation.",
-  url: "https://hassannazir.dev",
-  ogImage: "https://hassannazir.dev/images/profile.png",
-  location: "Islamabad, Pakistan",
-  phone: "+92 331 5892488",
-  email: "hassannazir955@gmail.com",
+  name: 'Hassan Nazir',
+  legalName: 'Hassan Nazir',
+  title: 'Hassan Nazir — Forward Deployed Engineer & Applied AI',
+  description: 'Hassan Nazir is a Forward Deployed Engineer in Islamabad who embeds with teams to turn ambiguous operational problems into deployed AI, automation, and full-stack systems.',
+  url: 'https://hassannazir.dev',
+  ogImage: 'https://hassannazir.dev/images/profile.png',
+  location: 'Islamabad, Pakistan',
+  email: 'hassannazir955@gmail.com',
+  lastUpdated: '2026-08-06',
   links: {
-    twitter: "https://twitter.com/hassannazir",
-    github: "https://github.com/zimkk",
-    linkedin: "https://linkedin.com/in/hassannazirrr",
+    github: 'https://github.com/zimkk',
+    linkedin: 'https://linkedin.com/in/hassannazirrr',
+    twitter: 'https://twitter.com/hassannazir',
   },
-  /** ISO date when site content was last updated — helps crawlers and AI agents get fresh data */
-  lastUpdated: "2026-06-04",
-};
+} as const;
 
 export const defaultMetadata = {
   title: {
@@ -23,313 +22,207 @@ export const defaultMetadata = {
   },
   description: siteConfig.description,
   keywords: [
-    "Hassan Nazir",
-    "Hassan Nazir AI Engineer",
-    "Hassan Nazir CTO",
-    "Hassan Nazir Pakistan",
-    "Hassan Nazir Senior AI Engineer",
-    "Hassan Nazir Schmoozzer",
-    "Hassan Nazir Uno OS",
-    "Hassan Nazir NDT Legacy Group",
-    "Hassan Nazir Portfolio",
-    "Hassan Nazir Resume",
-    "Hassan Nazir CV",
-    "Hassan Nazir Contact",
-    "Hassan Nazir LinkedIn",
-    "Hassan Nazir GitHub",
-    "Hassan Nazir Freelancer",
-    "Hassan Nazir AI Automation",
-    "Hassan Nazir LLM",
-    "Hassan Nazir Machine Learning",
-    "Hassan Nazir DevOps",
-    "Hassan Nazir QA Engineer",
-    "Hassan Nazir Python Developer",
-    "Hassan Nazir Certified Ethical Hacker",
-    "Senior AI Engineer",
-    "CTO Pakistan",
-    "AI Engineer Pakistan",
+    'Hassan Nazir',
+    'Forward Deployed Engineer',
+    'Applied AI Engineer',
+    'AI systems engineer Pakistan',
+    'LLM agent engineering',
+    'AI automation consultant',
+    'production AI systems',
+    'full-stack AI engineer',
   ],
-  authors: [{ name: siteConfig.name }],
   creator: siteConfig.name,
-  metadataBase: new URL(siteConfig.url),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: siteConfig.url,
-    title: siteConfig.title,
-    description: siteConfig.description,
-    siteName: siteConfig.name,
-    images: [
-      {
-        url: siteConfig.ogImage,
-        width: 1200,
-        height: 630,
-        alt: siteConfig.name,
-      },
-    ],
+    images: [{ url: siteConfig.ogImage, width: 1024, height: 1024, alt: 'Hassan Nazir, Forward Deployed Engineer and Applied AI engineer' }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: siteConfig.title,
-    description: siteConfig.description,
-    images: [siteConfig.ogImage],
-    creator: "@hassannazir",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
-  verification: {
-    google: "your-google-verification-code",
-    yandex: "your-yandex-verification-code",
-    yahoo: "your-yahoo-verification-code",
-  },
+  twitter: { creator: '@hassannazir' },
 };
 
 export const pageMetadata = {
   home: {
-    title: "Hassan Nazir - Official Website | AI Systems Architect & Engineering Lead",
-    description: "Hassan Nazir is an AI Systems Architect & Engineering Lead with 3+ years of experience. Architected enterprise AI automation platforms (10K+ users, 99.9% uptime). Currently AI Architect at Uno OS, Full Stack Engineer at Gridcore. Contact for AI consulting and automation.",
-    keywords: ["Hassan Nazir", "Hassan Nazir AI Engineer", "Hassan Nazir Pakistan", "Hassan Nazir Portfolio", "Hassan Nazir Contact", "AI Systems Architect", "Uno OS", "NDT Legacy Group", "Gridcore"],
+    title: 'Hassan Nazir — Forward Deployed Engineer & Applied AI',
+    description: 'Forward Deployed Engineer building production AI systems, operational automation, and full-stack products. Explore Hassan Nazir’s deployments, open-source projects, writing, and experience.',
+    keywords: ['Hassan Nazir portfolio', 'Forward Deployed Engineer', 'Applied AI', 'production AI systems'],
   },
   work: {
-    title: "Hassan Nazir Work & Case Studies | AI, DevOps, QA Projects",
-    description: "Selected work and case studies: Enterprise AI Automation (NDT Legacy), Cloud Security Monitoring (Gridcore), Automated QA Framework (Brilliant Gaming). Real-world impact: 60% manual task reduction, 99.2% uptime, 70% testing time reduction.",
-    keywords: ["Hassan Nazir Work", "Hassan Nazir Case Studies", "NDT Legacy Group", "Gridcore", "Brilliant Gaming", "AI Automation", "QA Automation", "DevOps"],
+    title: 'Engineering Work & Case Studies — Hassan Nazir',
+    description: 'Selected product, automation, AI, cloud, and quality-engineering work by Forward Deployed Engineer Hassan Nazir, with scope, architecture, and measurable outcomes.',
+    keywords: ['Hassan Nazir projects', 'AI engineering case studies', 'automation portfolio', 'product engineering'],
   },
   blogs: {
-    title: "Hassan Nazir Blog | AI, Deep Learning, Computer Vision & Agentic AI",
-    description: "Expert articles from Hassan Nazir: prompt engineering, Zero Trust architecture, AI threat detection, transformers, agentic AI (LangChain), computer vision (SAM, DINOv2), and AI trends 2025. Practical code and tutorials.",
-    keywords: ["Hassan Nazir Blog", "AI Tutorials", "Deep Learning", "Computer Vision", "Agentic AI", "LangChain", "SAM", "DINOv2", "Prompt Engineering", "Zero Trust", "AI Trends 2025"],
+    title: 'Applied AI & Engineering Field Notes — Hassan Nazir',
+    description: 'Technical field notes by Hassan Nazir about agentic AI, LLM systems, computer vision, security architecture, deep learning, and production engineering.',
+    keywords: ['applied AI articles', 'agentic AI engineering', 'LLM systems', 'engineering field notes'],
   },
   contact: {
-    title: "Contact Hassan Nazir | AI Consulting & Automation",
-    description: "Contact Hassan Nazir for AI consulting, automation projects, and opportunities. Email: hassannazir955@gmail.com, Phone: +92 331 5892488. Available for freelance and full-time. Schedule a call or send a message.",
-    keywords: ["Contact Hassan Nazir", "Hassan Nazir Email", "Hassan Nazir Phone", "Hassan Nazir Hire", "Hassan Nazir Consulting"],
+    title: 'Contact Hassan Nazir — AI Engineering & Automation',
+    description: 'Contact Hassan Nazir about forward deployed engineering, applied AI systems, automation, architecture, and product delivery.',
+    keywords: ['hire Forward Deployed Engineer', 'AI engineering consultant', 'contact Hassan Nazir'],
   },
   about: {
-    title: "About Hassan Nazir | AI Systems Architect & Engineering Lead",
-    description: "Hassan Nazir: AI Systems Architect & Engineering Lead. 3+ years designing enterprise AI automation. 50+ projects, 10+ technologies. Foundation in computer science and cybersecurity. Innovation-driven engineer.",
-    keywords: ["About Hassan Nazir", "Hassan Nazir Background", "AI Systems Architect", "Engineering Lead"],
+    title: 'About Hassan Nazir — Forward Deployed Engineer',
+    description: 'Hassan Nazir embeds with teams to discover operational problems, build applied AI systems, integrate them, and own production outcomes.',
+    keywords: ['About Hassan Nazir', 'Forward Deployed Engineer', 'Applied AI Engineer'],
   },
   experience: {
-    title: "Work Experience | Hassan Nazir",
-    description: "Professional experience: AI Architect (Uno OS), Sr. AI Engineer (NDT Legacy Group), Full Stack Engineer (Gridcore), Senior AI Engineer (Schmoozzer), QA Automation Engineer (Brilliant Gaming), Independent Consultant (Fiverr/Upwork).",
-    keywords: ["Experience", "Uno OS", "NDT Legacy", "Gridcore", "Schmoozzer", "Brilliant Gaming", "Career"],
+    title: 'Engineering Experience — Hassan Nazir',
+    description: 'Hassan Nazir’s experience across AI architecture, full-stack engineering, production automation, infrastructure, and quality engineering.',
+    keywords: ['Hassan Nazir experience', 'AI Architect', 'Full Stack Engineer'],
   },
   education: {
-    title: "Education | Hassan Nazir",
-    description: "Associate Degree in Computer Science, Air University Islamabad (2020–2025). Coursework: Data Science, Cloud Computing, Machine Learning, AI, Algorithms, Database Systems.",
-    keywords: ["Education", "Air University", "Computer Science", "Hassan Nazir"],
+    title: 'Education & Credentials — Hassan Nazir',
+    description: 'Computer science education and security credentials held by Hassan Nazir, including CEH-P, PEH, and ISO/IEC 27001 training.',
+    keywords: ['Hassan Nazir education', 'Air University', 'CEH-P'],
   },
   certifications: {
-    title: "Certifications | Hassan Nazir",
-    description: "CEH-P (NUST-NCAI/NAVTTC), Practical Ethical Hacking (TCM Security), ISO/IEC 27001 Information Security Associate (SkillFront).",
-    keywords: ["Certifications", "CEH-P", "PEH", "ISO 27001", "Hassan Nazir"],
+    title: 'Security Certifications — Hassan Nazir',
+    description: 'Security credentials held by Hassan Nazir: CEH-P, Practical Ethical Hacking, and ISO/IEC 27001 Information Security Associate.',
+    keywords: ['Hassan Nazir certifications', 'CEH-P', 'ISO 27001'],
   },
   skills: {
-    title: "Technical Skills | Hassan Nazir",
-    description: "Languages: Python, JavaScript, TypeScript, SQL. Frameworks: React, Next.js, LangChain, Hugging Face, FastAPI. Tools: n8n, Zapier, Make, Docker, AWS, Git, Linux. AI/ML and full-stack development.",
-    keywords: ["Skills", "Python", "LangChain", "n8n", "React", "Docker", "Hassan Nazir"],
+    title: 'Applied AI & Engineering Skills — Hassan Nazir',
+    description: 'Applied AI, agents, RAG, TypeScript, Python, React, Next.js, FastAPI, automation, data systems, Docker, Kubernetes, and cloud delivery.',
+    keywords: ['Applied AI skills', 'LLM agents', 'Python', 'TypeScript', 'automation'],
   },
   projects: {
-    title: "Projects & Research | Hassan Nazir",
-    description: "AI Document Processor, DevOps Automation Pipeline, Intelligent Workflow Automation (n8n), QA Test Automation, Custom LLM Fine-tuning, Cloud Resource Optimizer. LangChain, Hugging Face, Docker, AWS.",
-    keywords: ["Projects", "Portfolio", "AI", "n8n", "LLM", "DevOps", "Hassan Nazir"],
+    title: 'Open-Source Engineering Projects — Hassan Nazir',
+    description: 'Original public systems by Hassan Nazir spanning agent-native SaaS, municipal intelligence, browser engines, legal AI, lead automation, and workflow infrastructure.',
+    keywords: ['Hassan Nazir GitHub', 'open-source AI projects', 'WonderKit', 'n8nHub'],
   },
-};
+} as const;
+
+const personId = `${siteConfig.url}/#hassan-nazir`;
+const websiteId = `${siteConfig.url}/#website`;
+const profilePageId = `${siteConfig.url}/#profile`;
 
 export const structuredData = {
   person: {
-    "@context": "https://schema.org",
-    "@type": "Person",
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    '@id': personId,
     name: siteConfig.name,
-    alternateName: ["Hassan Nazir AI Engineer", "Hassan Nazir AI Systems Architect", "Hassan Nazir Pakistan"],
-    jobTitle: "AI Systems Architect & Engineering Lead",
+    alternateName: ['Hassan Nazir', 'zimkk'],
+    jobTitle: 'Forward Deployed Engineer',
     description: siteConfig.description,
     url: siteConfig.url,
-    mainEntityOfPage: siteConfig.url,
-    ...(siteConfig.lastUpdated && { dateModified: siteConfig.lastUpdated }),
-    image: {
-      "@type": "ImageObject",
-      url: siteConfig.ogImage,
-      width: 1200,
-      height: 630,
-      caption: "Hassan Nazir - AI Systems Architect & Engineering Lead"
-    },
-    email: siteConfig.email,
-    telephone: siteConfig.phone,
-    nationality: "Pakistani",
-    birthPlace: "Pakistan",
+    image: siteConfig.ogImage,
+    email: `mailto:${siteConfig.email}`,
+    nationality: { '@type': 'Country', name: 'Pakistan' },
     homeLocation: {
-      "@type": "Place",
-      name: "Pakistan",
-      address: {
-        "@type": "PostalAddress",
-        addressCountry: "PK",
-        addressRegion: "Islamabad Capital Territory",
-        addressLocality: "Islamabad"
-      }
+      '@type': 'Place',
+      name: siteConfig.location,
+      address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' },
     },
-    address: {
-      "@type": "PostalAddress",
-      addressCountry: "PK",
-      addressRegion: "Islamabad Capital Territory",
-      addressLocality: "Islamabad"
-    },
-    sameAs: [
-      siteConfig.links.twitter,
-      siteConfig.links.github,
-      siteConfig.links.linkedin,
-      "https://www.fiverr.com/hassannazir",
-      "https://www.upwork.com/freelancers/hassannazir"
-    ],
-    worksFor: [
-      {
-        "@type": "Organization",
-        name: "Uno OS",
-        jobTitle: "AI Architect",
-        startDate: "2026-04"
-      },
-      {
-        "@type": "Organization",
-        name: "NDT Legacy Group",
-        jobTitle: "Sr. AI Engineer",
-        startDate: "2025-08",
-        endDate: "2026-04"
-      },
-      {
-        "@type": "Organization",
-        name: "Gridcore",
-        jobTitle: "Full Stack Engineer",
-        startDate: "2023-12"
-      },
-      {
-        "@type": "Organization",
-        name: "Schmoozzer",
-        jobTitle: "Senior AI Engineer",
-        startDate: "2025-10",
-        endDate: "2026-01"
-      }
-    ],
+    sameAs: [siteConfig.links.github, siteConfig.links.linkedin, siteConfig.links.twitter],
+    knowsLanguage: ['English', 'Urdu'],
     knowsAbout: [
-      "LLM Fine-tuning",
-      "LangChain",
-      "Hugging Face",
-      "n8n Automation",
-      "RAG Systems",
-      "Vector Databases",
-      "AI Agents",
-      "MLOps",
-      "DevOps",
-      "QA Automation",
-      "Python",
-      "JavaScript",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "Machine Learning",
-      "Artificial Intelligence",
-      "Process Automation"
+      'Forward deployed engineering', 'Applied artificial intelligence', 'AI agents', 'Retrieval-augmented generation',
+      'Large language model applications', 'Workflow automation', 'Product engineering', 'Full-stack engineering',
+      'Python', 'TypeScript', 'React', 'Next.js', 'FastAPI', 'PostgreSQL', 'Vector databases',
+      'Docker', 'Kubernetes', 'Amazon Web Services', 'Google Cloud Platform', 'Quality automation',
     ],
-    hasCredential: [
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "Certified Ethical Hacker - Practical (CEH-P)",
-        credentialCategory: "Certification",
-        recognizedBy: {
-          "@type": "Organization",
-          name: "NUST-NCAI / NAVTTC"
-        },
-        dateCreated: "2024"
-      },
-      {
-        "@type": "EducationalOccupationalCredential", 
-        name: "Practical Ethical Hacking (PEH)",
-        credentialCategory: "Certification",
-        recognizedBy: {
-          "@type": "Organization",
-          name: "TCM Security Academy"
-        },
-        dateCreated: "2023"
-      },
-      {
-        "@type": "EducationalOccupationalCredential",
-        name: "ISO/IEC 27001 Information Security Associate", 
-        credentialCategory: "Certification",
-        recognizedBy: {
-          "@type": "Organization",
-          name: "SkillFront"
-        },
-        dateCreated: "2023"
-      }
-    ],
+    alumniOf: { '@type': 'CollegeOrUniversity', name: 'Air University', sameAs: 'https://www.au.edu.pk/' },
+    mainEntityOfPage: { '@id': profilePageId },
   },
   website: {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': websiteId,
     name: siteConfig.name,
-    description: siteConfig.description,
+    alternateName: 'Hassan Nazir Engineering Portfolio',
     url: siteConfig.url,
-    ...(siteConfig.lastUpdated && { dateModified: siteConfig.lastUpdated }),
-    potentialAction: {
-      "@type": "SearchAction",
-      target: { "@type": "EntryPoint", urlTemplate: `${siteConfig.url}/blogs?q={search_term_string}` },
-      "query-input": "required name=search_term_string",
-    },
-    author: {
-      "@type": "Person",
-      name: siteConfig.name,
-    },
-  },
-  organization: {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: siteConfig.name,
-    url: siteConfig.url,
-    logo: siteConfig.ogImage,
     description: siteConfig.description,
+    inLanguage: 'en',
+    dateModified: siteConfig.lastUpdated,
+    publisher: { '@id': personId },
   },
-  breadcrumb: {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+  profilePage: {
+    '@context': 'https://schema.org',
+    '@type': 'ProfilePage',
+    '@id': profilePageId,
+    url: siteConfig.url,
+    name: siteConfig.title,
+    description: siteConfig.description,
+    dateModified: siteConfig.lastUpdated,
+    inLanguage: 'en',
+    isPartOf: { '@id': websiteId },
+    mainEntity: { '@id': personId },
+  },
+  service: {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    '@id': `${siteConfig.url}/#forward-deployed-engineering`,
+    name: 'Forward Deployed Engineering and Applied AI',
+    description: 'Operational discovery, AI prototyping, product engineering, systems integration, automation, rollout, and production ownership.',
+    provider: { '@id': personId },
+    areaServed: { '@type': 'Place', name: 'Worldwide' },
+    serviceType: ['Forward Deployed Engineering', 'Applied AI Systems', 'AI Agents', 'Workflow Automation', 'Full-Stack Product Engineering'],
+    url: `${siteConfig.url}/#contact`,
+  },
+  projects: {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    '@id': `${siteConfig.url}/#open-source-projects`,
+    name: 'Selected original open-source projects by Hassan Nazir',
+    numberOfItems: 6,
     itemListElement: [
-      {
-        "@type": "ListItem",
-        position: 1,
-        name: "Home",
-        item: siteConfig.url
-      }
-    ]
+      ['NY Municipal Decision-Maker Monitor', 'https://github.com/zimkk/erdman-ny-county', 'Python'],
+      ['WonderKit', 'https://github.com/zimkk/wonderkit', 'TypeScript'],
+      ['Google Maps Lead Scraper', 'https://github.com/zimkk/Lead-Scraper-Google-Maps', 'Python'],
+      ['Mynecraft', 'https://github.com/zimkk/mynecraft', 'TypeScript'],
+      ['Legal Document Summarizer', 'https://github.com/zimkk/legal-Document-Summerizer', 'Python'],
+      ['n8nHub', 'https://github.com/zimkk/n8nhub', 'TypeScript'],
+    ].map(([name, url, programmingLanguage], index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'SoftwareSourceCode',
+        name,
+        url,
+        codeRepository: url,
+        programmingLanguage,
+        author: { '@id': personId },
+      },
+    })),
   },
-  professionalService: {
-    "@context": "https://schema.org",
-    "@type": "ProfessionalService",
-    name: "Hassan Nazir - AI & Automation Services",
-    description: "AI Systems Architect & Engineering Lead. Services: enterprise AI automation, LLM fine-tuning, custom AI agents, workflow automation (n8n, Make), full-stack development, DevOps, QA automation.",
-    provider: {
-      "@type": "Person",
-      name: siteConfig.name
-    },
-    areaServed: "Worldwide",
-    serviceType: [
-      "AI Engineering",
-      "AI Systems Architecture",
-      "Automation Development",
-      "LLM Fine-tuning",
-      "Full Stack Development",
-      "DevOps Services",
-      "QA Automation"
-    ]
-  }
+  faq: {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    '@id': `${siteConfig.url}/#direct-answers`,
+    mainEntity: [
+      {
+        '@type': 'Question',
+        name: 'Who is Hassan Nazir?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Hassan Nazir is a Forward Deployed Engineer based in Islamabad, Pakistan. He builds applied AI systems, operational automation, and full-stack products from discovery through production.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What does forward deployed engineering mean in Hassan Nazir’s work?',
+        acceptedAnswer: { '@type': 'Answer', text: 'It means embedding with a team, learning the real operational workflow, prototyping against actual constraints, integrating the system, deploying it, and remaining accountable for production outcomes.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'What kinds of AI systems does Hassan Nazir build?',
+        acceptedAnswer: { '@type': 'Answer', text: 'His work includes AI agents, retrieval-augmented generation, document intelligence, LLM applications, vector search, model integration, evaluation, workflow automation, and the backend and infrastructure required to operate them.' },
+      },
+      {
+        '@type': 'Question',
+        name: 'Where can Hassan Nazir’s engineering work be verified?',
+        acceptedAnswer: { '@type': 'Answer', text: 'Original public source projects are available at github.com/zimkk, selected product work is documented at hassannazir.dev/work, and technical articles are published at hassannazir.dev/blogs.' },
+      },
+    ],
+  },
 };
+
+export const schemaIds = { personId, websiteId, profilePageId } as const;
+
+export const breadcrumbSchema = (items: Array<{ name: string; url: string }>) => ({
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
+  })),
+});

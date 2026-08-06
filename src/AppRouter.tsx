@@ -1,29 +1,29 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { HelmetProvider } from "react-helmet-async";
 import { App } from "./App";
-import WorkPage from "./pages/WorkPage";
-import BlogsPage from "./pages/BlogsPage";
-import BlogPost from "./pages/BlogPost";
 
-function RouteDebugger() {
-  const location = useLocation();
-  console.log('Current route:', location.pathname);
-  return null;
-}
+const WorkPage = lazy(() => import('./pages/WorkPage'));
+const JournalPage = lazy(() => import('./pages/JournalPage'));
+const ArticlePage = lazy(() => import('./pages/ArticlePage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 
 function AnimatedRoutes() {
   const location = useLocation();
   
   return (
     <AnimatePresence mode="wait" initial={false}>
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<App />} />
-        <Route path="/work" element={<WorkPage />} />
-        <Route path="/blogs" element={<BlogsPage />} />
-        <Route path="/blogs/:slug" element={<BlogPost />} />
-      </Routes>
+      <Suspense fallback={<main className="route-shell" aria-label="Loading page" />}>
+        <Routes location={location} key={location.pathname}>
+          <Route path="/" element={<App />} />
+          <Route path="/work" element={<WorkPage />} />
+          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/services/:slug" element={<ServicesPage />} />
+          <Route path="/blogs" element={<JournalPage />} />
+          <Route path="/blogs/:slug" element={<ArticlePage />} />
+        </Routes>
+      </Suspense>
     </AnimatePresence>
   );
 }
@@ -32,7 +32,6 @@ export function AppRouter() {
   return (
     <HelmetProvider>
       <BrowserRouter>
-        <RouteDebugger />
         <AnimatedRoutes />
       </BrowserRouter>
     </HelmetProvider>

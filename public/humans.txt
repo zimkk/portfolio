@@ -3,13 +3,15 @@
 
 # TEAM
 
-    Hassan Nazir -- AI Architect at Uno OS | AI Systems Architect & Engineering Lead -- hassannazir955@gmail.com
+    Hassan Nazir -- Forward Deployed Engineer & Applied AI -- hassannazir955@gmail.com
 
 # AI / LLM RESOURCES
 
     llms.txt: https://hassannazir.dev/llms.txt
-    llm.txt:  https://hassannazir.dev/llm.txt
-    robots.txt allows GPTBot, ClaudeBot, PerplexityBot, Google-Extended, and other AI crawlers
+    llms-full.txt: https://hassannazir.dev/llms-full.txt
+    portfolio.json: https://hassannazir.dev/portfolio.json
+    feed.xml: https://hassannazir.dev/feed.xml
+    robots.txt allows search and AI retrieval crawlers
 
 # THANKS
 
@@ -25,7 +27,7 @@
     
 # SITE
 
-    Last update: 2026/06/04
+    Last update: 2026/08/06
     Language: English
     Doctype: HTML5
 

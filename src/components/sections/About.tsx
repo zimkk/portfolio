@@ -10,13 +10,14 @@ const stats = [
 ];
 
 const focusAreas = [
-  'AI Systems Architecture',
+  'Forward Deployed Engineering',
+  'Applied AI Systems',
   'Event-Driven Automation',
   'Microservices & APIs',
   'Cloud & DevOps'
 ];
 
-const About = ({ }) => {
+const About = () => {
   return (
     <section id="about" className="py-16 md:py-24 px-4 sm:px-6 md:px-12 lg:px-20 bg-black">
       <div className="max-w-5xl mx-auto">
@@ -26,9 +27,8 @@ const About = ({ }) => {
           {/* Prose */}
           <Reveal className="lg:col-span-3 space-y-6 text-neutral-300 leading-relaxed">
             <p className="text-lg text-white">
-              I'm Hassan Nazir — a full-stack engineer and AI systems architect
-              building scalable distributed systems, microservices, and
-              high-availability backend platforms.
+              I'm Hassan Nazir — a Forward Deployed Engineer working across
+              applied AI, product engineering, and end-to-end systems delivery.
             </p>
             <p>
               I design REST and event-driven architectures that handle 10K+ daily

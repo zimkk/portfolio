@@ -1,23 +1,22 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
-import { siteConfig, defaultMetadata, pageMetadata, structuredData } from '../../config/metadata';
+import { breadcrumbSchema, defaultMetadata, pageMetadata, schemaIds, siteConfig, structuredData } from '../../config/metadata';
 
 interface SEOHeadProps {
   title?: string;
   description?: string;
-  keywords?: string[];
+  keywords?: readonly string[];
   image?: string;
   url?: string;
-  type?: 'website' | 'article';
+  type?: 'website' | 'article' | 'profile';
   page?: keyof typeof pageMetadata;
   noindex?: boolean;
-  /** ISO date for articles — helps crawlers and AI agents get fresh content */
   publishedTime?: string;
-  /** ISO date for articles */
   modifiedTime?: string;
-  /** Page-specific structured data (e.g. BlogPosting) */
   jsonLd?: object | object[];
 }
+
+const absoluteUrl = (value: string) => value.startsWith('http') ? value : `${siteConfig.url}${value.startsWith('/') ? value : `/${value}`}`;
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
@@ -25,121 +24,101 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   keywords = [],
   image,
   url,
-  type = 'website',
+  type,
   page,
   noindex = false,
   publishedTime,
   modifiedTime,
   jsonLd,
 }) => {
-  // Get page-specific metadata if page is provided
-  const pageMeta = page ? pageMetadata[page] : null;
-  
-  // Use provided values or fall back to defaults
+  const pageMeta = page ? pageMetadata[page] : undefined;
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
   const finalTitle = title || pageMeta?.title || defaultMetadata.title.default;
   const finalDescription = description || pageMeta?.description || defaultMetadata.description;
-  const finalKeywords = [...(pageMeta?.keywords || []), ...keywords, ...defaultMetadata.keywords];
-  const finalImage = image || defaultMetadata.openGraph.images[0].url;
-  const pathname = typeof window !== 'undefined' ? window.location.pathname : '';
-  const finalUrl = url || (pathname ? `${siteConfig.url}${pathname}` : siteConfig.url);
+  const finalKeywords = Array.from(new Set([...(pageMeta?.keywords || []), ...keywords, ...defaultMetadata.keywords]));
+  const finalImage = absoluteUrl(image || defaultMetadata.openGraph.images[0].url);
+  const finalUrl = url || `${siteConfig.url}${pathname === '/' ? '' : pathname.replace(/\/$/, '')}`;
+  const finalType = type || (page === 'home' ? 'profile' : 'website');
 
-  const jsonLdList = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+  const pageSchemas: object[] = [structuredData.person, structuredData.website];
+  if (page === 'home') pageSchemas.push(structuredData.profilePage, structuredData.service, structuredData.projects, structuredData.faq);
+  if (page === 'work') {
+    pageSchemas.push(breadcrumbSchema([
+      { name: 'Home', url: siteConfig.url },
+      { name: 'Work', url: `${siteConfig.url}/work` },
+    ]));
+  }
+  if (page === 'blogs') {
+    pageSchemas.push({
+      '@context': 'https://schema.org',
+      '@type': 'CollectionPage',
+      '@id': `${siteConfig.url}/blogs#collection`,
+      name: pageMetadata.blogs.title,
+      description: pageMetadata.blogs.description,
+      url: `${siteConfig.url}/blogs`,
+      inLanguage: 'en',
+      isPartOf: { '@id': schemaIds.websiteId },
+      author: { '@id': schemaIds.personId },
+    }, breadcrumbSchema([
+      { name: 'Home', url: siteConfig.url },
+      { name: 'Field notes', url: `${siteConfig.url}/blogs` },
+    ]));
+  }
+  if (jsonLd) pageSchemas.push(...(Array.isArray(jsonLd) ? jsonLd : [jsonLd]));
 
   return (
     <Helmet>
-      {/* Basic Meta Tags */}
+      <html lang="en" />
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
       <meta name="keywords" content={finalKeywords.join(', ')} />
-      <meta name="author" content={defaultMetadata.creator} />
-      <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow'} />
-      {/* Hint for crawlers and AI agents: content freshness */}
-      {(siteConfig as { lastUpdated?: string }).lastUpdated && (
-        <meta name="updated" content={(siteConfig as { lastUpdated: string }).lastUpdated} />
-      )}
-      
-      {/* Canonical URL */}
+      <meta name="author" content={siteConfig.name} />
+      <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
+      <meta name="googlebot" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
+      <meta name="date" content={modifiedTime || publishedTime || siteConfig.lastUpdated} />
+
       <link rel="canonical" href={finalUrl} />
-      
-      {/* Open Graph */}
-      <meta property="og:type" content={type} />
+      <link rel="alternate" type="text/plain" href="/llms.txt" title="AI-readable site index" />
+      <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Detailed AI-readable portfolio" />
+      <link rel="alternate" type="application/ld+json" href="/portfolio.json" title="Structured portfolio data" />
+      <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Hassan Nazir engineering field notes" />
+
+      <meta property="og:type" content={finalType} />
       <meta property="og:title" content={finalTitle} />
       <meta property="og:description" content={finalDescription} />
       <meta property="og:url" content={finalUrl} />
       <meta property="og:image" content={finalImage} />
-      <meta property="og:image:width" content="1200" />
-      <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={siteConfig.name} />
+      <meta property="og:image:secure_url" content={finalImage} />
+      <meta property="og:image:alt" content="Hassan Nazir — Forward Deployed Engineer and Applied AI" />
       <meta property="og:site_name" content={siteConfig.name} />
       <meta property="og:locale" content="en_US" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
       {modifiedTime && <meta property="article:modified_time" content={modifiedTime} />}
-      {type === 'article' && <meta property="article:author" content={siteConfig.name} />}
-      
-      {/* Twitter Card */}
+      {finalType === 'article' && <meta property="article:author" content={siteConfig.name} />}
+
       <meta name="twitter:card" content="summary_large_image" />
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalImage} />
+      <meta name="twitter:image:alt" content="Hassan Nazir — Forward Deployed Engineer and Applied AI" />
       <meta name="twitter:creator" content={defaultMetadata.twitter.creator} />
-      
-      {/* Additional Meta Tags */}
-      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-      <meta name="theme-color" content="#000000" />
-      <meta name="msapplication-TileColor" content="#000000" />
-      <meta name="format-detection" content="telephone=no" />
-      <meta name="mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-capable" content="yes" />
-      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-      <meta name="apple-mobile-web-app-title" content={siteConfig.name} />
-      
-      {/* Performance Hints */}
-      <meta httpEquiv="x-dns-prefetch-control" content="on" />
+
+      <meta name="theme-color" content="#08090c" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
-      
-      {/* Geographic Meta Tags */}
       <meta name="geo.region" content="PK-IS" />
-      <meta name="geo.country" content="PK" />
-      <meta name="ICBM" content="33.6844, 73.0479" />
-      <meta name="geo.position" content="33.6844;73.0479" />
       <meta name="geo.placename" content="Islamabad, Pakistan" />
-      
-      {/* Structured Data */}
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData.person)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData.website)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData.professionalService)}
-      </script>
-      <script type="application/ld+json">
-        {JSON.stringify(structuredData.breadcrumb)}
-      </script>
-      {jsonLdList.map((ld, i) => (
-        <script key={i} type="application/ld+json">
-          {JSON.stringify(ld)}
-        </script>
-      ))}
-      
-      {/* Favicon */}
-      <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+      <meta name="geo.position" content="33.6844;73.0479" />
+      <meta name="ICBM" content="33.6844, 73.0479" />
+
+      <link rel="icon" type="image/png" href="/images/profile.png" />
       <link rel="apple-touch-icon" href="/images/profile.png" />
-      
-      {/* Preconnect to external domains */}
+      <link rel="preconnect" href="https://api.fontshare.com" />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-      <link rel="preconnect" href="https://app.cal.com" />
-      <link rel="dns-prefetch" href="https://www.google-analytics.com" />
-      <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-      <link rel="dns-prefetch" href="https://api.github.com" />
-      <link rel="dns-prefetch" href="https://linkedin.com" />
 
-      {/* AI crawler resources */}
-      <link type="text/plain" rel="author" href="/humans.txt" />
-      <link rel="alternate" type="text/plain" href="/llms.txt" title="LLMs.txt - AI-readable site summary" />
-      <link rel="alternate" type="text/plain" href="/llm.txt" title="LLM.txt - AI-readable site summary" />
+      {pageSchemas.map((schema, index) => (
+        <script key={index} type="application/ld+json">{JSON.stringify(schema)}</script>
+      ))}
     </Helmet>
   );
 };

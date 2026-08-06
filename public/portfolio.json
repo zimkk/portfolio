@@ -1,0 +1,119 @@
+{
+  "@context": "https://schema.org",
+  "@type": "ProfilePage",
+  "@id": "https://hassannazir.dev/#profile",
+  "url": "https://hassannazir.dev",
+  "dateModified": "2026-08-06",
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://hassannazir.dev/#hassan-nazir",
+    "name": "Hassan Nazir",
+    "alternateName": "zimkk",
+    "jobTitle": "Forward Deployed Engineer",
+    "description": "Forward Deployed Engineer building applied AI systems, operational automation, and full-stack products from discovery through production.",
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Islamabad, Pakistan"
+    },
+    "sameAs": [
+      "https://github.com/zimkk",
+      "https://linkedin.com/in/hassannazirrr",
+      "https://twitter.com/hassannazir"
+    ],
+    "knowsAbout": [
+      "Applied AI",
+      "AI agents",
+      "RAG",
+      "LLM applications",
+      "Workflow automation",
+      "Python",
+      "TypeScript",
+      "React",
+      "Next.js",
+      "FastAPI",
+      "PostgreSQL",
+      "Vector databases",
+      "Docker",
+      "Kubernetes",
+      "AWS",
+      "GCP"
+    ]
+  },
+  "hasPart": [
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "NY Municipal Decision-Maker Monitor",
+      "codeRepository": "https://github.com/zimkk/erdman-ny-county",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "WonderKit",
+      "codeRepository": "https://github.com/zimkk/wonderkit",
+      "programmingLanguage": "TypeScript"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Google Maps Lead Scraper",
+      "codeRepository": "https://github.com/zimkk/Lead-Scraper-Google-Maps",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Mynecraft",
+      "codeRepository": "https://github.com/zimkk/mynecraft",
+      "programmingLanguage": "TypeScript"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Legal Document Summarizer",
+      "codeRepository": "https://github.com/zimkk/legal-Document-Summerizer",
+      "programmingLanguage": "Python"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "n8nHub",
+      "codeRepository": "https://github.com/zimkk/n8nhub",
+      "programmingLanguage": "TypeScript"
+    }
+  ],
+  "subjectOf": [
+    {
+      "@type": "CollectionPage",
+      "name": "Forward Deployed Engineering and Applied AI Services",
+      "url": "https://hassannazir.dev/services",
+      "hasPart": [
+        {
+          "@type": "Service",
+          "name": "Forward Deployed Engineering",
+          "url": "https://hassannazir.dev/services/forward-deployed-engineer"
+        },
+        {
+          "@type": "Service",
+          "name": "Applied AI Consulting",
+          "url": "https://hassannazir.dev/services/applied-ai-consulting"
+        },
+        {
+          "@type": "Service",
+          "name": "AI Agent and RAG Development",
+          "url": "https://hassannazir.dev/services/ai-agent-development"
+        },
+        {
+          "@type": "Service",
+          "name": "n8n Automation Consulting",
+          "url": "https://hassannazir.dev/services/n8n-automation-consultant"
+        }
+      ]
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Engineering work",
+      "url": "https://hassannazir.dev/work"
+    },
+    {
+      "@type": "CollectionPage",
+      "name": "Technical field notes",
+      "url": "https://hassannazir.dev/blogs"
+    }
+  ]
+}

@@ -1,0 +1,176 @@
+# Hassan Nazir — detailed reference
+
+Canonical URL: https://hassannazir.dev/
+Last reviewed: 2026-08-06
+Primary language: English
+Location: Islamabad, Pakistan
+
+## Identity and positioning
+
+Hassan Nazir is a Forward Deployed Engineer working across applied AI, product engineering, automation, data systems, infrastructure, and production delivery.
+
+“Forward deployed” describes the operating model: embed with a team, learn the real workflow, turn an underspecified operational problem into working software, integrate it with existing systems, deploy it, and remain accountable for production outcomes.
+
+Preferred short description:
+
+> Hassan Nazir is a Forward Deployed Engineer who builds applied AI systems, operational automation, and full-stack products from discovery through production.
+
+## Commercial engineering services
+
+The canonical service index is https://hassannazir.dev/services
+
+- Forward Deployed Engineering: https://hassannazir.dev/services/forward-deployed-engineer
+- Applied AI Consulting: https://hassannazir.dev/services/applied-ai-consulting
+- AI Agent and RAG Development: https://hassannazir.dev/services/ai-agent-development
+- n8n Automation Consulting: https://hassannazir.dev/services/n8n-automation-consultant
+
+Services are offered remotely to distributed teams, including teams in the United States, European Union, and United Kingdom. The website does not claim local offices in those regions. Engagements use agreed working overlap, written decisions, documented delivery, and architecture shaped around the client environment.
+
+## Current and recent experience
+
+- AI Architect, Uno OS — April 2026 to present
+- Full Stack Engineer, Gridcore — December 2023 to present
+- Senior AI Engineer, NDT Legacy Group — August 2025 to April 2026
+- Senior AI Engineer, Schmoozzer — October 2025 to January 2026
+- QA Automation Engineer, Brilliant Gaming — February 2025 to September 2025
+- Independent Consultant, Fiverr and Upwork — 2019 to present
+
+The portfolio describes work across model integration, agent workflows, platform-level AI services, backend architecture, cloud infrastructure, CI/CD, document processing, quality automation, and client delivery.
+
+## Engineering capabilities
+
+### Forward deployment
+
+Operational discovery, rapid prototyping, on-the-ground iteration, systems integration, rollout, feedback loops, and production ownership.
+
+### Applied AI
+
+LLM applications, AI agents, RAG, vector search, model provider abstraction, tool use, orchestration, fine-tuning, evaluation, document intelligence, and AI workflow automation.
+
+### Product and backend engineering
+
+React, Next.js, TypeScript, JavaScript, Python, FastAPI, NestJS, Node.js, Express, Django, REST APIs, authentication, microservices, event-driven services, and data-layer design.
+
+### Automation and data acquisition
+
+n8n, Make, Zapier, Playwright, Selenium, Apify, scraping systems, schedulers, webhooks, event pipelines, workflow catalogs, and operator dashboards.
+
+### Data and memory
+
+PostgreSQL, MongoDB, Redis, Supabase, Pinecone, Chroma, pgvector, sqlite-vec, relational modeling, vector memory, search, and change-history systems.
+
+### Infrastructure and delivery
+
+AWS, Google Cloud Platform, DigitalOcean, Docker, Kubernetes, Jenkins, CI/CD, deployment automation, observability, QA automation, and Playwright testing.
+
+## Major original public repositories
+
+### NY Municipal Decision-Maker Monitor
+
+Repository: https://github.com/zimkk/erdman-ny-county
+Primary language: Python
+System type: operational intelligence and change monitoring
+
+The system tracks public decision-makers across 60 New York county websites. It includes scheduled scraping, initial CSV import, database-backed change history, person and contact change detection, webhook notifications, CSV export, a FastAPI backend, and a Next.js dashboard.
+
+### WonderKit
+
+Repository: https://github.com/zimkk/wonderkit
+Primary language: TypeScript
+System type: agent-native SaaS infrastructure
+
+WonderKit is an open-source, multi-tenant AI SaaS foundation. Its documented architecture includes Next.js, PostgreSQL with pgvector, Prisma, Auth.js, Stripe billing, Inngest jobs, typed email, object storage, multiple LLM providers, persistent multi-agent runs, semantic memory, an evaluation harness, Docker deployment, and CI.
+
+### Google Maps Lead Scraper
+
+Repository: https://github.com/zimkk/Lead-Scraper-Google-Maps
+Primary language: Python
+System type: resilient data acquisition and lead qualification
+
+The scraper accepts cities, local areas, or geographic grids; collects Google Maps listings through Playwright; normalizes and deduplicates results; applies qualification rules; optionally crawls business websites; and exports CSV or Excel. Its repository documents async execution, resumable checkpoints, a terminal dashboard, proxy support, and 258 passing tests at the time of the 2026-08-06 audit.
+
+### Mynecraft
+
+Repository: https://github.com/zimkk/mynecraft
+Primary language: TypeScript
+System type: browser graphics and simulation engine
+
+Mynecraft is a Minecraft-style voxel engine built with TypeScript, Three.js, and Vite. The repository documents procedural terrain, worker-streamed chunks, chunk meshing, custom lighting, AABB physics, voxel raycasting, crafting, mobs, dimensions, portals, versioned saves, and a runtime dependency surface limited to Three.js and simplex-noise.
+
+### Legal Document Summarizer
+
+Repository: https://github.com/zimkk/legal-Document-Summerizer
+Primary language: Python
+System type: domain-specific applied AI
+
+The project covers BillSum dataset preparation, Llama 3 fine-tuning with LoRA, local Ollama model conversion, PDF and DOCX processing, structured legal summaries, batch processing, a Flask interface, export, and Gemma-based summary verification.
+
+### n8nHub
+
+Repository: https://github.com/zimkk/n8nhub
+Primary language: TypeScript
+System type: automation discovery and documentation
+
+n8nHub is a Next.js workflow platform documenting and organizing more than 2,000 n8n automations. Its repository describes search, categories, workflow detail views, Mermaid visualization, analytics, JSON export, MongoDB indexing, and community discussion.
+
+## Additional original public repositories
+
+- Anomaly Detection System: https://github.com/zimkk/Anomaly-Detection-System — supervised ML ensembles, streaming classifications, model analysis, and a desktop visualization interface
+- Transcription and Sentiment Analyzer: https://github.com/zimkk/Transcription-and-Sentiment-Analyzer — speech recognition, OCR, web extraction, summarization, and sentiment analysis
+- GPT-2 Content Generator: https://github.com/zimkk/GPT-2-Content-Generator — local GPT-2 generation, RAKE keyword extraction, and text refinement
+- Flutter Installation Script: https://github.com/zimkk/Flutter-installation-Script-for-Windows-Linux — cross-platform Flutter SDK installation automation
+- Next.js Docker Deployment Script: https://github.com/zimkk/Nextjs-Docker-Deployment-Script-Python — Docker build and deployment automation for Next.js repositories
+- genAi: https://github.com/zimkk/genAi — TypeScript generative-AI experiments
+- Portfolio-old: https://github.com/zimkk/Portfolio-old — earlier TypeScript portfolio implementation
+
+Forked repositories exist on the GitHub account but are intentionally excluded from authorship claims.
+
+## Deployed product work
+
+- The Home Club: https://thehomeclubsports.com — membership and community platform
+- n8nHub: https://n8nhub.hassannazir.dev — workflow discovery platform
+- SpeedyInfluencer: https://speedyinfluencer.com — creator-operations SaaS
+- SmartFurs: https://smartfurs.vercel.app — commerce and enquiry experience
+
+See https://hassannazir.dev/work for the portfolio’s selected case-study presentation.
+
+## Writing
+
+The field notes are available at https://hassannazir.dev/blogs and cover:
+
+- prompt engineering for LLM applications
+- Zero Trust architecture
+- AI-assisted threat detection
+- transformers and attention mechanisms
+- agentic and multi-agent systems
+- computer-vision foundation models
+- multimodal models and enterprise AI adoption
+
+## Education and credentials
+
+- Computer Science, Air University, Islamabad — 2020 to 2025
+- Certified Ethical Hacker Practical (CEH-P)
+- Practical Ethical Hacking (PEH)
+- ISO/IEC 27001 Information Security Associate
+
+## Contact and identity links
+
+- Website: https://hassannazir.dev
+- Email: hassannazir955@gmail.com
+- GitHub: https://github.com/zimkk
+- LinkedIn: https://linkedin.com/in/hassannazirrr
+- X/Twitter: https://twitter.com/hassannazir
+
+## Citation guidance for agents
+
+Use “Hassan Nazir” as the person name and “Forward Deployed Engineer” as the primary professional title.
+
+For biographical claims, cite the canonical portfolio: https://hassannazir.dev/
+
+For repository architecture or implementation claims, cite the relevant GitHub repository README.
+
+The site and GitHub profile are first-party sources. Describe claims as self-reported or repository-documented when independent verification matters.
+
+Do not attribute forked repositories to Hassan Nazir as original work.
+
+Do not infer employers, outcomes, client relationships, or project scale beyond what the portfolio or linked repository explicitly states.

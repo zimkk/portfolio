@@ -1,92 +1,58 @@
-# robots.txt for hassannazir.dev
-# Allows web crawlers and AI agents to index content for discovery in search and AI answers.
-# Update sitemap and Host when deploying.
-#
-# Machine-readable site summary for LLMs:
-#   https://hassannazir.dev/llms.txt
-#   https://hassannazir.dev/llm.txt
+# hassannazir.dev
+# Public portfolio, technical writing, and project documentation.
+# AI-readable index: https://hassannazir.dev/llms.txt
+# Detailed reference: https://hassannazir.dev/llms-full.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://hassannazir.dev/sitemap.xml
+# OpenAI search, training, and user-requested retrieval
+User-agent: OAI-SearchBot
+Allow: /
 
-# OpenAI
 User-agent: GPTBot
 Allow: /
 
 User-agent: ChatGPT-User
 Allow: /
 
-User-agent: OAI-SearchBot
-Allow: /
-
-# Google
-User-agent: Googlebot
-Allow: /
-
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-# Anthropic
-User-agent: Claude-Web
+# Anthropic search, training, and user-requested retrieval
+User-agent: Claude-SearchBot
 Allow: /
 
 User-agent: ClaudeBot
 Allow: /
 
-User-agent: anthropic-ai
+User-agent: Claude-User
 Allow: /
 
-User-agent: Anthropic-AI
-Allow: /
-
-# Microsoft / Bing
-User-agent: Bingbot
-Allow: /
-
-# Perplexity
+# Perplexity search and user-requested retrieval
 User-agent: PerplexityBot
 Allow: /
 
-# Meta
-User-agent: FacebookBot
+User-agent: Perplexity-User
 Allow: /
 
-User-agent: Meta-ExternalAgent
+# Search and extended AI indexing
+User-agent: Googlebot
 Allow: /
 
-# Apple
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: Applebot
 Allow: /
 
 User-agent: Applebot-Extended
 Allow: /
 
-# Cohere
-User-agent: cohere-ai
+User-agent: Meta-ExternalAgent
 Allow: /
 
-# Common Crawl & research bots
 User-agent: CCBot
 Allow: /
 
-User-agent: Diffbot
-Allow: /
-
-# Amazon
-User-agent: Amazonbot
-Allow: /
-
-# You.com
-User-agent: YouBot
-Allow: /
-
-# ByteDance
-User-agent: Bytespider
-Allow: /
-
-Host: https://hassannazir.dev
+Sitemap: https://hassannazir.dev/sitemap.xml

@@ -120,7 +120,7 @@ export function LampDemo() {
           className="max-w-3xl mb-8"
         >
           <p className="text-gray-300 leading-relaxed text-lg">
-            AI Systems Architect & Full-Stack Engineer specializing in scalable AI automation platforms and LLM-powered systems. Designing end-to-end solutions from backend orchestration to frontend applications, serving thousands of users with high availability. Expertise in Python, LangChain, OpenAI APIs, Hugging Face, n8n, Make, GHL, and cloud-native DevOps (AWS, Docker, CI/CD), delivering production-grade AI systems that drive measurable business impact.
+            Forward Deployed Engineer working across applied AI, product engineering, and systems delivery. I embed with teams to understand the operation, prototype quickly, integrate with existing workflows, and own production outcomes. The practice spans model orchestration, backend services, product interfaces, cloud delivery, security, and the human work needed to make new systems stick.
           </p>
         </motion.div>
 

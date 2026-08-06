@@ -1,81 +1,58 @@
-# robots.txt for hassannazir.dev
-# Allows web crawlers and AI agents to index content for discovery in search and AI answers.
-#
-# Machine-readable site summary for LLMs:
-#   https://hassannazir.dev/llms.txt
-#   https://hassannazir.dev/llm.txt
+# hassannazir.dev
+# Public portfolio, technical writing, and project documentation.
+# AI-readable index: https://hassannazir.dev/llms.txt
+# Detailed reference: https://hassannazir.dev/llms-full.txt
 
 User-agent: *
 Allow: /
 
-Sitemap: https://hassannazir.dev/sitemap.xml
-
-# OpenAI
-User-agent: GPTBot
-Allow: /
-User-agent: ChatGPT-User
-Allow: /
+# OpenAI search, training, and user-requested retrieval
 User-agent: OAI-SearchBot
 Allow: /
 
-# Google
-User-agent: Googlebot
-Allow: /
-User-agent: Googlebot-Image
-Allow: /
-User-agent: Google-Extended
+User-agent: GPTBot
 Allow: /
 
-# Anthropic
-User-agent: Claude-Web
+User-agent: ChatGPT-User
 Allow: /
+
+# Anthropic search, training, and user-requested retrieval
+User-agent: Claude-SearchBot
+Allow: /
+
 User-agent: ClaudeBot
 Allow: /
-User-agent: anthropic-ai
-Allow: /
-User-agent: Anthropic-AI
+
+User-agent: Claude-User
 Allow: /
 
-# Microsoft / Bing
-User-agent: Bingbot
-Allow: /
-
-# Perplexity
+# Perplexity search and user-requested retrieval
 User-agent: PerplexityBot
 Allow: /
 
-# Meta
-User-agent: FacebookBot
-Allow: /
-User-agent: Meta-ExternalAgent
+User-agent: Perplexity-User
 Allow: /
 
-# Apple
+# Search and extended AI indexing
+User-agent: Googlebot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
 User-agent: Applebot
 Allow: /
+
 User-agent: Applebot-Extended
 Allow: /
 
-# Cohere
-User-agent: cohere-ai
+User-agent: Meta-ExternalAgent
 Allow: /
 
-# Common Crawl & research bots
 User-agent: CCBot
 Allow: /
-User-agent: Diffbot
-Allow: /
 
-# Amazon
-User-agent: Amazonbot
-Allow: /
-
-# You.com
-User-agent: YouBot
-Allow: /
-
-# ByteDance
-User-agent: Bytespider
-Allow: /
-
-Host: https://hassannazir.dev
+Sitemap: https://hassannazir.dev/sitemap.xml

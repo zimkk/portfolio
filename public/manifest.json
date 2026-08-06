@@ -1,11 +1,11 @@
 {
-  "name": "Hassan Nazir - AI Systems Architect & Engineering Lead",
+  "name": "Hassan Nazir - Forward Deployed Engineer & Applied AI",
   "short_name": "Hassan Nazir",
-  "description": "AI Systems Architect & Engineering Lead. Enterprise AI automation, LangChain, n8n, full-stack. Portfolio, blog, and contact.",
+  "description": "Forward Deployed Engineer working across applied AI, product engineering, and production delivery. Portfolio, field notes, and contact.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#000000",
-  "theme_color": "#000000",
+  "background_color": "#08090c",
+  "theme_color": "#08090c",
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en",
@@ -83,7 +83,7 @@
       "name": "Contact Me",
       "short_name": "Contact",
       "description": "Get in touch with me",
-      "url": "/contact",
+      "url": "/#contact",
       "icons": [
         {
           "src": "/images/profile.png",

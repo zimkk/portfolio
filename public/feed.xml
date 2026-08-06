@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hassan Nazir — Applied AI &amp; Engineering Field Notes</title>
+    <link>https://hassannazir.dev/blogs</link>
+    <description>Technical writing about agentic AI, LLM systems, computer vision, security architecture, deep learning, and production engineering.</description>
+    <language>en</language>
+    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 GMT</lastBuildDate>
+    <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building Autonomous Multi-Agent Systems with LangChain and Modern Frameworks</title>
+      <link>https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt</guid>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Architectures, orchestration patterns, and implementation guidance for autonomous multi-agent systems.</description>
+    </item>
+    <item>
+      <title>SAM, DINOv2, and Foundation Models Transforming Visual AI</title>
+      <link>https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025</guid>
+      <pubDate>Sun, 26 Jan 2025 00:00:00 GMT</pubDate>
+      <description>A technical guide to modern computer-vision foundation models and practical implementation patterns.</description>
+    </item>
+    <item>
+      <title>Multimodal LLMs, Enterprise Adoption, and the Future of AI</title>
+      <link>https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption</guid>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
+      <description>An analysis of multimodal systems, enterprise adoption patterns, and production AI trends.</description>
+    </item>
+    <item>
+      <title>Transformers, Attention Mechanisms, and the Evolution of Deep Learning</title>
+      <link>https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025</guid>
+      <pubDate>Sat, 25 Jan 2025 00:00:00 GMT</pubDate>
+      <description>A deep technical explanation of transformers, attention, and modern neural architectures.</description>
+    </item>
+    <item>
+      <title>Advanced Prompt Engineering Techniques for Large Language Models</title>
+      <link>https://hassannazir.dev/blogs/advanced-prompt-engineering-llms</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/advanced-prompt-engineering-llms</guid>
+      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
+      <description>Practical prompting patterns for building more reliable large-language-model applications.</description>
+    </item>
+    <item>
+      <title>Implementing Zero Trust Architecture in Cloud Environments</title>
+      <link>https://hassannazir.dev/blogs/zero-trust-architecture-implementation</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/zero-trust-architecture-implementation</guid>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+      <description>A practical implementation guide to Zero Trust controls and cloud security architecture.</description>
+    </item>
+    <item>
+      <title>Building AI-Powered Threat Detection Systems</title>
+      <link>https://hassannazir.dev/blogs/ai-powered-threat-detection</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/ai-powered-threat-detection</guid>
+      <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
+      <description>From anomaly models to production monitoring: a practical guide to AI-assisted threat detection.</description>
+    </item>
+  </channel>
+</rss>
+
