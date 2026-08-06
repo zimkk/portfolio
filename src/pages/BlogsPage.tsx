@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { GlowingEffect } from '../components/ui/GlowingEffect';
-import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon, BookOpenIcon, ArrowRightIcon } from 'lucide-react';
-import FloatingNav from '../components/ui/FloatingNav';
+import { CalendarIcon, ClockIcon, TagIcon, ArrowRightIcon } from 'lucide-react';
+import EditorialNav from '../components/ui/EditorialNav';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 
@@ -3151,26 +3151,7 @@ const BlogsPage = () => {
     <PageTransition>
       <SEOHead page="blogs" />
       <div className="min-h-screen bg-black text-white">
-        {/* Floating Navigation */}
-        <FloatingNav />
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link 
-              to="/" 
-              className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-            >
-              <ArrowLeftIcon size={20} />
-              <span>Back to Home</span>
-            </Link>
-            <div className="flex items-center gap-2">
-              <BookOpenIcon size={20} className="text-white" />
-              <span className="font-semibold">Blog</span>
-            </div>
-          </div>
-        </div>
-      </header>
+        <EditorialNav />
 
       {/* Hero Section */}
       <section className="pt-24 pb-12 px-6 md:px-12 lg:px-20">

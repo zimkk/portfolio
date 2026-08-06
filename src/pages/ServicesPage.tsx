@@ -6,6 +6,8 @@ import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
 
+const PROJECT_CONTACT_HREF = 'mailto:hassannazir955@gmail.com?subject=Project%20inquiry';
+
 type ServicePage = {
   slug: string;
   name: string;
@@ -222,7 +224,7 @@ const ServicesPage = () => {
               <p>Engineering services for operational AI</p>
               <h1>Technical delivery where strategy usually breaks.</h1>
               <p>I work with US and European teams that need one engineer to connect discovery, models, software, integration, and production ownership.</p>
-              <div><a href="/#contact">Discuss the system <ArrowUpRight size={16} /></a><Link to="/work">Review case studies <ArrowRight size={16} /></Link></div>
+              <div><a href={PROJECT_CONTACT_HREF}>Discuss the system <ArrowUpRight size={16} /></a><Link to="/work">Review case studies <ArrowRight size={16} /></Link></div>
             </div>
             <figure><img src="/images/forward-deployed-services.webp" width="1440" height="810" fetchPriority="high" decoding="async" alt="Engineer embedded with an operations team in a production environment" /></figure>
           </section>
@@ -247,7 +249,7 @@ const ServicesPage = () => {
             </dl>
           </section>
 
-          <section className="route-cta"><p>Start with the operation</p><h2>Bring the workflow that is expensive, unclear, or stuck.</h2><a href="/#contact">Send a concise brief <ArrowRight size={18} /></a></section>
+          <section className="route-cta"><p>Start with the operation</p><h2>Bring the workflow that is expensive, unclear, or stuck.</h2><a href={PROJECT_CONTACT_HREF}>Send a concise brief <ArrowRight size={18} /></a></section>
           <footer className="route-footer"><Link to="/">Hassan Nazir</Link><p>Forward Deployed Engineer and Applied AI.</p><a href="mailto:hassannazir955@gmail.com">hassannazir955@gmail.com</a></footer>
         </main>
       </PageTransition>
@@ -279,7 +281,7 @@ const ServicesPage = () => {
             <Link to="/services">All engineering services</Link>
             <h1>{service.hero}</h1>
             <p>{service.directAnswer}</p>
-            <div><a href="/#contact">Discuss your system <ArrowUpRight size={16} /></a><a href={service.proof.href} target="_blank" rel="noopener noreferrer"><Github size={16} /> Review public proof</a></div>
+            <div><a href={PROJECT_CONTACT_HREF}>Discuss your system <ArrowUpRight size={16} /></a><a href={service.proof.href} target="_blank" rel="noopener noreferrer"><Github size={16} /> Review public proof</a></div>
           </div>
           <figure><img src={service.image} width="1440" height="810" fetchPriority="high" decoding="async" alt={service.imageAlt} /></figure>
         </section>
@@ -315,7 +317,7 @@ const ServicesPage = () => {
           <div>{servicePages.filter((item) => item.slug !== service.slug).map((item) => <Link to={`/services/${item.slug}`} key={item.slug}><span>{item.name}</span><ArrowUpRight size={17} /></Link>)}</div>
         </section>
 
-        <section className="route-cta"><p>Start with the difficult part</p><h2>Describe the system, the constraint, and what needs to change.</h2><a href="/#contact">Send a concise brief <ArrowRight size={18} /></a></section>
+        <section className="route-cta"><p>Start with the difficult part</p><h2>Describe the system, the constraint, and what needs to change.</h2><a href={PROJECT_CONTACT_HREF}>Send a concise brief <ArrowRight size={18} /></a></section>
         <footer className="route-footer"><Link to="/">Hassan Nazir</Link><p>{service.name}</p><a href="mailto:hassannazir955@gmail.com">Start a conversation</a></footer>
       </main>
     </PageTransition>

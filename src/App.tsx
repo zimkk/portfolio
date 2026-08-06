@@ -14,6 +14,7 @@ import {
   Send,
 } from 'lucide-react';
 import SEOHead from './components/ui/SEOHead';
+import EditorialNav from './components/ui/EditorialNav';
 import { EMAILJS_CONFIG } from './config/emailjs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
@@ -352,20 +353,7 @@ export function App() {
       <SEOHead page="home" />
       <main ref={page} className="portfolio-shell w-full max-w-full overflow-x-hidden">
         <div className="site-progress" aria-hidden="true"><i /></div>
-        <header className="site-nav">
-          <a href="#top" className="nav-brand" aria-label="Hassan Nazir, home">HASSAN / NAZIR</a>
-          <nav className="nav-links" aria-label="Primary navigation">
-            <a href="/services">Services</a>
-            <a href="#work">Deployments</a>
-            <a href="#experience">Experience</a>
-            <a href="/blogs">Field notes</a>
-            <a href="#contact">Contact</a>
-          </nav>
-          <div className="nav-actions">
-            <a className="nav-github" href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" aria-label="Hassan Nazir on GitHub"><Github size={17} /></a>
-            <button type="button" className="nav-resume nav-book" onClick={() => setBookingOpen(true)}>Start a project <ArrowUpRight size={14} /></button>
-          </div>
-        </header>
+        <EditorialNav onStartProject={() => setBookingOpen(true)} />
 
         <section id="top" className="hero-section fde-hero">
           <div className="hero-coordinate hero-coordinate-top">33.6844° N / 73.0479° E</div>

@@ -493,7 +493,7 @@ button { cursor: pointer; }
 
 .route-shell { min-height: 100vh; background: var(--ink); color: var(--paper); }
 .page-transition { animation: page-enter 360ms cubic-bezier(.22,1,.36,1) both; }
-@keyframes page-enter { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes page-enter { from { opacity: 0; } to { opacity: 1; } }
 .route-nav {
   position: fixed; z-index: 100; top: 0; left: 0;
   display: grid; grid-template-columns: 1fr auto 1fr; align-items: center;
@@ -504,7 +504,8 @@ button { cursor: pointer; }
 .route-nav nav { display: flex; gap: 30px; }
 .route-nav nav a { color: #a0a097; font-size: 13px; text-decoration: none; transition: color 200ms ease; }
 .route-nav nav a:hover { color: var(--paper); }
-.route-nav > a:last-child { display: inline-flex; align-items: center; justify-self: end; gap: 9px; padding-bottom: 4px; border-bottom: 1px solid #74746c; font-size: 13px; text-decoration: none; }
+.route-nav nav a.is-active { color: var(--paper); }
+.route-contact { display: inline-flex; align-items: center; justify-self: end; gap: 9px; padding: 0 0 4px; border: 0; border-bottom: 1px solid #74746c; background: transparent; color: inherit; font: inherit; font-size: 13px; text-decoration: none; cursor: pointer; }
 
 .archive-hero, .journal-hero {
   width: min(calc(100% - 48px),1380px); margin: 0 auto; padding: 175px 0 110px;
@@ -859,7 +860,7 @@ button { cursor: pointer; }
   .route-nav { grid-template-columns: 1fr auto; min-height: 62px; padding-inline: 15px; }
   .route-nav nav { display: none; }
   .route-brand { font-size: 11px; }
-  .route-nav > a:last-child { font-size: 10px; }
+  .route-contact { font-size: 10px; }
   .archive-hero, .journal-hero { width: calc(100% - 28px); padding: 125px 0 80px; }
   .archive-hero h1, .journal-hero h1 { font-size: clamp(3.6rem,16vw,6rem); }
   .archive-filters { gap: 10px 20px; width: calc(100% - 28px); margin-bottom: 55px; }

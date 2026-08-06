@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon, ShareIcon, BookOpenIcon } from 'lucide-react';
+import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon } from 'lucide-react';
 import { blogPosts } from './BlogsPage';
 import ReactMarkdown from 'react-markdown';
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { oneDark } from 'react-syntax-highlighter/dist/esm/styles/prism';
-import FloatingNav from '../components/ui/FloatingNav';
+import EditorialNav from '../components/ui/EditorialNav';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { siteConfig } from '../config/metadata';
@@ -68,31 +68,7 @@ const BlogPost = () => {
         jsonLd={blogPostingSchema}
       />
       <div className="min-h-screen bg-black text-white">
-        {/* Floating Navigation */}
-        <FloatingNav />
-      {/* Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-b border-gray-800/50">
-        <div className="container mx-auto px-6 py-4">
-          <div className="flex items-center justify-between">
-            <Link 
-              to="/blogs" 
-              className="flex items-center gap-3 text-gray-300 hover:text-white transition-colors"
-            >
-              <ArrowLeftIcon size={20} />
-              <span>Back to Blog</span>
-            </Link>
-            <div className="flex items-center gap-4">
-              <button className="p-2 text-gray-400 hover:text-white transition-colors">
-                <ShareIcon size={20} />
-              </button>
-              <div className="flex items-center gap-2">
-                <BookOpenIcon size={20} className="text-white" />
-                <span className="font-semibold">Blog</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+        <EditorialNav />
 
       {/* Article Header */}
       <article className="pt-24 pb-20">
