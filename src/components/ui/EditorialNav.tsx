@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowUpRight, Github } from 'lucide-react';
 
 type EditorialNavProps = {
   onStartProject?: () => void;
@@ -20,11 +20,16 @@ const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
         <NavLink to="/blogs" className={navClass}>Writing</NavLink>
         <a href={location.pathname === '/' ? '#contact' : '/#contact'}>Contact</a>
       </nav>
-      {onStartProject ? (
-        <button type="button" className="route-contact" onClick={onStartProject}>Start a project <ArrowUpRight size={14} /></button>
-      ) : (
-        <a className="route-contact" href="mailto:hassannazir955@gmail.com?subject=Project%20inquiry">Start a project <ArrowUpRight size={14} /></a>
-      )}
+      <div className="route-actions">
+        <a className="route-github" href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" aria-label="Hassan Nazir on GitHub">
+          <Github size={16} />
+        </a>
+        {onStartProject ? (
+          <button type="button" className="route-contact" onClick={onStartProject}>Start a project <ArrowUpRight size={14} /></button>
+        ) : (
+          <a className="route-contact" href="mailto:hassannazir955@gmail.com?subject=Project%20inquiry">Start a project <ArrowUpRight size={14} /></a>
+        )}
+      </div>
     </header>
   );
 };

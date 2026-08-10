@@ -19,7 +19,8 @@ import { EMAILJS_CONFIG } from './config/emailjs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
-const BookingModal = lazy(() => import('./components/ui/BookingModal'));
+const loadBookingModal = () => import('./components/ui/BookingModal');
+const BookingModal = lazy(loadBookingModal);
 
 const projects = [
   {
@@ -99,15 +100,6 @@ const marquee = ['FORWARD DEPLOYED', 'APPLIED AI', 'OPERATIONAL DISCOVERY', 'PRO
 
 const githubProjects = [
   {
-    name: 'NY Municipal Monitor',
-    repo: 'erdman-ny-county',
-    signal: 'Operational intelligence',
-    description: 'A decision-maker monitoring system spanning 60 New York county sites: scheduled collection, contact-history diffs, webhook alerts, and an operator-facing dashboard.',
-    proof: ['60 county sources', 'Change detection', 'FastAPI + Next.js'],
-    language: 'Python',
-    href: 'https://github.com/zimkk/erdman-ny-county',
-  },
-  {
     name: 'WonderKit',
     repo: 'wonderkit',
     signal: 'Agent-native infrastructure',
@@ -115,6 +107,24 @@ const githubProjects = [
     proof: ['4-agent runtime', '8 GitHub stars', 'Next.js + pgvector'],
     language: 'TypeScript',
     href: 'https://github.com/zimkk/wonderkit',
+  },
+  {
+    name: 'Vigil',
+    repo: 'vigil',
+    signal: 'Security research tooling',
+    description: 'A cybersecurity research tool built to help teams ship more complete products by making security work part of the engineering record.',
+    proof: ['Cybersecurity research', 'Python', 'Product assurance'],
+    language: 'Python',
+    href: 'https://github.com/zimkk/vigil',
+  },
+  {
+    name: 'NY Municipal Monitor',
+    repo: 'erdman-ny-county',
+    signal: 'Operational intelligence',
+    description: 'A decision-maker monitoring system spanning 60 New York county sites: scheduled collection, contact-history diffs, webhook alerts, and an operator-facing dashboard.',
+    proof: ['60 county sources', 'Change detection', 'FastAPI + Next.js'],
+    language: 'Python',
+    href: 'https://github.com/zimkk/erdman-ny-county',
   },
   {
     name: 'Maps Lead Engine',
@@ -180,6 +190,7 @@ export function App() {
   const page = useRef<HTMLElement>(null);
   const form = useRef<HTMLFormElement>(null);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [bookingReady, setBookingReady] = useState(false);
   const [bookingFloating, setBookingFloating] = useState(false);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
@@ -194,7 +205,7 @@ export function App() {
     intro
       .from('.masthead-word', { yPercent: 110, duration: 0.8, stagger: 0.08 })
       .from('.hero-foreground-word', { xPercent: -10, opacity: 0, duration: 0.72 }, '-=.55')
-      .from('.hero-actions, .hero-intro, .hero-role-note', { opacity: 0, y: 12, duration: 0.45, stagger: 0.06 }, '-=.4')
+      .from('.hero-actions, .hero-role-note', { opacity: 0, y: 12, duration: 0.45, stagger: 0.06 }, '-=.4')
       .to('.fde-forward', { scaleX: 1.02, transformOrigin: 'left center', duration: 0.75, ease: 'expo.inOut' }, '-=.65');
 
     gsap.to('.site-progress i', {
@@ -203,7 +214,7 @@ export function App() {
       scrollTrigger: { trigger: page.current, start: 'top top', end: 'bottom bottom', scrub: 0.2 },
     });
 
-    gsap.to('.fde-title, .hero-foreground-word', {
+    gsap.to('.fde-title', {
       scale: 0.91,
       yPercent: 14,
       ease: 'none',
@@ -212,15 +223,7 @@ export function App() {
         start: 'top top',
         end: 'bottom top',
         scrub: true,
-        onLeaveBack: () => gsap.set('.hero-foreground-word', { opacity: 1 }),
       },
-    });
-
-    gsap.to('.hero-media img', {
-      yPercent: 12,
-      scale: 1.1,
-      ease: 'none',
-      scrollTrigger: { trigger: '.fde-hero', start: 'top top', end: 'bottom top', scrub: true },
     });
 
     gsap.fromTo('.statement-word', { opacity: 0.11 }, {
@@ -243,7 +246,7 @@ export function App() {
         ScrollTrigger.create({
           trigger: '.github-overview',
           start: 'top 12%',
-          end: 'bottom 76%',
+          end: 'bottom bottom',
           pin: '.github-index',
           pinSpacing: false,
         });
@@ -312,17 +315,6 @@ export function App() {
       });
     });
 
-    const hero = page.current?.querySelector<HTMLElement>('.fde-hero');
-    const portrait = page.current?.querySelector<HTMLElement>('.hero-media');
-    const movePortrait = (event: PointerEvent) => {
-      if (!hero || !portrait || window.innerWidth < 768) return;
-      const bounds = hero.getBoundingClientRect();
-      const x = ((event.clientX - bounds.left) / bounds.width - 0.5) * 18;
-      const y = ((event.clientY - bounds.top) / bounds.height - 0.5) * 14;
-      gsap.to(portrait, { x, y, duration: 0.9, ease: 'power3.out', overwrite: 'auto' });
-    };
-    hero?.addEventListener('pointermove', movePortrait);
-    return () => hero?.removeEventListener('pointermove', movePortrait);
   }, { scope: page });
 
   useEffect(() => {
@@ -331,6 +323,26 @@ export function App() {
     window.addEventListener('scroll', syncBookingPosition, { passive: true });
     return () => window.removeEventListener('scroll', syncBookingPosition);
   }, []);
+
+  useEffect(() => {
+    const warmBooking = () => {
+      void loadBookingModal();
+      setBookingReady(true);
+    };
+    const idleWindow = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void };
+    const idleId = idleWindow.requestIdleCallback?.(warmBooking, { timeout: 1800 });
+    const timeoutId = idleId === undefined ? window.setTimeout(warmBooking, 900) : undefined;
+
+    return () => {
+      if (idleId !== undefined) idleWindow.cancelIdleCallback?.(idleId);
+      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
+    };
+  }, []);
+
+  const openBooking = () => {
+    setBookingReady(true);
+    setBookingOpen(true);
+  };
 
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
@@ -352,33 +364,24 @@ export function App() {
       <SEOHead page="home" />
       <main ref={page} className="portfolio-shell w-full max-w-full overflow-x-hidden">
         <div className="site-progress" aria-hidden="true"><i /></div>
-        <EditorialNav onStartProject={() => setBookingOpen(true)} />
+        <EditorialNav onStartProject={openBooking} />
 
         <section id="top" className="hero-section fde-hero">
           <div className="hero-coordinate hero-coordinate-top">33.6844° N / 73.0479° E</div>
-          <div className="hero-coordinate hero-coordinate-side">FIELD LOG / 2026</div>
-          <div className="hero-intro">
-            <span className="availability-dot" />
-            Forward Deployed Engineer / Applied AI
-          </div>
+          <div className="hero-orbit" aria-hidden="true"><span /><i /><b /></div>
           <h1 className="fde-title" aria-label="Forward Deployed Engineer">
             <span className="hero-line-wrap fde-line"><span className="masthead-word fde-forward">FORWARD</span></span>
             <span className="hero-line-wrap fde-line"><span className="masthead-word fde-deployed">DEPLOYED</span></span>
+            <span className="hero-line-wrap fde-line fde-engineer-line"><span className="masthead-word hero-foreground-word">ENGINEER</span></span>
           </h1>
-          <div className="hero-foreground-word" aria-hidden="true">ENGINEER</div>
-          <div className="hero-actions">
-            <a href="#work" className="hero-index-link">Enter the field notes <ArrowDown size={17} /></a>
-            <button type="button" onClick={() => setBookingOpen(true)} className={`hero-call-orbit hero-booking-origin${bookingFloating ? ' is-origin-hidden' : ''}`}><CalendarDays size={18} /><span>Book a working session</span></button>
-          </div>
-          <figure className="hero-media">
+          <figure className="hero-portrait">
             <img src="/images/profile-hero.webp" width="768" height="768" fetchPriority="high" decoding="async" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
-            <div className="hero-media-wash" />
-            <figcaption>
-              <strong>Hassan Nazir</strong>
-              <span>Forward Deployed Engineer · Applied AI</span>
-              <span>Islamabad, Pakistan</span>
-            </figcaption>
+            <figcaption>Hassan Nazir / Islamabad, Pakistan</figcaption>
           </figure>
+          <div className="hero-actions">
+            <a href="#work" className="hero-index-link">See selected work <ArrowDown size={17} /></a>
+            <button type="button" onClick={openBooking} className={`hero-call-orbit hero-booking-origin${bookingFloating ? ' is-origin-hidden' : ''}`}><CalendarDays size={18} /><span>Book a working session</span></button>
+          </div>
           <div className="hero-role-note"><strong>APPLIED / EMBEDDED / ACCOUNTABLE</strong><p>I embed with teams, turn ambiguous operational problems into working AI systems, and stay close enough to production to own the outcome.</p></div>
           <p className="hero-side-note">From the first messy workflow to production software used under real constraints.</p>
         </section>
@@ -601,7 +604,7 @@ export function App() {
             <p>Bring the difficult part.</p>
             <h2>Tell me what needs to work.</h2>
             <p>Architecture review, product engineering, AI integration, automation, or a system that has outgrown its first version.</p>
-            <button type="button" onClick={() => setBookingOpen(true)}>Prefer a call? Open my calendar <ArrowUpRight size={16} /></button>
+            <button type="button" onClick={openBooking}>Prefer a call? Open my calendar <ArrowUpRight size={16} /></button>
           </div>
           <form ref={form} onSubmit={handleSubmit} className="contact-form">
             <div className="form-row">
@@ -624,12 +627,12 @@ export function App() {
         </footer>
       </main>
       {bookingFloating && (
-        <button type="button" onClick={() => setBookingOpen(true)} className="hero-call-orbit global-booking-float" aria-label="Book a working session">
+        <button type="button" onClick={openBooking} className="hero-call-orbit global-booking-float" aria-label="Book a working session">
           <CalendarDays size={18} />
           <span>Book a working session</span>
         </button>
       )}
-      {bookingOpen && <Suspense fallback={null}><BookingModal isOpen onClose={() => setBookingOpen(false)} /></Suspense>}
+      {bookingReady && <Suspense fallback={null}><BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} /></Suspense>}
     </>
   );
 }

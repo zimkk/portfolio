@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { X } from 'lucide-react';
 
 interface BookingModalProps {
@@ -27,30 +27,24 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
   }, [isOpen, onClose]);
 
   return createPortal(
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[10000]">
-          {/* Backdrop */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/50 backdrop-blur-sm"
-          />
+    <div className={`fixed inset-0 z-[10000]${isOpen ? '' : ' pointer-events-none'}`} aria-hidden={!isOpen}>
+      <motion.div
+        initial={false}
+        animate={{ opacity: isOpen ? 1 : 0 }}
+        transition={{ duration: 0.2 }}
+        onClick={onClose}
+        className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+      />
 
-          {/* Panel */}
-          <motion.div
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', ease: [0.32, 0.72, 0, 1], duration: 0.4 }}
-            role="dialog"
-            aria-modal="true"
-            aria-label="Schedule a call"
-            className="absolute right-0 top-0 h-full w-full sm:w-[80%] lg:w-[45%] bg-black border-l border-neutral-800 flex flex-col"
-          >
+      <motion.div
+        initial={false}
+        animate={{ x: isOpen ? 0 : '100%' }}
+        transition={{ type: 'tween', ease: [0.32, 0.72, 0, 1], duration: 0.35 }}
+        role="dialog"
+        aria-modal={isOpen}
+        aria-label="Schedule a call"
+        className="absolute right-0 top-0 h-full w-full sm:w-[80%] lg:w-[45%] bg-black border-l border-neutral-800 flex flex-col"
+      >
             <div className="flex justify-between items-center px-6 py-5 border-b border-neutral-900">
               <div>
                 <h2 className="text-base font-medium text-white">Schedule a call</h2>
@@ -71,15 +65,14 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                 width="100%"
                 height="100%"
                 frameBorder="0"
+                loading="eager"
                 className="w-full h-full"
                 title="Schedule a call with Hassan Nazir"
                 allow="camera; microphone; fullscreen; speaker; display-capture"
               />
             </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>,
+      </motion.div>
+    </div>,
     document.body
   );
 };
