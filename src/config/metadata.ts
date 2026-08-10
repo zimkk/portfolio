@@ -7,7 +7,7 @@ export const siteConfig = {
   ogImage: 'https://hassannazir.dev/images/profile.png',
   location: 'Islamabad, Pakistan',
   email: 'hassannazir955@gmail.com',
-  lastUpdated: '2026-08-06',
+  lastUpdated: '2026-08-10',
   links: {
     github: 'https://github.com/zimkk',
     linkedin: 'https://linkedin.com/in/hassannazirrr',
@@ -67,11 +67,11 @@ export const pageMetadata = {
   experience: {
     title: 'Engineering Experience — Hassan Nazir',
     description: 'Hassan Nazir’s experience across AI architecture, full-stack engineering, production automation, infrastructure, and quality engineering.',
-    keywords: ['Hassan Nazir experience', 'AI Architect', 'Full Stack Engineer'],
+    keywords: ['Hassan Nazir experience', 'AI Architect', 'Software Architect', 'Full-Stack Engineer'],
   },
   education: {
     title: 'Education & Credentials — Hassan Nazir',
-    description: 'Computer science education and security credentials held by Hassan Nazir, including CEH-P, PEH, and ISO/IEC 27001 training.',
+    description: 'Associates in Science, Computer Science at Air University, plus security credentials including CEH-P, PEH, and ISO/IEC 27001 training.',
     keywords: ['Hassan Nazir education', 'Air University', 'CEH-P'],
   },
   certifications: {

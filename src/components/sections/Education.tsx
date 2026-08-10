@@ -19,12 +19,12 @@ const Education = ({ }) => {
 
         <Reveal className="border-t border-b border-neutral-900 py-8 grid grid-cols-1 md:grid-cols-[220px_1fr] gap-4 md:gap-12">
           <div>
-            <p className="text-sm font-mono text-neutral-500">2020 — 2025</p>
+            <p className="text-sm font-mono text-neutral-500">2020 — 2024</p>
             <p className="mt-2 text-xs text-neutral-600">Air University, Islamabad</p>
           </div>
           <div>
             <h3 className="text-lg font-medium text-white">
-              Associate Degree in Computer Science
+              Associates in Science, Computer Science
             </h3>
             <p className="mt-4 text-xs font-mono uppercase tracking-[0.2em] text-neutral-500 mb-3">
               Relevant Coursework

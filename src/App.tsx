@@ -57,30 +57,29 @@ const projects = [
 ];
 
 const experiences = [
-  { period: 'Apr 2026 — Present', role: 'AI Architect', company: 'Uno OS', mode: 'Full-time · Hybrid', detail: 'Defining model integration patterns, agent workflows, and platform-level AI service boundaries.' },
-  { period: 'Dec 2023 — Present', role: 'Full Stack Engineer', company: 'Gridcore', mode: 'Part-time · Hybrid', detail: 'Architecture standards, cloud infrastructure, CI/CD, and production systems operating at 99.9% reliability.' },
-  { period: 'Aug 2025 — Apr 2026', role: 'Senior AI Engineer', company: 'NDT Legacy Group', mode: 'Full-time · Hybrid', detail: 'Led an AI automation platform processing 10K+ daily transactions while reducing operational cost by 40%.' },
-  { period: 'Oct 2025 — Jan 2026', role: 'Senior AI Engineer', company: 'Schmoozzer', mode: 'Contract · Remote', detail: 'Delivered document-processing pipelines, conversational APIs, and reliable asynchronous services.' },
-  { period: 'Feb 2025 — Sep 2025', role: 'QA Automation Engineer', company: 'Brilliant Gaming', mode: 'Contract · Remote', detail: 'Led an eight-person QA team and built automation that cut test time by 50% across high-value payment flows.' },
-  { period: 'Dec 2022 — Nov 2023', role: 'QA Executive', company: 'Touchstone Communications', mode: 'Full-time · Hybrid', detail: 'Handled quality assurance and compliance across operational workflows, reviews, and reporting.' },
-  { period: '2019 — Present', role: 'Independent Consultant', company: 'Fiverr / Upwork', mode: 'Part-time · Remote', detail: 'Delivered 100+ automation, API, cloud, and model-integration solutions for distributed clients.' },
+  { period: 'Aug 2021 — Present', role: 'Software Architect & Full-Stack Engineer', company: 'GridCore', mode: 'Hybrid', detail: 'Promoted into lead architect ownership across web, mobile, and desktop teams; client discovery, NestJS/React delivery, and applied AI where it improves operations.' },
+  { period: 'May 2026 — Present', role: 'AI Architect', company: 'Uno OS', mode: 'Part-time · Remote', detail: 'Final technical decision-maker for the AI and software portfolio; architecting an AI-native business OS with a team of seven across four engagements.' },
+  { period: 'Aug 2025 — Apr 2026', role: 'Senior AI Engineer', company: 'NDT Legacy Group', mode: 'Part-time · Remote', detail: 'Led client AI automation from discovery through production using n8n, Zapier, REST APIs, and LLM integrations.' },
+  { period: 'Oct 2025 — Jan 2026', role: 'Senior AI Engineer', company: 'Schmoozzer', mode: 'Contract · Remote', detail: 'Built SMB automation with LLMs and n8n across 7–8 clients, including NY County auditing and reporting workflows.' },
+  { period: 'Feb 2025 — Sep 2025', role: 'Lead QA Engineer', company: 'Brilliant Gaming', mode: 'Contract · Remote', detail: 'Led an eight-person QA team validating EPWIN payment-critical casino flows with UI, API, and regression coverage.' },
+  { period: 'Dec 2022 — Nov 2023', role: 'QA Executive', company: 'Touchstone Communications', mode: 'Part-time · Hybrid', detail: 'Quality, compliance, and internal systems QA across 14+ teams; earlier stint Jul 2020 — May 2021.' },
 ];
 
 const capabilities = [
   {
     title: 'AI systems that survive production',
     body: 'RAG, agent orchestration, model gateways, evaluation, auditability, and the service boundaries around them.',
-    tools: ['LangChain', 'OpenAI / Claude', 'Hugging Face', 'PyTorch', 'n8n'],
+    tools: ['LangChain', 'MCP', 'Claude', 'Vector DBs', 'n8n'],
   },
   {
     title: 'Backend architecture under load',
     body: 'Event-driven services, versioned APIs, queues, data models, and observability designed as one operating system.',
-    tools: ['Python', 'FastAPI', 'Node.js', 'PostgreSQL', 'Redis'],
+    tools: ['TypeScript', 'NestJS', 'Node.js', 'PostgreSQL', 'Redis'],
   },
   {
     title: 'Delivery with security built in',
     body: 'Cloud infrastructure, CI/CD, containers, quality automation, identity, monitoring, and incident-ready controls.',
-    tools: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Playwright'],
+    tools: ['AWS', 'Docker', 'Kubernetes', 'Playwright', 'Cypress'],
   },
 ];
 
@@ -92,7 +91,7 @@ const notes = [
 
 const feedback = [
   { quote: 'The automation solution transformed our workflow efficiency beyond expectations.', author: 'Project Manager', company: 'NDT Legacy Group' },
-  { quote: 'The security monitoring system became the backbone of our infrastructure protection.', author: 'CTO', company: 'Gridcore' },
+  { quote: 'The security monitoring system became the backbone of our infrastructure protection.', author: 'CTO', company: 'GridCore' },
   { quote: 'The testing framework changed our development process and materially improved product quality.', author: 'Lead Developer', company: 'Brilliant Gaming' },
 ];
 
@@ -491,7 +490,7 @@ export function App() {
             ))}
           </div>
           <div className="credential-band chapter-reveal">
-            <div><p>Academic grounding</p><h3>Computer Science</h3><span>Air University, Islamabad · 2020—2025</span></div>
+            <div><p>Academic grounding</p><h3>Associates in Science, Computer Science</h3><span>Air University, Islamabad · 2020—2024</span></div>
             <div><p>Security credentials</p><h3>CEH-P · PEH · ISO/IEC 27001</h3><span>Practical offensive security and information-security management.</span></div>
           </div>
         </section>

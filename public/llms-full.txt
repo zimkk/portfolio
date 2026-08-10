@@ -1,7 +1,7 @@
 # Hassan Nazir — detailed reference
 
 Canonical URL: https://hassannazir.dev/
-Last reviewed: 2026-08-06
+Last reviewed: 2026-08-10
 Primary language: English
 Location: Islamabad, Pakistan
 
@@ -28,12 +28,12 @@ Services are offered remotely to distributed teams, including teams in the Unite
 
 ## Current and recent experience
 
-- AI Architect, Uno OS — April 2026 to present
-- Full Stack Engineer, Gridcore — December 2023 to present
+- Software Architect & Full-Stack Engineer, GridCore — August 2021 to present
+- AI Architect (Consulting), Uno OS — May 2026 to present
 - Senior AI Engineer, NDT Legacy Group — August 2025 to April 2026
 - Senior AI Engineer, Schmoozzer — October 2025 to January 2026
-- QA Automation Engineer, Brilliant Gaming — February 2025 to September 2025
-- Independent Consultant, Fiverr and Upwork — 2019 to present
+- Lead QA Engineer, Brilliant Gaming — February 2025 to September 2025
+- QA Executive, Touchstone Communications — December 2022 to November 2023 (earlier stint July 2020 to May 2021)
 
 The portfolio describes work across model integration, agent workflows, platform-level AI services, backend architecture, cloud infrastructure, CI/CD, document processing, quality automation, and client delivery.
 
@@ -148,10 +148,10 @@ The field notes are available at https://hassannazir.dev/blogs and cover:
 
 ## Education and credentials
 
-- Computer Science, Air University, Islamabad — 2020 to 2025
-- Certified Ethical Hacker Practical (CEH-P)
-- Practical Ethical Hacking (PEH)
-- ISO/IEC 27001 Information Security Associate
+- Associates in Science, Computer Science, Air University, Islamabad — 2020 to 2024
+- Certified Ethical Hacker Practical (CEH-P), EC-Council / NVTTI
+- Practical Ethical Hacking (PEH), TCM Security Academy
+- ISO/IEC 27001 Information Security Associate, SkillFront
 
 ## Contact and identity links
 
