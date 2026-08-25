@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
 import { X } from 'lucide-react';
@@ -10,6 +10,30 @@ interface BookingModalProps {
 }
 
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+
+  const scrollToTimeSelection = () => {
+    // Smoothly scroll down so time slots are immediately visible on date select
+    setTimeout(() => {
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTo({
+          top: 380,
+          behavior: 'smooth',
+        });
+      }
+    }, 150);
+
+    // Second tick in case animation/rendering has a slight transition delay
+    setTimeout(() => {
+      if (scrollContainerRef.current && scrollContainerRef.current.scrollTop < 200) {
+        scrollContainerRef.current.scrollTo({
+          top: 380,
+          behavior: 'smooth',
+        });
+      }
+    }, 350);
+  };
+
   useEffect(() => {
     if (!isOpen) return;
 
@@ -22,20 +46,45 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
           hideEventTypeDetails: false,
           layout: 'month_view',
         });
+
+        cal('on', {
+          action: 'dateSelected',
+          callback: () => {
+            scrollToTimeSelection();
+          },
+        });
       } catch (err) {
         console.warn('Cal.com embed notice:', err);
       }
     })();
 
+    const handleMessage = (event: MessageEvent) => {
+      try {
+        const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+        if (
+          data?.type === 'dateSelected' ||
+          data?.action === 'dateSelected' ||
+          data?.type === 'cal:dateSelected' ||
+          data?.data?.date
+        ) {
+          scrollToTimeSelection();
+        }
+      } catch {
+        // Ignore non-JSON postmessages
+      }
+    };
+
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') onClose();
     };
 
+    window.addEventListener('message', handleMessage);
     document.addEventListener('keydown', handleKeyDown);
     const previousOverflow = document.body.style.overflow;
     document.body.style.overflow = 'hidden';
 
     return () => {
+      window.removeEventListener('message', handleMessage);
       document.removeEventListener('keydown', handleKeyDown);
       document.body.style.overflow = previousOverflow;
     };
@@ -69,7 +118,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             className="absolute right-0 top-0 h-full w-full sm:w-[85%] lg:w-[48%] max-w-2xl bg-[#08090c] border-l border-neutral-800/80 flex flex-col shadow-2xl"
           >
             {/* Personalized Header */}
-            <div className="flex justify-between items-center px-6 py-4 border-b border-neutral-900 bg-[#08090c]">
+            <div className="flex justify-between items-center px-6 py-4 border-b border-neutral-900 bg-[#08090c] shrink-0">
               <div className="flex items-center gap-3.5">
                 <div className="relative w-10 h-10 rounded-full overflow-hidden border border-neutral-700/60 shrink-0 bg-neutral-900">
                   <img
@@ -98,8 +147,11 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
               </button>
             </div>
 
-            {/* Calendar Canvas */}
-            <div className="flex-1 w-full h-full overflow-y-auto bg-[#08090c]">
+            {/* Calendar Canvas with Auto-Scroll on Date Select */}
+            <div
+              ref={scrollContainerRef}
+              className="flex-1 w-full h-full overflow-y-auto bg-[#08090c] scroll-smooth"
+            >
               <Cal
                 calLink="hassan-nazir"
                 style={{ width: '100%', height: '100%', overflow: 'auto' }}
