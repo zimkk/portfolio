@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Calendar, Clock, Globe, Mail, X } from 'lucide-react';
+import { ArrowUpRight, Calendar, Check, Clock, Copy, Globe, Mail, ShieldCheck, X } from 'lucide-react';
 import Cal, { getCalApi } from '@calcom/embed-react';
 
 interface BookingModalProps {
@@ -10,7 +10,8 @@ interface BookingModalProps {
 }
 
 const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
-  const [calLoaded, setCalLoaded] = useState(false);
+  const [copied, setCopied] = useState(false);
+  const [bookingCompleted, setBookingCompleted] = useState(false);
 
   useEffect(() => {
     if (!isOpen) return;
@@ -26,7 +27,13 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
             hideEventTypeDetails: false,
             layout: 'month_view',
           });
-          setCalLoaded(true);
+
+          cal('on', {
+            action: 'bookingSuccessful',
+            callback: () => {
+              if (mounted) setBookingCompleted(true);
+            },
+          });
         }
       } catch (err) {
         console.warn('Cal.com embed notice:', err);
@@ -47,6 +54,16 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
       document.body.style.overflow = previousOverflow;
     };
   }, [isOpen, onClose]);
+
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText('https://cal.com/hassan-nazir');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      // ignore
+    }
+  };
 
   if (typeof document === 'undefined') return null;
 
@@ -106,15 +123,25 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                 <span className="flex items-center gap-1.5"><Clock size={13} className="text-neutral-500" /> 30 min session</span>
                 <span className="flex items-center gap-1.5"><Globe size={13} className="text-neutral-500" /> US / Global timezones</span>
               </div>
-              <a
-                href="https://cal.com/hassan-nazir"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-neutral-300 hover:text-white underline underline-offset-4 decoration-neutral-700 hover:decoration-neutral-400 flex items-center gap-1 transition-colors"
+              <button
+                type="button"
+                onClick={handleCopyLink}
+                className="text-neutral-300 hover:text-white flex items-center gap-1.5 transition-colors"
               >
-                Direct booking link <ArrowUpRight size={12} />
-              </a>
+                {copied ? <><Check size={12} className="text-emerald-400" /> Copied!</> : <><Copy size={12} /> Copy direct link</>}
+              </button>
             </div>
+
+            {/* Success Notification if user completes booking */}
+            {bookingCompleted && (
+              <div className="mx-6 mt-4 p-4 rounded-lg bg-emerald-950/40 border border-emerald-800/60 text-xs text-emerald-200 flex items-start gap-3">
+                <ShieldCheck size={18} className="text-emerald-400 shrink-0 mt-0.5" />
+                <div>
+                  <strong className="block text-sm text-emerald-100 font-medium mb-0.5">Session Booked Successfully</strong>
+                  <span>A calendar invite with Google Meet video link has been sent to your email. Looking forward to speaking!</span>
+                </div>
+              </div>
+            )}
 
             {/* Cal.com Embed Container */}
             <div className="flex-1 w-full h-full overflow-y-auto bg-[#08090c] relative">
@@ -126,9 +153,9 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
               {/* Instant Direct Action Bar at bottom */}
               <div className="p-4 border-t border-neutral-900 bg-neutral-950/80 flex items-center justify-between text-xs text-neutral-400">
-                <span>Prefer asynchronous email?</span>
+                <span>Prefer asynchronous brief?</span>
                 <a
-                  href="mailto:hassannazir955@gmail.com"
+                  href="mailto:hassannazir955@gmail.com?subject=Technical%20Working%20Session%20Brief"
                   className="flex items-center gap-1.5 text-neutral-300 hover:text-white hover:underline transition-colors"
                 >
                   <Mail size={13} />

@@ -27,7 +27,7 @@ const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
         {onStartProject ? (
           <button type="button" className="route-contact" onClick={onStartProject}>Start a project <ArrowUpRight size={14} /></button>
         ) : (
-          <a className="route-contact" href="mailto:hassannazir955@gmail.com?subject=Project%20inquiry">Start a project <ArrowUpRight size={14} /></a>
+          <a className="route-contact" href="/#contact">Start a project <ArrowUpRight size={14} /></a>
         )}
       </div>
     </header>
