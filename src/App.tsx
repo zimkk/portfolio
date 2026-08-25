@@ -493,7 +493,7 @@ export function App() {
             ))}
           </div>
           <div className="credential-band chapter-reveal">
-            <div><p>Academic grounding</p><h3>Associates in Science, Computer Science</h3><span>Air University, Islamabad · 2020—2024</span></div>
+            <div><p>Academic grounding</p><h3>Bachelors in Science, Computer Science</h3><span>Air University, Islamabad · 2020—2024</span></div>
             <div><p>Security credentials</p><h3>CEH-P · PEH · ISO/IEC 27001</h3><span>Practical offensive security and information-security management.</span></div>
           </div>
         </section>

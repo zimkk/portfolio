@@ -24,7 +24,7 @@ const Education = ({ }) => {
           </div>
           <div>
             <h3 className="text-lg font-medium text-white">
-              Associates in Science, Computer Science
+              Bachelors in Science, Computer Science
             </h3>
             <p className="mt-4 text-xs font-mono uppercase tracking-[0.2em] text-neutral-500 mb-3">
               Relevant Coursework

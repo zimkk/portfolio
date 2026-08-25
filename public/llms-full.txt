@@ -148,7 +148,7 @@ The field notes are available at https://hassannazir.dev/blogs and cover:
 
 ## Education and credentials
 
-- Associates in Science, Computer Science, Air University, Islamabad — 2020 to 2024
+- Bachelors in Science, Computer Science, Air University, Islamabad — 2020 to 2024
 - Certified Ethical Hacker Practical (CEH-P), EC-Council / NVTTI
 - Practical Ethical Hacking (PEH), TCM Security Academy
 - ISO/IEC 27001 Information Security Associate, SkillFront

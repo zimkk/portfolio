@@ -71,7 +71,7 @@ export const pageMetadata = {
   },
   education: {
     title: 'Education & Credentials — Hassan Nazir',
-    description: 'Associates in Science, Computer Science at Air University, plus security credentials including CEH-P, PEH, and ISO/IEC 27001 training.',
+    description: 'Bachelors in Science, Computer Science at Air University, plus security credentials including CEH-P, PEH, and ISO/IEC 27001 training.',
     keywords: ['Hassan Nazir education', 'Air University', 'CEH-P'],
   },
   certifications: {
