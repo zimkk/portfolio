@@ -42,6 +42,12 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
   const pageSchemas: object[] = [structuredData.person, structuredData.website];
   if (page === 'home') pageSchemas.push(structuredData.profilePage, structuredData.service, structuredData.projects, structuredData.faq);
+  if (page === 'services') {
+    pageSchemas.push(structuredData.service, breadcrumbSchema([
+      { name: 'Home', url: siteConfig.url },
+      { name: 'Services', url: `${siteConfig.url}/services` },
+    ]));
+  }
   if (page === 'work') {
     pageSchemas.push(breadcrumbSchema([
       { name: 'Home', url: siteConfig.url },

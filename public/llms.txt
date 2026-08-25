@@ -1,54 +1,59 @@
-# Hassan Nazir
+# Engineering Services: Forward Deployed Engineering, AI Automations & Full-Stack Software Development
 
-> Hassan Nazir is a Forward Deployed Engineer based in Islamabad, Pakistan. He embeds with teams to turn ambiguous operational problems into deployed AI systems, automation, and full-stack products, then stays close to production ownership.
+> Hassan Nazir is a Forward Deployed Engineer and Full-Stack AI Architect. He provides specialized engineering services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG Architectures, and n8n Enterprise Workflows. Available for US (EST/CST/PST) and global remote engagements.
 
-This is the canonical machine-readable index for Hassan Nazir’s public portfolio. Last reviewed: 2026-08-06.
+This is the canonical machine-readable index for Hassan Nazir’s engineering services and public portfolio. Last reviewed: 2026-08-26.
+
+## Commercial engineering services (US & Global Remote)
+
+- [Forward Deployed Engineering](https://hassannazir.dev/services/forward-deployed-engineer): Embedded discovery, prototyping, system integration, rollout, and production delivery
+- [AI Automations & n8n Consulting](https://hassannazir.dev/services/n8n-automation-consultant): Enterprise workflow automation, AI pipelines, API integrations, and self-hosted n8n systems
+- [Full-Stack Software Development](https://hassannazir.dev/services/full-stack-software-development): Production web apps, custom AI SaaS platforms, performant APIs, and database architecture with React, Next.js, Python, FastAPI, and PostgreSQL
+- [AI Agent and RAG Development](https://hassannazir.dev/services/ai-agent-development): Multi-agent systems, LangGraph, hybrid vector search, pgvector memory, and durable job orchestration
+- [Applied AI Consulting](https://hassannazir.dev/services/applied-ai-consulting): Production LLM applications, document intelligence, safety guardrails, and evaluation frameworks
 
 ## Canonical resources
 
+- [Services Index](https://hassannazir.dev/services): Complete commercial services catalog
 - [Portfolio](https://hassannazir.dev/): Identity, selected deployments, experience, public engineering work, technical range, and contact
-- [Detailed machine-readable profile](https://hassannazir.dev/llms-full.txt): Extended facts, project descriptions, technical stack, and citation guidance
-- [Structured portfolio data](https://hassannazir.dev/portfolio.json): JSON-LD identity, skills, and original project graph
-- [Field notes RSS feed](https://hassannazir.dev/feed.xml): Lightweight article discovery feed
+- [Detailed machine-readable profile](https://hassannazir.dev/llms-full.txt): Extended facts, project descriptions, technical stack, US client engagement model, and citation guidance
+- [Structured portfolio data](https://hassannazir.dev/portfolio.json): JSON-LD identity, skills, credentials, and original project graph
+- [Field notes RSS feed](https://hassannazir.dev/feed.xml): Technical article discovery feed
 - [Engineering work](https://hassannazir.dev/work): Product and delivery case studies
-- [Engineering services](https://hassannazir.dev/services): Commercial delivery options for applied AI and operational software
 - [Technical field notes](https://hassannazir.dev/blogs): Long-form articles about applied AI, security, computer vision, and production engineering
 - [GitHub profile](https://github.com/zimkk): Public source repositories
 - [LinkedIn profile](https://linkedin.com/in/hassannazirrr): Professional profile
 
-## Engineering services
+## Primary technical capabilities
 
-- [Forward Deployed Engineering](https://hassannazir.dev/services/forward-deployed-engineer): Embedded discovery, implementation, integration, deployment, and production ownership
-- [Applied AI Consulting](https://hassannazir.dev/services/applied-ai-consulting): Production LLM applications, document intelligence, evaluation, safeguards, and infrastructure
-- [AI Agent and RAG Development](https://hassannazir.dev/services/ai-agent-development): Tool-using agents, retrieval, durable execution, permissions, evaluation, and product engineering
-- [n8n Automation Consulting](https://hassannazir.dev/services/n8n-automation-consultant): Reliable AI workflows, API integration, self-hosting, recovery, and operational documentation
+- **Full-Stack Development**: TypeScript, Python, React, Next.js, FastAPI, Node.js, PostgreSQL, pgvector, Redis, Docker, AWS, GCP
+- **AI Automations & Workflows**: n8n, LangGraph, Make, Zapier, Playwright, webhook pipelines, scheduled collectors, lead scrapers
+- **Applied AI & Agents**: LLM applications, multi-agent systems, RAG, vector databases (Qdrant, Pinecone, Chroma), model fine-tuning (LoRA), prompt engineering, evaluation
+- **Cybersecurity & Cloud**: Certified Ethical Hacker Practical (CEH-P), Practical Ethical Hacking (PEH), ISO/IEC 27001 Associate
 
-## Selected original source projects
+## Education & credentials
 
-- [NY Municipal Decision-Maker Monitor](https://github.com/zimkk/erdman-ny-county): Python, FastAPI, and Next.js system that monitors public contacts across 60 New York county sites, detects changes, stores history, and emits webhook notifications
-- [WonderKit](https://github.com/zimkk/wonderkit): Agent-native TypeScript SaaS foundation with multi-tenant auth, provider-swappable LLMs, durable agent runs, pgvector memory, evaluation, billing, and deployment paths
-- [Google Maps Lead Scraper](https://github.com/zimkk/Lead-Scraper-Google-Maps): Async, resumable Playwright system for geographic business discovery, qualification, deduplication, and CSV or Excel export
-- [Mynecraft](https://github.com/zimkk/mynecraft): Browser voxel engine written in TypeScript with Three.js, procedural terrain, worker-streamed chunks, custom lighting, physics, mob AI, multiple dimensions, and versioned saves
-- [Legal Document Summarizer](https://github.com/zimkk/legal-Document-Summerizer): Local legal-document pipeline for Llama 3 fine-tuning, PDF and DOCX processing, structured summarization, and Gemma-based verification
-- [n8nHub](https://github.com/zimkk/n8nhub): Searchable Next.js automation knowledge platform organizing more than 2,000 n8n workflows
+- Bachelors in Science, Computer Science — Air University, Islamabad (2020–2024)
+- Certified Ethical Hacker Practical (CEH-P) — EC-Council / NVTTI
+- Practical Ethical Hacking (PEH) — TCM Security Academy
+- ISO/IEC 27001 Information Security Associate — SkillFront
 
-## Technical field notes
+## Major original open-source software
 
-- [Advanced Prompt Engineering for Large Language Models](https://hassannazir.dev/blogs/advanced-prompt-engineering-llms)
-- [Implementing Zero Trust Architecture in Cloud Environments](https://hassannazir.dev/blogs/zero-trust-architecture-implementation)
-- [Building AI-Powered Threat Detection Systems](https://hassannazir.dev/blogs/ai-powered-threat-detection)
-- [Transformers, Attention, and the Evolution of Deep Learning](https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025)
-- [Building Autonomous Multi-Agent Systems](https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt)
-- [SAM, DINOv2, and Foundation Models for Computer Vision](https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025)
-- [Multimodal LLMs and Enterprise AI Adoption](https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption)
+- [WonderKit](https://github.com/zimkk/wonderkit): Agent-native Full-Stack TypeScript SaaS foundation with pgvector, multi-tenant auth, durable agent runs, and Stripe billing
+- [NY Municipal Decision-Maker Monitor](https://github.com/zimkk/erdman-ny-county): Python, FastAPI, and Next.js government change monitoring system
+- [Google Maps Lead Scraper](https://github.com/zimkk/Lead-Scraper-Google-Maps): Resilient Playwright lead extraction engine with 250+ passing tests
+- [Mynecraft](https://github.com/zimkk/mynecraft): Browser 3D voxel engine written in TypeScript with Three.js and worker-streamed procedural terrain
+- [Legal Document Summarizer](https://github.com/zimkk/legal-Document-Summerizer): Fine-tuned Llama 3 legal summarization and Gemma verification pipeline
+- [n8nHub](https://github.com/zimkk/n8nhub): Next.js platform organizing 2,000+ n8n workflow automations
 
-## Contact
+## Contact & commercial inquiries
 
 - Email: [hassannazir955@gmail.com](mailto:hassannazir955@gmail.com)
-- Location: Islamabad, Pakistan
 - Work inquiries: [portfolio contact section](https://hassannazir.dev/#contact)
+- US & international remote collaboration available with EST/CST/PST timezone overlap
 
-## Optional
+## Search & verification
 
 - [Sitemap](https://hassannazir.dev/sitemap.xml): Canonical indexable URLs
 - [robots.txt](https://hassannazir.dev/robots.txt): Search and AI crawler access

@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://hassannazir.dev/</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/services</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/services/forward-deployed-engineer</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/services/applied-ai-consulting</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/services/ai-agent-development</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/services/n8n-automation-consultant</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/work</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/blogs</loc><lastmod>2026-08-06</lastmod></url>
+  <url><loc>https://hassannazir.dev/</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services/forward-deployed-engineer</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services/applied-ai-consulting</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services/ai-agent-development</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services/n8n-automation-consultant</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/services/full-stack-software-development</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/work</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/blogs</loc><lastmod>2026-08-26</lastmod></url>
   <url><loc>https://hassannazir.dev/blogs/advanced-prompt-engineering-llms</loc><lastmod>2025-01-15</lastmod></url>
   <url><loc>https://hassannazir.dev/blogs/zero-trust-architecture-implementation</loc><lastmod>2025-01-10</lastmod></url>
   <url><loc>https://hassannazir.dev/blogs/ai-powered-threat-detection</loc><lastmod>2025-01-05</lastmod></url>
@@ -15,7 +16,7 @@
   <url><loc>https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt</loc><lastmod>2025-01-27</lastmod></url>
   <url><loc>https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025</loc><lastmod>2025-01-26</lastmod></url>
   <url><loc>https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption</loc><lastmod>2025-01-27</lastmod></url>
-  <url><loc>https://hassannazir.dev/llms.txt</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/llms-full.txt</loc><lastmod>2026-08-06</lastmod></url>
-  <url><loc>https://hassannazir.dev/llm.txt</loc><lastmod>2026-08-06</lastmod></url>
+  <url><loc>https://hassannazir.dev/llms.txt</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/llms-full.txt</loc><lastmod>2026-08-26</lastmod></url>
+  <url><loc>https://hassannazir.dev/llm.txt</loc><lastmod>2026-08-26</lastmod></url>
 </urlset>

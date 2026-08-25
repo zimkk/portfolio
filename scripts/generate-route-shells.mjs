@@ -78,10 +78,18 @@ const services = [
   {
     slug: 'n8n-automation-consultant',
     image: '/images/projects/n8nhub.webp',
-    title: 'n8n Automation Consultant for AI Workflows and Integrations | Hassan Nazir',
-    description: 'n8n automation consulting for reliable AI workflows, API integrations, data pipelines, lead operations, document processing, and self-hosted production delivery.',
+    title: 'AI Automations & n8n Workflow Consulting | Hassan Nazir',
+    description: 'n8n automation consulting and AI workflows, API integrations, data pipelines, lead operations, document processing, and self-hosted production delivery.',
     heading: 'Automate the operation, not just the happy path.',
-    serviceType: 'n8n Automation Consulting',
+    serviceType: 'AI Automations & n8n Consulting',
+  },
+  {
+    slug: 'full-stack-software-development',
+    image: '/images/projects/wonderkit.webp',
+    title: 'Full-Stack Software Development & Custom AI Systems | Hassan Nazir',
+    description: 'Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.',
+    heading: 'Engineered for production from database to interface.',
+    serviceType: 'Full-Stack Software Development',
   },
 ];
 
@@ -168,9 +176,10 @@ for (const route of routes) {
           url: canonical,
           provider: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
           areaServed: [
-            { '@type': 'Country', name: 'United States' },
+            { '@type': 'Country', name: 'United States', identifier: 'US' },
+            { '@type': 'Place', name: 'North America' },
+            { '@type': 'Country', name: 'United Kingdom', identifier: 'GB' },
             { '@type': 'Place', name: 'European Union' },
-            { '@type': 'Country', name: 'United Kingdom' },
             { '@type': 'Place', name: 'Worldwide' },
           ],
         }

@@ -1,10 +1,13 @@
-# Hassan Nazir
+# Hassan Nazir — Forward Deployed Engineer & Applied AI Architect
 
 Canonical AI-readable index: https://hassannazir.dev/llms.txt
 Detailed reference: https://hassannazir.dev/llms-full.txt
 
-Hassan Nazir is a Forward Deployed Engineer based in Islamabad, Pakistan who builds applied AI systems, operational automation, and full-stack products from discovery through production.
+Hassan Nazir is a Forward Deployed Engineer and Applied AI Architect who builds applied AI systems, autonomous multi-agent pipelines (LangGraph), RAG architectures, operational automation, and full-stack software products for US and global teams.
 
 Official portfolio: https://hassannazir.dev/
 GitHub: https://github.com/zimkk
 LinkedIn: https://linkedin.com/in/hassannazirrr
+Education: Bachelors in Science, Computer Science — Air University, Islamabad (2020–2024)
+Credentials: CEH-P, Practical Ethical Hacking, ISO/IEC 27001
+US & Global Remote: Available across EST/CST/PST timezone overlap.

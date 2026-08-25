@@ -11,7 +11,7 @@ const workProjects = [
     client: 'NDT Legacy Group',
     duration: '6 months',
     year: '2025',
-    category: 'AI / Automation',
+    category: 'AI Automations',
     description: 'A production automation platform spanning document processing, AI decision support, internal services, third-party APIs, queues, and audit controls.',
     image: '/images/ai-automation.jpg',
     technologies: ['Python', 'n8n', 'LangChain', 'OpenAI API', 'PostgreSQL', 'Docker'],
@@ -20,6 +20,21 @@ const workProjects = [
     results: ['60% less manual processing', '95% automated-decision accuracy', '$200K+ estimated annual savings'],
     stats: [['Manual work', '−60%'], ['Accuracy', '95%'], ['Annual value', '$200K+']],
     href: 'https://n8nhub.hassannazir.dev',
+  },
+  {
+    title: 'Full-Stack Membership & Athletic Platform',
+    client: 'The Home Club',
+    duration: '5 months',
+    year: '2025',
+    category: 'Full-Stack Development',
+    description: 'A custom full-stack sports platform unifying memberships, program enrollments, real-time court scheduling, and payment pipelines.',
+    image: '/images/projects/the-home-club.webp',
+    technologies: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
+    challenges: ['High-concurrency court booking slots', 'Unified billing with Stripe subscription lifecycle', 'Responsive zero-latency client UI'],
+    solutions: ['Serverless Next.js API routes with transaction isolation', 'Optimistic concurrency control for slot reservations', 'Modular component architecture with server components'],
+    results: ['99.9% booking uptime', '4x increase in online member self-service', 'Zero double-booking incidents'],
+    stats: [['Uptime', '99.9%'], ['Self-service', '+400%'], ['Double bookings', '0']],
+    href: 'https://thehomeclubsports.com',
   },
   {
     title: 'Cloud Security Monitoring System',
@@ -53,7 +68,7 @@ const workProjects = [
 
 const WorkPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('All work');
-  const categories = ['All work', ...workProjects.map((project) => project.category)];
+  const categories = ['All work', ...Array.from(new Set(workProjects.map((project) => project.category)))];
   const visibleProjects = selectedCategory === 'All work' ? workProjects : workProjects.filter((project) => project.category === selectedCategory);
   const workSchema = {
     '@context': 'https://schema.org',
@@ -82,9 +97,9 @@ const WorkPage = () => {
       <main className="route-shell overflow-x-hidden w-full max-w-full">
         <EditorialNav />
         <section className="archive-hero">
-          <p>Case studies in production AI, cloud security, and quality engineering.</p>
+          <p>Case studies in forward deployed engineering, enterprise AI automations, and full-stack software development.</p>
           <h1>Systems that made it past the demo.</h1>
-          <div><span>Architecture</span><span>Implementation</span><span>Operational evidence</span></div>
+          <div><span>Forward Deployed</span><span>AI Automations</span><span>Full-Stack Systems</span></div>
         </section>
 
         <div className="archive-filters" role="group" aria-label="Filter case studies">

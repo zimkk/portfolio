@@ -3,40 +3,75 @@
   "@type": "ProfilePage",
   "@id": "https://hassannazir.dev/#profile",
   "url": "https://hassannazir.dev",
-  "dateModified": "2026-08-10",
+  "dateModified": "2026-08-26",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://hassannazir.dev/#hassan-nazir",
     "name": "Hassan Nazir",
-    "alternateName": "zimkk",
-    "jobTitle": "Forward Deployed Engineer",
-    "description": "Forward Deployed Engineer building applied AI systems, operational automation, and full-stack products from discovery through production.",
+    "alternateName": ["Hassan Nazir", "zimkk"],
+    "jobTitle": "Forward Deployed Engineer & Full-Stack AI Architect",
+    "description": "Forward Deployed Engineer and Full-Stack AI Architect building production AI systems, AI automations, full-stack software products, and scalable workflows for US and global teams.",
     "homeLocation": {
       "@type": "Place",
       "name": "Islamabad, Pakistan"
     },
+    "areaServed": [
+      { "@type": "Country", "name": "United States", "identifier": "US" },
+      { "@type": "Place", "name": "North America" },
+      { "@type": "Country", "name": "United Kingdom", "identifier": "GB" },
+      { "@type": "Place", "name": "European Union" },
+      { "@type": "Place", "name": "Worldwide" }
+    ],
     "sameAs": [
       "https://github.com/zimkk",
       "https://linkedin.com/in/hassannazirrr",
       "https://twitter.com/hassannazir"
     ],
     "knowsAbout": [
-      "Applied AI",
-      "AI agents",
-      "RAG",
-      "LLM applications",
-      "Workflow automation",
+      "Forward deployed engineering",
+      "AI Automations & n8n workflows",
+      "Full-stack software development",
+      "Custom software engineering",
+      "Applied artificial intelligence",
+      "AI agents & LangGraph",
+      "Retrieval-augmented generation (RAG)",
+      "Large language model systems",
       "Python",
       "TypeScript",
       "React",
       "Next.js",
       "FastAPI",
       "PostgreSQL",
+      "pgvector",
       "Vector databases",
       "Docker",
       "Kubernetes",
       "AWS",
-      "GCP"
+      "GCP",
+      "Cybersecurity"
+    ],
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Air University",
+      "sameAs": "https://www.au.edu.pk/",
+      "description": "Bachelors in Science, Computer Science (2020–2024)"
+    },
+    "hasCredential": [
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Certified Ethical Hacker Practical (CEH-P)",
+        "recognizedBy": { "@type": "Organization", "name": "EC-Council" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Practical Ethical Hacking (PEH)",
+        "recognizedBy": { "@type": "Organization", "name": "TCM Security Academy" }
+      },
+      {
+        "@type": "EducationalOccupationalCredential",
+        "name": "ISO/IEC 27001 Information Security Associate",
+        "recognizedBy": { "@type": "Organization", "name": "SkillFront" }
+      }
     ]
   },
   "hasPart": [
@@ -80,7 +115,7 @@
   "subjectOf": [
     {
       "@type": "CollectionPage",
-      "name": "Forward Deployed Engineering and Applied AI Services",
+      "name": "Engineering Services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development",
       "url": "https://hassannazir.dev/services",
       "hasPart": [
         {
@@ -90,8 +125,13 @@
         },
         {
           "@type": "Service",
-          "name": "Applied AI Consulting",
-          "url": "https://hassannazir.dev/services/applied-ai-consulting"
+          "name": "AI Automations & n8n Consulting",
+          "url": "https://hassannazir.dev/services/n8n-automation-consultant"
+        },
+        {
+          "@type": "Service",
+          "name": "Full-Stack Software Development",
+          "url": "https://hassannazir.dev/services/full-stack-software-development"
         },
         {
           "@type": "Service",
@@ -100,8 +140,8 @@
         },
         {
           "@type": "Service",
-          "name": "n8n Automation Consulting",
-          "url": "https://hassannazir.dev/services/n8n-automation-consultant"
+          "name": "Applied AI Consulting",
+          "url": "https://hassannazir.dev/services/applied-ai-consulting"
         }
       ]
     },

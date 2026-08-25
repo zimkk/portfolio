@@ -38,7 +38,7 @@ const JournalPage = () => {
       <main className="route-shell journal-shell overflow-x-hidden w-full max-w-full">
         <EditorialNav />
         <section className="journal-hero">
-          <p>Research notes and implementation guides from applied AI and security work.</p>
+          <p>Technical field notes and implementation guides on enterprise AI automations, autonomous multi-agent systems, full-stack software engineering, and cloud security.</p>
           <h1>Writing for the second-order detail.</h1>
         </section>
         <div className="archive-filters journal-filters" role="group" aria-label="Filter writing">

@@ -25,33 +25,33 @@ const BookingModal = lazy(loadBookingModal);
 const projects = [
   {
     title: 'The Home Club',
-    descriptor: 'Membership and community platform',
+    descriptor: 'Full-Stack Software Development · Sports Platform',
     summary: 'A public-facing sports platform that turns memberships, programs, and community activity into one clear journey.',
-    contribution: 'Product engineering · Frontend systems · Delivery',
+    contribution: 'Full-stack engineering · Next.js · Production delivery',
     image: '/images/projects/the-home-club.webp',
     href: 'https://thehomeclubsports.com',
   },
   {
     title: 'N8NHUB',
-    descriptor: 'Automation workflow library',
+    descriptor: 'AI Automations · n8n Workflow Library',
     summary: 'More than 2,000 searchable n8n workflows organized for builders who need a working automation pattern, not another tutorial.',
-    contribution: 'Information architecture · Automation · Full stack',
+    contribution: 'AI Automations · Information architecture · Full stack',
     image: '/images/projects/n8nhub.webp',
     href: 'https://n8nhub.hassannazir.dev',
   },
   {
     title: 'SpeedyInfluencer',
-    descriptor: 'Creator operations SaaS',
+    descriptor: 'Full-Stack SaaS Development · Creator Operations',
     summary: 'Campaign management, creator collaboration, and performance data brought into a focused operating surface for brands.',
-    contribution: 'SaaS engineering · Product systems · APIs',
+    contribution: 'SaaS engineering · Custom APIs · Full-stack systems',
     image: '/images/projects/speedyinfluencer.webp',
     href: 'https://speedyinfluencer.com',
   },
   {
     title: 'SmartFurs',
-    descriptor: 'Trust-led commerce experience',
+    descriptor: 'Full-Stack Commerce & Experience Design',
     summary: 'A modern storefront for puppy discovery shaped around buyer confidence, clean navigation, and a low-friction enquiry path.',
-    contribution: 'Commerce · React · Experience design',
+    contribution: 'Commerce engineering · React · Full-stack UI',
     image: '/images/projects/smartfurs.webp',
     href: 'https://smartfurs.vercel.app',
   },
@@ -68,19 +68,19 @@ const experiences = [
 
 const capabilities = [
   {
-    title: 'AI systems that survive production',
-    body: 'RAG, agent orchestration, model gateways, evaluation, auditability, and the service boundaries around them.',
-    tools: ['LangChain', 'MCP', 'Claude', 'Vector DBs', 'n8n'],
+    title: 'AI Automations & Multi-Agent Systems',
+    body: 'Enterprise AI automations, LangGraph multi-agent orchestration, RAG pipelines, tool use, and evaluation.',
+    tools: ['LangGraph', 'n8n', 'Claude', 'OpenAI', 'Vector DBs'],
   },
   {
-    title: 'Backend architecture under load',
-    body: 'Event-driven services, versioned APIs, queues, data models, and observability designed as one operating system.',
-    tools: ['TypeScript', 'NestJS', 'Node.js', 'PostgreSQL', 'Redis'],
+    title: 'Full-Stack Software Development',
+    body: 'Scalable web applications, FastAPI backends, Next.js/React frontends, PostgreSQL databases, and APIs.',
+    tools: ['TypeScript', 'React', 'Next.js', 'Python', 'FastAPI', 'PostgreSQL'],
   },
   {
-    title: 'Delivery with security built in',
-    body: 'Cloud infrastructure, CI/CD, containers, quality automation, identity, monitoring, and incident-ready controls.',
-    tools: ['AWS', 'Docker', 'Kubernetes', 'Playwright', 'Cypress'],
+    title: 'Forward Deployed Engineering & Cloud Delivery',
+    body: 'Embedded technical delivery, AWS/GCP cloud infrastructure, Docker, CI/CD, and Zero Trust security architecture.',
+    tools: ['AWS', 'GCP', 'Docker', 'Kubernetes', 'Playwright', 'CI/CD'],
   },
 ];
 
@@ -96,7 +96,7 @@ const feedback = [
   { quote: 'The testing framework changed our development process and materially improved product quality.', author: 'Lead Developer', company: 'Brilliant Gaming' },
 ];
 
-const marquee = ['FORWARD DEPLOYED', 'APPLIED AI', 'OPERATIONAL DISCOVERY', 'PRODUCT ENGINEERING', 'SYSTEMS INTEGRATION', 'PRODUCTION OWNERSHIP'];
+const marquee = ['FORWARD DEPLOYED ENGINEER', 'AI AUTOMATIONS', 'FULL-STACK DEVELOPMENT', 'CUSTOM SOFTWARE ENGINEERING', 'AI AGENTS & RAG', 'ENTERPRISE N8N WORKFLOWS'];
 
 const githubProjects = [
   {
@@ -382,8 +382,8 @@ export function App() {
             <a href="#work" className="hero-index-link">See selected work <ArrowDown size={17} /></a>
             <button type="button" onClick={openBooking} className={`hero-call-orbit hero-booking-origin${bookingFloating ? ' is-origin-hidden' : ''}`}><CalendarDays size={18} /><span>Book a working session</span></button>
           </div>
-          <div className="hero-role-note"><strong>APPLIED / EMBEDDED / ACCOUNTABLE</strong><p>I embed with teams, turn ambiguous operational problems into working AI systems, and stay close enough to production to own the outcome.</p></div>
-          <p className="hero-side-note">From the first messy workflow to production software used under real constraints.</p>
+          <div className="hero-role-note"><strong>FORWARD DEPLOYED · AI AUTOMATIONS · FULL-STACK DEVELOPMENT</strong><p>I embed with teams to deliver enterprise AI automations, full-stack software development, autonomous agents, and production systems that survive real constraints.</p></div>
+          <p className="hero-side-note">Custom software engineering and AI automations delivered from discovery through production.</p>
         </section>
 
         <div className="discipline-marquee" aria-label="Areas of practice">
@@ -397,16 +397,16 @@ export function App() {
         </div>
 
         <section className="statement-section chapter-reveal">
-          <p className="statement-context">The work starts where the specification stops being useful.</p>
+          <p className="statement-context">Forward deployed engineering for modern software and AI delivery.</p>
           <h2>
-            {revealWords('I embed with teams')}
+            {revealWords('I embed with teams,')}
             <span className="inline-image inline-image-code" aria-hidden="true" />
-            {revealWords('learn the operation, and ship applied AI that')}
+            {revealWords('engineer AI automations and full-stack software that')}
             <span className="inline-image inline-image-cloud" aria-hidden="true" />
             {revealWords('survives contact with reality.')}
           </h2>
           <div className="statement-foot">
-            <p>Forward deployed means fewer handoffs: discovery, prototyping, systems integration, product engineering, rollout, and feedback stay connected.</p>
+            <p>Forward deployed engineering removes handoff friction: discovery, AI automations, full-stack software development, integration, and production ownership stay connected.</p>
             <a href="#work">See the deployments <ArrowUpRight size={17} /></a>
           </div>
         </section>
@@ -591,10 +591,11 @@ export function App() {
               <a href="/portfolio.json">Open structured portfolio data <ArrowUpRight size={15} /></a>
             </div>
             <dl>
-              <div><dt>Who is Hassan Nazir?</dt><dd>Hassan Nazir is a Forward Deployed Engineer based in Islamabad, Pakistan. He builds applied AI systems, operational automation, and full-stack products from discovery through production.</dd></div>
-              <div><dt>What does forward deployed mean here?</dt><dd>Embedding with a team, learning the real workflow, prototyping against actual constraints, integrating the system, deploying it, and remaining accountable for the outcome.</dd></div>
-              <div><dt>What kinds of AI systems?</dt><dd>Agents, RAG, document intelligence, LLM applications, vector search, model integration, evaluation, workflow automation, and the backend infrastructure needed to operate them.</dd></div>
-              <div><dt>Where can the work be verified?</dt><dd>Original source is available on <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer">GitHub</a>, product work is documented in <a href="/work">case studies</a>, and technical reasoning is published in the <a href="/blogs">field notes</a>.</dd></div>
+              <div><dt>Who is Hassan Nazir?</dt><dd>Hassan Nazir is a Forward Deployed Engineer and Full-Stack AI Architect. He builds AI automations, full-stack software applications, autonomous multi-agent pipelines, and cloud systems for US and global teams.</dd></div>
+              <div><dt>What engineering services can I hire for?</dt><dd>Commercial engineering across Forward Deployed Engineering, AI Automations & n8n workflow systems, Full-Stack Software Development (React, Next.js, Python, FastAPI, PostgreSQL), and AI Agent & RAG Development.</dd></div>
+              <div><dt>What does forward deployed engineering mean here?</dt><dd>Embedding with a team, learning the real workflow, prototyping against actual constraints, integrating the system, deploying it, and remaining accountable for the outcome.</dd></div>
+              <div><dt>What kinds of AI systems and automations?</dt><dd>Enterprise AI automations, multi-agent systems, RAG, document intelligence, LLM applications, vector search, model integration, evaluation, and backend cloud infrastructure.</dd></div>
+              <div><dt>Where can the work be verified?</dt><dd>Original source is available on <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer">GitHub</a>, engineering case studies are documented at <a href="/work">case studies</a>, commercial services at <a href="/services">services</a>, and technical writing at <a href="/blogs">field notes</a>.</dd></div>
             </dl>
           </div>
         </section>
@@ -603,7 +604,7 @@ export function App() {
           <div className="contact-heading chapter-reveal">
             <p>Bring the difficult part.</p>
             <h2>Tell me what needs to work.</h2>
-            <p>Architecture review, product engineering, AI integration, automation, or a system that has outgrown its first version.</p>
+            <p>Architecture review, full-stack software development, AI automations, agent integration, or a system that has outgrown its first version.</p>
             <button type="button" onClick={openBooking}>Prefer a call? Open my calendar <ArrowUpRight size={16} /></button>
           </div>
           <form ref={form} onSubmit={handleSubmit} className="contact-form">
