@@ -367,7 +367,7 @@ export function App() {
         <EditorialNav onStartProject={openBooking} />
 
         <section id="top" className="hero-section fde-hero">
-          <div className="hero-coordinate hero-coordinate-top">33.6844° N / 73.0479° E</div>
+          <div className="hero-coordinate hero-coordinate-top">Dubai, UAE / Islamabad, PK</div>
           <div className="hero-orbit" aria-hidden="true"><span /><i /><b /></div>
           <h1 className="fde-title" aria-label="Forward Deployed Engineer">
             <span className="hero-line-wrap fde-line"><span className="masthead-word fde-forward">FORWARD</span></span>
@@ -376,11 +376,26 @@ export function App() {
           </h1>
           <figure className="hero-portrait">
             <img src="/images/profile-hero.webp" width="768" height="768" fetchPriority="high" decoding="async" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
-            <figcaption>Hassan Nazir / Islamabad, Pakistan</figcaption>
           </figure>
           <div className="hero-actions">
-            <a href="#work" className="hero-index-link">See selected work <ArrowDown size={17} /></a>
-            <button type="button" onClick={openBooking} className={`hero-call-orbit hero-booking-origin${bookingFloating ? ' is-origin-hidden' : ''}`}><CalendarDays size={18} /><span>Book a working session</span></button>
+            <button
+              type="button"
+              onClick={openBooking}
+              className="hero-booking-cta"
+              aria-label="Book a working session"
+            >
+              <span className="hero-cta-pulse">
+                <span className="pulse-ring" />
+                <span className="pulse-core" />
+              </span>
+              <span>Book a Working Session</span>
+              <span className="hero-cta-badge">30M</span>
+              <ArrowUpRight size={13} />
+            </button>
+            <a href="#work" className="hero-index-link">
+              <span>Explore Work</span>
+              <ArrowDown size={13} />
+            </a>
           </div>
           <div className="hero-role-note"><strong>FORWARD DEPLOYED · AI AUTOMATIONS · FULL-STACK DEVELOPMENT</strong><p>I embed with teams to deliver enterprise AI automations, full-stack software development, autonomous agents, and production systems that survive real constraints.</p></div>
           <p className="hero-side-note">Custom software engineering and AI automations delivered from discovery through production.</p>
@@ -605,7 +620,14 @@ export function App() {
             <p>Bring the difficult part.</p>
             <h2>Tell me what needs to work.</h2>
             <p>Architecture review, full-stack software development, AI automations, agent integration, or a system that has outgrown its first version.</p>
-            <button type="button" onClick={openBooking}>Prefer a call? Open my calendar <ArrowUpRight size={16} /></button>
+            <button type="button" onClick={openBooking} className="contact-cal-trigger">
+              <span className="hero-cta-pulse">
+                <span className="pulse-ring" />
+                <span className="pulse-core" />
+              </span>
+              <span>Prefer an instant call? Open calendar</span>
+              <ArrowUpRight size={15} />
+            </button>
           </div>
           <form ref={form} onSubmit={handleSubmit} className="contact-form">
             <div className="form-row">
@@ -617,6 +639,32 @@ export function App() {
               <p>{submitState === 'sent' ? <><Check size={16} /> Message sent. I’ll reply shortly.</> : submitState === 'error' ? 'The form could not send. Email me directly at hassannazir955@gmail.com.' : 'Your message goes directly to my inbox.'}</p>
               <button type="submit" disabled={submitState === 'sending'}>{submitState === 'sending' ? 'Sending…' : 'Send enquiry'} <Send size={16} /></button>
             </div>
+
+            {/* Secondary Option: Direct Calendar Booking */}
+            <div className="contact-secondary-option">
+              <div className="contact-or-divider"><span>OR SCHEDULE DIRECTLY</span></div>
+              <button
+                type="button"
+                onClick={openBooking}
+                className="contact-booking-btn"
+                aria-label="Book a 30-minute technical session"
+              >
+                <div className="contact-booking-left">
+                  <div className="hero-cta-pulse">
+                    <span className="pulse-ring" />
+                    <span className="pulse-core" />
+                  </div>
+                  <div>
+                    <strong>Book an Instant Working Session</strong>
+                    <span>Direct calendar invite · 30 min technical review (EST / Global)</span>
+                  </div>
+                </div>
+                <div className="contact-booking-right">
+                  <span className="contact-booking-tag">OPEN CALENDAR</span>
+                  <ArrowUpRight size={16} />
+                </div>
+              </button>
+            </div>
           </form>
         </section>
 
@@ -624,13 +672,22 @@ export function App() {
           <div><strong>Hassan Nazir</strong><span>Forward Deployed Engineer · Applied AI</span></div>
           <nav aria-label="Footer navigation"><a href="/services">Services</a><a href="/work">Work</a><a href="/blogs">Writing</a><a href="#contact">Contact</a><a href="#top">Back to top</a></nav>
           <div className="footer-socials"><a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a><a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a><a href="mailto:hassannazir955@gmail.com" aria-label="Email"><Mail size={18} /></a></div>
-          <p>© {new Date().getFullYear()} · Islamabad, Pakistan</p>
+          <p>© {new Date().getFullYear()} · Dubai, UAE / Islamabad, PK</p>
         </footer>
       </main>
       {bookingFloating && (
-        <button type="button" onClick={openBooking} className="hero-call-orbit global-booking-float" aria-label="Book a working session">
-          <CalendarDays size={18} />
-          <span>Book a working session</span>
+        <button
+          type="button"
+          onClick={openBooking}
+          className="global-booking-float"
+          aria-label="Book a working session"
+        >
+          <span className="hero-cta-pulse">
+            <span className="pulse-ring" />
+            <span className="pulse-core" />
+          </span>
+          <span>Book a Session</span>
+          <ArrowUpRight size={14} />
         </button>
       )}
       {bookingReady && <Suspense fallback={null}><BookingModal isOpen={bookingOpen} onClose={() => setBookingOpen(false)} /></Suspense>}

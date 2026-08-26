@@ -5,7 +5,7 @@ export const siteConfig = {
   description: 'Hire a Forward Deployed Engineer for AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG Pipelines, and n8n Enterprise Workflows. Available for US & Global Teams.',
   url: 'https://hassannazir.dev',
   ogImage: 'https://hassannazir.dev/images/profile.png',
-  location: 'Islamabad, Pakistan (Available for US & Global Remote Engagements)',
+  location: 'Dubai, UAE / Islamabad, PK (Available for US & Global Remote Engagements)',
   email: 'hassannazir955@gmail.com',
   lastUpdated: '2026-08-26',
   links: {

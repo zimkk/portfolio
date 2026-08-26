@@ -25,9 +25,23 @@ const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
           <Github size={16} />
         </a>
         {onStartProject ? (
-          <button type="button" className="route-contact" onClick={onStartProject}>Start a project <ArrowUpRight size={14} /></button>
+          <button type="button" className="nav-booking-pill" onClick={onStartProject}>
+            <span className="hero-cta-pulse">
+              <span className="pulse-ring" />
+              <span className="pulse-core" />
+            </span>
+            <span>Book a call</span>
+            <ArrowUpRight size={13} />
+          </button>
         ) : (
-          <a className="route-contact" href="/#contact">Start a project <ArrowUpRight size={14} /></a>
+          <a className="nav-booking-pill" href="/#contact">
+            <span className="hero-cta-pulse">
+              <span className="pulse-ring" />
+              <span className="pulse-core" />
+            </span>
+            <span>Book a call</span>
+            <ArrowUpRight size={13} />
+          </a>
         )}
       </div>
     </header>

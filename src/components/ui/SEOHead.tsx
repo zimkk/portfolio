@@ -112,7 +112,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="theme-color" content="#08090c" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       <meta name="geo.region" content="PK-IS" />
-      <meta name="geo.placename" content="Islamabad, Pakistan" />
+      <meta name="geo.placename" content="Dubai, UAE / Islamabad, PK" />
       <meta name="geo.position" content="33.6844;73.0479" />
       <meta name="ICBM" content="33.6844, 73.0479" />
 
