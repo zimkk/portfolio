@@ -167,7 +167,7 @@ export const structuredData = {
     homeLocation: {
       '@type': 'Place',
       name: siteConfig.location,
-      address: { '@type': 'PostalAddress', addressLocality: 'Islamabad', addressCountry: 'PK' },
+      address: { '@type': 'PostalAddress', addressLocality: 'Dubai, UAE & Islamabad', addressCountry: 'PK' },
     },
     areaServed: [
       { '@type': 'Country', name: 'United States', identifier: 'US' },

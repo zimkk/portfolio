@@ -7,6 +7,7 @@
 
 # AI / LLM RESOURCES
 
+    llm.txt: https://hassannazir.dev/llm.txt
     llms.txt: https://hassannazir.dev/llms.txt
     llms-full.txt: https://hassannazir.dev/llms-full.txt
     portfolio.json: https://hassannazir.dev/portfolio.json
@@ -21,24 +22,24 @@
 
     HTML5, CSS3, JavaScript, TypeScript
     React, Vite, Tailwind CSS
-    AI/ML: LangChain, Hugging Face, n8n, OpenAI, Claude
-    DevOps: Docker, Kubernetes, AWS
+    AI/ML: LangGraph, LangChain, Hugging Face, n8n, OpenAI, Claude, PyTorch, TensorFlow
+    DevOps: Docker, Kubernetes, AWS, GCP
     Testing: Selenium, Playwright
-    
+
 # SITE
 
-    Last update: 2026/08/06
+    Last update: 2026/08/26
     Language: English
     Doctype: HTML5
 
-    
+
 # CONTACT
 
     Website: https://hassannazir.dev
     Email: hassannazir955@gmail.com
     Phone: +92 331 5892488
-    Location: Islamabad, Pakistan
-    
+    Location: Dubai, UAE & Islamabad, Pakistan
+
     LinkedIn: https://linkedin.com/in/hassannazirrr
     GitHub: https://github.com/zimkk
     Twitter: https://twitter.com/hassannazir

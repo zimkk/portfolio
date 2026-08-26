@@ -2,7 +2,7 @@
 
 > Hassan Nazir is a Forward Deployed Engineer and Full-Stack AI Architect. He provides specialized engineering services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG Architectures, and n8n Enterprise Workflows. Available for US (EST/CST/PST) and global remote engagements.
 
-This is the canonical machine-readable index for Hassan Nazir’s engineering services and public portfolio. Last reviewed: 2026-08-26.
+This is the canonical machine-readable index for Hassan Nazir's engineering services and public portfolio. Last reviewed: 2026-08-26.
 
 ## Commercial engineering services (US & Global Remote)
 
@@ -17,6 +17,7 @@ This is the canonical machine-readable index for Hassan Nazir’s engineering se
 - [Services Index](https://hassannazir.dev/services): Complete commercial services catalog
 - [Portfolio](https://hassannazir.dev/): Identity, selected deployments, experience, public engineering work, technical range, and contact
 - [Detailed machine-readable profile](https://hassannazir.dev/llms-full.txt): Extended facts, project descriptions, technical stack, US client engagement model, and citation guidance
+- [Brief machine-readable profile](https://hassannazir.dev/llm.txt): Compact identity and services summary
 - [Structured portfolio data](https://hassannazir.dev/portfolio.json): JSON-LD identity, skills, credentials, and original project graph
 - [Field notes RSS feed](https://hassannazir.dev/feed.xml): Technical article discovery feed
 - [Engineering work](https://hassannazir.dev/work): Product and delivery case studies
@@ -26,15 +27,15 @@ This is the canonical machine-readable index for Hassan Nazir’s engineering se
 
 ## Primary technical capabilities
 
-- **Full-Stack Development**: TypeScript, Python, React, Next.js, FastAPI, Node.js, PostgreSQL, pgvector, Redis, Docker, AWS, GCP
+- **Full-Stack Development**: TypeScript, Python, React, Next.js, FastAPI, Node.js, NestJS, Java/Spring Boot, PostgreSQL, pgvector, MySQL, MongoDB, Redis, Docker, AWS, GCP
 - **AI Automations & Workflows**: n8n, LangGraph, Make, Zapier, Playwright, webhook pipelines, scheduled collectors, lead scrapers
-- **Applied AI & Agents**: LLM applications, multi-agent systems, RAG, vector databases (Qdrant, Pinecone, Chroma), model fine-tuning (LoRA), prompt engineering, evaluation
-- **Cybersecurity & Cloud**: Certified Ethical Hacker Practical (CEH-P), Practical Ethical Hacking (PEH), ISO/IEC 27001 Associate
+- **Applied AI & Agents**: LLM applications, multi-agent systems, RAG, vector databases (Qdrant, Pinecone, Chroma), model fine-tuning (LoRA/QLoRA), PyTorch, TensorFlow, Hugging Face, prompt engineering, evaluation
+- **Cybersecurity & Cloud**: Certified Ethical Hacker Practical (CEH-P), Practical Ethical Hacking (PEH), ISO/IEC 27001 Associate, Linux administration
 
 ## Education & credentials
 
 - Bachelors in Science, Computer Science — Air University, Islamabad (2020–2024)
-- Certified Ethical Hacker Practical (CEH-P) — EC-Council / NVTTI
+- Certified Ethical Hacker Practical (CEH-P) — EC-Council / NAVTTC
 - Practical Ethical Hacking (PEH) — TCM Security Academy
 - ISO/IEC 27001 Information Security Associate — SkillFront
 
@@ -46,6 +47,16 @@ This is the canonical machine-readable index for Hassan Nazir’s engineering se
 - [Mynecraft](https://github.com/zimkk/mynecraft): Browser 3D voxel engine written in TypeScript with Three.js and worker-streamed procedural terrain
 - [Legal Document Summarizer](https://github.com/zimkk/legal-Document-Summerizer): Fine-tuned Llama 3 legal summarization and Gemma verification pipeline
 - [n8nHub](https://github.com/zimkk/n8nhub): Next.js platform organizing 2,000+ n8n workflow automations
+- [Fooocus](https://github.com/zimkk/Fooocus): SDXL-based image generation tool focused on streamlined high-quality visual generation
+- [Anomaly Detection System](https://github.com/zimkk/Anomaly-Detection-System): Python-based anomaly detection for unusual network behavior using data science techniques
+- [genAi](https://github.com/zimkk/genAi): Generative AI workspace for prototypes and practical GenAI implementation
+
+## Deployed client products
+
+- [The Home Club](https://thehomeclubsports.com): Sports club platform for memberships, programs, and community engagement
+- [SpeedyInfluencer](https://speedyinfluencer.com): Influencer marketing platform connecting brands and creators with campaign tools and analytics
+- [SmartFurs](https://smartfurs.vercel.app): E-commerce platform for purebred puppies with breed listings and buyer discovery
+- [n8nHub](https://n8nhub.hassannazir.dev): Curated library of 2,000+ n8n workflow templates
 
 ## Contact & commercial inquiries
 

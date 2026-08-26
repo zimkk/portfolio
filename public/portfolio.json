@@ -13,7 +13,7 @@
     "description": "Forward Deployed Engineer and Full-Stack AI Architect building production AI systems, AI automations, full-stack software products, and scalable workflows for US and global teams.",
     "homeLocation": {
       "@type": "Place",
-      "name": "Islamabad, Pakistan"
+      "name": "Dubai, UAE & Islamabad, Pakistan"
     },
     "areaServed": [
       { "@type": "Country", "name": "United States", "identifier": "US" },
@@ -38,17 +38,24 @@
       "Large language model systems",
       "Python",
       "TypeScript",
+      "Java",
+      "Spring Boot",
       "React",
       "Next.js",
       "FastAPI",
       "PostgreSQL",
       "pgvector",
+      "MySQL",
       "Vector databases",
       "Docker",
       "Kubernetes",
       "AWS",
       "GCP",
-      "Cybersecurity"
+      "PyTorch",
+      "TensorFlow",
+      "Hugging Face",
+      "Cybersecurity",
+      "Linux administration"
     ],
     "alumniOf": {
       "@type": "CollegeOrUniversity",
@@ -77,39 +84,84 @@
   "hasPart": [
     {
       "@type": "SoftwareSourceCode",
-      "name": "NY Municipal Decision-Maker Monitor",
-      "codeRepository": "https://github.com/zimkk/erdman-ny-county",
-      "programmingLanguage": "Python"
+      "name": "WonderKit",
+      "codeRepository": "https://github.com/zimkk/wonderkit",
+      "programmingLanguage": "TypeScript",
+      "description": "Agent-native full-stack SaaS foundation with pgvector, multi-tenant auth, durable agent runs, and Stripe billing"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "WonderKit",
-      "codeRepository": "https://github.com/zimkk/wonderkit",
-      "programmingLanguage": "TypeScript"
+      "name": "NY Municipal Decision-Maker Monitor",
+      "codeRepository": "https://github.com/zimkk/erdman-ny-county",
+      "programmingLanguage": "Python",
+      "description": "Tracks public decision-makers across 60 New York county websites with scheduled scraping and change detection"
     },
     {
       "@type": "SoftwareSourceCode",
       "name": "Google Maps Lead Scraper",
       "codeRepository": "https://github.com/zimkk/Lead-Scraper-Google-Maps",
-      "programmingLanguage": "Python"
+      "programmingLanguage": "Python",
+      "description": "Resilient Playwright lead extraction engine with 250+ passing tests"
     },
     {
       "@type": "SoftwareSourceCode",
       "name": "Mynecraft",
       "codeRepository": "https://github.com/zimkk/mynecraft",
-      "programmingLanguage": "TypeScript"
+      "programmingLanguage": "TypeScript",
+      "description": "Browser 3D voxel engine written in TypeScript with Three.js and worker-streamed procedural terrain"
     },
     {
       "@type": "SoftwareSourceCode",
       "name": "Legal Document Summarizer",
       "codeRepository": "https://github.com/zimkk/legal-Document-Summerizer",
-      "programmingLanguage": "Python"
+      "programmingLanguage": "Python",
+      "description": "Fine-tuned Llama 3 legal summarization and Gemma verification pipeline"
     },
     {
       "@type": "SoftwareSourceCode",
       "name": "n8nHub",
       "codeRepository": "https://github.com/zimkk/n8nhub",
-      "programmingLanguage": "TypeScript"
+      "programmingLanguage": "TypeScript",
+      "description": "Next.js platform organizing 2,000+ n8n workflow automations"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Fooocus",
+      "codeRepository": "https://github.com/zimkk/Fooocus",
+      "programmingLanguage": "Python",
+      "description": "SDXL-based image generation tool with streamlined prompting and high-quality visual output"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Anomaly Detection System",
+      "codeRepository": "https://github.com/zimkk/Anomaly-Detection-System",
+      "programmingLanguage": "Python",
+      "description": "Python-based anomaly detection for unusual network behavior using data science techniques"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "genAi",
+      "codeRepository": "https://github.com/zimkk/genAi",
+      "programmingLanguage": "TypeScript",
+      "description": "Generative AI workspace for prototypes and practical GenAI implementation"
+    },
+    {
+      "@type": "WebApplication",
+      "name": "The Home Club",
+      "url": "https://thehomeclubsports.com",
+      "description": "Sports club platform for memberships, programs, and community engagement"
+    },
+    {
+      "@type": "WebApplication",
+      "name": "SpeedyInfluencer",
+      "url": "https://speedyinfluencer.com",
+      "description": "Influencer marketing platform connecting brands and creators with campaign tools and analytics"
+    },
+    {
+      "@type": "WebApplication",
+      "name": "SmartFurs",
+      "url": "https://smartfurs.vercel.app",
+      "description": "E-commerce platform for purebred puppies with breed listings and buyer discovery"
     }
   ],
   "subjectOf": [

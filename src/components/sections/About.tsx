@@ -3,7 +3,7 @@ import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 
 const stats = [
-  { number: '3+', label: 'Years Experience' },
+  { number: '5+', label: 'Years Experience' },
   { number: '100+', label: 'Solutions Delivered' },
   { number: '10K+', label: 'Daily Transactions' },
   { number: '99.9%', label: 'Platform Uptime' }

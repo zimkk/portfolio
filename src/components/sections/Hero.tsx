@@ -23,7 +23,7 @@ const Hero = ({
             </div>
             <div className="flex items-center gap-2 mb-4">
               <div className="w-4 h-4 rounded-full bg-[#FF5C00]"></div>
-              <span className="text-sm">Asia/Pakistan</span>
+              <span className="text-sm">Dubai, UAE & Islamabad, PK</span>
             </div>
 
             <button 
@@ -48,7 +48,7 @@ const Hero = ({
                 <br />
               </h1>
               <p className="text-xl md:text-2xl text-blue-400 mb-6">
-                Full Stack Developer
+                Forward Deployed Engineer & Full-Stack AI Architect
               </p>
               <div className="flex gap-3 mb-8">
                 <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" className="p-2 rounded-md bg-gray-900 hover:bg-gray-800 transition-colors">
@@ -63,14 +63,13 @@ const Hero = ({
               </div>
               <div className={`max-w-2xl transform transition-all duration-1000 delay-300 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                 <p className="text-gray-300 leading-relaxed mb-6">
-                  Experienced Software Developer adept in bringing forth
-                  expertise in design, installation, testing and maintenance of
-                  software systems. Equipped with a diverse and promising
-                  skill-set. Proficient in various platforms, languages, and
-                  embedded systems. Experienced with the latest cutting edge
-                  development tools and procedures. Able to effectively self-
-                  manage during independent projects, as well as collaborate as
-                  part of a productive team.
+                  I embed with teams to build AI automations, production
+                  multi-agent systems, RAG architectures, and full-stack
+                  software products. Five years at GridCore spanning web,
+                  cross-platform, and LLM-integrated systems. Currently
+                  leading AI and software architecture at Uno OS across four
+                  client engagements. Available for US and global remote
+                  engagements with EST/CST/PST overlap.
                 </p>
               </div>
             </div>

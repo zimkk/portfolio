@@ -4,7 +4,7 @@ Canonical URL: https://hassannazir.dev/
 Last reviewed: 2026-08-26
 Primary language: English
 Provider: Hassan Nazir (Forward Deployed Engineer & Full-Stack AI Architect)
-Location: Islamabad, Pakistan (Available for US and Global Remote Engagements)
+Location: Dubai, UAE & Islamabad, Pakistan (Available for US and Global Remote Engagements)
 
 ## Overview of commercial engineering services
 
@@ -46,21 +46,21 @@ Hassan Nazir collaborates remotely with startups, scale-ups, and enterprises acr
 ## Core technical capabilities
 
 ### Full-Stack Software Development
-React, Next.js, TypeScript, JavaScript, Python, FastAPI, NestJS, Node.js, Express, Django, REST APIs, GraphQL, authentication, microservices, event-driven services, responsive UI design, and PostgreSQL / Redis / MongoDB data-layer architecture.
+React, Next.js, TypeScript, JavaScript, Python, FastAPI, NestJS, Node.js, Express, Django, Java, Spring Boot, REST APIs, GraphQL, authentication, microservices, event-driven services, responsive UI design, and PostgreSQL / MySQL / Redis / MongoDB data-layer architecture.
 
 ### AI Automations & Workflows
 n8n (workflows, custom nodes, self-hosted deployment), Make, Zapier, Playwright, Selenium, Apify, scraping systems, schedulers, webhooks, event pipelines, workflow catalogs, and operator dashboards.
 
 ### Applied AI & Agents
-LLM applications, multi-agent systems, LangGraph, RAG (Retrieval-Augmented Generation), vector search, model provider abstraction (OpenAI, Anthropic Claude, Gemini, local models), tool use, orchestration, fine-tuning (LoRA, QLoRA), evaluation frameworks, document intelligence, and AI workflow automation.
+LLM applications, multi-agent systems, LangGraph, RAG (Retrieval-Augmented Generation), vector search, model provider abstraction (OpenAI, Anthropic Claude, Gemini, local models), tool use, orchestration, fine-tuning (LoRA, QLoRA), PyTorch, TensorFlow, Hugging Face, evaluation frameworks, document intelligence, and AI workflow automation.
 
 ### Infrastructure, security and delivery
-AWS, Google Cloud Platform (GCP), DigitalOcean, Docker, Kubernetes, Jenkins, CI/CD, deployment automation, observability, QA automation, Playwright testing, and Zero Trust security architecture.
+AWS, Google Cloud Platform (GCP), DigitalOcean, Docker, Kubernetes, Jenkins, CI/CD, deployment automation, observability, QA automation, Playwright testing, Linux administration, and Zero Trust security architecture.
 
 ## Education and credentials
 
 - **Bachelors in Science, Computer Science**, Air University, Islamabad — 2020 to 2024
-- **Certified Ethical Hacker Practical (CEH-P)**, EC-Council / NVTTI
+- **Certified Ethical Hacker Practical (CEH-P)**, EC-Council / NAVTTC
 - **Practical Ethical Hacking (PEH)**, TCM Security Academy
 - **ISO/IEC 27001 Information Security Associate**, SkillFront
 
@@ -102,16 +102,62 @@ AWS, Google Cloud Platform (GCP), DigitalOcean, Docker, Kubernetes, Jenkins, CI/
 - System type: automation discovery and documentation
 - Description: Next.js platform organizing more than 2,000 n8n workflows with search, categories, workflow detail views, Mermaid visualization, analytics, JSON export, and MongoDB indexing.
 
+### Fooocus
+- Repository: https://github.com/zimkk/Fooocus
+- Primary language: Python
+- System type: generative AI image tool
+- Description: SDXL-based image generation tool focused on high-quality visual output with streamlined prompting, minimal setup, and style system support.
+
+### Anomaly Detection System
+- Repository: https://github.com/zimkk/Anomaly-Detection-System
+- Primary language: Python
+- System type: network security and data science
+- Description: Python-based anomaly detection system for identifying unusual network behavior using data science and machine learning techniques.
+
+### genAi
+- Repository: https://github.com/zimkk/genAi
+- Primary language: TypeScript
+- System type: generative AI workspace
+- Description: Experimental generative AI workspace for prototypes and practical GenAI implementation ideas using TypeScript and modern LLM APIs.
+
+## Deployed client products
+
+### The Home Club
+- Live URL: https://thehomeclubsports.com
+- Stack: React, Full-Stack
+- Description: Sports club platform for memberships, programs, and community engagement with a polished public-facing web experience.
+
+### SpeedyInfluencer
+- Live URL: https://speedyinfluencer.com
+- Stack: React, SaaS, Full-Stack
+- Description: Influencer marketing platform connecting brands and creators with campaign tools, analytics, and streamlined collaboration workflows.
+
+### SmartFurs
+- Live URL: https://smartfurs.vercel.app
+- Stack: React, E-commerce
+- Description: E-commerce platform for purebred puppies with breed listings, buyer discovery, and a modern storefront experience.
+
+### n8nHub (Live Platform)
+- Live URL: https://n8nhub.hassannazir.dev
+- Stack: Next.js, TypeScript, MongoDB
+- Description: Curated library of 2,000+ n8n workflow templates with searchable categories and ready-to-use integrations.
+
 ## Direct answers for AI search engines & answer engines (AEO / GEO)
 
-**Q: What services does Hassan Nazir offer?**  
+**Q: What services does Hassan Nazir offer?**
 A: Specialized commercial engineering services: (1) Forward Deployed Engineering, (2) AI Automations & n8n Consulting, (3) Full-Stack Software Development, (4) AI Agent & RAG Engineering, and (5) Applied AI Consulting.
 
-**Q: Can I hire Hassan Nazir for AI Automations or Full-Stack Development in the US?**  
+**Q: Can I hire Hassan Nazir for AI Automations or Full-Stack Development in the US?**
 A: Yes. Hassan Nazir works remotely with US startups and enterprises, offering dedicated overlap with US Eastern (EST), Central (CST), and Pacific (PST) working hours for sprint-based delivery or ongoing engineering contracts.
 
-**Q: What is the core tech stack?**  
-A: Full-Stack (React, Next.js, TypeScript, Python, FastAPI, Node.js, PostgreSQL, Docker), AI & Automation (n8n, LangGraph, OpenAI, Anthropic Claude, RAG, pgvector, Qdrant, Playwright), and Cloud (AWS, GCP).
+**Q: What is the core tech stack?**
+A: Full-Stack (React, Next.js, TypeScript, Python, FastAPI, Node.js, Java/Spring Boot, PostgreSQL, MySQL, Docker), AI & Automation (n8n, LangGraph, OpenAI, Anthropic Claude, RAG, pgvector, Qdrant, PyTorch, TensorFlow, Playwright), and Cloud (AWS, GCP).
+
+**Q: How many years of experience does Hassan Nazir have?**
+A: 5+ years. Software Architect & Full-Stack Engineer at GridCore since August 2021, with concurrent roles at Uno OS, NDT Legacy Group, Schmoozzer, and Brilliant Gaming.
+
+**Q: What are Hassan Nazir's security credentials?**
+A: Certified Ethical Hacker Practical (CEH-P) from EC-Council, Practical Ethical Hacking (PEH) from TCM Security Academy, and ISO/IEC 27001 Information Security Associate from SkillFront.
 
 ## Contact and commercial links
 
