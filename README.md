@@ -7,7 +7,7 @@
 [![SEO / AEO](https://img.shields.io/badge/SEO%20%2F%20AEO-48%20Route%20Shells-emerald.svg)](https://hassannazir.dev/sitemap.xml)
 
 <p align="center">
-  <img src="public/images/readme-hero.svg" alt="Hassan Nazir Portfolio & Engineering System Architecture" width="100%" />
+  <img src="./public/images/readme-hero.svg" alt="Hassan Nazir Portfolio & Engineering System Architecture" width="100%" />
 </p>
 
 The public portfolio, commercial services hub, and technical engineering blog of **Hassan Nazir** — Forward Deployed Engineer & Full-Stack AI Architect.
@@ -41,14 +41,14 @@ The public portfolio, commercial services hub, and technical engineering blog of
 
 ### 1. Forward Deployed Engineering & Multi-Agent Mesh
 <p align="center">
-  <img src="public/images/forward-deployed-services.svg" alt="Forward Deployed Engineering Mesh" width="48%" />
-  <img src="public/images/cloud.svg" alt="Multi-Agent DAG & GraphRAG Retrieval" width="48%" />
+  <img src="./public/images/forward-deployed-services.svg" alt="Forward Deployed Engineering Mesh" width="48%" />
+  <img src="./public/images/cloud.svg" alt="Multi-Agent DAG & GraphRAG Retrieval" width="48%" />
 </p>
 
 ### 2. Enterprise Automations & Full-Stack Quality Assurance
 <p align="center">
-  <img src="public/images/ai-automation.svg" alt="AI Automations & n8n Pipeline" width="48%" />
-  <img src="public/images/software-testing.svg" alt="Full-Stack Testing Matrix" width="48%" />
+  <img src="./public/images/ai-automation.svg" alt="AI Automations & n8n Pipeline" width="48%" />
+  <img src="./public/images/software-testing.svg" alt="Full-Stack Testing Matrix" width="48%" />
 </p>
 
 ---
