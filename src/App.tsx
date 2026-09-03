@@ -6,7 +6,6 @@ import {
   ArrowDown,
   ArrowRight,
   ArrowUpRight,
-  CalendarDays,
   Check,
   Github,
   Linkedin,
@@ -347,6 +346,13 @@ export function App() {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
     if (!form.current) return;
+
+    if (!EMAILJS_CONFIG.SERVICE_ID || !EMAILJS_CONFIG.TEMPLATE_ID || !EMAILJS_CONFIG.PUBLIC_KEY) {
+      window.location.href = `mailto:hassannazir955@gmail.com?subject=Project%20Enquiry%20from%20${encodeURIComponent(formState.name)}&body=${encodeURIComponent(formState.message)}`;
+      setSubmitState('sent');
+      return;
+    }
+
     setSubmitState('sending');
     try {
       const { default: emailjs } = await import('@emailjs/browser');
@@ -451,7 +457,7 @@ export function App() {
               <p>Selected products, shown as products—not thumbnails.</p>
               <h2>Work that had to function beyond the pitch.</h2>
               <p>Public platforms and product surfaces where information architecture, implementation, and delivery had to agree.</p>
-              <a href="/work">Open the case-study archive <ArrowUpRight size={17} /></a>
+              <a href="/blogs">Explore technical blogs <ArrowUpRight size={17} /></a>
             </div>
             <div className="case-stack">
               {projects.map((project) => (
@@ -610,7 +616,7 @@ export function App() {
               <div><dt>What engineering services can I hire for?</dt><dd>Commercial engineering across Forward Deployed Engineering, AI Automations & n8n workflow systems, Full-Stack Software Development (React, Next.js, Python, FastAPI, PostgreSQL), and AI Agent & RAG Development.</dd></div>
               <div><dt>What does forward deployed engineering mean here?</dt><dd>Embedding with a team, learning the real workflow, prototyping against actual constraints, integrating the system, deploying it, and remaining accountable for the outcome.</dd></div>
               <div><dt>What kinds of AI systems and automations?</dt><dd>Enterprise AI automations, multi-agent systems, RAG, document intelligence, LLM applications, vector search, model integration, evaluation, and backend cloud infrastructure.</dd></div>
-              <div><dt>Where can the work be verified?</dt><dd>Original source is available on <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer">GitHub</a>, engineering case studies are documented at <a href="/work">case studies</a>, commercial services at <a href="/services">services</a>, and technical writing at <a href="/blogs">field notes</a>.</dd></div>
+              <div><dt>Where can the work be verified?</dt><dd>Original source is available on <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer">GitHub</a>, commercial services at <a href="/services">services</a>, and technical writing at <a href="/blogs">blogs</a>.</dd></div>
             </dl>
           </div>
         </section>
@@ -670,7 +676,7 @@ export function App() {
 
         <footer className="site-footer">
           <div><strong>Hassan Nazir</strong><span>Forward Deployed Engineer · Applied AI</span></div>
-          <nav aria-label="Footer navigation"><a href="/services">Services</a><a href="/work">Work</a><a href="/blogs">Writing</a><a href="#contact">Contact</a><a href="#top">Back to top</a></nav>
+          <nav aria-label="Footer navigation"><a href="/services">Services</a><a href="/blogs">Blogs</a><a href="#contact">Contact</a><a href="#top">Back to top</a></nav>
           <div className="footer-socials"><a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" aria-label="GitHub"><Github size={18} /></a><a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><Linkedin size={18} /></a><a href="mailto:hassannazir955@gmail.com" aria-label="Email"><Mail size={18} /></a></div>
           <p>© {new Date().getFullYear()} · Dubai, UAE / Islamabad, PK</p>
         </footer>

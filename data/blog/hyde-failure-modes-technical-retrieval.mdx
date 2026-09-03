@@ -1,0 +1,47 @@
+---
+title: "The Dark Side of HyDE: Why Hypothetical Document Embeddings Fail on Precise Technical Queries"
+publishedAt: '2026-08-30'
+category: "RAG & Vector Search"
+readTime: '12 min read'
+excerpt: "HyDE (Hypothetical Document Embeddings) is praised for bridging semantic vocabulary gaps, but on precise technical API queries, the model hallucinates hypothetical parameters that steer vector search completely off course. Here is the fix."
+tags: ["HyDE","Vector Search","RAG Hallucinations","Information Retrieval","Production AI"]
+seoKeywords: ["HyDE failure modes RAG","Hypothetical document embeddings issues","Technical query vector retrieval","Fixing HyDE hallucinated vectors"]
+image: '/images/cloud.svg'
+---
+
+# The Dark Side of HyDE: Why Hypothetical Document Embeddings Fail on Precise Technical Queries
+
+Hypothetical Document Embeddings (HyDE) is an ingenious concept: when a user asks a short, ambiguous question like *"Why is the connection dropping?"*, an LLM generates a hypothetical answer first, and you embed that hypothetical answer to perform vector search.
+
+On general knowledge, HyDE improves retrieval recall by 20%.
+
+On precise technical queries with strict API parameter names or version numbers, **HyDE frequently causes catastrophic retrieval failures**.
+
+Why? Because the LLM generating the hypothetical document hallucinates plausible-sounding but fictional function names (such as `client.connect_with_retry_v2()`). 
+
+The vector search engine then searches for chunks matching the hallucinated parameter, completely ignoring the real documentation.
+
+## The Solution: Hybrid Query Expansion with Entity Anchoring
+
+```python:anchored_hyde.py
+class AnchoredHyDEEngine:
+    def __init__(self, model_client, vector_store):
+        self.client = model_client
+        self.store = vector_store
+
+    async def retrieve(self, user_query: str) -> list:
+        # Step 1: Extract immutable exact entities (keywords, version tags, error codes)
+        exact_tokens = self.extract_technical_keywords(user_query)
+        
+        # Step 2: Generate constrained hypothetical text
+        hypothetical_doc = await self.client.generate_hypothetical(user_query)
+        
+        # Step 3: Two-stage hybrid retrieval: Sparse BM25 on exact tokens + Dense on HyDE
+        dense_results = self.store.dense_search(hypothetical_doc, top_k=10)
+        sparse_results = self.store.bm25_search(exact_tokens, top_k=10)
+        
+        # Reciprocal Rank Fusion (RRF)
+        return self.reciprocal_rank_fusion(dense_results, sparse_results)
+```
+
+Always anchor HyDE with exact keyword BM25 filters to prevent hallucinated embeddings from leading vector search astray.

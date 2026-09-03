@@ -1,0 +1,101 @@
+---
+title: "Server-Sent Events vs. WebSockets: Architecting Low-Latency Streaming for Multi-Agent UIs"
+publishedAt: '2026-09-02'
+category: "Full-Stack Software Development"
+readTime: '13 min read'
+excerpt: "Streaming token generation from multi-agent graphs to React UIs requires handling partial tool calls, intermediate thought updates, and connection reconnects. Here is why Server-Sent Events (SSE) beats WebSockets for 95% of AI frontends."
+tags: ["Server-Sent Events","WebSockets","React","Streaming UI","Full-Stack Development"]
+seoKeywords: ["SSE vs WebSockets AI streaming","Server-Sent Events React LLM","Multi-agent UI streaming","Low latency AI frontend"]
+image: '/images/projects/wonderkit.webp'
+---
+
+# Server-Sent Events vs. WebSockets: Architecting Low-Latency Streaming for Multi-Agent UIs
+
+When designing a user interface for multi-agent workflows, the standard HTTP request-response cycle is dead.
+
+An agentic pipeline takes 5 to 15 seconds to execute: it searches a database, calls a tool, checks an invariant, and synthesizes a response. If your UI waits for the entire process to finish before returning data, your user will assume the app has frozen and close the tab.
+
+You must stream intermediate tokens, tool invocation badges, and progress milestones in real time.
+
+Should you use **WebSockets** or **Server-Sent Events (SSE)**?
+
+Here is the engineering breakdown of why Server-Sent Events (SSE) is the superior architectural choice for 95% of AI streaming interfaces.
+
+## Protocol Comparison: SSE vs. WebSockets
+
+| Architecture Feature | Server-Sent Events (SSE) | WebSockets (`ws://`) |
+|---|---|---|
+| **Protocol** | Standard HTTP/2 or HTTP/1.1 | Custom TCP Protocol Upgrade |
+| **Data Flow** | Unidirectional (Server to Client) | Full Bidirectional |
+| **Automatic Reconnection** | **Built-in native browser auto-reconnect** | Requires custom JS heartbeat / retry logic |
+| **Corporate Firewall / Proxy Traversal** | **100% Native (Standard HTTPS port 443)** | Often blocked or downgraded by proxy firewalls |
+| **Multiplexing** | Built-in with HTTP/2 | Requires custom framing |
+
+## The Production Implementation in FastAPI and React
+
+```python:sse_backend.py
+from fastapi import FastAPI
+from fastapi.responses import StreamingResponse
+import asyncio
+import json
+
+app = FastAPI()
+
+async def event_stream_generator(agent_runner, user_prompt: str):
+    # Stream thought tokens, tool calls, and final text
+    async for event in agent_runner.stream_events(user_prompt):
+        payload = json.dumps({
+            "type": event.type, # "thought", "tool_start", "token", "done"
+            "data": event.data
+        })
+        # Standard SSE event framing: "data: {...}
+
+"
+        yield f"data: {payload}
+
+"
+        await asyncio.sleep(0.01)
+
+@app.get("/api/agent/stream")
+async def stream_agent_endpoint(prompt: str):
+    return StreamingResponse(
+        event_stream_generator(agent_runner, prompt),
+        media_type="text/event-stream",
+        headers={"Cache-Control": "no-cache", "Connection": "keep-alive"}
+    )
+```
+
+## React Client Consumer Hook
+
+```typescript:useAgentStream.ts
+import { useState, useEffect } from 'react';
+
+export function useAgentStream(url: string) {
+  const [tokens, setTokens] = useState<string>('');
+  const [activeTool, setActiveTool] = useState<string | null>(null);
+
+  const startStream = (prompt: string) => {
+    const eventSource = new EventSource(`${url}?prompt=${encodeURIComponent(prompt)}`);
+
+    eventSource.onmessage = (e) => {
+      const event = JSON.parse(e.data);
+      if (event.type === 'token') {
+        setTokens((prev) => prev + event.data);
+      } else if (event.type === 'tool_start') {
+        setActiveTool(event.data.name);
+      } else if (event.type === 'done') {
+        setActiveTool(null);
+        eventSource.close();
+      }
+    };
+
+    eventSource.onerror = () => {
+      eventSource.close();
+    };
+  };
+
+  return { tokens, activeTool, startStream };
+}
+```
+
+SSE works natively over HTTPS, reconnects automatically, and integrates cleanly with Next.js and FastAPI.

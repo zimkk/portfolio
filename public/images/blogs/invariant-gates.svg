@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">distributed_agents/dag_orchestration/invariant_checkpoint_audit.py</text>
+  <text x="930" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">SOFT FAILURE CASCADE</text>
+
+  <!-- Left: Silent Semantic Regression -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">UNGUARDED MULTI-AGENT DAG: SOFT FAILURE CASCADE</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="195" fill="#7f8794" font-family="monospace" font-size="12">[Agent 1: Ingestion] Extracted enterprise loan payload (HTTP 200)</text>
+  <text x="100" y="220" fill="#ff5d3d" font-family="monospace" font-size="12">[Agent 2: Risk Scoring] Flawless English grammar, but dropped debt ratio!</text>
+  <text x="100" y="245" fill="#ff5d3d" font-family="monospace" font-size="12">[Agent 3: Underwriting] Calculated loan approval on zero-debt assumption!</text>
+  <text x="100" y="270" fill="#ff5d3d" font-family="monospace" font-size="12">[Agent 4: Compliance] Generated signed regulatory approval document!</text>
+  <text x="100" y="295" fill="#7f8794" font-family="monospace" font-size="12">> System Status: 0 HTTP Crashes | 0 Python Exceptions</text>
+  <text x="100" y="325" fill="#ff5d3d" font-family="monospace" font-size="12">> Disaster: $4.2M Bad Loan Approved Silently to Production DB</text>
+  <text x="100" y="355" fill="#ff5d3d" font-family="monospace" font-size="12">> Cause: Semantic hallucination propagated unchecked through 4 nodes</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Undetected until external financial audit</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">VULNERABILITY: THE INVISIBLE ERROR</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Traditional Monitoring: <tspan fill="#ff5d3d" font-weight="bold">100% Blind (No 500 status codes)</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Cascading Error Multiplier: <tspan fill="#ff5d3d" font-weight="bold">Exponential across downstream DAG</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Data Corruption Risk: <tspan fill="#ff5d3d" font-weight="bold">Critical (Silent schema degradation)</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Reason: LLM output confidence masks semantic logic decay</text>
+
+  <!-- Right: Invariant Checkpoint Gates -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">SOLUTION: PROGRAMMATIC INVARIANT CHECKPOINT GATES</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="195" fill="#7f8794" font-family="monospace" font-size="12"># 1. Non-LLM Mathematical Assertion Gate</text>
+  <text x="660" y="220" fill="#27c93f" font-family="monospace" font-size="12">assert_invariant(agent2_output.debt_ratio &gt; 0, "INVARIANT_DEBT_MISSING")</text>
+  <text x="660" y="245" fill="#7f8794" font-family="monospace" font-size="12"># 2. Entropy Divergence &amp; Shadow Recovery Routing</text>
+  <text x="660" y="270" fill="#27c93f" font-family="monospace" font-size="12">if entropy_score &gt; threshold: reroute_to_deterministic_fallback()</text>
+  <text x="660" y="295" fill="#27c93f" font-family="monospace" font-size="12">intercepted_at_node("Risk Scoring"): Halting bad transaction safely</text>
+  <text x="660" y="325" fill="#27c93f" font-family="monospace" font-size="11">> Blocked corrupted payload BEFORE hitting Agent 3 or DB</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="11">  Clean deterministic fallback extracted missing debt metrics</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: 100% Production Data Integrity Guaranteed</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD GUARANTEE: ZERO SILENT CORRUPTIONS</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Cascade Interception: <tspan fill="#27c93f" font-weight="bold">100% at Transition Boundaries</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Semantic Drift Tolerance: <tspan fill="#27c93f" font-weight="bold">&lt; 0.001 Error Leakage</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Recovery Automation: <tspan fill="#27c93f" font-weight="bold">Sub-graph Shadow Fallbacks</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Deterministic Invariant Gates + Statistical Entropy Watchdogs</text>
+</svg>

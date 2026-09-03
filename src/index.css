@@ -465,8 +465,8 @@ button { cursor: pointer; }
 .statement-section h2 { width: 100%; max-width: 1340px; margin: 0; overflow-wrap: anywhere; font-size: clamp(3.2rem, 5.35vw, 5.8rem); font-weight: 500; letter-spacing: -.06em; line-height: .98; }
 .statement-word { display: inline-block; margin-right: .2em; will-change: opacity; }
 .inline-image { display: inline-block; width: 1.5em; height: .56em; margin: 0 .12em; border-radius: 999px; background-position: center; background-size: cover; vertical-align: .08em; filter: grayscale(1) contrast(1.15); }
-.inline-image-code { background-image: url('/images/software-testing.jpg'); }
-.inline-image-cloud { background-image: url('/images/cloud.webp'); }
+.inline-image-code { background-image: url('/images/software-testing.svg'); }
+.inline-image-cloud { background-image: url('/images/cloud.svg'); }
 .statement-foot { display: grid; grid-template-columns: 1fr 1fr; gap: 90px; margin-top: 75px; padding-top: 28px; border-top: 1px solid var(--line); }
 .statement-foot p { max-width: 510px; margin: 0; color: #a2a198; font-size: 16px; line-height: 1.65; }
 .statement-foot a { display: inline-flex; align-items: center; justify-self: end; gap: 12px; height: fit-content; padding-bottom: 6px; border-bottom: 1px solid #77776e; font-size: 13px; text-decoration: none; transition: color 200ms ease, border-color 200ms ease; }

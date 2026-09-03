@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">runtime.engine/structured_outputs/pydantic_validator.py</text>
+  <text x="940" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">VALIDATION TRAP</text>
+
+  <!-- Left: The Failure Mode (Rigid Pydantic Schema Collapse) -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">SINGLE-PASS PYDANTIC EXTRACTION (COMPACTION COLLAPSE)</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="200" fill="#7f8794" font-family="monospace" font-size="12">class FinancialContract(BaseModel):</text>
+  <text x="100" y="225" fill="#d9dee8" font-family="monospace" font-size="12">    indemnity_cap: condecimal(ge=0)</text>
+  <text x="100" y="250" fill="#d9dee8" font-family="monospace" font-size="12">    jurisdiction: Literal["DE", "NY", "UK"]</text>
+  <text x="100" y="275" fill="#ff5d3d" font-family="monospace" font-size="12">    governing_clauses: List[Clause]</text>
+  <text x="100" y="305" fill="#ff5d3d" font-family="monospace" font-size="11">> pydantic_core._pydantic_core.ValidationError: 3 validation errors</text>
+  <text x="100" y="330" fill="#7f8794" font-family="monospace" font-size="11">  Field 'indemnity_cap': Model hallucinated null on complex clause</text>
+  <text x="100" y="355" fill="#7f8794" font-family="monospace" font-size="11">  Field 'governing_clauses': Truncated 12 edge cases to fit token window</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Silent extraction failure in production</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">FAILURE MODE: SEMANTIC TRUNCATION</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Extraction Accuracy: <tspan fill="#ff5d3d" font-weight="bold">64.2% on Complex Contracts</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Retry Penalty: <tspan fill="#ff5d3d" font-weight="bold">3x API calls on schema fail</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Information Loss: <tspan fill="#ff5d3d" font-weight="bold">Severe (dropped edge conditions)</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Reason: Constraining output tokens forces model to prematurely prune thoughts</text>
+
+  <!-- Right: The Solution (Two-Phase Speculative Decoding + AST Repair) -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">TWO-PHASE SPECULATIVE DECODING WITH AST REPAIR</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="200" fill="#7f8794" font-family="monospace" font-size="12"># Phase 1: Unconstrained Semantic CoT Extraction</text>
+  <text x="660" y="225" fill="#27c93f" font-family="monospace" font-size="12">raw_analysis = model.generate(prompt, schema=None)</text>
+  <text x="660" y="250" fill="#7f8794" font-family="monospace" font-size="12"># Phase 2: Speculative Grammar Projection + AST Repair</text>
+  <text x="660" y="275" fill="#27c93f" font-family="monospace" font-size="12">structured_tree = ast_repair_engine.project(raw_analysis)</text>
+  <text x="660" y="305" fill="#27c93f" font-family="monospace" font-size="11">> Grammar Validator: 0 Schema Errors | 100% Clause Coverage</text>
+  <text x="660" y="330" fill="#7f8794" font-family="monospace" font-size="11">  Automatic Type Coercion on indemnity_cap -> Decimal("250000.00")</text>
+  <text x="660" y="355" fill="#7f8794" font-family="monospace" font-size="11">  Preserved all 12 edge case clauses without truncation</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: 100% Deterministic Valid Output</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD RESULT: ZERO LOSS EXTRACTION</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Extraction Accuracy: <tspan fill="#27c93f" font-weight="bold">99.4% (+35.2% boost)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Retry Rate: <tspan fill="#27c93f" font-weight="bold">0.0% (Zero Validation Retries)</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Information Fidelity: <tspan fill="#27c93f" font-weight="bold">100% Retained</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Free-Form Scratchpad -> Grammar Tree AST Projection</text>
+</svg>

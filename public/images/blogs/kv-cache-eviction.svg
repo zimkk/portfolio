@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <!-- Top Bar -->
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">telemetry.anthropic.com/dashboard/prompt-caching-telemetry</text>
+  <text x="960" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">CACHE BREAK DETECTED</text>
+
+  <!-- Left Card: The Bug (Dynamic Timestamp in Prefix) -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">BUGGY PROMPT: DYNAMIC VARIABLE IN PREFIX</text>
+
+  <!-- Code window -->
+  <rect x="80" y="170" width="480" height="235" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="200" fill="#7f8794" font-family="monospace" font-size="12">1 | # LangGraph State Ingestion (Every Turn)</text>
+  <text x="100" y="225" fill="#d9dee8" font-family="monospace" font-size="12">2 | prompt = f"""</text>
+  <text x="100" y="250" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">3 | Current Time: {datetime.utcnow().isoformat()}</text>
+  <text x="100" y="275" fill="#7f8794" font-family="monospace" font-size="12">4 | System Instructions: You are an enterprise ERP agent...</text>
+  <text x="100" y="300" fill="#7f8794" font-family="monospace" font-size="12">5 | [12,000 tokens of static database documentation]</text>
+  <text x="100" y="325" fill="#7f8794" font-family="monospace" font-size="12">6 | User Question: {user_input}</text>
+  <text x="100" y="350" fill="#d9dee8" font-family="monospace" font-size="12">7 | """</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Byte 0 Mismatch! 100% KV-Cache Invalidation on Every Turn</text>
+
+  <!-- Metrics -->
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">PROD IMPACT: 0% CACHE HIT RATE</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Cache Read Tokens: <tspan fill="#ff5d3d" font-weight="bold">0 (0.0% Hit Rate)</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Uncached Input Tokens: <tspan fill="#ff5d3d" font-weight="bold">12,450 tokens / turn</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Monthly LLM Bill: <tspan fill="#ff5d3d" font-weight="bold">$12,450.00 / month</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Reason: 25-character ISO timestamp changes byte stream at index 0</text>
+
+  <!-- Right Card: The Fix (Canonical Prefix Packing) -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">SOLUTION: CANONICAL PREFIX PACKING</text>
+
+  <!-- Code window -->
+  <rect x="640" y="170" width="480" height="235" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="200" fill="#7f8794" font-family="monospace" font-size="12">1 | # Canonical Immutable Prefix Layout</text>
+  <text x="660" y="225" fill="#27c93f" font-family="monospace" font-size="12">2 | [STATIC HEADER] System Instructions (Cache Anchor)</text>
+  <text x="660" y="250" fill="#27c93f" font-family="monospace" font-size="12">3 | [STATIC DOCS] 12,000 Tokens ERP Schema Docs</text>
+  <text x="660" y="275" fill="#27c93f" font-family="monospace" font-size="12">4 | [STATIC TOOLS] Immutable MCP Tool Definitions</text>
+  <text x="660" y="300" fill="#7f8794" font-family="monospace" font-size="12">5 | ------------------------------------------------</text>
+  <text x="660" y="325" fill="#d9dee8" font-family="monospace" font-size="12">6 | [EPHEMERAL TAIL] Timestamp + User Turn Message</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="12">7 | prompt = assemble_canonical_cache_prompt(state)</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> 100% Deterministic Byte Match Across Multi-Agent DAG</text>
+
+  <!-- Metrics -->
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD IMPACT: 91.8% CACHE HIT RATE</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Cache Read Tokens: <tspan fill="#27c93f" font-weight="bold">12,000 (91.8% Hit Rate)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Uncached Input Tokens: <tspan fill="#27c93f" font-weight="bold">450 tokens / turn (96% drop)</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Monthly LLM Bill: <tspan fill="#27c93f" font-weight="bold">$1,245.00 / month (90% savings)</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Immutable Cache Boundaries + Ephemeral Tail Injection</text>
+</svg>

@@ -1,0 +1,70 @@
+---
+title: "Breaking the Loop: Resolving State Deadlocks in Autonomous Multi-Agent DAGs"
+publishedAt: '2026-08-21'
+category: "AI Agents"
+readTime: '12 min read'
+excerpt: "When a Researcher agent and a Critic agent enter an infinite refinement ping-pong loop, your API bill explodes while your user waits forever. Here is how to implement Monotonic Convergence Metrics and Deadlock Circuit Breakers in LangGraph."
+tags: ["Multi-Agent Systems","LangGraph","Agent Deadlocks","State Machines","Production AI"]
+seoKeywords: ["Multi-agent deadlock LangGraph","Agent infinite loop prevention","Circuit breaker for AI agents","Monotonic state convergence"]
+image: '/images/forward-deployed-services.svg'
+---
+
+# Breaking the Loop: Resolving State Deadlocks in Autonomous Multi-Agent DAGs
+
+If you build an autonomous multi-agent system with a **Generator Agent** and a **Critic Agent**, you will eventually witness the **Infinite Politeness Deadlock**.
+
+The Generator writes a proposal. The Critic finds a minor formatting critique. The Generator refactors the proposal to satisfy the critique, but slightly alters another sentence. The Critic finds a new flaw in the altered sentence.
+
+They exchange 40 turns of mutually respectful revisions, burning $45 in tokens while the end-user stares at a loading spinner.
+
+Here is how to architect **Monotonic Convergence Metrics and Circuit Breakers** to guarantee deterministic multi-agent termination.
+
+## The Convergence Trap in Agentic Loops
+
+```
+[Generator Node] ──► [Critic Node]
+       ▲                     │
+       │                     ▼
+       └──── (Unconstrained Cycle: Endless Refinement Loop)
+```
+
+## The Solution: Monotonic Delta Thresholds & Step Decay
+
+To break the deadlock, we enforce three algorithmic constraints on the StateGraph:
+1. **Bounded Iteration Depth**: Hard limit of $K=3$ refinement cycles.
+2. **Monotonic Improvement Threshold**: The Critic must compute a quantitative delta score. If $\Delta \text{Score} < 0.15$, the graph forces immediate convergence.
+3. **Escalation Circuit Breaker**: If two successive iterations oscillate on the same state key, route to the final synthesizer.
+
+```python:deadlock_breaker.py
+from langgraph.graph import StateGraph, END
+from typing import TypedDict, Dict, Any
+
+class AgentState(TypedDict):
+    content: str
+    iteration_count: int
+    quality_score: float
+    previous_score: float
+
+def critic_evaluator(state: AgentState) -> str:
+    iteration = state.get("iteration_count", 0)
+    current_score = state.get("quality_score", 0.0)
+    prev_score = state.get("previous_score", 0.0)
+    
+    delta = current_score - prev_score
+    
+    # Condition 1: Max depth reached
+    if iteration >= 3:
+        print("[CIRCUIT BREAKER] Max refinement depth reached. Terminating loop.")
+        return "route_to_finalize"
+        
+    # Condition 2: Diminishing returns (Delta < 0.10)
+    if iteration > 1 and delta < 0.10:
+        print(f"[CONVERGENCE] Marginal gain too low (Delta={delta:.2f}). Terminating.")
+        return "route_to_finalize"
+        
+    return "route_to_refine"
+```
+
+## Key Takeaway
+
+Never deploy a cyclic multi-agent graph without a mathematical convergence boundary. Autonomous agents need deadlines just like human engineers.

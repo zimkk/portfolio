@@ -1,0 +1,46 @@
+---
+title: "Context Poisoning: Why Your AI Agent Gets Dumber the Longer You Chat with It (And How Vector Pruning Saves It)"
+publishedAt: '2026-08-22'
+category: "Agentic Memory"
+readTime: '12 min read'
+excerpt: "In long multi-turn sessions, retrieved RAG chunks and outdated intermediate observations accumulate in memory, causing severe hallucination cascades. Here is how Epistemic Vector Decay and Temporal Context Pruning restore long-horizon stability."
+tags: ["Agent Memory","Context Drift","Vector Search","RAG","Knowledge Graphs"]
+seoKeywords: ["Context poisoning in AI agents","Multi-turn agent memory drift","Vector search context decay","Long-horizon LLM reasoning","Epistemic memory graphs"]
+image: '/images/blogs/context-poisoning.svg'
+---
+
+# Context Poisoning: Why Your AI Agent Gets Dumber the Longer You Chat with It (And How Vector Pruning Saves It)
+
+Have you ever noticed that an AI agent feels razor-sharp during the first five turns of a conversation, but by turn 35 it starts repeating debunked hypotheses and mixing up deprecated variable names?
+
+This is **Context Poisoning**.
+
+In modern agentic architectures, every retrieved document chunk, intermediate tool observation, and diagnostic trial gets appended to a persistent memory store.
+
+As conversations evolve, early assumptions are invalidated. Yet naive vector retrieval continues matching those outdated, contradictory chunks because they share high semantic similarity with your latest query.
+
+![Context Poisoning Memory Graph and Epistemic Pruning](/images/blogs/context-poisoning.svg)
+
+## The Solution: Epistemic Vector Decay
+
+```python:epistemic_memory.py
+import math
+import numpy as np
+
+class EpistemicMemoryStore:
+    def __init__(self, decay_lambda: float = 0.05):
+        self.nodes = {}
+        self.decay_lambda = decay_lambda
+
+    def retrieve_clean_context(self, query_vector: np.ndarray, current_turn: int, top_k: int = 4):
+        scored_nodes = []
+        for node in self.nodes.values():
+            if node.is_superseded:
+                continue
+            similarity = np.dot(query_vector, node.embedding) / (np.linalg.norm(query_vector) * np.linalg.norm(node.embedding))
+            epistemic_weight = math.exp(-self.decay_lambda * (current_turn - node.turn_index))
+            scored_nodes.append((similarity * epistemic_weight, node))
+
+        scored_nodes.sort(key=lambda x: x[0], reverse=True)
+        return [node.content for score, node in scored_nodes[:top_k] if score > 0.40]
+```

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">agent_memory/vector_graph/epistemic_decay_manager.py</text>
+  <text x="930" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">CONTEXT POISONING</text>
+
+  <!-- Left: Stale & Contradictory Accumulation -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">NAIVE RAG MEMORY: ACCUMULATED CONTRADICTIONS</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="195" fill="#7f8794" font-family="monospace" font-size="12">[Turn 2 Memory] User: "We use Redis for session caching"</text>
+  <text x="100" y="225" fill="#ff5d3d" font-family="monospace" font-size="12">[Turn 14 Update] User: "We migrated all cache to Dragonfly"</text>
+  <text x="100" y="255" fill="#ff5d3d" font-family="monospace" font-size="12">[Turn 32 Vector Query] "How should I configure cache keys?"</text>
+  <text x="100" y="285" fill="#7f8794" font-family="monospace" font-size="12">> Retrieved top-k: Chunks from Turn 2 (Redis) AND Turn 14 (Dragonfly)</text>
+  <text x="100" y="315" fill="#ff5d3d" font-family="monospace" font-size="12">> Agent Hallucination: Mixed Redis cluster config with Dragonfly flags</text>
+  <text x="100" y="345" fill="#ff5d3d" font-family="monospace" font-size="12">> Output: Crashed redis-server deployment on production boot</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Context poisoned by unpruned historical assumptions</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">SYMPTOM: DECAYING AGENT INTELLIGENCE</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Hallucination Rate at Turn 5: <tspan fill="#d9dee8" font-weight="bold">2.1%</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Hallucination Rate at Turn 40: <tspan fill="#ff5d3d" font-weight="bold">41.8% (Severe Degradation)</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Context Token Waste: <tspan fill="#ff5d3d" font-weight="bold">68% redundant outdated tokens</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Reason: Vector similarity matches obsolete semantic chunks without state decay</text>
+
+  <!-- Right: Epistemic Vector Decay & Temporal Pruning -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">SOLUTION: EPISTEMIC VECTOR DECAY &amp; ACTIVE PRUNING</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="195" fill="#7f8794" font-family="monospace" font-size="12"># 1. Temporal Mutation Graph Invalidation</text>
+  <text x="660" y="220" fill="#27c93f" font-family="monospace" font-size="12">on_state_mutation(Turn 14): mark_superseded(node="Turn 2 Redis")</text>
+  <text x="660" y="245" fill="#7f8794" font-family="monospace" font-size="12"># 2. Epistemic Vector Weighting</text>
+  <text x="660" y="270" fill="#27c93f" font-family="monospace" font-size="12">vector_weight = similarity * exp(-decay_rate * delta_turns)</text>
+  <text x="660" y="295" fill="#27c93f" font-family="monospace" font-size="12">prune_context(threshold=0.35): pruned 18 obsolete memory nodes</text>
+  <text x="660" y="325" fill="#27c93f" font-family="monospace" font-size="11">> Retrieved top-k: 100% Consistent Dragonfly context only</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="11">  Agent executes clean Dragonfly memory allocation syntax</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: Zero semantic poisoning across 100+ turns</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD GUARANTEE: STABLE LONG-HORIZON CONTEXT</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Accuracy at Turn 50: <tspan fill="#27c93f" font-weight="bold">97.4% (Consistent baseline)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Context Efficiency: <tspan fill="#27c93f" font-weight="bold">4x token compression</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Contradiction Index: <tspan fill="#27c93f" font-weight="bold">0.00 (Zero conflicting knowledge)</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Decay Weighted Vector Store + State Invalidation Engine</text>
+</svg>

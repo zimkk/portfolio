@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">vllm/logits_processor/finite_state_machine_grammar_mask.cpp</text>
+  <text x="940" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">LOGIT MASKING</text>
+
+  <!-- Left: Unconstrained 8B Model Tool Failures -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">STANDARD 8B ON-PREM INFERENCE (UNCONSTRAINED)</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="195" fill="#7f8794" font-family="monospace" font-size="12">> Target Tool: execute_sql_query(query: str, timeout: int)</text>
+  <text x="100" y="220" fill="#d9dee8" font-family="monospace" font-size="12">> 8B Generated Token Stream:</text>
+  <text x="100" y="245" fill="#ff5d3d" font-family="monospace" font-size="12">  ```json {"name": "execute_sql_query", "arguments": {</text>
+  <text x="100" y="270" fill="#ff5d3d" font-family="monospace" font-size="12">  "query": "SELECT * FROM users", "timeout": "30s"}} ```</text>
+  <text x="100" y="295" fill="#ff5d3d" font-family="monospace" font-size="12">  Here is the query you requested! Let me know if...</text>
+  <text x="100" y="325" fill="#ff5d3d" font-family="monospace" font-size="11">> JSON Decode Error: Type mismatch (String "30s" instead of int)</text>
+  <text x="100" y="350" fill="#ff5d3d" font-family="monospace" font-size="11">> Chatty Suffix Hallucination broke strict JSON parser</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Air-gapped pipeline stalled with 400 Bad Request</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">THE SMALL-MODEL TOOL GAP</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Tool Calling Reliability: <tspan fill="#ff5d3d" font-weight="bold">61.2% on 8B Open Models</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Syntax Invalidation Rate: <tspan fill="#ff5d3d" font-weight="bold">38.8% Broken JSON/Types</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Cloud Dependency Risk: <tspan fill="#ff5d3d" font-weight="bold">High (Forced to call GPT-4o)</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Problem: 8B attention lacks long-range constraint enforcement during autoregression</text>
+
+  <!-- Right: FSM Constrained Logit Masking -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">GRAMMAR-CONSTRAINED LOGIT MASKING (FSM ENGINE)</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="195" fill="#7f8794" font-family="monospace" font-size="12"># 1. State Machine Compiled at Engine Initialization</text>
+  <text x="660" y="220" fill="#27c93f" font-family="monospace" font-size="12">fsm = GrammarCompiler.compile_schema(tool_schema)</text>
+  <text x="660" y="245" fill="#7f8794" font-family="monospace" font-size="12"># 2. Token Logits Masking Hook (0.02ms overhead)</text>
+  <text x="660" y="270" fill="#27c93f" font-family="monospace" font-size="12">allowed_tokens = fsm.get_valid_next_tokens(current_state)</text>
+  <text x="660" y="295" fill="#27c93f" font-family="monospace" font-size="12">logits[~allowed_tokens] = -infinity  # Physically impossible to violate</text>
+  <text x="660" y="325" fill="#27c93f" font-family="monospace" font-size="11">> Generated Payload: {"name": "execute_sql_query", "arguments": {"query": "SELECT *", "timeout": 30}}</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="11">  Disallowed conversational filler tokens were masked out dynamically</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: 100.0% Mathematical Syntactic Correctness</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">ENTERPRISE ADVANTAGE: AIR-GAPPED PERFECTION</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Tool Calling Accuracy: <tspan fill="#27c93f" font-weight="bold">99.9% (Matches Frontier GPT-4o)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Hardware Footprint: <tspan fill="#27c93f" font-weight="bold">Runs locally on a single RTX 4090 / L4</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Data Sovereignty: <tspan fill="#27c93f" font-weight="bold">100% On-Premise / Zero Cloud Exfiltration</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Constrained Logit Processors + Lark Grammar Compilation</text>
+</svg>

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import EditorialNav from '../components/ui/EditorialNav';
 import PageTransition from '../components/ui/PageTransition';
@@ -13,7 +13,7 @@ const workProjects = [
     year: '2025',
     category: 'AI Automations',
     description: 'A production automation platform spanning document processing, AI decision support, internal services, third-party APIs, queues, and audit controls.',
-    image: '/images/ai-automation.jpg',
+    image: '/images/ai-automation.svg',
     technologies: ['Python', 'n8n', 'LangChain', 'OpenAI API', 'PostgreSQL', 'Docker'],
     challenges: ['Integrating legacy systems', 'Real-time processing at scale', 'Domain-specific model behavior'],
     solutions: ['Custom API bridges and service boundaries', 'Event-driven workflows backed by Redis', 'Evaluation datasets and tuned model integrations'],
@@ -43,7 +43,7 @@ const workProjects = [
     year: '2024—2025',
     category: 'Cloud / Security',
     description: 'A threat-detection and incident-response layer for distributed cloud infrastructure, designed to improve signal quality without interrupting legitimate operations.',
-    image: '/images/cloud.webp',
+    image: '/images/cloud.svg',
     technologies: ['Python', 'AWS', 'Terraform', 'Grafana', 'Elasticsearch', 'Docker'],
     challenges: ['Cross-environment threat detection', 'Reducing false-positive noise', 'Safe automated response'],
     solutions: ['ML-assisted anomaly detection', 'Context-aware alert filtering', 'Graduated response with manual override'],
@@ -57,7 +57,7 @@ const workProjects = [
     year: '2025',
     category: 'Quality / Testing',
     description: 'A modular automation framework for critical gaming and payment journeys, integrated into CI/CD and designed for reliable parallel execution.',
-    image: '/images/software-testing.jpg',
+    image: '/images/software-testing.svg',
     technologies: ['Python', 'Selenium', 'Pytest', 'Jenkins', 'Allure', 'Docker'],
     challenges: ['Complex transaction scenarios', 'Existing CI/CD integration', 'Cross-environment test reliability'],
     solutions: ['Reusable modular test architecture', 'Parallel execution and resource allocation', 'Environment-independent configuration'],

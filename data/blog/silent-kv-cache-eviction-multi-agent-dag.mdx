@@ -1,0 +1,56 @@
+---
+title: "The $12,000 Typo: Why Your Multi-Agent DAG Is Silently Evicting KV-Caches on Every Turn"
+publishedAt: '2026-08-30'
+category: "Infrastructure & Caching"
+readTime: '10 min read'
+excerpt: "Provider prompt caching can slash your LLM bills by 90%, but in multi-agent frameworks like LangGraph, inserting a dynamic timestamp in the wrong position silently destroys KV-cache reuse. Here is the canonical prefix layout that fixes it."
+tags: ["Prompt Caching","Multi-Agent Systems","LangGraph","Cloud Costs","Performance"]
+seoKeywords: ["Prompt caching invalidation","Anthropic prompt caching","KV-cache eviction","LangGraph state optimization","Multi-agent cost reduction"]
+image: '/images/blogs/kv-cache-eviction.svg'
+---
+
+# The $12,000 Typo: Why Your Multi-Agent DAG Is Silently Evicting KV-Caches on Every Turn
+
+Prompt caching is arguably the most impactful economic feature released by LLM providers over the past twelve months. Anthropic, OpenAI, and DeepSeek all offer 75% to 90% discounts on cached input tokens, accompanied by an 80% reduction in Time-To-First-Token.
+
+If your multi-agent system processes long documentation, ERP schemas, or rich system prompts, prompt caching should turn your $15,000 monthly cloud bill into a $1,800 invoice.
+
+Except two weeks ago, a team reached out after their AWS Bedrock invoice unexpectedly spiked to $13,400. Their LangGraph multi-agent pipeline had a 0.0% cache read hit rate. Every single turn was re-computing 14,000 tokens of static prompt context from scratch.
+
+The culprit? A single 25-character formatted ISO timestamp injected at line 3 of their system prompt.
+
+![Prompt Cache Invalidation Telemetry Comparison](/images/blogs/kv-cache-eviction.svg)
+
+## The Physics of Prompt Caching: Exact Byte Prefix Matching
+
+$$\text{Cache Hit Condition: } \forall i \in [0, k], \quad T_{\text{current}}[i] == T_{\text{cached}}[i]$$
+
+If $T_{\text{current}}[2]$ changes from `2026-08-30T10:14:02Z` to `2026-08-30T10:14:03Z`, the entire 14,000-token suffix following it is instantly evicted from the cache.
+
+## The Solution: Canonical Deterministic Prefix Packing
+
+```python:canonical_cache_packer.py
+class CanonicalPromptBuilder:
+    def __init__(self, global_system_prompt: str, static_docs: str, tool_definitions: str):
+        self.immutable_prefix_block = (
+            f"=== SYSTEM INSTRUCTIONS ===
+{global_system_prompt.strip()}
+
+"
+            f"=== STATIC REFERENCE DATA ===
+{static_docs.strip()}
+
+"
+            f"=== TOOLS SPECIFICATION ===
+{tool_definitions.strip()}
+"
+        )
+
+    def assemble_turn_prompt(self, session_id: str, timestamp: str, user_message: str, history: list):
+        messages = [{"role": "system", "content": [{"type": "text", "text": self.immutable_prefix_block, "cache_control": {"type": "ephemeral"}}]}]
+        for turn in history:
+            messages.append({"role": turn["role"], "content": turn["content"]})
+        messages.append({"role": "user", "content": f"Context Meta: [Time: {timestamp} | Session: {session_id}]
+Input: {user_message}"})
+        return messages
+```

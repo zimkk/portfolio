@@ -2,7 +2,7 @@
 
 > Hassan Nazir is a Forward Deployed Engineer and Full-Stack AI Architect. He provides specialized engineering services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG Architectures, and n8n Enterprise Workflows. Available for US (EST/CST/PST) and global remote engagements.
 
-This is the canonical machine-readable index for Hassan Nazir's engineering services and public portfolio. Last reviewed: 2026-08-26.
+This is the canonical machine-readable index for Hassan Nazir’s engineering services and public portfolio. Last reviewed: 2026-09-03.
 
 ## Commercial engineering services (US & Global Remote)
 
@@ -21,7 +21,7 @@ This is the canonical machine-readable index for Hassan Nazir's engineering serv
 - [Structured portfolio data](https://hassannazir.dev/portfolio.json): JSON-LD identity, skills, credentials, and original project graph
 - [Field notes RSS feed](https://hassannazir.dev/feed.xml): Technical article discovery feed
 - [Engineering work](https://hassannazir.dev/work): Product and delivery case studies
-- [Technical field notes](https://hassannazir.dev/blogs): Long-form articles about applied AI, security, computer vision, and production engineering
+- [Engineering & AI blogs](https://hassannazir.dev/blogs): 40 long-form technical field guides, deep dives, and production architectures about applied AI, forward deployed engineering, security, and software architecture
 - [GitHub profile](https://github.com/zimkk): Public source repositories
 - [LinkedIn profile](https://linkedin.com/in/hassannazirrr): Professional profile
 
@@ -58,10 +58,20 @@ This is the canonical machine-readable index for Hassan Nazir's engineering serv
 - [SmartFurs](https://smartfurs.vercel.app): E-commerce platform for purebred puppies with breed listings and buyer discovery
 - [n8nHub](https://n8nhub.hassannazir.dev): Curated library of 2,000+ n8n workflow templates
 
+## Major technical publication topics (40 field guides)
+
+- **Forward Deployed Engineering**: Pilot rescues, legacy monolith sidecars, air-gapped sovereign clusters, shadow AI gateways, zero-downtime database migrations, semantic observability, 3-year TCO economics.
+- **Autonomous AI Agents**: MCP schema explosion, reasoning token bleed, KV-cache eviction, Pydantic schema traps, test degradation drift, context poisoning, browser DOM volatility, multi-agent deadlocks.
+- **RAG & Knowledge Retrieval**: GraphRAG vs Vector RAG, AST code chunking, HyDE failure modes, scanned PDF tables, LLM-as-a-judge pitfalls, reranking benchmarks, 10M vector pgvector vs Pinecone.
+- **Enterprise n8n Automations**: n8n vs LangChain, HA Kubernetes scaling, webhook backpressure, Zapier-to-n8n migrations, Slack human approvals, dead-letter queues, Vault credential security.
+- **Full-Stack Software Engineering**: SSE vs WebSockets streaming, optimistic UI patterns, Next.js streaming gotchas, prompt injection defense gateways, client-side semantic caching.
+- **Machine Learning & Tuning**: Synthetic mode collapse, 8B model FSM logit masking, LoRA vs QLoRA benchmarks.
+
 ## Contact & commercial inquiries
 
 - Email: [hassannazir955@gmail.com](mailto:hassannazir955@gmail.com)
 - Work inquiries: [portfolio contact section](https://hassannazir.dev/#contact)
+- Instant calendar booking: [Cal.com 30-min session](https://cal.com/hassannazir)
 - US & international remote collaboration available with EST/CST/PST timezone overlap
 
 ## Search & verification

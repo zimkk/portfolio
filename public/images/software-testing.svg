@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="testBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+    <linearGradient id="testCoral" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5d3d"/>
+      <stop offset="100%" stop-color="#ff8159"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#testBg)"/>
+
+  <!-- Matrix Grid -->
+  <g opacity="0.08" stroke="#d9dee8" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="200" y1="0" x2="200" y2="675"/>
+    <line x1="400" y1="0" x2="400" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="800" y1="0" x2="800" y2="675"/>
+    <line x1="1000" y1="0" x2="1000" y2="675"/>
+  </g>
+
+  <!-- Top Title Bar -->
+  <rect x="50" y="40" width="1100" height="50" rx="10" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+  <text x="80" y="71" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="15" font-weight="700">Full-Stack Production Engineering &amp; Mutation Test Matrix</text>
+  <text x="560" y="71" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="12">// React 19 + TypeScript + FastAPI + PostgreSQL</text>
+  <text x="1000" y="71" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">PASS: 1,482/1,482</text>
+
+  <!-- Main Left Test Suite Grid -->
+  <g transform="translate(50, 115)">
+    <rect x="0" y="0" width="700" height="515" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="30" y="38" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="18" font-weight="700">Automated Invariant &amp; E2E Regression Oracle</text>
+    <text x="30" y="60" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Playwright Headless · Type-Safe ORM · Zero Runtime Regressions</text>
+
+    <!-- 4-Grid Test Categories -->
+    <g transform="translate(30, 85)">
+      <!-- Box 1 -->
+      <rect x="0" y="0" width="305" height="110" rx="10" fill="#08090c" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5"/>
+      <text x="18" y="28" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">✓ 01. E2E FLOW TESTING</text>
+      <text x="18" y="52" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="14" font-weight="700">Payment &amp; Multi-Tenant Auth</text>
+      <text x="18" y="75" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">418 scenarios tested in 12s</text>
+      <text x="18" y="95" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="10">● 100% Assertion Success</text>
+
+      <!-- Box 2 -->
+      <rect x="335" y="0" width="305" height="110" rx="10" fill="#08090c" stroke="#10b981" stroke-opacity="0.4" stroke-width="1.5"/>
+      <text x="353" y="28" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">✓ 02. MUTATION TESTING</text>
+      <text x="353" y="52" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="14" font-weight="700">Stryker AST Mutation Suite</text>
+      <text x="353" y="75" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">94.8% Mutation Score</text>
+      <text x="353" y="95" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="10">● All Survived Mutants Killed</text>
+    </g>
+
+    <!-- Terminal Code Box -->
+    <rect x="30" y="225" width="640" height="260" rx="10" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="50" y="255" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">$ playwright test --workers=8 --reporter=html,list</text>
+    <text x="50" y="280" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">Running 1,482 tests using 8 workers</text>
+    <text x="50" y="305" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="11">✓ [chromium] › e2e/payment-checkout.spec.ts:14 › Stripe webhook idempotency (142ms)</text>
+    <text x="50" y="330" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="11">✓ [chromium] › e2e/sse-streaming.spec.ts:28 › Disconnect GPU cancel token (88ms)</text>
+    <text x="50" y="355" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="11">✓ [firefox] › api/auth-session.spec.ts:45 › Token refresh race condition (64ms)</text>
+    <text x="50" y="380" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">✓ [webkit] › security/prompt-injection.spec.ts:60 › Canary token trap trigger (110ms)</text>
+    <text x="50" y="410" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">RESULT: 1,482 passed (0 failed, 0 skipped) in 8.42s</text>
+    <text x="50" y="435" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">> Build artifact cryptographically signed and ready for production.</text>
+  </g>
+
+  <!-- Right Metrics / Stats -->
+  <g transform="translate(775, 115)">
+    <rect width="375" height="155" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="30" y="40" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">REGRESSION DEFECT RATE</text>
+    <text x="30" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="36" font-weight="700">0.00%</text>
+    <text x="30" y="120" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12">Verified by Automated CI/CD Gates</text>
+  </g>
+
+  <g transform="translate(775, 295)">
+    <rect width="375" height="155" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="30" y="40" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">FULL-STACK P99 LATENCY</text>
+    <text x="30" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="36" font-weight="700">&lt; 42ms</text>
+    <text x="30" y="120" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="12">FastAPI + Async PostgreSQL Pool</text>
+  </g>
+
+  <g transform="translate(775, 475)">
+    <rect width="375" height="155" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="30" y="40" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">CODE COVERAGE MATRIX</text>
+    <text x="30" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="36" font-weight="700">96.4%</text>
+    <text x="30" y="120" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12">Unit + Integration + System Tests</text>
+  </g>
+</svg>

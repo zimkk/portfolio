@@ -1,61 +1,613 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
   <channel>
-    <title>Hassan Nazir — Applied AI &amp; Engineering Field Notes</title>
+    <title>Hassan Nazir — Engineering &amp; Applied AI Blogs</title>
     <link>https://hassannazir.dev/blogs</link>
-    <description>Technical writing about agentic AI, LLM systems, computer vision, security architecture, deep learning, and production engineering.</description>
-    <language>en</language>
-    <lastBuildDate>Thu, 06 Aug 2026 00:00:00 GMT</lastBuildDate>
-    <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml" />
+    <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
+    <language>en-US</language>
+    <lastBuildDate>Thu, 03 Sep 2026 06:13:09 GMT</lastBuildDate>
+    <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml"/>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    
     <item>
-      <title>Building Autonomous Multi-Agent Systems with LangChain and Modern Frameworks</title>
-      <link>https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/agentic-ai-autonomous-systems-langchain-autogpt</guid>
-      <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
-      <description>Architectures, orchestration patterns, and implementation guidance for autonomous multi-agent systems.</description>
+      <title>GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful)</title>
+      <link>https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Knowledge graphs are hyped as the ultimate solution to RAG hallucinations, but they add 10x indexing latency and massive graph database costs. Here is the architectural decision matrix and hybrid Graph-Vector pipeline that actually works in production.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>GraphRAG</category>
+      <category>Vector Search</category>
+      <category>RAG</category>
+      <category>Knowledge Graphs</category>
+      <category>Applied AI</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
     </item>
     <item>
-      <title>SAM, DINOv2, and Foundation Models Transforming Visual AI</title>
-      <link>https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/computer-vision-sam-dino-foundation-models-2025</guid>
-      <pubDate>Sun, 26 Jan 2025 00:00:00 GMT</pubDate>
-      <description>A technical guide to modern computer-vision foundation models and practical implementation patterns.</description>
+      <title>The MCP Tool Schema Explosion: Why Connecting 20 Servers Kills Agent Context (And How JIT Routing Fixes It)</title>
+      <link>https://hassannazir.dev/blogs/mcp-tool-schema-explosion-jit-routing</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/mcp-tool-schema-explosion-jit-routing</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>When you connect 20 Model Context Protocol servers to your AI agent, tool schemas consume 25,000 tokens before the user even types hello. Here is how I architected JIT dynamic tool gating using local vector routing.</description>
+      <category>Model Context Protocol</category>
+      <category>Model Context Protocol</category>
+      <category>AI Agents</category>
+      <category>Context Engineering</category>
+      <category>Vector Routing</category>
+      <category>Production AI</category>
+      <media:content url="https://hassannazir.dev/images/blogs/mcp-schema-overflow.jpg" medium="image" />
     </item>
     <item>
-      <title>Multimodal LLMs, Enterprise Adoption, and the Future of AI</title>
-      <link>https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption</guid>
-      <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
-      <description>An analysis of multimodal systems, enterprise adoption patterns, and production AI trends.</description>
+      <title>Server-Sent Events vs. WebSockets: Architecting Low-Latency Streaming for Multi-Agent UIs</title>
+      <link>https://hassannazir.dev/blogs/streaming-agent-responses-sse-vs-websockets</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/streaming-agent-responses-sse-vs-websockets</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Streaming token generation from multi-agent graphs to React UIs requires handling partial tool calls, intermediate thought updates, and connection reconnects. Here is why Server-Sent Events (SSE) beats WebSockets for 95% of AI frontends.</description>
+      <category>Full-Stack Software Development</category>
+      <category>Server-Sent Events</category>
+      <category>WebSockets</category>
+      <category>React</category>
+      <category>Streaming UI</category>
+      <category>Full-Stack Development</category>
+      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
     </item>
     <item>
-      <title>Transformers, Attention Mechanisms, and the Evolution of Deep Learning</title>
-      <link>https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025</guid>
-      <pubDate>Sat, 25 Jan 2025 00:00:00 GMT</pubDate>
-      <description>A deep technical explanation of transformers, attention, and modern neural architectures.</description>
+      <title>The Synthetic Data Echo Chamber: How to Fine-Tune Domain Models Without Triggering Mode Collapse</title>
+      <link>https://hassannazir.dev/blogs/synthetic-data-echo-chamber-model-collapse</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/synthetic-data-echo-chamber-model-collapse</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Training open-source models on synthetic datasets generated by frontier LLMs often triggers catastrophic mode collapse, jargon loss, and sterile outputs. Here is how Adversarial Perplexity Filtering and Counter-Example Synthesis create high-density training data.</description>
+      <category>Model Fine-Tuning</category>
+      <category>Fine Tuning</category>
+      <category>Synthetic Data</category>
+      <category>Model Collapse</category>
+      <category>Perplexity Filtering</category>
+      <category>Open Source AI</category>
+      <media:content url="https://hassannazir.dev/images/blogs/synthetic-model-collapse.svg" medium="image" />
     </item>
     <item>
-      <title>Advanced Prompt Engineering Techniques for Large Language Models</title>
-      <link>https://hassannazir.dev/blogs/advanced-prompt-engineering-llms</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/advanced-prompt-engineering-llms</guid>
-      <pubDate>Wed, 15 Jan 2025 00:00:00 GMT</pubDate>
-      <description>Practical prompting patterns for building more reliable large-language-model applications.</description>
+      <title>The FDE Playbook: How I Rescue Failing $2M Enterprise AI Pilots in 14 Days</title>
+      <link>https://hassannazir.dev/blogs/the-fde-playbook-saving-failing-enterprise-ai-pilots</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/the-fde-playbook-saving-failing-enterprise-ai-pilots</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Enterprise AI pilots do not fail because models are not smart enough. They fail because strategy sits 5,000 miles away from dirty operational data. Here is the 14-day Forward Deployed Engineer tactical playbook to turn stalling demos into production revenue.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Forward Deployed Engineering</category>
+      <category>Enterprise AI</category>
+      <category>Production Delivery</category>
+      <category>Applied AI</category>
+      <category>System Architecture</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
     </item>
     <item>
-      <title>Implementing Zero Trust Architecture in Cloud Environments</title>
-      <link>https://hassannazir.dev/blogs/zero-trust-architecture-implementation</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/zero-trust-architecture-implementation</guid>
-      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
-      <description>A practical implementation guide to Zero Trust controls and cloud security architecture.</description>
+      <title>Why n8n Beats Code-First Agent Frameworks for 90% of Enterprise Automations</title>
+      <link>https://hassannazir.dev/blogs/why-n8n-beats-langchain-deterministic-automations</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/why-n8n-beats-langchain-deterministic-automations</guid>
+      <pubDate>Wed, 02 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Writing 400 lines of complex Python LangChain or CrewAI boilerplate for a deterministic business workflow is technical debt disguised as sophistication. Here is why self-hosted n8n is the superior backbone for enterprise operational AI.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>n8n</category>
+      <category>Workflow Automation</category>
+      <category>LangChain</category>
+      <category>Enterprise AI</category>
+      <category>Applied AI</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
     </item>
     <item>
-      <title>Building AI-Powered Threat Detection Systems</title>
-      <link>https://hassannazir.dev/blogs/ai-powered-threat-detection</link>
-      <guid isPermaLink="true">https://hassannazir.dev/blogs/ai-powered-threat-detection</guid>
-      <pubDate>Sun, 05 Jan 2025 00:00:00 GMT</pubDate>
-      <description>From anomaly models to production monitoring: a practical guide to AI-assisted threat detection.</description>
+      <title>Why Fixed-Token Chunking Destroys Code Search (And How AST-Aware Splitting Fixes It)</title>
+      <link>https://hassannazir.dev/blogs/chunking-strategies-that-break-code-search</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/chunking-strategies-that-break-code-search</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Splitting codebases into fixed 512-token chunks slices functions in half, separates function signatures from docstrings, and breaks semantic code retrieval. Here is how Tree-Sitter AST chunking preserves structural context.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>Code Search</category>
+      <category>Tree-Sitter</category>
+      <category>AST Chunking</category>
+      <category>RAG</category>
+      <category>Developer Tools</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>Taming the Monolith: Safely Injecting AI Agents into 10-Year-Old Enterprise Codebases</title>
+      <link>https://hassannazir.dev/blogs/legacy-codebase-ai-integration-without-breaking-prod</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/legacy-codebase-ai-integration-without-breaking-prod</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Greenfield AI demos are easy. Injecting autonomous agents into a 500,000-line monolithic Ruby on Rails or Django backend with stored procedures from 2014 is where real engineering happens. Here is the Sidecar Agent integration pattern.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Legacy Code</category>
+      <category>System Architecture</category>
+      <category>AI Agents</category>
+      <category>Forward Deployed Engineering</category>
+      <category>Microservices</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Stop Burning 4,000 Thinking Tokens on Regex: Architecting Cognitive Sharding for Reasoning Models</title>
+      <link>https://hassannazir.dev/blogs/reasoning-models-token-bleed-cognitive-sharding</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/reasoning-models-token-bleed-cognitive-sharding</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Frontier reasoning models like OpenAI o1, o3-mini, and DeepSeek-R1 burn thousands of internal chain-of-thought tokens on deterministic arithmetic and regex parsing. Here is how Cognitive Sharding with AST fast-paths saves your latency and budget.</description>
+      <category>Reasoning Models</category>
+      <category>Reasoning Models</category>
+      <category>DeepSeek R1</category>
+      <category>OpenAI o1</category>
+      <category>Cognitive Sharding</category>
+      <category>System Architecture</category>
+      <media:content url="https://hassannazir.dev/images/blogs/cognitive-sharding.svg" medium="image" />
+    </item>
+    <item>
+      <title>Scaling Self-Hosted n8n to 100k Daily Executions with Kubernetes and Redis Queues</title>
+      <link>https://hassannazir.dev/blogs/self-hosting-n8n-high-availability-kubernetes</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/self-hosting-n8n-high-availability-kubernetes</guid>
+      <pubDate>Tue, 01 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Running n8n in a single default Docker container will crash your memory when webhooks spike. Here is the enterprise production architecture: n8n in queue mode with Redis, PostgreSQL pooling, and autoscaling Kubernetes workers.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>n8n</category>
+      <category>Kubernetes</category>
+      <category>Redis</category>
+      <category>DevOps</category>
+      <category>High Availability</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>The Air-Gapped AI Blueprint: Deploying Sovereign LLMs in Regulated Defense and Banking</title>
+      <link>https://hassannazir.dev/blogs/air-gapped-on-prem-ai-deployment-blueprint</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/air-gapped-on-prem-ai-deployment-blueprint</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>When your enterprise client operates under ITAR, HIPAA, or strict banking secrecy laws, zero bytes may leave the building. Here is how I architect private on-premise AI inference clusters using vLLM, Triton, and local vector embeddings.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>On-Prem AI</category>
+      <category>Data Sovereignty</category>
+      <category>Air-Gapped Systems</category>
+      <category>vLLM</category>
+      <category>Enterprise Security</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>The Dark Side of HyDE: Why Hypothetical Document Embeddings Fail on Precise Technical Queries</title>
+      <link>https://hassannazir.dev/blogs/hyde-failure-modes-technical-retrieval</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/hyde-failure-modes-technical-retrieval</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>HyDE (Hypothetical Document Embeddings) is praised for bridging semantic vocabulary gaps, but on precise technical API queries, the model hallucinates hypothetical parameters that steer vector search completely off course. Here is the fix.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>HyDE</category>
+      <category>Vector Search</category>
+      <category>RAG Hallucinations</category>
+      <category>Information Retrieval</category>
+      <category>Production AI</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>Making 8B Models Tool-Call Like GPT-4: Grammatically Constrained Logit Masking for On-Prem AI</title>
+      <link>https://hassannazir.dev/blogs/making-8b-models-tool-call-constrained-fsm-logits</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/making-8b-models-tool-call-constrained-fsm-logits</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Small 7B and 8B parameter models running locally on-premise often fail complex nested tool calls and JSON syntax. Here is how Finite State Machine (FSM) grammar masking at the logit level guarantees 100% tool-calling precision without cloud dependencies.</description>
+      <category>Edge &amp; Local AI</category>
+      <category>On-Prem AI</category>
+      <category>Small Language Models</category>
+      <category>Constrained Decoding</category>
+      <category>vLLM</category>
+      <category>Logit Masking</category>
+      <media:content url="https://hassannazir.dev/images/blogs/constrained-fsm-tool.svg" medium="image" />
+    </item>
+    <item>
+      <title>Masking the 4-Second Wait: Optimistic UI Patterns for High-Latency AI Workflows</title>
+      <link>https://hassannazir.dev/blogs/optimistic-ui-patterns-for-slow-llm-inference</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/optimistic-ui-patterns-for-slow-llm-inference</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Frontier reasoning models and multi-tool agents have unavoidable inference latency. Here is how to use progressive disclosure, skeleton state speculation, and client-side optimistic UI patterns to create apps that feel instant.</description>
+      <category>Full-Stack Software Development</category>
+      <category>Optimistic UI</category>
+      <category>UX Design</category>
+      <category>React</category>
+      <category>Frontend Engineering</category>
+      <category>Performance</category>
+      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+    </item>
+    <item>
+      <title>The $12,000 Typo: Why Your Multi-Agent DAG Is Silently Evicting KV-Caches on Every Turn</title>
+      <link>https://hassannazir.dev/blogs/silent-kv-cache-eviction-multi-agent-dag</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/silent-kv-cache-eviction-multi-agent-dag</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Provider prompt caching can slash your LLM bills by 90%, but in multi-agent frameworks like LangGraph, inserting a dynamic timestamp in the wrong position silently destroys KV-cache reuse. Here is the canonical prefix layout that fixes it.</description>
+      <category>Infrastructure &amp; Caching</category>
+      <category>Prompt Caching</category>
+      <category>Multi-Agent Systems</category>
+      <category>LangGraph</category>
+      <category>Cloud Costs</category>
+      <category>Performance</category>
+      <media:content url="https://hassannazir.dev/images/blogs/kv-cache-eviction.svg" medium="image" />
+    </item>
+    <item>
+      <title>Handling the Tsunami: Webhook Backpressure and Rate Limiting in High-Volume AI Workflows</title>
+      <link>https://hassannazir.dev/blogs/webhook-backpressure-rate-limiting-ai-workflows</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/webhook-backpressure-rate-limiting-ai-workflows</guid>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>When an enterprise marketing campaign triggers 50,000 simultaneous webhooks, downstream AI provider rate limits will drop 80% of your requests with HTTP 429 errors. Here is how to architect Leaky Bucket rate limiting and backpressure queues in n8n.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>Rate Limiting</category>
+      <category>Webhook Backpressure</category>
+      <category>n8n</category>
+      <category>System Architecture</category>
+      <category>Production Engineering</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>Taming the Unstructured: Accurate Table and Chart Extraction from Scanned PDF Documents</title>
+      <link>https://hassannazir.dev/blogs/multimodal-rag-messy-scanned-pdf-tables</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/multimodal-rag-messy-scanned-pdf-tables</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Standard OCR tools turn multi-column financial tables and nested balance sheets into a scrambled salad of unreadable text. Here is how I built a Vision-First Layout Analysis pipeline using ColPali and Table Transformer.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>Multimodal RAG</category>
+      <category>PDF Extraction</category>
+      <category>Table Parsing</category>
+      <category>Computer Vision</category>
+      <category>Document AI</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>Next.js Server Components and AI SDK: The 5 Subtle Gotchas That Break Production Streaming</title>
+      <link>https://hassannazir.dev/blogs/nextjs-server-components-ai-streaming-gotchas</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/nextjs-server-components-ai-streaming-gotchas</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Combining React Server Components (RSC), Suspense boundaries, and the Vercel AI SDK sounds seamless in tutorials, but in production, buffering reverse proxies and unclosed stream connections cause silent freezes. Here is how to fix them.</description>
+      <category>Full-Stack Software Development</category>
+      <category>Next.js</category>
+      <category>React Server Components</category>
+      <category>Vercel AI SDK</category>
+      <category>Streaming</category>
+      <category>TypeScript</category>
+      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+    </item>
+    <item>
+      <title>The Pydantic Trap: Why Strict Structured Outputs Cause Silent Semantic Truncation in Production</title>
+      <link>https://hassannazir.dev/blogs/pydantic-structured-output-schema-traps</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/pydantic-structured-output-schema-traps</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Forcing LLMs to conform to deeply nested Pydantic schemas guarantees valid JSON syntax, but often causes silent semantic truncation and hallucinated null values on edge cases. Here is how Two-Phase Speculative Schema Decoding with AST repair solves it.</description>
+      <category>Structured Outputs</category>
+      <category>Structured Outputs</category>
+      <category>Pydantic</category>
+      <category>Grammar Decoding</category>
+      <category>LLM Reliability</category>
+      <category>Python</category>
+      <media:content url="https://hassannazir.dev/images/blogs/pydantic-schema-trap.svg" medium="image" />
+    </item>
+    <item>
+      <title>Slashing $4,000/Month: The Complete Guide to Migrating from Zapier to Self-Hosted n8n</title>
+      <link>https://hassannazir.dev/blogs/replacing-zapier-with-self-hosted-n8n-cost-breakdown</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/replacing-zapier-with-self-hosted-n8n-cost-breakdown</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Zapier charges by the task, making high-volume AI automations financially ruinous. Here is the step-by-step playbook I use to migrate enterprise clients from Zapier to self-hosted n8n, cutting monthly spend by 90% while removing payload limits.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>n8n</category>
+      <category>Zapier Migration</category>
+      <category>Cost Optimization</category>
+      <category>Workflow Automation</category>
+      <category>Enterprise IT</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>The Shadow AI Crisis: Regaining Control Over Unsanctioned Prompts in Enterprise Ops</title>
+      <link>https://hassannazir.dev/blogs/shadow-ai-in-enterprise-operations</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/shadow-ai-in-enterprise-operations</guid>
+      <pubDate>Fri, 28 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Your employees are already using AI. They are pasting proprietary customer records into consumer chatbots because your official tools take 6 months to approve. Here is how I architect an Enterprise AI Reverse Proxy Gateway with PII tokenization.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Enterprise Security</category>
+      <category>Shadow AI</category>
+      <category>Data Privacy</category>
+      <category>API Gateway</category>
+      <category>Forward Deployed Engineering</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Your Coding Agent Did Not Fix the Bug: Solving Test Degradation Drift in Autonomous CI Systems</title>
+      <link>https://hassannazir.dev/blogs/autonomous-coding-agents-test-degradation-drift</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/autonomous-coding-agents-test-degradation-drift</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Autonomous coding agents given failing unit tests frequently choose the path of least resistance: modifying or weakening assertions to make the CI build turn green. Here is how Immutable Oracle test sandboxes and Shadow Mutation testing stop test degradation drift.</description>
+      <category>AI Code Generation</category>
+      <category>Autonomous Agents</category>
+      <category>Code Generation</category>
+      <category>CI CD</category>
+      <category>Mutation Testing</category>
+      <category>Software Testing</category>
+      <media:content url="https://hassannazir.dev/images/blogs/test-degradation-drift.svg" medium="image" />
+    </item>
+    <item>
+      <title>Building Bulletproof Human-in-the-Loop Approval Workflows with Slack and n8n</title>
+      <link>https://hassannazir.dev/blogs/human-in-the-loop-approval-workflows-slack-n8n</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/human-in-the-loop-approval-workflows-slack-n8n</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Pure autonomous AI workflows are dangerous for high-stakes actions like sending refunds or deleting records. Here is how to build interactive Slack approval cards with n8n wait nodes that resume workflows upon human button click.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>Human in the Loop</category>
+      <category>Slack Automation</category>
+      <category>n8n</category>
+      <category>Interactive Workflows</category>
+      <category>Applied AI</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>The Judge is Blind: Why LLM-as-a-Judge Correlates Poorly with Human Domain Experts</title>
+      <link>https://hassannazir.dev/blogs/rag-eval-why-llm-as-a-judge-fails</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/rag-eval-why-llm-as-a-judge-fails</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>RAG frameworks love using GPT-4o as a judge to compute faithfulness and answer relevance scores. In specialized legal, medical, and tax domains, LLM judges fail to detect 40% of subtle hallucinated assumptions. Here is the Multi-Tier Deterministic Eval Matrix.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>RAG Evaluation</category>
+      <category>LLM as a Judge</category>
+      <category>Evaluation Metrics</category>
+      <category>Production AI</category>
+      <category>Data Quality</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>The Fortified LLM Gateway: Defending Against Direct and Indirect Prompt Injection Attacks</title>
+      <link>https://hassannazir.dev/blogs/securing-ai-endpoints-prompt-injection-defense</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/securing-ai-endpoints-prompt-injection-defense</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Allowing users to upload third-party PDFs or URLs into an agent that has database tool access is an open invitation to Indirect Prompt Injection. Here is how I build hardened defensive gateways using token isolation and canary tokens.</description>
+      <category>Full-Stack Software Development</category>
+      <category>Security</category>
+      <category>Prompt Injection</category>
+      <category>LLM Security</category>
+      <category>API Gateway</category>
+      <category>Cybersecurity</category>
+      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+    </item>
+    <item>
+      <title>Zero-Downtime Database Migrations Using Autonomous Verification Agents</title>
+      <link>https://hassannazir.dev/blogs/zero-downtime-database-migrations-with-ai-agents</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/zero-downtime-database-migrations-with-ai-agents</guid>
+      <pubDate>Tue, 25 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Migrating 50 million rows from legacy MySQL to PostgreSQL while serving 10,000 live requests per second is terrifying. Here is how I use autonomous verification agents to perform shadow data reconciliation and eliminate migration downtime.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Database Migration</category>
+      <category>Autonomous Agents</category>
+      <category>PostgreSQL</category>
+      <category>System Architecture</category>
+      <category>Production Engineering</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Translating Ambiguity into Code: How Forward Deployed Engineers Bridge the Executive-Dev Divide</title>
+      <link>https://hassannazir.dev/blogs/bridging-the-stakeholder-developer-ai-gap</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/bridging-the-stakeholder-developer-ai-gap</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Executives speak in abstract strategic KPIs (&quot;Let us automate customer claims&quot;). Core developers speak in strict pull requests and database schemas. Here is how Forward Deployed Engineers translate executive ambiguity into working code.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Forward Deployed Engineering</category>
+      <category>Product Engineering</category>
+      <category>Enterprise AI</category>
+      <category>System Architecture</category>
+      <category>Consulting</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Context Poisoning: Why Your AI Agent Gets Dumber the Longer You Chat with It (And How Vector Pruning Saves It)</title>
+      <link>https://hassannazir.dev/blogs/context-poisoning-long-session-agentic-memory</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/context-poisoning-long-session-agentic-memory</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>In long multi-turn sessions, retrieved RAG chunks and outdated intermediate observations accumulate in memory, causing severe hallucination cascades. Here is how Epistemic Vector Decay and Temporal Context Pruning restore long-horizon stability.</description>
+      <category>Agentic Memory</category>
+      <category>Agent Memory</category>
+      <category>Context Drift</category>
+      <category>Vector Search</category>
+      <category>RAG</category>
+      <category>Knowledge Graphs</category>
+      <media:content url="https://hassannazir.dev/images/blogs/context-poisoning.svg" medium="image" />
+    </item>
+    <item>
+      <title>When Workflows Fail at 3 AM: Designing Dead-Letter Queues and Auto-Rollback in n8n</title>
+      <link>https://hassannazir.dev/blogs/dead-letter-queues-automated-rollback-n8n</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/dead-letter-queues-automated-rollback-n8n</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>What happens when a downstream third-party CRM API drops connection halfway through a 7-step automation? Here is how to architect Dead-Letter Queues (DLQ), idempotency keys, and automated rollback handlers in n8n.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>Error Handling</category>
+      <category>Dead Letter Queue</category>
+      <category>n8n</category>
+      <category>Idempotency</category>
+      <category>System Reliability</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>The Reranker Advantage: Slashing Hallucinations by 40% with Two-Stage Retrieval</title>
+      <link>https://hassannazir.dev/blogs/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders</guid>
+      <pubDate>Sat, 22 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Bi-encoder vector embeddings compress entire document chunks into a single 1536-dimensional float vector, losing fine-grained keyword relationships. Here is how adding a Cross-Encoder Reranker in Stage 2 boosts top-3 precision by 40%.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>Reranking</category>
+      <category>Vector Search</category>
+      <category>Cohere Rerank</category>
+      <category>BGE Reranker</category>
+      <category>RAG Optimization</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>The 3-Second Blindspot: Solving DOM Volatility in Vision-Based Browser Agents</title>
+      <link>https://hassannazir.dev/blogs/browser-agents-dom-volatility-action-buffering</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/browser-agents-dom-volatility-action-buffering</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Vision-based browser agents take 2 to 4 seconds to capture screenshots and compute click coordinates, while modern React and Next.js SPAs re-render in milliseconds. Here is how Accessibility Tree coordinate anchoring and client-side action buffering eliminate DOM race conditions.</description>
+      <category>Browser &amp; UI Agents</category>
+      <category>Browser Automation</category>
+      <category>Computer Use</category>
+      <category>Playwright</category>
+      <category>Vision Models</category>
+      <category>DOM Race Conditions</category>
+      <media:content url="https://hassannazir.dev/images/blogs/browser-agent-dom.svg" medium="image" />
+    </item>
+    <item>
+      <title>Hierarchical RAG: Architecting Document Trees for Sub-Second Retrieval Across 100k Pages</title>
+      <link>https://hassannazir.dev/blogs/context-caching-hierarchical-rag-pipelines</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/context-caching-hierarchical-rag-pipelines</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Searching flat vector indexes across massive 100,000-page enterprise document repositories dilutes semantic similarity and produces noisy context. Here is how Hierarchical Tree Indexing achieves sub-second retrieval precision.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>Hierarchical RAG</category>
+      <category>Document Trees</category>
+      <category>Information Retrieval</category>
+      <category>Context Engineering</category>
+      <category>Enterprise AI</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>LoRA vs. QLoRA vs. Full Parameter Tuning in 2026: Practical Benchmarks for Enterprise Domain Models</title>
+      <link>https://hassannazir.dev/blogs/lora-vs-qlora-vs-full-finetuning-2026</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/lora-vs-qlora-vs-full-finetuning-2026</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Should you spend $4,000 on full-parameter training of a 70B model, or does 4-bit QLoRA with rank r=64 achieve identical domain task performance on a single $1,200 workstation? Here are the memory, throughput, and loss convergence benchmarks.</description>
+      <category>Model Fine-Tuning</category>
+      <category>Fine Tuning</category>
+      <category>LoRA</category>
+      <category>QLoRA</category>
+      <category>Deep Learning</category>
+      <category>GPU Optimization</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Breaking the Loop: Resolving State Deadlocks in Autonomous Multi-Agent DAGs</title>
+      <link>https://hassannazir.dev/blogs/multi-agent-deadlocks-langgraph-cycle-resolution</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/multi-agent-deadlocks-langgraph-cycle-resolution</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>When a Researcher agent and a Critic agent enter an infinite refinement ping-pong loop, your API bill explodes while your user waits forever. Here is how to implement Monotonic Convergence Metrics and Deadlock Circuit Breakers in LangGraph.</description>
+      <category>AI Agents</category>
+      <category>Multi-Agent Systems</category>
+      <category>LangGraph</category>
+      <category>Agent Deadlocks</category>
+      <category>State Machines</category>
+      <category>Production AI</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Zero-Leakage Credential Security in Multi-Tenant n8n Architectures</title>
+      <link>https://hassannazir.dev/blogs/multi-tenant-credential-security-n8n</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/multi-tenant-credential-security-n8n</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Managing API keys and database credentials across 40 different enterprise clients in a shared automation environment is a severe security risk. Here is how to enforce role-based access control and HashiCorp Vault credential isolation in n8n.</description>
+      <category>n8n &amp; AI Automations</category>
+      <category>Security</category>
+      <category>HashiCorp Vault</category>
+      <category>n8n</category>
+      <category>Multi-Tenancy</category>
+      <category>Enterprise Security</category>
+      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+    </item>
+    <item>
+      <title>Beyond HTTP 500s: Building Observability for Semantic Drift in Production AI</title>
+      <link>https://hassannazir.dev/blogs/observability-for-soft-errors-in-production-llms</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/observability-for-soft-errors-in-production-llms</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>When traditional software breaks, your monitoring triggers a red alert. When an AI pipeline breaks, it outputs a grammatically flawless response with subtle factual drift. Here is how to build an OpenTelemetry semantic observability pipeline.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Observability</category>
+      <category>OpenTelemetry</category>
+      <category>Semantic Drift</category>
+      <category>Production AI</category>
+      <category>Monitoring</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>PostgreSQL pgvector vs. Pinecone and Qdrant: A 10-Million Vector Production Benchmark</title>
+      <link>https://hassannazir.dev/blogs/pgvector-vs-dedicated-vector-dbs-10m-benchmark</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/pgvector-vs-dedicated-vector-dbs-10m-benchmark</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Do you really need a dedicated, expensive vector database like Pinecone or Qdrant, or can PostgreSQL with pgvector and HNSW index 10 million vectors with sub-20ms latency? Here are the benchmarks, cost breakdowns, and production lessons.</description>
+      <category>RAG &amp; Vector Search</category>
+      <category>PostgreSQL</category>
+      <category>pgvector</category>
+      <category>Pinecone</category>
+      <category>Qdrant</category>
+      <category>Database Performance</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
+    <item>
+      <title>Silent Semantic Regressions: Why Distributed Agents Need Invariant Gates, Not Just Unit Tests</title>
+      <link>https://hassannazir.dev/blogs/soft-failures-distributed-agents-invariant-checkpoints</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/soft-failures-distributed-agents-invariant-checkpoints</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Traditional microservices fail with loud 500 error stack traces. Distributed LLM agents fail with confident, grammatically flawless responses that silently violate business logic. Here is how Programmatic Invariant Gates and Entropy Watchdogs safeguard multi-agent DAGs.</description>
+      <category>Distributed Systems</category>
+      <category>Distributed Agents</category>
+      <category>Invariant Testing</category>
+      <category>LangGraph</category>
+      <category>Observability</category>
+      <category>Production Architecture</category>
+      <media:content url="https://hassannazir.dev/images/blogs/invariant-gates.svg" medium="image" />
+    </item>
+    <item>
+      <title>The Build vs. Buy Lie: What Enterprise AI Actually Costs in Years Two and Three</title>
+      <link>https://hassannazir.dev/blogs/the-real-cost-of-building-vs-buying-ai-systems</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/the-real-cost-of-building-vs-buying-ai-systems</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>SaaS vendors pitch their turnkey AI platforms as cheap and effortless. Custom in-house builds are pitched as sovereign and flexible. Here is the unfiltered economic breakdown of what enterprise AI systems actually cost over a 3-year lifecycle.</description>
+      <category>Forward Deployed Engineering</category>
+      <category>Enterprise AI</category>
+      <category>Cloud Costs</category>
+      <category>ROI</category>
+      <category>Forward Deployed Engineering</category>
+      <category>Consulting</category>
+      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+    </item>
+    <item>
+      <title>Sub-Millisecond AI: Client-Side Semantic Caching for High-Frequency User Queries</title>
+      <link>https://hassannazir.dev/blogs/zero-latency-client-side-caching-repetitive-prompts</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/zero-latency-client-side-caching-repetitive-prompts</guid>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Why send identical FAQ queries and common customer questions to an expensive cloud model over and over again? Here is how to implement client-side and edge semantic caching using SQLite WASM and embedding vector similarity.</description>
+      <category>Full-Stack Software Development</category>
+      <category>Semantic Caching</category>
+      <category>Edge Computing</category>
+      <category>WebAssembly</category>
+      <category>Performance</category>
+      <category>Full-Stack</category>
+      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
     </item>
   </channel>
 </rss>
-

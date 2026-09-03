@@ -1,0 +1,57 @@
+---
+title: "Next.js Server Components and AI SDK: The 5 Subtle Gotchas That Break Production Streaming"
+publishedAt: '2026-08-28'
+category: "Full-Stack Software Development"
+readTime: '12 min read'
+excerpt: "Combining React Server Components (RSC), Suspense boundaries, and the Vercel AI SDK sounds seamless in tutorials, but in production, buffering reverse proxies and unclosed stream connections cause silent freezes. Here is how to fix them."
+tags: ["Next.js","React Server Components","Vercel AI SDK","Streaming","TypeScript"]
+seoKeywords: ["Next.js AI SDK streaming bugs","RSC AI streaming gotchas","Fixing buffered streams Next.js","Vercel AI SDK production guide"]
+image: '/images/projects/wonderkit.webp'
+---
+
+# Next.js Server Components and AI SDK: The 5 Subtle Gotchas That Break Production Streaming
+
+Building AI applications with Next.js App Router and the Vercel AI SDK (`useChat`, `streamText`) is the modern standard for React developers.
+
+However, once you deploy behind an NGINX reverse proxy, Cloudflare CDN, or AWS ALB, subtle streaming bugs appear:
+- The stream chunks get buffered and dump all at once after a 4-second freeze.
+- Edge functions hit 15-second execution timeouts on reasoning models.
+- Suspense boundaries refuse to trigger fallback skeletons.
+
+Here are the **Five Critical Gotchas** and their production fixes.
+
+## Gotcha 1: NGINX / Cloudflare Response Buffering
+
+By default, NGINX and Cloudflare buffer incoming chunked transfer encoding until the buffer fills up (typically 4KB).
+
+**The Fix**: Explicitly disable proxy buffering in your Next.js route handler headers:
+
+```typescript:app/api/chat/route.ts
+import { streamText } from 'ai';
+import { openai } from '@ai-sdk/openai';
+
+export const dynamic = 'force-dynamic';
+export const maxDuration = 60; // Allow 60s timeout for reasoning models
+
+export async function POST(req: Request) {
+  const { messages } = await req.json();
+
+  const result = await streamText({
+    model: openai('gpt-4o'),
+    messages,
+  });
+
+  return result.toDataStreamResponse({
+    headers: {
+      'X-Accel-Buffering': 'no', // Disables NGINX proxy buffering!
+      'Cache-Control': 'no-cache, no-transform',
+    },
+  });
+}
+```
+
+## Gotcha 2: Unhandled Stream Aborts
+
+When a user closes the tab midway through generation, the serverless function continues running and billing tokens.
+
+**The Fix**: Pass `req.signal` directly into the model inference call to cancel upstream GPU compute instantly upon client disconnect.

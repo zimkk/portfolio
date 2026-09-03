@@ -1,0 +1,62 @@
+---
+title: "Handling the Tsunami: Webhook Backpressure and Rate Limiting in High-Volume AI Workflows"
+publishedAt: '2026-08-30'
+category: "n8n & AI Automations"
+readTime: '11 min read'
+excerpt: "When an enterprise marketing campaign triggers 50,000 simultaneous webhooks, downstream AI provider rate limits will drop 80% of your requests with HTTP 429 errors. Here is how to architect Leaky Bucket rate limiting and backpressure queues in n8n."
+tags: ["Rate Limiting","Webhook Backpressure","n8n","System Architecture","Production Engineering"]
+seoKeywords: ["Webhook backpressure AI","n8n rate limiting leaky bucket","Handling 429 Too Many Requests n8n","High volume AI automations"]
+image: '/images/projects/n8nhub.webp'
+---
+
+# Handling the Tsunami: Webhook Backpressure and Rate Limiting in High-Volume AI Workflows
+
+Here is a classic production disaster: A client launches a product announcement. Within sixty seconds, 50,000 users trigger automated onboarding webhooks.
+
+Your n8n automation happily fires 50,000 parallel requests to OpenAI or Claude.
+
+Within three seconds, the model provider hits your tier limit and starts screaming: **HTTP 429 Too Many Requests (Rate limit exceeded)**.
+
+Unprepared workflows fail, drop customer records, and leave half your database in an inconsistent state.
+
+Here is how to build **Leaky Bucket Token Rate Limiting and Dynamic Backpressure** directly into your automated pipelines.
+
+## The Rate Limiting Architecture
+
+```
+[50,000 Burst Webhooks] ──► [Redis Ingestion Buffer (Fast ACK)]
+                                      │
+                                      ▼
+             [n8n Rate Limiter Node / Leaky Bucket Consumer]
+             - Max 40 Requests / Second
+             - Exponential Backoff with Jitter on HTTP 429
+                                      │
+                                      ▼
+                      [Upstream LLM Provider API]
+```
+
+## Code: Dynamic Backoff in n8n Code Nodes
+
+```javascript:rate_limiter.js
+// Custom n8n Code Node: Exponential Backoff with Jitter
+const MAX_RETRIES = 5;
+const BASE_DELAY_MS = 1000;
+
+async function executeWithRetry(apiCallFn) {
+  for (let attempt = 1; attempt <= MAX_RETRIES; attempt++) {
+    try {
+      return await apiCallFn();
+    } catch (error) {
+      if (error.response && error.response.status === 429 && attempt < MAX_RETRIES) {
+        // Calculate exponential backoff with full jitter
+        const delay = Math.random() * (BASE_DELAY_MS * Math.pow(2, attempt));
+        await new Promise((resolve) => setTimeout(resolve, delay));
+        continue;
+      }
+      throw error;
+    }
+  }
+}
+```
+
+Never let downstream API limits dictate your system uptime. Buffer at the edge, pace at the center.

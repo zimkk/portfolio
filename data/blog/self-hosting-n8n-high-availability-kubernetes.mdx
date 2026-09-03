@@ -1,0 +1,78 @@
+---
+title: "Scaling Self-Hosted n8n to 100k Daily Executions with Kubernetes and Redis Queues"
+publishedAt: '2026-09-01'
+category: "n8n & AI Automations"
+readTime: '13 min read'
+excerpt: "Running n8n in a single default Docker container will crash your memory when webhooks spike. Here is the enterprise production architecture: n8n in queue mode with Redis, PostgreSQL pooling, and autoscaling Kubernetes workers."
+tags: ["n8n","Kubernetes","Redis","DevOps","High Availability"]
+seoKeywords: ["Scale n8n 100k executions","n8n queue mode Kubernetes","Self-hosted n8n production architecture","n8n Redis worker scaling"]
+image: '/images/projects/n8nhub.webp'
+---
+
+# Scaling Self-Hosted n8n to 100k Daily Executions with Kubernetes and Redis Queues
+
+When you first install n8n using `docker run -p 5678:5678 n8nio/n8n`, it runs in single-process mode with an embedded SQLite database.
+
+It is brilliant for local testing.
+
+If you point a production webhook receiving 10,000 requests per hour at that single container, the Node.js event loop will freeze, memory will hit 100%, and incoming customer webhooks will return HTTP 504 Gateway Timeouts.
+
+Here is the **Enterprise High-Availability (HA) n8n Architecture** I deploy on Kubernetes to comfortably process over 100,000 workflow executions per day.
+
+## The Scaled Queue Mode Topology
+
+```
+                       [Ingress NGINX Load Balancer]
+                                    │
+                  ┌─────────────────┴─────────────────┐
+                  ▼                                   ▼
+    [n8n Webhook Replicas (x3)]             [n8n Editor UI (x1)]
+                  │                                   │
+                  └─────────────────┬─────────────────┘
+                                    ▼
+                         [Redis Cluster (Bull Queue)]
+                                    │
+                  ┌─────────────────┼─────────────────┐
+                  ▼                 ▼                 ▼
+          [Worker Pod 1]     [Worker Pod 2]    [Worker Pod 3]
+                  │                 │                 │
+                  └─────────────────┬─────────────────┘
+                                    ▼
+                   [PostgreSQL Primary + Read Replica]
+```
+
+## Step 1: Environment Parameters for Queue Mode
+
+In your Kubernetes Deployment manifest, configure n8n to run in **Queue Mode** with Redis as the broker:
+
+```yaml:n8n-worker-deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: n8n-worker
+spec:
+  replicas: 4
+  template:
+    spec:
+      containers:
+      - name: n8n-worker
+        image: n8nio/n8n:latest
+        args: ["worker"]
+        env:
+        - name: EXECUTIONS_MODE
+          value: "queue"
+        - name: QUEUE_BULL_REDIS_HOST
+          value: "redis-cluster.internal"
+        - name: DB_TYPE
+          value: "postgresdb"
+        - name: DB_POSTGRESDB_HOST
+          value: "postgres-primary.internal"
+        - name: EXECUTIONS_DATA_PRUNE
+          value: "true"
+        - name: EXECUTIONS_DATA_MAX_AGE
+          value: "168" # Prune execution logs older than 7 days
+```
+
+## Step 2: Separate Webhook Ingestion from UI
+
+By setting `EXECUTIONS_PROCESS=main` on dedicated webhook ingestion pods, webhook calls return HTTP 200 in sub-10 milliseconds by instantly pushing jobs into Redis, while worker pods scale dynamically based on queue depth.

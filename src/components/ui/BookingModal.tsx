@@ -48,7 +48,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
         });
 
         cal('on', {
-          action: 'dateSelected',
+          action: 'dateSelected' as any,
           callback: () => {
             scrollToTimeSelection();
           },

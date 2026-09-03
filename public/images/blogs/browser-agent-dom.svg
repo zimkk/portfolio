@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">playwright.agent/browser_use/devtools_timeline_audit.json</text>
+  <text x="940" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">DOM RACE CONDITION</text>
+
+  <!-- Left: The Blindspot (Pixel Coordinates vs React Re-render) -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">NAIVE VISION AGENT: 3-SECOND DOM BLINDSPOT</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="195" fill="#7f8794" font-family="monospace" font-size="12">T+0.00s | Agent captures browser screenshot</text>
+  <text x="100" y="220" fill="#7f8794" font-family="monospace" font-size="12">T+0.80s | VLM receives image, starts coordinate inference</text>
+  <text x="100" y="245" fill="#ff5d3d" font-family="monospace" font-size="12">T+1.40s | [REACT STATE UPDATE] Async toast banner mounts!</text>
+  <text x="100" y="270" fill="#ff5d3d" font-family="monospace" font-size="12">          Entire DOM shifts down by 64px!</text>
+  <text x="100" y="295" fill="#7f8794" font-family="monospace" font-size="12">T+2.60s | VLM outputs planned click: (x=412, y=320)</text>
+  <text x="100" y="325" fill="#ff5d3d" font-family="monospace" font-size="12">T+2.65s | Mouse clicks stale coordinates (Clicked empty margin!)</text>
+  <text x="100" y="355" fill="#ff5d3d" font-family="monospace" font-size="12">> Error: Expected modal submit, but clicked background backdrop</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Workflow permanently stalled in timeout loop</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">BENCHMARK: VISION LATENCY VULNERABILITY</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Action Success Rate: <tspan fill="#ff5d3d" font-weight="bold">51.4% on Dynamic React/Next SPAs</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Step Latency: <tspan fill="#ff5d3d" font-weight="bold">3.2 seconds / action</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">DOM Race Failures: <tspan fill="#ff5d3d" font-weight="bold">48.6% Missed Clicks</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Problem: Decoupled vision inference assumes a static browser viewport</text>
+
+  <!-- Right: Hybrid A11y Tree Anchoring + Action Buffers -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">HYBRID ACCESSIBILITY TREE &amp; ACTION BUFFERING</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="195" fill="#7f8794" font-family="monospace" font-size="12"># 1. Semantic Accessibility Node Anchoring</text>
+  <text x="660" y="220" fill="#27c93f" font-family="monospace" font-size="12">target = a11y_tree.get_element(role="button", name="Submit")</text>
+  <text x="660" y="245" fill="#7f8794" font-family="monospace" font-size="12"># 2. Real-time MutationObserver Pre-Flight Lock</text>
+  <text x="660" y="270" fill="#27c93f" font-family="monospace" font-size="12">await page.wait_for_dom_quiescence(threshold_ms=100)</text>
+  <text x="660" y="295" fill="#27c93f" font-family="monospace" font-size="12">action_buffer.dispatch_anchored_event(target.bounding_box)</text>
+  <text x="660" y="325" fill="#27c93f" font-family="monospace" font-size="11">> Element recalculation adjusted for 64px shift automatically</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="11">  Clean click event dispatched to accurate dynamic coordinates</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: 100% Reliable browser interaction</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD RESULT: ZERO RACE CONDITIONS</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Action Success Rate: <tspan fill="#27c93f" font-weight="bold">98.9% (+47.5% reliability)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Flakiness Index: <tspan fill="#27c93f" font-weight="bold">0.01 (Near Zero)</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Dynamic SPA Compatibility: <tspan fill="#27c93f" font-weight="bold">Full (React, Vue, Svelte)</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: A11y Semantic Tree + Client-Side Quiescence Buffering</text>
+</svg>

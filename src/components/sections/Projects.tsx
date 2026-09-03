@@ -1,4 +1,3 @@
-import React from 'react';
 import { GithubIcon, ArrowUpRightIcon } from 'lucide-react';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';

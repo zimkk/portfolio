@@ -1,0 +1,42 @@
+---
+title: "Sub-Millisecond AI: Client-Side Semantic Caching for High-Frequency User Queries"
+publishedAt: '2026-08-21'
+category: "Full-Stack Software Development"
+readTime: '11 min read'
+excerpt: "Why send identical FAQ queries and common customer questions to an expensive cloud model over and over again? Here is how to implement client-side and edge semantic caching using SQLite WASM and embedding vector similarity."
+tags: ["Semantic Caching","Edge Computing","WebAssembly","Performance","Full-Stack"]
+seoKeywords: ["Client-side semantic caching AI","Sub-millisecond LLM response cache","SQLite WASM vector search browser","Edge caching for AI"]
+image: '/images/projects/wonderkit.webp'
+---
+
+# Sub-Millisecond AI: Client-Side Semantic Caching for High-Frequency User Queries
+
+In customer support and enterprise search applications, **40% of all user queries are semantically identical** to questions answered earlier that day.
+- *"How do I reset my API key?"*
+- *"Where can I change my billing payment method?"*
+- *"What is the refund policy for enterprise plans?"*
+
+Sending every single repetitive question across the internet to an LLM wastes money and adds 2 seconds of unnecessary latency.
+
+Here is how to deploy a **Browser-Native Client-Side Semantic Cache** using WebAssembly and lightweight embedding similarity to return instant, zero-latency answers in **0.4 milliseconds**.
+
+## The Browser Edge Cache Topology
+
+```
+[User Types Query into Browser Input]
+                   │
+                   ▼
+[Client-Side WASM Embedding Engine (MiniLM / BGE WebAssembly)]
+                   │
+                   ▼
+[IndexedDB / Local Vector Cache Lookup (Threshold > 0.94)]
+                   │
+        ┌──────────┴──────────┐
+       HIT?                  MISS?
+        │                      │
+        ▼                      ▼
+[Return Cached Answer]   [Dispatch Network Call to Server LLM]
+(Latency: 0.4ms | $0.00) (Latency: 1.8s | Updates Local Cache)
+```
+
+Client-side semantic caching delivers an unbeatable user experience while slashing serverless inference costs by nearly half.

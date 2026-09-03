@@ -1,0 +1,55 @@
+---
+title: "Hierarchical RAG: Architecting Document Trees for Sub-Second Retrieval Across 100k Pages"
+publishedAt: '2026-08-21'
+category: "RAG & Vector Search"
+readTime: '12 min read'
+excerpt: "Searching flat vector indexes across massive 100,000-page enterprise document repositories dilutes semantic similarity and produces noisy context. Here is how Hierarchical Tree Indexing achieves sub-second retrieval precision."
+tags: ["Hierarchical RAG","Document Trees","Information Retrieval","Context Engineering","Enterprise AI"]
+seoKeywords: ["Hierarchical RAG architecture","Document tree indexing","Large scale RAG 100k pages","Summary index vector retrieval"]
+image: '/images/cloud.svg'
+---
+
+# Hierarchical RAG: Architecting Document Trees for Sub-Second Retrieval Across 100k Pages
+
+When you index a 100,000-page enterprise knowledge base (such as legal case law or regulatory compliance codes) into a flat vector database, you hit **Semantic Dilution**.
+
+A user asks: *"What are the emergency disclosure guidelines under Section 4?"*
+
+Because thousands of pages discuss "disclosure guidelines," a flat vector search returns 20 weakly relevant chunks from 15 different documents.
+
+Here is how **Hierarchical Tree-Index RAG (RAPTOR style)** organizes knowledge into multi-level summary trees for pinpoint retrieval.
+
+## The Hierarchical Tree Architecture
+
+```
+Level 2: [Global Corpus Category Summaries (10 nodes)]
+                   │
+                   ▼ (Routes query to relevant document clusters)
+Level 1: [Document-Level Executive Summaries (150 nodes)]
+                   │
+                   ▼ (Identifies exact chapter and subsection)
+Level 0: [Raw Leaf Chunks: 512-Token Granular Passages (100,000 nodes)]
+```
+
+## Implementation
+
+```python:hierarchical_retriever.py
+class HierarchicalRetriever:
+    def __init__(self, level2_index, level1_index, level0_index):
+        self.l2 = level2_index
+        self.l1 = level1_index
+        self.l0 = level0_index
+
+    def retrieve(self, query: str) -> list:
+        # Step 1: Narrow down to top-2 relevant document clusters
+        relevant_clusters = self.l2.search(query, top_k=2)
+        
+        # Step 2: Search document summaries within those clusters
+        relevant_docs = self.l1.search_within_clusters(query, relevant_clusters, top_k=3)
+        
+        # Step 3: Extract exact granular leaf passages only from targeted documents
+        leaf_chunks = self.l0.search_within_docs(query, relevant_docs, top_k=4)
+        return leaf_chunks
+```
+
+Hierarchical search eliminates semantic noise and guarantees high-precision context retrieval across massive enterprise document libraries.

@@ -24,4 +24,4 @@ if (!response.ok) {
   throw new Error(`IndexNow submission failed with HTTP ${response.status}: ${await response.text()}`);
 }
 
-console.log(`Submitted ${urlList.length} URLs to IndexNow.`);
+console.log(`Successfully submitted ${urlList.length} URLs to IndexNow for instant search indexing.`);

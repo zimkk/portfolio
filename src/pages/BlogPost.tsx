@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowLeftIcon, CalendarIcon, ClockIcon, TagIcon } from 'lucide-react';
 import { blogPosts } from './BlogsPage';
@@ -122,11 +121,11 @@ const BlogPost = () => {
             <div className="prose prose-invert prose-lg max-w-none">
               <ReactMarkdown
                 components={{
-                  code({ node, inline, className, children, ...props }) {
+                  code({ className, children, ...props }: any) {
                     const match = /language-(\w+)/.exec(className || '');
-                    return !inline && match ? (
+                    return match ? (
                       <SyntaxHighlighter
-                        style={oneDark}
+                        style={oneDark as any}
                         language={match[1]}
                         PreTag="div"
                         className="rounded-xl border border-gray-800/50"

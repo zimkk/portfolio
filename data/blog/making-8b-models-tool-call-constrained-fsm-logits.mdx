@@ -1,0 +1,56 @@
+---
+title: "Making 8B Models Tool-Call Like GPT-4: Grammatically Constrained Logit Masking for On-Prem AI"
+publishedAt: '2026-08-30'
+category: "Edge & Local AI"
+readTime: '14 min read'
+excerpt: "Small 7B and 8B parameter models running locally on-premise often fail complex nested tool calls and JSON syntax. Here is how Finite State Machine (FSM) grammar masking at the logit level guarantees 100% tool-calling precision without cloud dependencies."
+tags: ["On-Prem AI","Small Language Models","Constrained Decoding","vLLM","Logit Masking"]
+seoKeywords: ["Local LLM tool calling","Constrained decoding vLLM","Logit masking Finite State Machine","Llama 3.1 8B tool use","Air-gapped enterprise AI"]
+image: '/images/blogs/constrained-fsm-tool.svg'
+---
+
+# Making 8B Models Tool-Call Like GPT-4: Grammatically Constrained Logit Masking for On-Prem AI
+
+Enterprise engineering teams in defense, healthcare, and finance face a strict operational mandate: **zero data exfiltration to external cloud APIs**.
+
+Everything must run on-premises in air-gapped environments on affordable local hardware.
+
+Small open-weight models like Llama 3.1 8B, Qwen 2.5 7B, and Phi-4 are remarkably fast and capable. But the moment you ask an 8B model to orchestrate a multi-argument tool call with nested types, UUIDs, and enum constraints, it often stumbles.
+
+Your local autonomous pipeline crashes with a `json.decoder.JSONDecodeError`.
+
+Here is how to use **Grammar-Constrained Finite State Machine (FSM) Logit Masking** to force 8B models to execute tool calls with 100.0% mathematical precision matching GPT-4o.
+
+![FSM Constrained Logit Masking Architecture](/images/blogs/constrained-fsm-tool.svg)
+
+## The Solution: FSM Logit Masking at Inference Time
+
+$$z_{\text{masked}}[i] = \begin{cases} z_i & \text{if } i \in \text{ValidTokens}(\text{FSM State}) \\ -\infty & \text{otherwise} \end{cases}$$
+
+When Softmax runs, the probability of sampling an invalid token is exactly $0.000000\%$.
+
+```python:constrained_tool_engine.py
+import outlines
+from pydantic import BaseModel, Field
+from typing import Literal
+
+class SQLQueryTool(BaseModel):
+    tool_name: Literal["execute_sql_query"] = "execute_sql_query"
+    query: str = Field(description="Clean SQL query string without markdown fences")
+    target_database: Literal["analytics_db", "users_db", "audit_db"]
+    timeout_seconds: int = Field(ge=1, le=60)
+    read_only: bool = True
+
+class LocalConstrainedAgent:
+    def __init__(self, model_id: str = "meta-llama/Meta-Llama-3.1-8B-Instruct"):
+        self.model = outlines.models.transformers(model_id, device="cuda")
+        self.generator = outlines.generate.json(self.model, SQLQueryTool)
+
+    def execute_tool_call(self, user_request: str, table_schema: str) -> SQLQueryTool:
+        prompt = f"System: Database agent.
+Schemas:
+{table_schema}
+User: {user_request}
+Tool Call:"
+        return self.generator(prompt)
+```

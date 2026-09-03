@@ -1,4 +1,3 @@
-import React from 'react';
 import SectionHeader from '../ui/SectionHeader';
 import Reveal from '../ui/Reveal';
 

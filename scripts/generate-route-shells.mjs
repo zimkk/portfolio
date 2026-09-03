@@ -1,59 +1,41 @@
-import { mkdir, readFile, writeFile } from 'node:fs/promises';
+import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
 import path from 'node:path';
+import matter from 'gray-matter';
 
 const siteUrl = 'https://hassannazir.dev';
 const distDir = path.resolve('dist');
+const publicDir = path.resolve('public');
+const blogDir = path.resolve('data/blog');
 const template = await readFile(path.join(distDir, 'index.html'), 'utf8');
 
-const articles = [
-  {
-    slug: 'advanced-prompt-engineering-llms',
-    title: 'Advanced Prompt Engineering Techniques for Large Language Models',
-    description: 'Explore prompt engineering strategies for specialized LLM applications, including reasoning patterns, few-shot learning, and domain adaptation.',
-    published: '2025-01-15',
-  },
-  {
-    slug: 'zero-trust-architecture-implementation',
-    title: 'Implementing Zero Trust Architecture in Cloud Environments',
-    description: 'A practical guide to Zero Trust cloud architecture covering identity verification, micro-segmentation, and continuous monitoring.',
-    published: '2025-01-10',
-  },
-  {
-    slug: 'ai-powered-threat-detection',
-    title: 'Building AI-Powered Threat Detection Systems: From Theory to Production',
-    description: 'Build and deploy machine-learning systems for threat detection using anomaly models, feature engineering, and real-time monitoring.',
-    published: '2025-01-05',
-  },
-  {
-    slug: 'deep-learning-transformers-attention-mechanisms-2025',
-    title: 'Deep Learning Evolution: Transformers, Attention Mechanisms, and the Future of Neural Networks',
-    description: 'A technical guide to transformers, multi-head attention, LoRA, QLoRA, and the evolution of modern neural architectures.',
-    published: '2025-01-25',
-  },
-  {
-    slug: 'agentic-ai-autonomous-systems-langchain-autogpt',
-    title: 'Agentic AI: Building Autonomous Multi-Agent Systems with LangChain and Modern Frameworks',
-    description: 'Architectures and implementation patterns for autonomous agents, tool use, planning, and multi-agent collaboration.',
-    published: '2025-01-27',
-  },
-  {
-    slug: 'computer-vision-sam-dino-foundation-models-2025',
-    title: 'Computer Vision Revolution: SAM, DINOv2, and Foundation Models Transforming Visual AI',
-    description: 'A guide to SAM, DINOv2, vision transformers, zero-shot learning, segmentation, and visual foundation models.',
-    published: '2025-01-26',
-  },
-  {
-    slug: 'ai-trends-2025-multimodal-llms-enterprise-adoption',
-    title: 'AI Trends 2025: Multimodal LLMs, Enterprise Adoption, and the Future of Artificial Intelligence',
-    description: 'An analysis of multimodal foundation models, enterprise adoption, regulation, and emerging production AI patterns.',
-    published: '2025-01-27',
-  },
-];
+// Dynamically load all .mdx files from data/blog/
+const mdxFiles = (await readdir(blogDir)).filter((file) => file.endsWith('.mdx') || file.endsWith('.md'));
+
+const articles = [];
+for (const file of mdxFiles) {
+  const filePath = path.join(blogDir, file);
+  const rawContent = await readFile(filePath, 'utf8');
+  const { data } = matter(rawContent);
+  const slug = file.replace(/\.mdx?$/, '');
+
+  articles.push({
+    slug,
+    title: data.title || slug,
+    description: data.excerpt || '',
+    published: data.publishedAt || '2026-09-01',
+    category: data.category || 'Engineering',
+    tags: data.tags || [],
+    image: data.image || '/images/forward-deployed-services.svg',
+  });
+}
+
+// Sort newest first
+articles.sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
 
 const services = [
   {
     slug: 'forward-deployed-engineer',
-    image: '/images/forward-deployed-services.webp',
+    image: '/images/forward-deployed-services.svg',
     title: 'Forward Deployed Engineer for Applied AI and Software Delivery | Hassan Nazir',
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     heading: 'Put an engineer where the ambiguity lives.',
@@ -61,7 +43,7 @@ const services = [
   },
   {
     slug: 'applied-ai-consulting',
-    image: '/images/ai-automation.jpg',
+    image: '/images/ai-automation.svg',
     title: 'Applied AI Consulting for Production Systems | Hassan Nazir',
     description: 'Applied AI consulting for US and European teams that need working LLM applications, document intelligence, automation, evaluation, and production infrastructure.',
     heading: 'Move the AI work from promising to operational.',
@@ -69,7 +51,7 @@ const services = [
   },
   {
     slug: 'ai-agent-development',
-    image: '/images/cloud.webp',
+    image: '/images/cloud.svg',
     title: 'AI Agent Development and RAG Engineering Services | Hassan Nazir',
     description: 'Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.',
     heading: 'Agents need an operating system, not another demo.',
@@ -96,7 +78,7 @@ const services = [
 const routes = [
   {
     route: '/services',
-    image: '/images/forward-deployed-services.webp',
+    image: '/images/forward-deployed-services.svg',
     title: 'Forward Deployed Engineering and Applied AI Services | Hassan Nazir',
     description: 'Engineering services for US and European teams that need applied AI, agents, RAG, n8n automation, and production software delivered through real operational constraints.',
     type: 'CollectionPage',
@@ -115,19 +97,19 @@ const routes = [
   })),
   {
     route: '/work',
-    title: 'Engineering Work & Case Studies — Hassan Nazir',
-    description: 'Selected product, automation, AI, cloud, and quality-engineering work by Forward Deployed Engineer Hassan Nazir.',
+    title: 'Applied AI & Software Engineering Blogs | Hassan Nazir',
+    description: 'Technical blogs, deep dives, and production architectures by Forward Deployed Engineer Hassan Nazir.',
     type: 'CollectionPage',
-    heading: 'Engineering work that made it past the demo.',
-    summary: 'Case studies in production AI, cloud security, quality engineering, architecture, implementation, and operational outcomes.',
+    heading: 'Applied AI & software engineering blogs.',
+    summary: 'Technical guides and production architectures on AI automations, agentic systems, security, and full-stack software development.',
   },
   {
     route: '/blogs',
-    title: 'Applied AI & Engineering Field Notes — Hassan Nazir',
-    description: 'Technical field notes by Hassan Nazir about agentic AI, LLM systems, computer vision, security architecture, and production engineering.',
+    title: 'Applied AI & Software Engineering Blogs | Hassan Nazir',
+    description: 'Technical blogs and deep dives by Hassan Nazir about agentic AI, LLM systems, computer vision, security architecture, and production engineering.',
     type: 'CollectionPage',
-    heading: 'Applied AI and engineering field notes.',
-    summary: 'Long-form technical writing about AI agents, model systems, security architecture, computer vision, deep learning, and production delivery.',
+    heading: 'Applied AI and software engineering blogs.',
+    summary: 'Long-form technical guides and production architectures about AI agents, model systems, security architecture, computer vision, deep learning, and production delivery.',
   },
   ...articles.map((article) => ({
     route: `/blogs/${article.slug}`,
@@ -137,6 +119,7 @@ const routes = [
     heading: article.title,
     summary: article.description,
     published: article.published,
+    image: article.image,
   })),
 ];
 
@@ -197,7 +180,7 @@ for (const route of routes) {
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(route.title)}</title>`)
     .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, `$1${canonical}$2`)
     .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
-    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback"><h1>${escapeHtml(route.heading)}</h1><p>${escapeHtml(route.summary)}</p><p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Applied AI practitioner.</p><nav aria-label="Site index"><a href="/">Portfolio</a> · <a href="/services">Services</a> · <a href="/work">Work</a> · <a href="/blogs">Field notes</a> · <a href="/llms.txt">AI-readable index</a></nav></main>`);
+    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback"><h1>${escapeHtml(route.heading)}</h1><p>${escapeHtml(route.summary)}</p><p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Applied AI practitioner.</p><nav aria-label="Site index"><a href="/">Portfolio</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a></nav></main>`);
 
   html = route.image
     ? html.replace('/images/profile-hero.webp', route.image)
@@ -217,4 +200,137 @@ for (const route of routes) {
   await writeFile(path.join(distDir, `${route.route.slice(1)}.html`), html);
 }
 
-console.log(`Generated ${routes.length} crawler-first route shells.`);
+// 1. Generate search.json
+const searchIndex = articles.map((a) => ({
+  title: a.title,
+  summary: a.description,
+  tags: a.tags,
+  date: a.published,
+  slug: a.slug,
+  url: `/blogs/${a.slug}`,
+}));
+const searchJsonStr = JSON.stringify(searchIndex, null, 2);
+await writeFile(path.join(publicDir, 'search.json'), searchJsonStr);
+await writeFile(path.join(distDir, 'search.json'), searchJsonStr);
+
+// 2. Generate tag-data.json
+const tagCounts = {};
+articles.forEach((a) => {
+  a.tags.forEach((t) => {
+    const slug = t.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+    tagCounts[slug] = (tagCounts[slug] || 0) + 1;
+  });
+});
+const tagJsonStr = JSON.stringify(tagCounts, null, 2);
+await writeFile(path.join(publicDir, 'tag-data.json'), tagJsonStr);
+await writeFile(path.join(distDir, 'tag-data.json'), tagJsonStr);
+
+// 3. Generate feed.xml (RSS 2.0 Feed), atom.xml, and feed.json (JSON Feed 1.1)
+const nowUtc = new Date().toUTCString();
+
+const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Hassan Nazir — Engineering &amp; Applied AI Blogs</title>
+    <link>${siteUrl}/blogs</link>
+    <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
+    <language>en-US</language>
+    <lastBuildDate>${nowUtc}</lastBuildDate>
+    <atom:link href="${siteUrl}/feed.xml" rel="self" type="application/rss+xml"/>
+    <docs>https://www.rssboard.org/rss-specification</docs>
+    ${articles.map((a) => `
+    <item>
+      <title>${escapeHtml(a.title)}</title>
+      <link>${siteUrl}/blogs/${a.slug}</link>
+      <guid isPermaLink="true">${siteUrl}/blogs/${a.slug}</guid>
+      <pubDate>${new Date(a.published).toUTCString()}</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>${escapeHtml(a.description)}</description>
+      <category>${escapeHtml(a.category)}</category>
+      ${(a.tags || []).map((t) => `<category>${escapeHtml(t)}</category>`).join('\n      ')}
+      ${a.image ? `<media:content url="${siteUrl}${a.image}" medium="image" />` : ''}
+    </item>`).join('')}
+  </channel>
+</rss>`;
+
+const atomFeed = `<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Hassan Nazir — Engineering &amp; Applied AI Blogs</title>
+  <subtitle>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</subtitle>
+  <link href="${siteUrl}/blogs" />
+  <link href="${siteUrl}/atom.xml" rel="self" type="application/atom+xml" />
+  <updated>${new Date().toISOString()}</updated>
+  <id>${siteUrl}/blogs</id>
+  <author>
+    <name>Hassan Nazir</name>
+    <email>hassannazir955@gmail.com</email>
+    <uri>${siteUrl}</uri>
+  </author>
+  ${articles.map((a) => `
+  <entry>
+    <title>${escapeHtml(a.title)}</title>
+    <link href="${siteUrl}/blogs/${a.slug}" />
+    <id>${siteUrl}/blogs/${a.slug}</id>
+    <updated>${new Date(a.published).toISOString()}</updated>
+    <summary>${escapeHtml(a.description)}</summary>
+    <category term="${escapeHtml(a.category)}" />
+  </entry>`).join('')}
+</feed>`;
+
+const jsonFeed = {
+  version: 'https://jsonfeed.org/version/1.1',
+  title: 'Hassan Nazir — Engineering & Applied AI Blogs',
+  home_page_url: `${siteUrl}/blogs`,
+  feed_url: `${siteUrl}/feed.json`,
+  description: 'Technical field guides and production architectures on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.',
+  authors: [
+    {
+      name: 'Hassan Nazir',
+      url: siteUrl,
+      avatar: `${siteUrl}/images/profile.png`,
+    },
+  ],
+  items: articles.map((a) => ({
+    id: `${siteUrl}/blogs/${a.slug}`,
+    url: `${siteUrl}/blogs/${a.slug}`,
+    title: a.title,
+    summary: a.description,
+    date_published: `${a.published}T00:00:00Z`,
+    tags: a.tags,
+    image: a.image ? `${siteUrl}${a.image}` : undefined,
+  })),
+};
+
+await writeFile(path.join(publicDir, 'feed.xml'), rssFeed.trim());
+await writeFile(path.join(distDir, 'feed.xml'), rssFeed.trim());
+
+await writeFile(path.join(publicDir, 'atom.xml'), atomFeed.trim());
+await writeFile(path.join(distDir, 'atom.xml'), atomFeed.trim());
+
+await writeFile(path.join(publicDir, 'feed.json'), JSON.stringify(jsonFeed, null, 2));
+await writeFile(path.join(distDir, 'feed.json'), JSON.stringify(jsonFeed, null, 2));
+
+// 4. Generate sitemap.xml
+const sitemapUrls = [
+  { loc: `${siteUrl}/`, changefreq: 'weekly', priority: '1.0' },
+  { loc: `${siteUrl}/services`, changefreq: 'weekly', priority: '0.9' },
+  { loc: `${siteUrl}/blogs`, changefreq: 'daily', priority: '0.9' },
+  ...services.map((s) => ({ loc: `${siteUrl}/services/${s.slug}`, changefreq: 'monthly', priority: '0.8' })),
+  ...articles.map((a) => ({ loc: `${siteUrl}/blogs/${a.slug}`, changefreq: 'monthly', priority: '0.8', lastmod: a.published })),
+];
+
+const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  ${sitemapUrls.map((u) => `
+  <url>
+    <loc>${u.loc}</loc>
+    ${u.lastmod ? `<lastmod>${u.lastmod}</lastmod>` : ''}
+    <changefreq>${u.changefreq}</changefreq>
+    <priority>${u.priority}</priority>
+  </url>`).join('')}
+</urlset>`;
+await writeFile(path.join(publicDir, 'sitemap.xml'), sitemapXml.trim());
+await writeFile(path.join(distDir, 'sitemap.xml'), sitemapXml.trim());
+
+console.log(`Generated ${routes.length} crawler-first route shells from dynamic .mdx files.`);
+console.log(`Generated search.json, tag-data.json, feed.xml, and sitemap.xml successfully.`);

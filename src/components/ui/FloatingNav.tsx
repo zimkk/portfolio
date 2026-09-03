@@ -8,8 +8,8 @@ const HOME_SECTION_IDS = ['home', 'about', 'experience', 'skills', 'certificatio
 
 const NAV_ITEMS = [
   { path: '/', label: 'Home', icon: HomeIcon },
-  { path: '/work', label: 'Work', icon: BriefcaseIcon },
-  { path: '/blogs', label: 'Blog', icon: BookOpenIcon },
+  { path: '/services', label: 'Services', icon: BriefcaseIcon },
+  { path: '/blogs', label: 'Blogs', icon: BookOpenIcon },
   { path: '/#contact', label: 'Contact', icon: MailIcon }
 ] as const;
 

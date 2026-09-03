@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight, Check, Github } from 'lucide-react';
 import EditorialNav from '../components/ui/EditorialNav';
@@ -34,8 +33,8 @@ const servicePages: ServicePage[] = [
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     hero: 'Put an engineer where the ambiguity lives.',
     directAnswer: 'A Forward Deployed Engineer works inside the operating context, not from a detached specification. I join the team, learn the workflow, build against real constraints, integrate with existing systems, and remain accountable through deployment.',
-    image: '/images/forward-deployed-services.webp',
-    imageAlt: 'Engineer working with an operations team inside a production control environment',
+    image: '/images/forward-deployed-services.svg',
+    imageAlt: 'Forward Deployed Engineering operating mesh and live invariant telemetry console',
     fit: [
       'The requirement is still changing because the operation is not fully understood.',
       'An AI prototype exists, but integration and production ownership are missing.',
@@ -76,8 +75,8 @@ const servicePages: ServicePage[] = [
     description: 'Applied AI consulting for US and European teams that need working LLM applications, document intelligence, automation, evaluation, and production infrastructure.',
     hero: 'Move the AI work from promising to operational.',
     directAnswer: 'Applied AI consulting should end in a system that people can use and the business can operate. I help teams choose viable use cases, test model behavior, build the surrounding software, and establish the controls needed for production.',
-    image: '/images/ai-automation.jpg',
-    imageAlt: 'Applied AI automation system shown as a production engineering environment',
+    image: '/images/ai-automation.svg',
+    imageAlt: 'Autonomous enterprise pipeline orchestrator with high-availability queues and human-in-the-loop workflows',
     fit: [
       'Leadership has AI use cases, but no reliable path from pilot to production.',
       'A document, support, research, or operations workflow contains expensive manual decisions.',
@@ -118,8 +117,8 @@ const servicePages: ServicePage[] = [
     description: 'Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.',
     hero: 'Agents need an operating system, not another demo.',
     directAnswer: 'Production agents require more than a model and a prompt. I build the tool contracts, retrieval, memory, permissions, durable execution, evaluation, cost accounting, fallbacks, and product surface that make agent behavior usable.',
-    image: '/images/cloud.webp',
-    imageAlt: 'Cloud infrastructure supporting production AI agent systems',
+    image: '/images/cloud.svg',
+    imageAlt: 'Autonomous multi-agent DAG state machine and GraphRAG knowledge engine',
     fit: [
       'A team wants an agent that can act across real tools and business systems.',
       'A RAG application produces inconsistent retrieval or unsupported answers.',
@@ -266,9 +265,9 @@ const ServicesPage = () => {
               <p>Engineering services for operational AI</p>
               <h1>Technical delivery where strategy usually breaks.</h1>
               <p>I work with US and European teams that need one engineer to connect discovery, models, software, integration, and production ownership.</p>
-              <div><a href={PROJECT_CONTACT_HREF}>Discuss the system <ArrowUpRight size={16} /></a><Link to="/work">Review case studies <ArrowRight size={16} /></Link></div>
+              <div><a href={PROJECT_CONTACT_HREF}>Discuss the system <ArrowUpRight size={16} /></a><Link to="/blogs">Read engineering blogs <ArrowRight size={16} /></Link></div>
             </div>
-            <figure><img src="/images/forward-deployed-services.webp" width="1440" height="810" fetchPriority="high" decoding="async" alt="Engineer embedded with an operations team in a production environment" /></figure>
+            <figure><img src="/images/forward-deployed-services.svg" width="1440" height="810" fetchPriority="high" decoding="async" alt="Forward Deployed Engineering operating mesh and live invariant telemetry console" /></figure>
           </section>
 
           <section className="services-index" aria-labelledby="services-index-title">

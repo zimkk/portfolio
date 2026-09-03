@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">training_pipeline/dataset_distillation/perplexity_entropy_analysis.py</text>
+  <text x="940" y="73" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">MODEL COLLAPSE</text>
+
+  <!-- Left: Synthetic Echo Chamber (Mode Collapse) -->
+  <rect x="60" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+  <rect x="60" y="115" width="520" height="38" rx="12" fill="#1b1210"/>
+  <text x="85" y="139" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">NAIVE SYNTHETIC FINE-TUNING (MODE COLLAPSE)</text>
+
+  <rect x="80" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="100" y="195" fill="#7f8794" font-family="monospace" font-size="12">> Ingested 500k synthetic Q&amp;A pairs from GPT-4o</text>
+  <text x="100" y="220" fill="#ff5d3d" font-family="monospace" font-size="12">> Vocabulary Entropy Score: 1.84 (Down from 4.92)</text>
+  <text x="100" y="245" fill="#ff5d3d" font-family="monospace" font-size="12">> Token Repetition Index: "Certainly! Here is a comprehensive..."</text>
+  <text x="100" y="270" fill="#ff5d3d" font-family="monospace" font-size="12">> Lost Edge Vocabulary: Domain medical jargon dropped by 78%</text>
+  <text x="100" y="295" fill="#7f8794" font-family="monospace" font-size="12">> Out-of-distribution Evaluation:</text>
+  <text x="100" y="325" fill="#ff5d3d" font-family="monospace" font-size="12">  Model hallucinated confident generic filler on edge queries</text>
+  <text x="100" y="355" fill="#ff5d3d" font-family="monospace" font-size="12">> Symptom: Catastrophic Mode Collapse (Synthetic Echo Chamber)</text>
+  <text x="100" y="380" fill="#ff5d3d" font-family="monospace" font-size="11">> Status: Model is un-deployable for mission-critical tasks</text>
+
+  <rect x="80" y="420" width="480" height="180" rx="8" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+  <text x="100" y="450" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">THE SYNTHETIC DATA TRAP</text>
+  <text x="100" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Domain Jargon Retention: <tspan fill="#ff5d3d" font-weight="bold">22.4% (Severe Loss)</tspan></text>
+  <text x="100" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Generic Phrasing Density: <tspan fill="#ff5d3d" font-weight="bold">89.2% Boilerplate Clichés</tspan></text>
+  <text x="100" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Out-of-Distribution Error: <tspan fill="#ff5d3d" font-weight="bold">4.2x Baseline Error</tspan></text>
+  <text x="100" y="575" fill="#7f8794" font-family="monospace" font-size="11">Reason: Recursive synthetic distillation flattens long-tail probability distributions</text>
+
+  <!-- Right: Adversarial Perplexity Filtering & Counter-Examples -->
+  <rect x="620" y="115" width="520" height="505" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.35)" stroke-width="1.5"/>
+  <rect x="620" y="115" width="520" height="38" rx="12" fill="#0f1c13"/>
+  <text x="645" y="139" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">ADVERSARIAL PERPLEXITY FILTERING &amp; SYNTHESIS</text>
+
+  <rect x="640" y="170" width="480" height="230" rx="8" fill="#141720" stroke="rgba(217,222,232,0.08)"/>
+  <text x="660" y="195" fill="#7f8794" font-family="monospace" font-size="12"># 1. Dual-Model Perplexity Divergence Filter</text>
+  <text x="660" y="220" fill="#27c93f" font-family="monospace" font-size="12">filter_samples(perplexity_ratio &gt; 1.4, entropy_density &gt; 3.8)</text>
+  <text x="660" y="245" fill="#7f8794" font-family="monospace" font-size="12"># 2. Adversarial Counter-Example Synthesis</text>
+  <text x="660" y="270" fill="#27c93f" font-family="monospace" font-size="12">inject_synthetic_edge_invariants(domain="clinical_oncology")</text>
+  <text x="660" y="295" fill="#27c93f" font-family="monospace" font-size="12">pruned 380k generic samples; kept 120k dense reasoning chains</text>
+  <text x="660" y="325" fill="#27c93f" font-family="monospace" font-size="11">> Vocabulary Entropy Restored to 4.88 | Zero Fluff</text>
+  <text x="660" y="350" fill="#7f8794" font-family="monospace" font-size="11">  Fine-tuned 8B model outperforms 70B teacher on domain benchmarks</text>
+  <text x="660" y="380" fill="#27c93f" font-family="monospace" font-size="11">> Status: Production-Ready Specialist Model</text>
+
+  <rect x="640" y="420" width="480" height="180" rx="8" fill="#0e1f14" stroke="rgba(39,201,63,0.3)"/>
+  <text x="660" y="450" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">PROD ADVANTAGE: HIGH-DENSITY FINE-TUNING</text>
+  <text x="660" y="485" fill="#d9dee8" font-family="monospace" font-size="12">Specialist Domain Accuracy: <tspan fill="#27c93f" font-weight="bold">94.8% (+38.6% gain)</tspan></text>
+  <text x="660" y="515" fill="#d9dee8" font-family="monospace" font-size="12">Dataset Compression: <tspan fill="#27c93f" font-weight="bold">76% smaller, 3x higher information</tspan></text>
+  <text x="660" y="545" fill="#d9dee8" font-family="monospace" font-size="12">Compute Training Cost: <tspan fill="#27c93f" font-weight="bold">65% reduction on GPU hours</tspan></text>
+  <text x="660" y="575" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Cross-Entropy Filtering + Adversarial Boundary Mining</text>
+</svg>

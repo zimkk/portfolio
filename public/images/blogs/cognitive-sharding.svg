@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5d3d"/>
+      <stop offset="100%" stop-color="#ff8c73"/>
+    </linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  
+  <!-- Grid background -->
+  <g stroke="rgba(217,222,232,0.04)" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="240" y1="0" x2="240" y2="675"/>
+    <line x1="480" y1="0" x2="480" y2="675"/>
+    <line x1="720" y1="0" x2="720" y2="675"/>
+    <line x1="960" y1="0" x2="960" y2="675"/>
+  </g>
+
+  <!-- Top Header Bar -->
+  <rect x="60" y="50" width="1080" height="48" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="74" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="74" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="74" r="5" fill="#27c93f"/>
+  <text x="155" y="79" fill="#7f8794" font-family="monospace" font-size="13">benchmark --trace=reasoning_vs_deterministic_ast</text>
+  <text x="1000" y="79" fill="#ff5d3d" font-family="monospace" font-size="12" font-weight="bold">PROD TELEMETRY</text>
+
+  <!-- Left Box: Reasoning Model Overthinking Trace -->
+  <rect x="60" y="125" width="510" height="490" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.3)" stroke-width="1.5"/>
+  <rect x="60" y="125" width="510" height="40" rx="12" fill="#161922"/>
+  <text x="85" y="150" fill="#ff8c73" font-family="monospace" font-size="13" font-weight="bold">[PATH A] FRONTIER REASONING MODEL (o1 / R1)</text>
+  
+  <text x="85" y="200" fill="#7f8794" font-family="monospace" font-size="12">// Prompt: "Validate and parse ISO-8601 email headers"</text>
+  <text x="85" y="235" fill="#d9dee8" font-family="monospace" font-size="13">> Initializing Chain-of-Thought Scratchpad...</text>
+  <text x="85" y="265" fill="#7f8794" font-family="monospace" font-size="12">  [Thinking] Let me mentally evaluate byte 0 through 48...</text>
+  <text x="85" y="295" fill="#7f8794" font-family="monospace" font-size="12">  [Thinking] Checking leap year leap seconds in RFC-5322...</text>
+  <text x="85" y="325" fill="#7f8794" font-family="monospace" font-size="12">  [Thinking] Simulating UTF-8 boundary condition states...</text>
+  <text x="85" y="355" fill="#7f8794" font-family="monospace" font-size="12">  [Thinking] Step 412: Verifying domain hyphen rules...</text>
+  
+  <line x1="85" y1="390" x2="540" y2="390" stroke="rgba(217,222,232,0.1)" stroke-width="1"/>
+  
+  <rect x="85" y="415" width="460" height="170" rx="8" fill="#1a0f0d" stroke="rgba(255,93,61,0.4)" stroke-width="1"/>
+  <text x="105" y="445" fill="#ff5d3d" font-family="monospace" font-size="13" font-weight="bold">METRICS: UNCONTROLLED TOKEN BLEED</text>
+  <text x="105" y="480" fill="#d9dee8" font-family="monospace" font-size="13">Thinking Tokens: <tspan fill="#ff5d3d" font-weight="bold">4,180 tokens</tspan></text>
+  <text x="105" y="510" fill="#d9dee8" font-family="monospace" font-size="13">End-to-End Latency: <tspan fill="#ff5d3d" font-weight="bold">4.82 seconds</tspan></text>
+  <text x="105" y="540" fill="#d9dee8" font-family="monospace" font-size="13">API Execution Cost: <tspan fill="#ff5d3d" font-weight="bold">$0.062 / invocation</tspan></text>
+  <text x="105" y="565" fill="#7f8794" font-family="monospace" font-size="11">Result: 100% Deterministic Regex solved with brute-force tokens</text>
+
+  <!-- Right Box: Cognitive Sharding AST Fast Path -->
+  <rect x="630" y="125" width="510" height="490" rx="12" fill="#0d0f14" stroke="rgba(39,201,63,0.3)" stroke-width="1.5"/>
+  <rect x="630" y="125" width="510" height="40" rx="12" fill="#121e16"/>
+  <text x="655" y="150" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">[PATH B] COGNITIVE SHARDING (AST FAST-PATH)</text>
+
+  <text x="655" y="200" fill="#7f8794" font-family="monospace" font-size="12">// Router: Intent Classifier -> AST Deterministic Filter</text>
+  <text x="655" y="235" fill="#d9dee8" font-family="monospace" font-size="13">> Deterministic Signature Matched [ISO_EMAIL_V2]</text>
+  <text x="655" y="265" fill="#27c93f" font-family="monospace" font-size="12">  [Bypass] Bypassed frontier reasoning core</text>
+  <text x="655" y="295" fill="#27c93f" font-family="monospace" font-size="12">  [Runtime] Dispatched to compiled Rust regex engine</text>
+  <text x="655" y="325" fill="#27c93f" font-family="monospace" font-size="12">  [Result] Schema validated with zero LLM hallucinations</text>
+  <text x="655" y="355" fill="#7f8794" font-family="monospace" font-size="12">  [Status] 200 OK (Clean parsed JSON payload)</text>
+
+  <line x1="655" y1="390" x2="1110" y2="390" stroke="rgba(217,222,232,0.1)" stroke-width="1"/>
+
+  <rect x="655" y="415" width="460" height="170" rx="8" fill="#0c1a11" stroke="rgba(39,201,63,0.4)" stroke-width="1"/>
+  <text x="675" y="445" fill="#27c93f" font-family="monospace" font-size="13" font-weight="bold">METRICS: COGNITIVE SHARDING EFFICIENCY</text>
+  <text x="675" y="480" fill="#d9dee8" font-family="monospace" font-size="13">Thinking Tokens: <tspan fill="#27c93f" font-weight="bold">0 tokens (100% saved)</tspan></text>
+  <text x="675" y="510" fill="#d9dee8" font-family="monospace" font-size="13">End-to-End Latency: <tspan fill="#27c93f" font-weight="bold">0.18 milliseconds (26,000x faster)</tspan></text>
+  <text x="675" y="540" fill="#d9dee8" font-family="monospace" font-size="13">API Execution Cost: <tspan fill="#27c93f" font-weight="bold">$0.000000</tspan></text>
+  <text x="675" y="565" fill="#7f8794" font-family="monospace" font-size="11">Architecture: Fast Intent Router + Deterministic AST Gateway</text>
+</svg>

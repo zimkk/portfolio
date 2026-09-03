@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="autoBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+    <linearGradient id="autoCoral" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5d3d"/>
+      <stop offset="100%" stop-color="#ff8159"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#autoBg)"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.08" stroke="#d9dee8" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="240" y1="0" x2="240" y2="675"/>
+    <line x1="480" y1="0" x2="480" y2="675"/>
+    <line x1="720" y1="0" x2="720" y2="675"/>
+    <line x1="960" y1="0" x2="960" y2="675"/>
+  </g>
+
+  <!-- Top Navigation Ribbon -->
+  <rect x="50" y="40" width="1100" height="50" rx="10" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+  <text x="80" y="71" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="15" font-weight="700">Autonomous Enterprise Pipeline Orchestrator</text>
+  <text x="430" y="71" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="12">// High-Availability n8n + Dead-Letter Queue Mesh</text>
+  <rect x="980" y="52" width="140" height="26" rx="6" fill="#ff5d3d" fill-opacity="0.15" stroke="#ff5d3d" stroke-width="1"/>
+  <text x="1000" y="69" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">RATE: 2.4k req/s</text>
+
+  <!-- Pipeline Canvas Area -->
+  <g transform="translate(50, 120)">
+    <!-- Stage 1: Webhook Ingestion -->
+    <rect x="0" y="0" width="240" height="210" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <rect x="20" y="20" width="40" height="40" rx="8" fill="#ff5d3d" fill-opacity="0.1" stroke="#ff5d3d" stroke-width="1.5"/>
+    <text x="35" y="46" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="bold">01</text>
+    <text x="20" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="16" font-weight="700">Webhook Gateway</text>
+    <text x="20" y="110" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Backpressure Buffer</text>
+    <text x="20" y="130" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Redis Token Bucket</text>
+    <rect x="20" y="155" width="200" height="32" rx="6" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="30" y="176" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">● 0 Dropped Packets</text>
+
+    <!-- Connector 1 -> 2 -->
+    <path d="M 240 105 L 285 105" stroke="#ff5d3d" stroke-width="2"/>
+    <circle cx="285" cy="105" r="4" fill="#ff5d3d"/>
+
+    <!-- Stage 2: Parallel LLM Extraction -->
+    <rect x="285" y="0" width="250" height="210" rx="14" fill="#111319" stroke="#ff5d3d" stroke-opacity="0.4" stroke-width="1.5"/>
+    <rect x="305" y="20" width="40" height="40" rx="8" fill="#ff5d3d" fill-opacity="0.1" stroke="#ff5d3d" stroke-width="1.5"/>
+    <text x="320" y="46" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="bold">02</text>
+    <text x="305" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="16" font-weight="700">Semantic Extraction</text>
+    <text x="305" y="110" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Schema Invariant Gate</text>
+    <text x="305" y="130" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Claude 3.5 / DeepSeek-V3</text>
+    <rect x="305" y="155" width="210" height="32" rx="6" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="315" y="176" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">● 180ms Latency P95</text>
+
+    <!-- Connector 2 -> 3 -->
+    <path d="M 535 105 L 580 105" stroke="#ff5d3d" stroke-width="2"/>
+    <circle cx="580" cy="105" r="4" fill="#ff5d3d"/>
+
+    <!-- Stage 3: Human Approval Flow -->
+    <rect x="580" y="0" width="240" height="210" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <rect x="600" y="20" width="40" height="40" rx="8" fill="#ff5d3d" fill-opacity="0.1" stroke="#ff5d3d" stroke-width="1.5"/>
+    <text x="615" y="46" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="bold">03</text>
+    <text x="600" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="16" font-weight="700">Slack HITL Trigger</text>
+    <text x="600" y="110" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Interactive Block Kit</text>
+    <text x="600" y="130" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">1-Click Fast Approval</text>
+    <rect x="600" y="155" width="200" height="32" rx="6" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="610" y="176" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">● 2.1s Operator Time</text>
+
+    <!-- Connector 3 -> 4 -->
+    <path d="M 820 105 L 865 105" stroke="#ff5d3d" stroke-width="2"/>
+    <circle cx="865" cy="105" r="4" fill="#ff5d3d"/>
+
+    <!-- Stage 4: Production Sync -->
+    <rect x="865" y="0" width="235" height="210" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <rect x="885" y="20" width="40" height="40" rx="8" fill="#ff5d3d" fill-opacity="0.1" stroke="#ff5d3d" stroke-width="1.5"/>
+    <text x="900" y="46" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="16" font-weight="bold">04</text>
+    <text x="885" y="85" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="16" font-weight="700">CRM / ERP Sync</text>
+    <text x="885" y="110" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">PostgreSQL &amp; SAP Core</text>
+    <text x="885" y="130" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">Dead-Letter Queue Safety</text>
+    <rect x="885" y="155" width="195" height="32" rx="6" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="895" y="176" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">● 100% Deterministic</text>
+  </g>
+
+  <!-- Bottom Log Stream & Metrics -->
+  <g transform="translate(50, 360)">
+    <!-- Terminal Live Log -->
+    <rect x="0" y="0" width="680" height="270" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="25" y="32" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">LIVE ORCHESTRATION EVENT STREAM</text>
+    <rect x="20" y="45" width="640" height="205" rx="10" fill="#08090c" stroke="#ffffff" stroke-opacity="0.08"/>
+    <text x="35" y="75" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">[INFO] [2026-09-03 10:45:12] Webhook received: customer_order_batch_914</text>
+    <text x="35" y="100" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="11">[EXEC] Invoked Claude 3.5 Sonnet: Extracted 14 line items with 0 schema drift</text>
+    <text x="35" y="125" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">[PASS] Deterministic price invariant checked: Subtotal matches tax matrix</text>
+    <text x="35" y="150" fill="#eab308" font-family="'JetBrains Mono', monospace" font-size="11">[SLACK] High-value transaction ($48,200) routed to VP Finance via Block Kit</text>
+    <text x="35" y="175" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">[EVENT] Approved via Slack interactive webhook in 1.4s by @finance_lead</text>
+    <text x="35" y="200" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="11">[COMMIT] PostgreSQL write committed · Net revenue synced to dashboard</text>
+
+    <!-- Side Metric Cards -->
+    <rect x="710" y="0" width="390" height="125" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="735" y="32" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">OPERATIONAL COST REDUCTION</text>
+    <text x="735" y="75" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="32" font-weight="700">-84% vs Zapier</text>
+    <text x="735" y="105" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="11">Self-hosted on Kubernetes cluster</text>
+
+    <rect x="710" y="145" width="390" height="125" rx="14" fill="#111319" stroke="#ffffff" stroke-opacity="0.1" stroke-width="1.5"/>
+    <text x="735" y="177" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">UNHANDLED RUNTIME ERRORS</text>
+    <text x="735" y="220" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="32" font-weight="700">0.00%</text>
+    <text x="735" y="250" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="11">Protected by Dead-Letter Auto-Rollback</text>
+  </g>
+</svg>
