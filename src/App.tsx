@@ -15,6 +15,7 @@ import {
 import SEOHead from './components/ui/SEOHead';
 import EditorialNav from './components/ui/EditorialNav';
 import { EMAILJS_CONFIG } from './config/emailjs';
+import { blogPosts } from './data/blogs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -83,11 +84,12 @@ const capabilities = [
   },
 ];
 
-const notes = [
-  { slug: 'agentic-ai-autonomous-systems-langchain-autogpt', topic: 'Agentic AI', time: '20 min', title: 'Building autonomous multi-agent systems with LangChain and modern frameworks' },
-  { slug: 'zero-trust-architecture-implementation', topic: 'Cybersecurity', time: '12 min', title: 'Implementing Zero Trust architecture in cloud environments' },
-  { slug: 'computer-vision-sam-dino-foundation-models-2025', topic: 'Computer vision', time: '22 min', title: 'SAM, DINOv2, and the foundation-model shift in visual AI' },
-];
+const notes = blogPosts.slice(0, 3).map((post) => ({
+  slug: post.slug,
+  topic: post.category,
+  time: post.readTime,
+  title: post.title,
+}));
 
 const feedback = [
   { quote: 'The automation solution transformed our workflow efficiency beyond expectations.', author: 'Project Manager', company: 'NDT Legacy Group' },

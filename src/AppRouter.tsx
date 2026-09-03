@@ -6,6 +6,7 @@ import { App } from "./App";
 const JournalPage = lazy(() => import('./pages/JournalPage'));
 const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -37,6 +38,7 @@ function AnimatedRoutes() {
         <Route path="/blog" element={<JournalPage />} />
         <Route path="/blog/:slug" element={<ArticlePage />} />
         <Route path="/work" element={<JournalPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
   );
