@@ -68,8 +68,8 @@ The public portfolio, commercial services hub, and technical engineering blog of
 
 ### 1. Clone the repository
 ```bash
-git clone https://github.com/zimkk/Portfolio-new.git
-cd Portfolio-new
+git clone https://github.com/zimkk/portfolio.git
+cd portfolio
 ```
 
 ### 2. Install dependencies

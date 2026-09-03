@@ -47,7 +47,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
     // Clean any prior script instance
     giscusContainerRef.current.innerHTML = '';
 
-    const repo = import.meta.env.VITE_GISCUS_REPO || 'zimkk/Portfolio-new';
+    const repo = import.meta.env.VITE_GISCUS_REPO || 'zimkk/portfolio';
     const repoId = import.meta.env.VITE_GISCUS_REPO_ID || 'R_kgDONjA9-w';
     const category = import.meta.env.VITE_GISCUS_CATEGORY || 'General';
     const categoryId = import.meta.env.VITE_GISCUS_CATEGORY_ID || 'DIC_kwDONjA9-84Cll0V';
