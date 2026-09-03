@@ -302,7 +302,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
         <div className="rounded-2xl border border-white/10 bg-[#111319]/60 p-6 backdrop-blur-sm">
           <div className="mb-4 flex items-center gap-2 text-xs font-mono text-[#aab3c2]">
             <Github className="h-4 w-4 text-white" />
-            <span>Comments synced directly with GitHub Discussions on zimkk/Portfolio-new</span>
+            <span>Comments synced with GitHub Discussions on zimkk/portfolio</span>
           </div>
           <div ref={giscusContainerRef} className="min-h-[160px]" />
         </div>
