@@ -1189,6 +1189,7 @@ button { cursor: pointer; }
 .nf-footnote { font-size: .78rem; color: #333; line-height: 1.7; }
 .nf-footnote code { color: #555; background: #111; padding: 1px 5px; border-radius: 3px; }
 .nf-footnote em { color: #e55; font-style: normal; }
+.nf-loading { padding: 40px 0; font-family: 'JetBrains Mono','Fira Code',monospace; font-size: .85rem; color: #444; }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
