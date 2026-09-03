@@ -418,7 +418,7 @@ const ArticlePage: React.FC = () => {
                     </a>
                     <span>•</span>
                     <a
-                      href="https://github.com/zimkk/Portfolio-new"
+                      href="https://github.com/zimkk/portfolio"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1.5 hover:text-[#ff5d3d] transition"
