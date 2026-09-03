@@ -1,4 +1,7 @@
 {
+  "rewrites": [
+    { "source": "/((?!images|fonts|assets|robots.txt|sitemap.xml|feed.xml|atom.xml|llm.txt|llms.txt|llms-full.txt|portfolio.json|humans.txt|favicon|_vercel).*)", "destination": "/index.html" }
+  ],
   "headers": [
     {
       "source": "/(.*)",
