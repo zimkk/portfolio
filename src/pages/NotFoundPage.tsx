@@ -20,7 +20,7 @@ export default function NotFoundPage() {
 
   useEffect(() => {
     const path = window.location.pathname;
-    fetch(`${API}/?path=${encodeURIComponent(path)}`)
+    fetch(`${API}/?path=${encodeURIComponent(path)}`, { cache: 'no-store' })
       .then((r) => r.json())
       .then((data: Joke) => setJoke(data))
       .catch(() => {
