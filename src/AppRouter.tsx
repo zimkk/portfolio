@@ -1,5 +1,5 @@
 import { lazy, Suspense, useEffect } from "react";
-import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, Navigate, useParams } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { App } from "./App";
 
@@ -7,6 +7,11 @@ const JournalPage = lazy(() => import('./pages/JournalPage'));
 const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+
+function BlogSlugRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  return <Navigate to={`/blogs/${slug || ''}`} replace />;
+}
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -35,9 +40,9 @@ function AnimatedRoutes() {
         <Route path="/services/:slug" element={<ServicesPage />} />
         <Route path="/blogs" element={<JournalPage />} />
         <Route path="/blogs/:slug" element={<ArticlePage />} />
-        <Route path="/blog" element={<JournalPage />} />
-        <Route path="/blog/:slug" element={<ArticlePage />} />
-        <Route path="/work" element={<JournalPage />} />
+        <Route path="/blog" element={<Navigate to="/blogs" replace />} />
+        <Route path="/blog/:slug" element={<BlogSlugRedirect />} />
+        <Route path="/work" element={<Navigate to="/blogs" replace />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>

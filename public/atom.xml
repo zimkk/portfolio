@@ -4,7 +4,7 @@
   <subtitle>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</subtitle>
   <link href="https://hassannazir.dev/blogs" />
   <link href="https://hassannazir.dev/atom.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-09-03T06:42:49.673Z</updated>
+  <updated>2026-09-20T20:52:02.260Z</updated>
   <id>https://hassannazir.dev/blogs</id>
   <author>
     <name>Hassan Nazir</name>
@@ -12,6 +12,46 @@
     <uri>https://hassannazir.dev</uri>
   </author>
   
+  <entry>
+    <title>The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data</title>
+    <link href="https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer" />
+    <id>https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer</id>
+    <updated>2026-09-18T00:00:00.000Z</updated>
+    <summary>Software engineering usually happens in isolation from the actual end user. An FDE works in the trenches where operational ambiguity is highest. Here is the operational anatomy of the role: bridging executive vision, messy customer schemas, and rapid production cutovers.</summary>
+    <category term="Forward Deployed Engineering" />
+  </entry>
+  <entry>
+    <title>FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide</title>
+    <link href="https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant" />
+    <id>https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant</id>
+    <updated>2026-09-16T00:00:00.000Z</updated>
+    <summary>Consultants deliver 100-page slide decks. Solutions Architects deliver high-level cloud diagrams. Forward Deployed Engineers deliver production-grade code directly into customer repositories. Here is why the tech industry is pivoting toward the FDE model.</summary>
+    <category term="Forward Deployed Engineering" />
+  </entry>
+  <entry>
+    <title>The FDE Guide to Building Production Evaluation Harnesses for Messy Enterprise Data</title>
+    <link href="https://hassannazir.dev/blogs/building-eval-harnesses-for-messy-enterprise-data" />
+    <id>https://hassannazir.dev/blogs/building-eval-harnesses-for-messy-enterprise-data</id>
+    <updated>2026-09-14T00:00:00.000Z</updated>
+    <summary>Synthetic benchmarks like MMLU and GSM8k are useless when evaluating an AI pipeline on messy ERP receipts and legacy PDFs. Here is how FDEs build deterministic, domain-specific evaluation harnesses with regression baselines and AST validation.</summary>
+    <category term="Forward Deployed Engineering" />
+  </entry>
+  <entry>
+    <title>Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery</title>
+    <link href="https://hassannazir.dev/blogs/embedding-with-non-technical-operators-fde-field-guide" />
+    <id>https://hassannazir.dev/blogs/embedding-with-non-technical-operators-fde-field-guide</id>
+    <updated>2026-09-11T00:00:00.000Z</updated>
+    <summary>The biggest risk in enterprise AI deployments is building the wrong thing brilliantly. Here is the FDE playbook for shadowing non-technical operations teams, extracting tacit knowledge, and translating messy human workflows into deterministic system invariants.</summary>
+    <category term="Forward Deployed Engineering" />
+  </entry>
+  <entry>
+    <title>Day 1 to Production in 30 Days: The Architecture of an FDE Sprint</title>
+    <link href="https://hassannazir.dev/blogs/day-one-to-production-fde-sprint-architecture" />
+    <id>https://hassannazir.dev/blogs/day-one-to-production-fde-sprint-architecture</id>
+    <updated>2026-09-08T00:00:00.000Z</updated>
+    <summary>Traditional enterprise software vendor cycles take 9 to 18 months to deliver first value. An FDE sprint compresses discovery, architectural hardening, guardrails, and production rollout into 30 days. Here is the week-by-week architectural breakdown.</summary>
+    <category term="Forward Deployed Engineering" />
+  </entry>
   <entry>
     <title>GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful)</title>
     <link href="https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth" />

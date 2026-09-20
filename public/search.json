@@ -1,5 +1,75 @@
 [
   {
+    "title": "The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data",
+    "summary": "Software engineering usually happens in isolation from the actual end user. An FDE works in the trenches where operational ambiguity is highest. Here is the operational anatomy of the role: bridging executive vision, messy customer schemas, and rapid production cutovers.",
+    "tags": [
+      "Forward Deployed Engineering",
+      "System Architecture",
+      "Production Delivery",
+      "Applied AI",
+      "Enterprise Engineering"
+    ],
+    "date": "2026-09-18",
+    "slug": "the-anatomy-of-a-forward-deployed-engineer",
+    "url": "/blogs/the-anatomy-of-a-forward-deployed-engineer"
+  },
+  {
+    "title": "FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide",
+    "summary": "Consultants deliver 100-page slide decks. Solutions Architects deliver high-level cloud diagrams. Forward Deployed Engineers deliver production-grade code directly into customer repositories. Here is why the tech industry is pivoting toward the FDE model.",
+    "tags": [
+      "Forward Deployed Engineering",
+      "Consulting",
+      "Enterprise Software",
+      "Engineering Leadership",
+      "Applied AI"
+    ],
+    "date": "2026-09-16",
+    "slug": "fde-vs-solutions-architect-vs-consultant",
+    "url": "/blogs/fde-vs-solutions-architect-vs-consultant"
+  },
+  {
+    "title": "The FDE Guide to Building Production Evaluation Harnesses for Messy Enterprise Data",
+    "summary": "Synthetic benchmarks like MMLU and GSM8k are useless when evaluating an AI pipeline on messy ERP receipts and legacy PDFs. Here is how FDEs build deterministic, domain-specific evaluation harnesses with regression baselines and AST validation.",
+    "tags": [
+      "Forward Deployed Engineering",
+      "AI Evaluation",
+      "Production Engineering",
+      "RAG",
+      "Data Quality"
+    ],
+    "date": "2026-09-14",
+    "slug": "building-eval-harnesses-for-messy-enterprise-data",
+    "url": "/blogs/building-eval-harnesses-for-messy-enterprise-data"
+  },
+  {
+    "title": "Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery",
+    "summary": "The biggest risk in enterprise AI deployments is building the wrong thing brilliantly. Here is the FDE playbook for shadowing non-technical operations teams, extracting tacit knowledge, and translating messy human workflows into deterministic system invariants.",
+    "tags": [
+      "Forward Deployed Engineering",
+      "Operations",
+      "Product Discovery",
+      "Workflow Automation",
+      "Applied AI"
+    ],
+    "date": "2026-09-11",
+    "slug": "embedding-with-non-technical-operators-fde-field-guide",
+    "url": "/blogs/embedding-with-non-technical-operators-fde-field-guide"
+  },
+  {
+    "title": "Day 1 to Production in 30 Days: The Architecture of an FDE Sprint",
+    "summary": "Traditional enterprise software vendor cycles take 9 to 18 months to deliver first value. An FDE sprint compresses discovery, architectural hardening, guardrails, and production rollout into 30 days. Here is the week-by-week architectural breakdown.",
+    "tags": [
+      "Forward Deployed Engineering",
+      "Agile Sprints",
+      "Production Cutover",
+      "System Integration",
+      "Fast Delivery"
+    ],
+    "date": "2026-09-08",
+    "slug": "day-one-to-production-fde-sprint-architecture",
+    "url": "/blogs/day-one-to-production-fde-sprint-architecture"
+  },
+  {
     "title": "GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful)",
     "summary": "Knowledge graphs are hyped as the ultimate solution to RAG hallucinations, but they add 10x indexing latency and massive graph database costs. Here is the architectural decision matrix and hybrid Graph-Vector pipeline that actually works in production.",
     "tags": [

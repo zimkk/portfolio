@@ -50,6 +50,36 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer</loc>
+    <lastmod>2026-09-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/building-eval-harnesses-for-messy-enterprise-data</loc>
+    <lastmod>2026-09-14</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/embedding-with-non-technical-operators-fde-field-guide</loc>
+    <lastmod>2026-09-11</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/day-one-to-production-fde-sprint-architecture</loc>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth</loc>
     <lastmod>2026-09-02</lastmod>
     <changefreq>monthly</changefreq>

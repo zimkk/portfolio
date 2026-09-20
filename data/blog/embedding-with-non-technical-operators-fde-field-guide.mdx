@@ -1,0 +1,138 @@
+---
+title: "Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery"
+publishedAt: '2026-09-11'
+category: "Forward Deployed Engineering"
+readTime: '11 min read'
+excerpt: "The biggest risk in enterprise AI deployments is building the wrong thing brilliantly. Here is the FDE playbook for shadowing non-technical operations teams, extracting tacit knowledge, and translating messy human workflows into deterministic system invariants."
+tags: ["Forward Deployed Engineering","Operations","Product Discovery","Workflow Automation","Applied AI"]
+seoKeywords: ["FDE shadowing operators","Software requirement discovery","Enterprise AI workflow discovery","FDE operational embedding","Human in the loop AI"]
+image: '/images/cloud.svg'
+---
+
+# Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery
+
+The most catastrophic engineering failures in enterprise automation don't happen because of syntax bugs or database connection pool exhaustion. 
+
+They happen because the engineers built **exactly what management asked for**, which bore zero resemblance to **what the operational team actually does**.
+
+In any company with more than 50 employees, there are two distinct operating realities:
+1. **The Official Standard Operating Procedure (SOP)**: A 60-page PDF written four years ago, stored in Confluence, that describes an idealized, sequential world where every customer fills out every form correctly.
+2. **The Tacit Human Reality**: The unwritten shortcuts, Excel cheat sheets, Slack DMs, and muscle memory that frontline workers use to survive the day.
+
+If you build an AI system based solely on the SOP, your system will fail in production within 48 hours. 
+
+As a Forward Deployed Engineer (FDE), your superpower is embedding directly with non-technical operators to uncover and translate this tacit knowledge into hardened code.
+
+Here is the operational field guide for doing it effectively.
+
+---
+
+## The Shadowing Protocol: Rules of Engagement
+
+```
+┌─────────────────────────────────────────────────────────────┐
+│                 THE FDE SHADOWING PROTOCOL                  │
+├─────────────────────────────────────────────────────────────┤
+│ 1. Zero Jargon           ──► Talk business impact, not LLMs │
+│ 2. Watch the Hands       ──► Observe keyboard shortcuts & Alt-Tabs
+│ 3. Catch the "Oh, Yeah"s ──► Record unwritten tribal heuristics
+│ 4. Co-Design the Rescue  ──► Give operators an instant undo button
+└─────────────────────────────────────────────────────────────┘
+```
+
+### Rule 1: Watch What They Do, Not What They Say
+When you ask an operator how they process a customer dispute, they will recite the official policy: *"We verify the account ID, check the transaction log, and issue a refund if within 30 days."*
+
+When you sit beside them and watch them work, you observe what actually happens:
+- They glance at the customer name to see if it’s a VIP enterprise account.
+- They press `Alt+Tab` into an internal legacy portal that isn't connected to the main CRM.
+- They look at a physical Post-it note taped to their monitor listing three specific fraud rings to reject immediately.
+
+Your job as an FDE is to capture every single one of those `Alt+Tab`s and Post-it notes. That is where the real business logic lives.
+
+### Rule 2: Listen for the "Oh, Yeah" Moment
+Whenever an operator clicks something counterintuitive and you ask why, they will usually say:
+> *"Oh, yeah... we never process invoices from Vendor X without checking their branch code first because their billing department in Chicago always doubles the sales tax."*
+
+This is pure gold. In a traditional engineering workflow, that nuance would never make it into a JIRA ticket until 6 months after launch when the CFO notices a $50,000 billing error. An FDE turns that single sentence into a deterministic validation check on Day 2.
+
+---
+
+## Translating Human Intuition into System Invariants
+
+Operators often describe their decision-making in fuzzy, intuitive terms:
+* *"I just get a bad feeling about these contracts when the indemnity section looks sparse."*
+* *"This claim feels expedited because they attached repair estimates from two different shops."*
+
+As an FDE, you must translate these human heuristics into software architecture. Here is a real-world translation matrix:
+
+| Operator Statement | The Unstated Human Reality | FDE Code Architecture |
+|---|---|---|
+| *"I always double-check these addresses."* | Customer ZIP code doesn't match shipping state abbreviation. | Deterministic USPS address validation API gate before model inference. |
+| *"This contract looks incomplete."* | Missing standard Exhibit B or Signature block. | AST structure check verifying mandatory document nodes exist before running extraction. |
+| *"If it's over $25k, I get Sarah's sign-off."* | Dual-authorization compliance rule. | Human-in-the-loop Slack notification with interactive approval buttons via `n8n`. |
+
+---
+
+## Designing the Operator-in-the-Loop UX
+
+If an automated system feels like a black box that randomly makes mistakes, operators will bypass it. To win their trust, the FDE must build a review interface tailored to the operator's speed:
+
+```typescript:OperatorReviewPanel.tsx
+// Ultra-fast operator review surface: keyboard driven, sub-50ms render
+import React, { useEffect } from 'react';
+
+interface ExtractionReviewProps {
+  claimId: string;
+  field: string;
+  extractedValue: string;
+  confidence: number;
+  onApprove: () => void;
+  onOverride: (newValue: string) => void;
+}
+
+export const OperatorReviewCard: React.FC<ExtractionReviewProps> = ({
+  claimId,
+  field,
+  extractedValue,
+  confidence,
+  onApprove,
+  onOverride
+}) => {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Enter') onApprove();
+      if (e.key === 'Escape') onOverride('');
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onApprove, onOverride]);
+
+  return (
+    <div className="review-card border border-white/10 p-4 rounded-lg bg-[#0d0e14]">
+      <div className="flex justify-between text-xs text-gray-400">
+        <span>Claim: {claimId}</span>
+        <span className={confidence > 0.9 ? 'text-green-400' : 'text-amber-400'}>
+          {(confidence * 100).toFixed(0)}% Confidence
+        </span>
+      </div>
+      <div className="mt-2 font-mono text-lg text-white">
+        <span className="text-gray-500">{field}: </span>
+        <strong>{extractedValue}</strong>
+      </div>
+      <div className="mt-3 text-xs text-gray-400 flex gap-4">
+        <span><kbd className="bg-gray-800 px-1.5 py-0.5 rounded">Enter</kbd> Accept</span>
+        <span><kbd className="bg-gray-800 px-1.5 py-0.5 rounded">Esc</kbd> Override</span>
+      </div>
+    </div>
+  );
+};
+```
+
+---
+
+## The Ultimate Outcome: Respect Over Rhetoric
+
+When an FDE writes code that directly eliminates the most tedious 60% of an operator's manual burden—while leaving them complete control over tricky edge cases—the dynamic changes completely.
+
+The operational team stops viewing engineering as an ivory tower that pushes clunky tools, and starts viewing the FDE as an essential partner who builds tools that actually work.

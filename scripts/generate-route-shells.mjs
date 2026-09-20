@@ -15,7 +15,7 @@ const articles = [];
 for (const file of mdxFiles) {
   const filePath = path.join(blogDir, file);
   const rawContent = await readFile(filePath, 'utf8');
-  const { data } = matter(rawContent);
+  const { data, content } = matter(rawContent);
   const slug = file.replace(/\.mdx?$/, '');
 
   articles.push({
@@ -26,6 +26,7 @@ for (const file of mdxFiles) {
     category: data.category || 'Engineering',
     tags: data.tags || [],
     image: data.image || '/images/forward-deployed-services.svg',
+    content: content || '',
   });
 }
 
@@ -96,14 +97,6 @@ const routes = [
     image: service.image,
   })),
   {
-    route: '/work',
-    title: 'Applied AI & Software Engineering Blogs | Hassan Nazir',
-    description: 'Technical blogs, deep dives, and production architectures by Forward Deployed Engineer Hassan Nazir.',
-    type: 'CollectionPage',
-    heading: 'Applied AI & software engineering blogs.',
-    summary: 'Technical guides and production architectures on AI automations, agentic systems, security, and full-stack software development.',
-  },
-  {
     route: '/blogs',
     title: 'Applied AI & Software Engineering Blogs | Hassan Nazir',
     description: 'Technical blogs and deep dives by Hassan Nazir about agentic AI, LLM systems, computer vision, security architecture, and production engineering.',
@@ -119,7 +112,9 @@ const routes = [
     heading: article.title,
     summary: article.description,
     published: article.published,
+    category: article.category,
     image: article.image,
+    content: article.content,
   })),
 ];
 
@@ -128,6 +123,170 @@ const escapeHtml = (value) => value
   .replaceAll('<', '&lt;')
   .replaceAll('>', '&gt;')
   .replaceAll('"', '&quot;');
+
+function markdownToHtml(markdown) {
+  if (!markdown) return '';
+
+  const lines = markdown.split(/\r?\n/);
+  const htmlParts = [];
+  let inCodeBlock = false;
+  let codeLang = '';
+  let codeLines = [];
+  let inTable = false;
+  let tableRows = [];
+  let inList = false;
+  let listType = 'ul';
+  let listItems = [];
+  let inBlockquote = false;
+  let blockquoteLines = [];
+
+  function formatInline(str) {
+    if (!str) return '';
+    let res = escapeHtml(str);
+    res = res.replace(/`([^`]+)`/g, '<code>$1</code>');
+    res = res.replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>');
+    res = res.replace(/__([^_]+)__/g, '<strong>$1</strong>');
+    res = res.replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    res = res.replace(/_([^_]+)_/g, '<em>$1</em>');
+    res = res.replace(/\[([^\]]+)\]\(([^)]+)\)/g, '<a href="$2">$1</a>');
+    return res;
+  }
+
+  function flushList() {
+    if (inList) {
+      const itemsHtml = listItems.map((li) => `<li>${formatInline(li)}</li>`).join('');
+      htmlParts.push(`<${listType}>${itemsHtml}</${listType}>`);
+      inList = false;
+      listItems = [];
+    }
+  }
+
+  function flushBlockquote() {
+    if (inBlockquote) {
+      const bqText = blockquoteLines.map((l) => formatInline(l)).join('<br>');
+      htmlParts.push(`<blockquote><p>${bqText}</p></blockquote>`);
+      inBlockquote = false;
+      blockquoteLines = [];
+    }
+  }
+
+  function flushTable() {
+    if (inTable && tableRows.length > 0) {
+      let tHtml = '<table><thead>';
+      const headerCells = tableRows[0];
+      tHtml += `<tr>${headerCells.map((c) => `<th>${formatInline(c.trim())}</th>`).join('')}</tr></thead><tbody>`;
+      for (let i = 1; i < tableRows.length; i++) {
+        tHtml += `<tr>${tableRows[i].map((c) => `<td>${formatInline(c.trim())}</td>`).join('')}</tr>`;
+      }
+      tHtml += '</tbody></table>';
+      htmlParts.push(tHtml);
+      inTable = false;
+      tableRows = [];
+    }
+  }
+
+  for (let i = 0; i < lines.length; i++) {
+    const line = lines[i];
+
+    if (line.trim().startsWith('```')) {
+      if (inCodeBlock) {
+        const codeContent = escapeHtml(codeLines.join('\n'));
+        const langClass = codeLang ? ` class="language-${escapeHtml(codeLang)}"` : '';
+        htmlParts.push(`<pre><code${langClass}>${codeContent}</code></pre>`);
+        inCodeBlock = false;
+        codeLines = [];
+        codeLang = '';
+        continue;
+      } else {
+        flushList();
+        flushBlockquote();
+        flushTable();
+        inCodeBlock = true;
+        codeLang = line.trim().slice(3).trim().split(/[:\s]/)[0];
+        codeLines = [];
+        continue;
+      }
+    }
+
+    if (inCodeBlock) {
+      codeLines.push(line);
+      continue;
+    }
+
+    const trimmed = line.trim();
+
+    if (!trimmed) {
+      flushList();
+      flushBlockquote();
+      flushTable();
+      continue;
+    }
+
+    if (trimmed.startsWith('>')) {
+      flushList();
+      flushTable();
+      inBlockquote = true;
+      blockquoteLines.push(trimmed.replace(/^>\s?/, ''));
+      continue;
+    } else {
+      flushBlockquote();
+    }
+
+    if (trimmed.startsWith('|') && trimmed.endsWith('|')) {
+      if (/^\|[\s\-:|]+\|$/.test(trimmed)) {
+        continue;
+      }
+      flushList();
+      const cells = trimmed.slice(1, -1).split('|');
+      if (!inTable) {
+        inTable = true;
+        tableRows = [cells];
+      } else {
+        tableRows.push(cells);
+      }
+      continue;
+    } else {
+      flushTable();
+    }
+
+    if (/^#{1,6}\s+/.test(trimmed)) {
+      flushList();
+      const level = trimmed.match(/^(#{1,6})/)[0].length;
+      const text = trimmed.replace(/^#{1,6}\s+/, '');
+      htmlParts.push(`<h${level}>${formatInline(text)}</h${level}>`);
+      continue;
+    }
+
+    if (/^[-*]\s+/.test(trimmed)) {
+      if (!inList || listType !== 'ul') {
+        flushList();
+        inList = true;
+        listType = 'ul';
+      }
+      listItems.push(trimmed.replace(/^[-*]\s+/, ''));
+      continue;
+    }
+
+    if (/^\d+\.\s+/.test(trimmed)) {
+      if (!inList || listType !== 'ol') {
+        flushList();
+        inList = true;
+        listType = 'ol';
+      }
+      listItems.push(trimmed.replace(/^\d+\.\s+/, ''));
+      continue;
+    }
+
+    flushList();
+    htmlParts.push(`<p>${formatInline(trimmed)}</p>`);
+  }
+
+  flushList();
+  flushBlockquote();
+  flushTable();
+
+  return htmlParts.join('\n');
+}
 
 const replaceMeta = (html, selector, value) => {
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -176,11 +335,91 @@ for (const route of routes) {
         author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
       };
 
+  let bodyContent = '';
+  if (route.type === 'BlogPosting') {
+    const articleHtml = markdownToHtml(route.content);
+    bodyContent = `
+      <article>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <div class="crawler-meta">
+          <time datetime="${escapeHtml(route.published)}">${escapeHtml(route.published)}</time> · 
+          <span>${escapeHtml(route.category || 'Engineering')}</span> · 
+          <span>By Hassan Nazir</span>
+        </div>
+        <p class="crawler-lead"><strong>${escapeHtml(route.summary)}</strong></p>
+        <div class="crawler-content">
+          ${articleHtml}
+        </div>
+      </article>
+      <footer class="crawler-footer">
+        <p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Full-Stack AI Architect.</p>
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.route === '/blogs') {
+    bodyContent = `
+      <section>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <p>${escapeHtml(route.summary)}</p>
+        <h2>Field Guides &amp; Production Architecture Notes</h2>
+        <ul>
+          ${articles.map((a) => `
+            <li>
+              <a href="/blogs/${a.slug}"><strong>${escapeHtml(a.title)}</strong></a>
+              <p>${escapeHtml(a.description)}</p>
+            </li>
+          `).join('')}
+        </ul>
+      </section>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.type === 'Service') {
+    bodyContent = `
+      <article>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <p><strong>${escapeHtml(route.description)}</strong></p>
+        <section>
+          <h2>${escapeHtml(route.serviceType)} — Delivery &amp; Scope</h2>
+          <p>Production execution across AI automations, agentic systems, full-stack software development, and systems integration for US and global teams.</p>
+        </section>
+      </article>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else {
+    bodyContent = `
+      <h1>${escapeHtml(route.heading)}</h1>
+      <p>${escapeHtml(route.summary)}</p>
+      <ul>
+        ${services.map((s) => `
+          <li>
+            <a href="/services/${s.slug}"><strong>${escapeHtml(s.title)}</strong></a>
+            <p>${escapeHtml(s.description)}</p>
+          </li>
+        `).join('')}
+      </ul>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  }
+
   let html = template
     .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(route.title)}</title>`)
     .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, `$1${canonical}$2`)
     .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
-    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback"><h1>${escapeHtml(route.heading)}</h1><p>${escapeHtml(route.summary)}</p><p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Applied AI practitioner.</p><nav aria-label="Site index"><a href="/">Portfolio</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a></nav></main>`);
+    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback">${bodyContent}</main>`);
 
   html = route.image
     ? html.replace('/images/profile-hero.webp', route.image)
