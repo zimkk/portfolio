@@ -42,6 +42,9 @@ const ArticlePage: React.FC = () => {
   const currentIndex = blogPosts.findIndex((candidate) => candidate.slug === slug);
   const post = blogPosts[currentIndex];
 
+  // Extract Table of Contents
+  const tocHeadings = useMemo(() => (post ? extractHeadingsFromMarkdown(post.content) : []), [post]);
+
   if (!post) {
     return (
       <PageTransition>
@@ -67,9 +70,6 @@ const ArticlePage: React.FC = () => {
   const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
   const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
   const related = blogPosts.filter((c) => c.id !== post.id && c.category === post.category).slice(0, 2);
-
-  // Extract Table of Contents
-  const tocHeadings = useMemo(() => extractHeadingsFromMarkdown(post.content), [post.content]);
 
   const formattedDate = new Date(post.publishedAt).toLocaleDateString('en-US', postDateTemplate);
   const articleUrl = `${siteConfig.url}/blogs/${post.slug}`;
