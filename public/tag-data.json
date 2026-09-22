@@ -1,4 +1,10 @@
 {
+  "claude-opus-5-5": 1,
+  "anthropic": 1,
+  "ai-agents": 3,
+  "agentic-coding": 1,
+  "claude-api": 1,
+  "ai-engineering": 1,
   "forward-deployed-engineering": 10,
   "system-architecture": 7,
   "production-delivery": 2,
@@ -22,7 +28,6 @@
   "vector-search": 4,
   "knowledge-graphs": 2,
   "model-context-protocol": 1,
-  "ai-agents": 2,
   "context-engineering": 2,
   "vector-routing": 1,
   "production-ai": 5,

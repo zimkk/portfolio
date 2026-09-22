@@ -5,10 +5,26 @@
     <link>https://hassannazir.dev/blogs</link>
     <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
     <language>en-US</language>
-    <lastBuildDate>Sun, 20 Sep 2026 20:52:02 GMT</lastBuildDate>
+    <lastBuildDate>Tue, 22 Sep 2026 20:32:30 GMT</lastBuildDate>
     <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <docs>https://www.rssboard.org/rss-specification</docs>
     
+    <item>
+      <title>Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model</title>
+      <link>https://hassannazir.dev/blogs/opus-5-5</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/opus-5-5</guid>
+      <pubDate>Wed, 23 Sep 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Claude Opus 5.5 is Anthropic's latest model for long-running agentic coding and knowledge work. Explore its 1M context, $4/$20 pricing, adaptive thinking, breaking API changes, and real-world engineering benchmarks.</description>
+      <category>Artificial Intelligence</category>
+      <category>Claude Opus 5.5</category>
+      <category>Anthropic</category>
+      <category>AI Agents</category>
+      <category>Agentic Coding</category>
+      <category>Claude API</category>
+      <category>AI Engineering</category>
+      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+    </item>
     <item>
       <title>The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data</title>
       <link>https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer</link>

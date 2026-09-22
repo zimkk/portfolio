@@ -291,7 +291,7 @@ function markdownToHtml(markdown) {
 const replaceMeta = (html, selector, value) => {
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const expression = new RegExp(`(<meta ${escapedSelector} content=")[^"]*("[^>]*>)`);
-  return html.replace(expression, `$1${escapeHtml(value)}$2`);
+  return html.replace(expression, (_match, p1, p2) => `${p1}${escapeHtml(value)}${p2}`);
 };
 
 for (const route of routes) {
@@ -416,13 +416,13 @@ for (const route of routes) {
   }
 
   let html = template
-    .replace(/<title>.*?<\/title>/, `<title>${escapeHtml(route.title)}</title>`)
-    .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, `$1${canonical}$2`)
-    .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
-    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, `<main class="crawler-fallback">${bodyContent}</main>`);
+    .replace(/<title>.*?<\/title>/, () => `<title>${escapeHtml(route.title)}</title>`)
+    .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, (_match, p1, p2) => `${p1}${canonical}${p2}`)
+    .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, () => `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
+    .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, () => `<main class="crawler-fallback">${bodyContent}</main>`);
 
   html = route.image
-    ? html.replace('/images/profile-hero.webp', route.image)
+    ? html.replace('/images/profile-hero.webp', () => route.image)
     : html.replace(/\s*<link rel="preload" as="image" href="\/images\/profile-hero\.webp" fetchpriority="high" \/>/, '');
 
   html = replaceMeta(html, 'name="description"', route.description);
