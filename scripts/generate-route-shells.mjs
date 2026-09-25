@@ -6,7 +6,14 @@ const siteUrl = 'https://hassannazir.dev';
 const distDir = path.resolve('dist');
 const publicDir = path.resolve('public');
 const blogDir = path.resolve('data/blog');
-const template = await readFile(path.join(distDir, 'index.html'), 'utf8');
+let template = await readFile(path.join(distDir, 'index.html'), 'utf8');
+
+// Transform render-blocking stylesheet into asynchronous preloaded stylesheet with noscript fallback
+template = template.replace(
+  /<link\s+rel="stylesheet"\s+crossorigin\s+href="(\/assets\/[^"]+\.css)">/g,
+  '<link rel="preload" as="style" href="$1" onload="this.onload=null;this.rel=\'stylesheet\'">\n    <noscript><link rel="stylesheet" href="$1"></noscript>'
+);
+await writeFile(path.join(distDir, 'index.html'), template);
 
 // Dynamically load all .mdx files from data/blog/
 const mdxFiles = (await readdir(blogDir)).filter((file) => file.endsWith('.mdx') || file.endsWith('.md'));
@@ -571,5 +578,17 @@ const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
 await writeFile(path.join(publicDir, 'sitemap.xml'), sitemapXml.trim());
 await writeFile(path.join(distDir, 'sitemap.xml'), sitemapXml.trim());
 
+// 5. Ensure ai-catalog.json, ard.json and .well-known/ exist in dist
+try {
+  const aiCatalogContent = await readFile(path.join(publicDir, 'ai-catalog.json'), 'utf8');
+  await writeFile(path.join(distDir, 'ai-catalog.json'), aiCatalogContent);
+  await writeFile(path.join(distDir, 'ard.json'), aiCatalogContent);
+  await mkdir(path.join(distDir, '.well-known'), { recursive: true });
+  await writeFile(path.join(distDir, '.well-known', 'ai-catalog.json'), aiCatalogContent);
+  await writeFile(path.join(distDir, '.well-known', 'ard.json'), aiCatalogContent);
+} catch (err) {
+  console.warn('ai-catalog/ard sync error:', err);
+}
+
 console.log(`Generated ${routes.length} crawler-first route shells from dynamic .mdx files.`);
-console.log(`Generated search.json, tag-data.json, feed.xml, and sitemap.xml successfully.`);
+console.log(`Generated search.json, tag-data.json, feed.xml, sitemap.xml, ai-catalog.json, and ard.json successfully.`);

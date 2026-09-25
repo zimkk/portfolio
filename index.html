@@ -2,13 +2,17 @@
 <html lang="en">
   <head>
     <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-2LW6G7K0ZZ"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-
       gtag('config', 'G-2LW6G7K0ZZ');
+      window.addEventListener('load', function() {
+        var s = document.createElement('script');
+        s.async = true;
+        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2LW6G7K0ZZ';
+        document.head.appendChild(s);
+      });
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,6 +29,8 @@
     <link rel="me" href="https://linkedin.com/in/hassannazirrr" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="AI-readable site index" data-rh="true" />
     <link rel="alternate" type="text/markdown" href="/llms-full.txt" title="Detailed AI-readable portfolio" data-rh="true" />
+    <link rel="alternate" type="application/json" href="/ai-catalog.json" title="AI Agent Resource Catalog (ARD 1.0)" data-rh="true" />
+    <link rel="alternate" type="application/json" href="/ard.json" title="Agentic Resource Discovery Manifest (ARD)" data-rh="true" />
     <link rel="alternate" type="application/ld+json" href="/portfolio.json" title="Structured portfolio data" data-rh="true" />
     <link rel="alternate" type="application/rss+xml" href="/feed.xml" title="Hassan Nazir engineering blogs (RSS 2.0)" data-rh="true" />
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Hassan Nazir engineering blogs (Atom)" data-rh="true" />
@@ -32,11 +38,10 @@
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="preload" as="image" href="/images/profile-hero.webp" fetchpriority="high" />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/satoshi-400.woff2" crossorigin />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/satoshi-700.woff2" crossorigin />
-    <link rel="dns-prefetch" href="https://cal.com" />
-    <link rel="dns-prefetch" href="https://app.cal.com" />
-    <link rel="preconnect" href="https://cal.com" crossorigin />
-    <link rel="preconnect" href="https://app.cal.com" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/satoshi-900.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/ibm-plex-mono-400.woff2" crossorigin />
     <link rel="icon" type="image/png" href="/images/favicon.png" />
     <link rel="apple-touch-icon" href="/images/apple-touch-icon.png" />
 
@@ -230,8 +235,29 @@
     </script>
 
     <style>
+      :root {
+        color-scheme: dark;
+        --ink: #08090c;
+        --ink-soft: #111319;
+        --paper: #d9dee8;
+        --paper-deep: #aab3c2;
+        --muted: #8e98a8;
+        --line: rgba(217, 222, 232, 0.16);
+        --acid: #ff5d3d;
+        --acid-deep: #d9452b;
+        --blue: #202a48;
+        --blue-deep: #111729;
+        --frame: 1760px;
+        --content-frame: 1760px;
+        --mono: 'IBM Plex Mono', monospace;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; background: #08090c; -webkit-text-size-adjust: 100%; }
+      body { margin: 0; min-width: 320px; overflow-x: hidden; background: #08090c; color: #d9dee8; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
       #root:empty { min-height: 100vh; background: #08090c; }
-      .crawler-fallback { min-height: 100vh; padding: 8rem max(1.5rem, calc((100vw - 80rem)/2)); background: #08090c; color: #d9dee8; font-family: Arial, sans-serif; }
+      .portfolio-shell { position: relative; background: #08090c; min-height: 100vh; }
+      .site-nav { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; min-height: 70px; background: rgba(8,9,12,.92); border-bottom: 1px solid rgba(217,222,232,.16); }
+      .crawler-fallback { min-height: 100vh; padding: 8rem max(1.5rem, calc((100vw - 80rem)/2)); background: #08090c; color: #d9dee8; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
       .crawler-fallback h1 { max-width: 70rem; margin: 0; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; }
       .crawler-fallback p { max-width: 52rem; font-size: 1.1rem; line-height: 1.7; }
       .crawler-fallback a { color: inherit; }

@@ -10,4 +10,15 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./src"),
     },
   },
+  build: {
+    sourcemap: true,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          gsap: ['gsap', '@gsap/react', 'gsap/ScrollTrigger'],
+          react: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
+        },
+      },
+    },
+  },
 })

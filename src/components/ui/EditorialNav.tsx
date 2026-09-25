@@ -1,13 +1,15 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, lazy, Suspense } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { ArrowUpRight, Github, Search } from 'lucide-react';
-import SearchModal from '../blog/SearchModal';
+
+const SearchModal = lazy(() => import('../blog/SearchModal').then((m) => ({ default: m.SearchModal })));
 
 type EditorialNavProps = {
   onStartProject?: () => void;
+  onPrefetchProject?: () => void;
 };
 
-const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
+const EditorialNav = ({ onStartProject, onPrefetchProject }: EditorialNavProps) => {
   const location = useLocation();
   const [searchOpen, setSearchOpen] = useState(false);
   const navClass = ({ isActive }: { isActive: boolean }) => isActive ? 'is-active' : undefined;
@@ -47,7 +49,13 @@ const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
             <Github size={16} />
           </a>
         {onStartProject ? (
-          <button type="button" className="nav-booking-pill" onClick={onStartProject}>
+          <button
+            type="button"
+            className="nav-booking-pill"
+            onClick={onStartProject}
+            onPointerEnter={onPrefetchProject}
+            onFocus={onPrefetchProject}
+          >
             <span className="hero-cta-pulse">
               <span className="pulse-ring" />
               <span className="pulse-core" />
@@ -65,9 +73,13 @@ const EditorialNav = ({ onStartProject }: EditorialNavProps) => {
             <ArrowUpRight size={13} />
           </a>
         )}
-      </div>
-    </header>
-    <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+        </div>
+      </header>
+      {searchOpen && (
+      <Suspense fallback={null}>
+        <SearchModal isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
+      </Suspense>
+    )}
   </>
 );
 };

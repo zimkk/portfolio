@@ -29,7 +29,7 @@
     }
   ],
   "rewrites": [
-    { "source": "/((?!images|fonts|assets|robots.txt|sitemap.xml|feed.xml|atom.xml|llm.txt|llms.txt|llms-full.txt|portfolio.json|humans.txt|favicon|_vercel).*)", "destination": "/index.html" }
+    { "source": "/((?!images|fonts|assets|robots.txt|sitemap.xml|feed.xml|atom.xml|feed.json|search.json|tag-data.json|manifest.json|ai-catalog.json|ard.json|\\.well-known|llm.txt|llms.txt|llms-full.txt|portfolio.json|humans.txt|favicon|_vercel).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
@@ -192,6 +192,53 @@
         {
           "key": "Content-Type",
           "value": "text/plain; charset=utf-8"
+        }
+      ]
+    },
+    {
+      "source": "/ai-catalog.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=3600"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/ard.json",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=3600"
+        },
+        {
+          "key": "Content-Type",
+          "value": "application/json; charset=utf-8"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
+        }
+      ]
+    },
+    {
+      "source": "/.well-known/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=86400, stale-while-revalidate=3600"
+        },
+        {
+          "key": "Access-Control-Allow-Origin",
+          "value": "*"
         }
       ]
     }

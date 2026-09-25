@@ -3,7 +3,7 @@ import { BlogPost } from './types';
 
 export * from './types';
 
-function parseFrontmatter(raw: string): { data: Record<string, unknown>; content: string } {
+function parseFrontmatter(raw: string): { data: Record<string, any>; content: string } {
   const fmMatch = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!fmMatch) return { data: {}, content: raw };
   const yamlBlock = fmMatch[1];

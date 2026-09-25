@@ -15,7 +15,6 @@ import {
 import SEOHead from './components/ui/SEOHead';
 import EditorialNav from './components/ui/EditorialNav';
 import { EMAILJS_CONFIG } from './config/emailjs';
-import { blogPosts } from './data/blogs';
 
 gsap.registerPlugin(ScrollTrigger, useGSAP);
 
@@ -84,12 +83,26 @@ const capabilities = [
   },
 ];
 
-const notes = blogPosts.slice(0, 3).map((post) => ({
-  slug: post.slug,
-  topic: post.category,
-  time: post.readTime,
-  title: post.title,
-}));
+const notes = [
+  {
+    slug: 'opus-5-5',
+    topic: 'Applied AI',
+    time: '8 min read',
+    title: "Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model",
+  },
+  {
+    slug: 'the-anatomy-of-a-forward-deployed-engineer',
+    topic: 'Forward Deployed Engineering',
+    time: '9 min read',
+    title: 'The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data',
+  },
+  {
+    slug: 'fde-vs-solutions-architect-vs-consultant',
+    topic: 'Engineering Leadership',
+    time: '7 min read',
+    title: 'FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide',
+  },
+];
 
 const feedback = [
   { quote: 'The automation solution transformed our workflow efficiency beyond expectations.', author: 'Project Manager', company: 'NDT Legacy Group' },
@@ -209,136 +222,138 @@ export function App() {
       .from('.hero-actions, .hero-role-note', { opacity: 0, y: 12, duration: 0.45, stagger: 0.06 }, '-=.4')
       .to('.fde-forward', { scaleX: 1.02, transformOrigin: 'left center', duration: 0.75, ease: 'expo.inOut' }, '-=.65');
 
-    gsap.to('.site-progress i', {
-      scaleX: 1,
-      ease: 'none',
-      scrollTrigger: { trigger: page.current, start: 'top top', end: 'bottom bottom', scrub: 0.2 },
-    });
-
-    gsap.to('.fde-title', {
-      scale: 0.91,
-      yPercent: 14,
-      ease: 'none',
-      scrollTrigger: {
-        trigger: '.fde-hero',
-        start: 'top top',
-        end: 'bottom top',
-        scrub: true,
-      },
-    });
-
-    gsap.fromTo('.statement-word', { opacity: 0.11 }, {
-      opacity: 1,
-      stagger: 0.045,
-      ease: 'none',
-      scrollTrigger: { trigger: '.statement-section h2', start: 'top 78%', end: 'bottom 38%', scrub: true },
-    });
-
-    ScrollTrigger.matchMedia({
-      '(min-width: 1024px)': () => {
-        ScrollTrigger.create({
-          trigger: '.cases-layout',
-          start: 'top 12%',
-          end: 'bottom 70%',
-          pin: '.cases-intro',
-          pinSpacing: false,
-        });
-
-        ScrollTrigger.create({
-          trigger: '.github-overview',
-          start: 'top 12%',
-          end: 'bottom bottom',
-          pin: '.github-index',
-          pinSpacing: false,
-        });
-      },
-    });
-
-    gsap.utils.toArray<HTMLElement>('.case-sheet').forEach((sheet, index) => {
-      gsap.fromTo(
-        sheet,
-        { y: 90, scale: 0.94, rotate: index % 2 ? 0.8 : -0.8 },
-        {
-          y: 0,
-          scale: 1,
-          rotate: 0,
-          ease: 'none',
-          scrollTrigger: { trigger: sheet, start: 'top 92%', end: 'top 45%', scrub: true },
-        },
-      );
-      const image = sheet.querySelector('img');
-      if (image) {
-        gsap.fromTo(image, { scale: 0.86, opacity: 0.38 }, {
-          scale: 1,
-          opacity: 1,
-          ease: 'none',
-          scrollTrigger: { trigger: sheet, start: 'top 95%', end: 'top 42%', scrub: true },
-        });
-      }
-    });
-
-    gsap.utils.toArray<HTMLElement>('.github-repo-row').forEach((row, index) => {
-      const rule = row.querySelector<HTMLElement>('.github-repo-progress');
-      gsap.fromTo(row, { opacity: 0.28, x: index % 2 ? 32 : 18 }, {
-        opacity: 1,
-        x: 0,
+    // Defer heavy ScrollTrigger measurement and pin setup after initial paint to prevent forced reflow
+    const rafId = requestAnimationFrame(() => {
+      gsap.to('.site-progress i', {
+        scaleX: 1,
         ease: 'none',
-        scrollTrigger: { trigger: row, start: 'top 91%', end: 'top 52%', scrub: 0.45 },
+        scrollTrigger: { trigger: page.current, start: 'top top', end: 'bottom bottom', scrub: 0.2 },
       });
-      if (rule) {
-        gsap.fromTo(rule, { scaleX: 0 }, {
-          scaleX: 1,
+
+      gsap.to('.fde-title', {
+        scale: 0.91,
+        yPercent: 14,
+        ease: 'none',
+        scrollTrigger: {
+          trigger: '.fde-hero',
+          start: 'top top',
+          end: 'bottom top',
+          scrub: true,
+        },
+      });
+
+      gsap.fromTo('.statement-word', { opacity: 0.11 }, {
+        opacity: 1,
+        stagger: 0.045,
+        ease: 'none',
+        scrollTrigger: { trigger: '.statement-section h2', start: 'top 78%', end: 'bottom 38%', scrub: true },
+      });
+
+      ScrollTrigger.matchMedia({
+        '(min-width: 1024px)': () => {
+          ScrollTrigger.create({
+            trigger: '.cases-layout',
+            start: 'top 12%',
+            end: 'bottom 70%',
+            pin: '.cases-intro',
+            pinSpacing: false,
+          });
+
+          ScrollTrigger.create({
+            trigger: '.github-overview',
+            start: 'top 12%',
+            end: 'bottom bottom',
+            pin: '.github-index',
+            pinSpacing: false,
+          });
+        },
+      });
+
+      gsap.utils.toArray<HTMLElement>('.case-sheet').forEach((sheet, index) => {
+        gsap.fromTo(
+          sheet,
+          { y: 90, scale: 0.94, rotate: index % 2 ? 0.8 : -0.8 },
+          {
+            y: 0,
+            scale: 1,
+            rotate: 0,
+            ease: 'none',
+            scrollTrigger: { trigger: sheet, start: 'top 92%', end: 'top 45%', scrub: true },
+          },
+        );
+        const image = sheet.querySelector('img');
+        if (image) {
+          gsap.fromTo(image, { scale: 0.86, opacity: 0.38 }, {
+            scale: 1,
+            opacity: 1,
+            ease: 'none',
+            scrollTrigger: { trigger: sheet, start: 'top 95%', end: 'top 42%', scrub: true },
+          });
+        }
+      });
+
+      gsap.utils.toArray<HTMLElement>('.github-repo-row').forEach((row, index) => {
+        const rule = row.querySelector<HTMLElement>('.github-repo-progress');
+        gsap.fromTo(row, { opacity: 0.28, x: index % 2 ? 32 : 18 }, {
+          opacity: 1,
+          x: 0,
           ease: 'none',
-          scrollTrigger: { trigger: row, start: 'top 88%', end: 'bottom 50%', scrub: true },
+          scrollTrigger: { trigger: row, start: 'top 91%', end: 'top 52%', scrub: 0.45 },
         });
-      }
-    });
+        if (rule) {
+          gsap.fromTo(rule, { scaleX: 0 }, {
+            scaleX: 1,
+            ease: 'none',
+            scrollTrigger: { trigger: row, start: 'top 88%', end: 'bottom 50%', scrub: true },
+          });
+        }
+      });
 
-    gsap.utils.toArray<HTMLElement>('.chapter-reveal').forEach((element) => {
-      gsap.from(element, {
-        opacity: 0,
-        y: 50,
-        duration: 0.9,
-        ease: 'power3.out',
-        scrollTrigger: { trigger: element, start: 'top 84%' },
+      gsap.utils.toArray<HTMLElement>('.chapter-reveal').forEach((element) => {
+        gsap.from(element, {
+          opacity: 0,
+          y: 50,
+          duration: 0.9,
+          ease: 'power3.out',
+          scrollTrigger: { trigger: element, start: 'top 84%' },
+        });
+      });
+
+      const internalNavLinks = gsap.utils.toArray<HTMLAnchorElement>('.nav-links a[href^="#"]');
+      internalNavLinks.forEach((link) => {
+        const target = document.querySelector(link.hash);
+        if (!target) return;
+        ScrollTrigger.create({
+          trigger: target,
+          start: 'top 52%',
+          end: 'bottom 52%',
+          onToggle: ({ isActive }) => link.classList.toggle('is-active', isActive),
+        });
       });
     });
 
-    const internalNavLinks = gsap.utils.toArray<HTMLAnchorElement>('.nav-links a[href^="#"]');
-    internalNavLinks.forEach((link) => {
-      const target = document.querySelector(link.hash);
-      if (!target) return;
-      ScrollTrigger.create({
-        trigger: target,
-        start: 'top 52%',
-        end: 'bottom 52%',
-        onToggle: ({ isActive }) => link.classList.toggle('is-active', isActive),
-      });
-    });
-
+    return () => cancelAnimationFrame(rafId);
   }, { scope: page });
 
   useEffect(() => {
-    const syncBookingPosition = () => setBookingFloating(window.scrollY > 0);
+    let ticking = false;
+    const syncBookingPosition = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          setBookingFloating(window.scrollY > 0);
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
     syncBookingPosition();
     window.addEventListener('scroll', syncBookingPosition, { passive: true });
     return () => window.removeEventListener('scroll', syncBookingPosition);
   }, []);
 
-  useEffect(() => {
-    const warmBooking = () => {
-      void loadBookingModal();
-      setBookingReady(true);
-    };
-    const idleWindow = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void };
-    const idleId = idleWindow.requestIdleCallback?.(warmBooking, { timeout: 1800 });
-    const timeoutId = idleId === undefined ? window.setTimeout(warmBooking, 900) : undefined;
-
-    return () => {
-      if (idleId !== undefined) idleWindow.cancelIdleCallback?.(idleId);
-      if (timeoutId !== undefined) window.clearTimeout(timeoutId);
-    };
-  }, []);
+  const prefetchBookingModal = () => {
+    void loadBookingModal();
+  };
 
   const openBooking = () => {
     setBookingReady(true);
@@ -372,7 +387,7 @@ export function App() {
       <SEOHead page="home" />
       <main ref={page} className="portfolio-shell w-full max-w-full overflow-x-hidden">
         <div className="site-progress" aria-hidden="true"><i /></div>
-        <EditorialNav onStartProject={openBooking} />
+        <EditorialNav onStartProject={openBooking} onPrefetchProject={prefetchBookingModal} />
 
         <section id="top" className="hero-section fde-hero">
           <div className="hero-coordinate hero-coordinate-top">Dubai, UAE / Islamabad, PK</div>
@@ -389,6 +404,8 @@ export function App() {
             <button
               type="button"
               onClick={openBooking}
+              onPointerEnter={prefetchBookingModal}
+              onFocus={prefetchBookingModal}
               className="hero-booking-cta"
               aria-label="Book a working session"
             >
@@ -467,7 +484,7 @@ export function App() {
                   <div className="case-browser">
                     <div className="browser-bar"><i /><i /><i /><span>{new URL(project.href).hostname}</span></div>
                     <a href={project.href} target="_blank" rel="noopener noreferrer" className="case-image-link group" aria-label={'Open ' + project.title}>
-                      <img src={project.image} loading="lazy" decoding="async" alt={project.title + ' website interface'} />
+                      <img src={project.image} width="720" height="405" loading="lazy" decoding="async" alt={project.title + ' website interface'} />
                     </a>
                   </div>
                   <div className="case-copy">
@@ -637,12 +654,52 @@ export function App() {
               <ArrowUpRight size={15} />
             </button>
           </div>
-          <form ref={form} onSubmit={handleSubmit} className="contact-form">
+          <form
+            ref={form}
+            onSubmit={handleSubmit}
+            className="contact-form"
+            toolname="send_engineering_enquiry"
+            tooldescription="Submit an engineering enquiry, software proposal, or consulting request to Forward Deployed Engineer Hassan Nazir."
+          >
             <div className="form-row">
-              <label><span>Your name</span><input required name="name" autoComplete="name" value={formState.name} onChange={(event) => setFormState({ ...formState, name: event.target.value })} placeholder="Name" /></label>
-              <label><span>Email address</span><input required type="email" name="email" autoComplete="email" value={formState.email} onChange={(event) => setFormState({ ...formState, email: event.target.value })} placeholder="you@company.com" /></label>
+              <label>
+                <span>Your name</span>
+                <input
+                  required
+                  name="name"
+                  autoComplete="name"
+                  value={formState.name}
+                  onChange={(event) => setFormState({ ...formState, name: event.target.value })}
+                  placeholder="Name"
+                  toolparamdescription="Full name or company name of the sender"
+                />
+              </label>
+              <label>
+                <span>Email address</span>
+                <input
+                  required
+                  type="email"
+                  name="email"
+                  autoComplete="email"
+                  value={formState.email}
+                  onChange={(event) => setFormState({ ...formState, email: event.target.value })}
+                  placeholder="you@company.com"
+                  toolparamdescription="Contact email address of the sender"
+                />
+              </label>
             </div>
-            <label><span>What are you building or fixing?</span><textarea required name="message" rows={6} value={formState.message} onChange={(event) => setFormState({ ...formState, message: event.target.value })} placeholder="A concise brief is enough to begin." /></label>
+            <label>
+              <span>What are you building or fixing?</span>
+              <textarea
+                required
+                name="message"
+                rows={6}
+                value={formState.message}
+                onChange={(event) => setFormState({ ...formState, message: event.target.value })}
+                placeholder="A concise brief is enough to begin."
+                toolparamdescription="Project description, architecture requirements, or engagement timeline"
+              />
+            </label>
             <div className="form-action">
               <p>{submitState === 'sent' ? <><Check size={16} /> Message sent. I’ll reply shortly.</> : submitState === 'error' ? 'The form could not send. Email me directly at hassannazir955@gmail.com.' : 'Your message goes directly to my inbox.'}</p>
               <button type="submit" disabled={submitState === 'sending'}>{submitState === 'sending' ? 'Sending…' : 'Send enquiry'} <Send size={16} /></button>
@@ -654,6 +711,8 @@ export function App() {
               <button
                 type="button"
                 onClick={openBooking}
+                onPointerEnter={prefetchBookingModal}
+                onFocus={prefetchBookingModal}
                 className="contact-booking-btn"
                 aria-label="Book a 30-minute technical session"
               >
@@ -687,6 +746,8 @@ export function App() {
         <button
           type="button"
           onClick={openBooking}
+          onPointerEnter={prefetchBookingModal}
+          onFocus={prefetchBookingModal}
           className="global-booking-float"
           aria-label="Book a working session"
         >

@@ -1,0 +1,80 @@
+{
+  "specVersion": "1.0",
+  "host": {
+    "displayName": "Hassan Nazir",
+    "identifier": "https://hassannazir.dev",
+    "documentationUrl": "https://hassannazir.dev/llms.txt"
+  },
+  "entries": [
+    {
+      "identifier": "urn:air:hassannazir.dev:services:forward-deployed-engineer",
+      "displayName": "Forward Deployed Engineering",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/services/forward-deployed-engineer",
+      "description": "Embedded technical execution bridging product discovery, AI prototyping, systems integration, and production delivery.",
+      "tags": ["forward-deployed-engineering", "applied-ai", "full-stack", "production-delivery"],
+      "capabilities": ["TechnicalDelivery", "SystemIntegration", "AIPrototyping"],
+      "representativeQueries": [
+        "hire a forward deployed engineer",
+        "embedded AI software delivery",
+        "fractional forward deployed engineering"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:services:applied-ai-consulting",
+      "displayName": "Applied AI Consulting",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/services/applied-ai-consulting",
+      "description": "Applied AI consulting for teams needing working LLM applications, document intelligence, automation, evaluation, and production infrastructure.",
+      "tags": ["applied-ai", "llm-architecture", "eval-harness", "rag-systems"],
+      "capabilities": ["LLMArchitecture", "RAGOptimization", "EvaluationHarnesses"],
+      "representativeQueries": [
+        "applied AI consulting services",
+        "production LLM architecture consulting",
+        "AI evaluation pipeline implementation"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:services:ai-agent-development",
+      "displayName": "AI Agent and RAG Development",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/services/ai-agent-development",
+      "description": "Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.",
+      "tags": ["ai-agents", "rag", "langgraph", "vector-search", "pgvector"],
+      "capabilities": ["AgenticWorkflows", "HybridVectorSearch", "DurableExecution"],
+      "representativeQueries": [
+        "hire AI agent developer",
+        "LangGraph multi-agent engineering",
+        "production RAG system implementation"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:services:n8n-automation-consultant",
+      "displayName": "AI Automations & n8n Workflow Consulting",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/services/n8n-automation-consultant",
+      "description": "Enterprise n8n automation consulting, custom node integrations, self-hosted n8n infrastructure, and reliable lead operations.",
+      "tags": ["n8n", "ai-automation", "enterprise-workflows", "webhook-orchestration"],
+      "capabilities": ["n8nWorkflows", "CustomNodeDevelopment", "SelfHostedAutomation"],
+      "representativeQueries": [
+        "hire n8n automation consultant",
+        "enterprise n8n workflow consulting",
+        "automate operational workflows with AI"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:services:full-stack-software-development",
+      "displayName": "Full-Stack Software Development",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/services/full-stack-software-development",
+      "description": "Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.",
+      "tags": ["full-stack", "typescript", "react", "nextjs", "python", "fastapi"],
+      "capabilities": ["FullStackEngineering", "APIDevelopment", "CloudDeployment"],
+      "representativeQueries": [
+        "hire full stack developer US overlap",
+        "custom AI SaaS development",
+        "FastAPI React software engineer"
+      ]
+    }
+  ]
+}

@@ -1,7 +1,15 @@
 export default {
   content: [
     './index.html',
-    './src/**/*.{js,ts,jsx,tsx}'
+    './src/App.tsx',
+    './src/AppRouter.tsx',
+    './src/pages/ArticlePage.tsx',
+    './src/pages/BlogsPage.tsx',
+    './src/pages/JournalPage.tsx',
+    './src/pages/NotFoundPage.tsx',
+    './src/pages/ServicesPage.tsx',
+    './src/components/blog/**/*.{js,ts,jsx,tsx}',
+    './src/components/ui/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
     extend: {

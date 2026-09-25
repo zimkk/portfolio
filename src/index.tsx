@@ -1,7 +1,9 @@
 import './index.css';
-import 'katex/dist/katex.min.css';
 import { createRoot } from 'react-dom/client';
 import { AppRouter } from './AppRouter';
+import { registerWebMCPTools } from './utils/webmcp';
+
+registerWebMCPTools();
 
 const root = document.getElementById('root');
 

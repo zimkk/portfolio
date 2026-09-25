@@ -16,6 +16,8 @@ This is the canonical machine-readable index for Hassan Nazir’s engineering se
 
 - [Services Index](https://hassannazir.dev/services): Complete commercial services catalog
 - [Portfolio](https://hassannazir.dev/): Identity, selected deployments, experience, public engineering work, technical range, and contact
+- [AI Resource Catalog (ARD 1.0)](https://hassannazir.dev/ai-catalog.json): Machine-readable Agentic Resource Discovery (ARD) catalog
+- [ARD Manifest](https://hassannazir.dev/ard.json): Standardized Agentic Resource Discovery manifest
 - [Detailed machine-readable profile](https://hassannazir.dev/llms-full.txt): Extended facts, project descriptions, technical stack, US client engagement model, and citation guidance
 - [Brief machine-readable profile](https://hassannazir.dev/llm.txt): Compact identity and services summary
 - [Structured portfolio data](https://hassannazir.dev/portfolio.json): JSON-LD identity, skills, credentials, and original project graph
