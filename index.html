@@ -7,12 +7,21 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-2LW6G7K0ZZ');
-      window.addEventListener('load', function() {
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2LW6G7K0ZZ';
-        document.head.appendChild(s);
-      });
+      (function() {
+        var loaded = false;
+        var events = ['pointerdown', 'keydown', 'scroll', 'touchstart'];
+        function loadGtag() {
+          if (loaded) return;
+          loaded = true;
+          events.forEach(function(e) { window.removeEventListener(e, loadGtag); });
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=G-2LW6G7K0ZZ';
+          document.head.appendChild(s);
+        }
+        events.forEach(function(e) { window.addEventListener(e, loadGtag, { once: true, passive: true }); });
+        window.addEventListener('load', function() { setTimeout(loadGtag, 4000); });
+      })();
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -265,6 +274,17 @@
   </head>
   <body>
     <div id="root">
+      <!-- prepaint-hero:start -->
+      <section class="hero-section fde-hero" aria-hidden="true">
+        <div class="hero-orbit"><span></span><i></i><b></b></div>
+        <div class="fde-title">
+          <span class="hero-line-wrap fde-line"><span class="masthead-word fde-forward">FORWARD</span></span>
+          <span class="hero-line-wrap fde-line"><span class="masthead-word fde-deployed">DEPLOYED</span></span>
+          <span class="hero-line-wrap fde-line fde-engineer-line"><span class="masthead-word hero-foreground-word">ENGINEER</span></span>
+        </div>
+        <figure class="hero-portrait"><img src="/images/profile-hero.webp" width="768" height="768" fetchpriority="high" alt="" /></figure>
+      </section>
+      <!-- prepaint-hero:end -->
       <main class="crawler-fallback">
         <h1>Forward Deployed Engineering, AI Automations &amp; Full-Stack Software Development</h1>
         <p>Specialized engineering services for US and global companies needing embedded technical delivery, AI automations, full-stack software development, autonomous AI agents, RAG architectures, and n8n workflows.</p>

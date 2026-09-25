@@ -426,6 +426,7 @@ for (const route of routes) {
     .replace(/<title>.*?<\/title>/, () => `<title>${escapeHtml(route.title)}</title>`)
     .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, (_match, p1, p2) => `${p1}${canonical}${p2}`)
     .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, () => `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
+    .replace(/\s*<!-- prepaint-hero:start -->[\s\S]*?<!-- prepaint-hero:end -->/, '')
     .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, () => `<main class="crawler-fallback">${bodyContent}</main>`);
 
   html = route.image

@@ -398,7 +398,7 @@ export function App() {
             <span className="hero-line-wrap fde-line fde-engineer-line"><span className="masthead-word hero-foreground-word">ENGINEER</span></span>
           </h1>
           <figure className="hero-portrait">
-            <img src="/images/profile-hero.webp" width="768" height="768" fetchPriority="high" decoding="async" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
+            <img src="/images/profile-hero.webp" width="768" height="768" fetchPriority="high" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" />
           </figure>
           <div className="hero-actions">
             <button
