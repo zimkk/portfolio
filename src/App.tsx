@@ -209,7 +209,7 @@ export function App() {
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
   const [submitState, setSubmitState] = useState<'idle' | 'sending' | 'sent' | 'error'>('idle');
 
-  useGSAP(() => {
+  useGSAP((_context, contextSafe) => {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       gsap.set('.intro-gate', { display: 'none' });
       return;
@@ -222,8 +222,9 @@ export function App() {
       .from('.hero-actions, .hero-role-note', { opacity: 0, y: 12, duration: 0.45, stagger: 0.06 }, '-=.4')
       .to('.fde-forward', { scaleX: 1.02, transformOrigin: 'left center', duration: 0.75, ease: 'expo.inOut' }, '-=.65');
 
-    // Defer heavy ScrollTrigger measurement and pin setup after initial paint to prevent forced reflow
-    const rafId = requestAnimationFrame(() => {
+    // ScrollTrigger creation forces layout reads, so run each group in its own idle slice
+    // after first paint instead of one long task. contextSafe keeps them in the useGSAP cleanup.
+    const setupSteps: Array<() => void> = [() => {
       gsap.to('.site-progress i', {
         scaleX: 1,
         ease: 'none',
@@ -248,7 +249,7 @@ export function App() {
         ease: 'none',
         scrollTrigger: { trigger: '.statement-section h2', start: 'top 78%', end: 'bottom 38%', scrub: true },
       });
-
+    }, () => {
       ScrollTrigger.matchMedia({
         '(min-width: 1024px)': () => {
           ScrollTrigger.create({
@@ -268,7 +269,7 @@ export function App() {
           });
         },
       });
-
+    }, () => {
       gsap.utils.toArray<HTMLElement>('.case-sheet').forEach((sheet, index) => {
         gsap.fromTo(
           sheet,
@@ -291,7 +292,7 @@ export function App() {
           });
         }
       });
-
+    }, () => {
       gsap.utils.toArray<HTMLElement>('.github-repo-row').forEach((row, index) => {
         const rule = row.querySelector<HTMLElement>('.github-repo-progress');
         gsap.fromTo(row, { opacity: 0.28, x: index % 2 ? 32 : 18 }, {
@@ -308,7 +309,7 @@ export function App() {
           });
         }
       });
-
+    }, () => {
       gsap.utils.toArray<HTMLElement>('.chapter-reveal').forEach((element) => {
         gsap.from(element, {
           opacity: 0,
@@ -330,9 +331,49 @@ export function App() {
           onToggle: ({ isActive }) => link.classList.toggle('is-active', isActive),
         });
       });
+    }];
+
+    if (!contextSafe) return;
+
+    const idleWindow = window as Window & { requestIdleCallback?: (callback: () => void, options?: { timeout: number }) => number; cancelIdleCallback?: (id: number) => void };
+    let pendingId: number | undefined;
+    let usedIdle = false;
+
+    const runNextStep = contextSafe(() => {
+      pendingId = undefined;
+      setupSteps.shift()?.();
+      if (setupSteps.length) scheduleNextStep();
+      else window.removeEventListener('scroll', flushSteps);
     });
 
-    return () => cancelAnimationFrame(rafId);
+    const scheduleNextStep = () => {
+      usedIdle = Boolean(idleWindow.requestIdleCallback);
+      pendingId = idleWindow.requestIdleCallback
+        ? idleWindow.requestIdleCallback(runNextStep, { timeout: 1200 })
+        : window.setTimeout(runNextStep, 60);
+    };
+
+    const cancelPending = () => {
+      if (pendingId === undefined) return;
+      if (usedIdle) idleWindow.cancelIdleCallback?.(pendingId);
+      else window.clearTimeout(pendingId);
+      pendingId = undefined;
+    };
+
+    // If the visitor scrolls before setup finishes, build everything now so effects stay in sync
+    const flushSteps = contextSafe(() => {
+      cancelPending();
+      while (setupSteps.length) setupSteps.shift()?.();
+      window.removeEventListener('scroll', flushSteps);
+    });
+
+    window.addEventListener('scroll', flushSteps, { passive: true });
+    scheduleNextStep();
+
+    return () => {
+      cancelPending();
+      window.removeEventListener('scroll', flushSteps);
+    };
   }, { scope: page });
 
   useEffect(() => {
