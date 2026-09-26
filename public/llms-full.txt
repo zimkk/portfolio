@@ -146,7 +146,7 @@ AWS, Google Cloud Platform (GCP), DigitalOcean, Docker, Kubernetes, Jenkins, CI/
 
 Hassan Nazir publishes long-form technical field guides on https://hassannazir.dev/blogs covering real-world architectural failures and solutions:
 - **Forward Deployed Engineering**: Pilot rescues, legacy monolith sidecars, air-gapped sovereign clusters, shadow AI gateways, zero-downtime database migrations, semantic observability, 3-year TCO economics.
-- **Autonomous AI Agents**: MCP schema explosion, reasoning token bleed, KV-cache eviction, Pydantic schema traps, test degradation drift, context poisoning, browser DOM volatility, multi-agent deadlocks.
+- **Autonomous AI Agents**: MCP schema explosion, reasoning token bleed, KV-cache eviction, Pydantic schema traps, test degradation drift, context poisoning, browser DOM volatility, multi-agent deadlocks, Pixel Canary on Vercel AI Gateway.
 - **RAG & Knowledge Retrieval**: GraphRAG vs Vector RAG, AST code chunking, HyDE failure modes, scanned PDF tables, LLM-as-a-judge pitfalls, reranking benchmarks, 10M vector pgvector vs Pinecone.
 - **Enterprise n8n Automations**: n8n vs LangChain, HA Kubernetes scaling, webhook backpressure, Zapier-to-n8n migrations, Slack human approvals, dead-letter queues, Vault credential security.
 - **Full-Stack Software Engineering**: SSE vs WebSockets streaming, optimistic UI patterns, Next.js streaming gotchas, prompt injection defense gateways, client-side semantic caching.

@@ -1,4 +1,10 @@
 {
+  "pixel-canary": 1,
+  "vercel-ai-gateway": 1,
+  "ai-sdk": 1,
+  "next-js": 2,
+  "coding-agents": 1,
+  "stealth-models": 1,
   "claude-opus-5-5": 1,
   "anthropic": 1,
   "ai-agents": 3,
@@ -84,7 +90,6 @@
   "table-parsing": 1,
   "computer-vision": 1,
   "document-ai": 1,
-  "next-js": 1,
   "react-server-components": 1,
   "vercel-ai-sdk": 1,
   "streaming": 1,

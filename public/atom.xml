@@ -4,7 +4,7 @@
   <subtitle>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</subtitle>
   <link href="https://hassannazir.dev/blogs" />
   <link href="https://hassannazir.dev/atom.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-09-25T11:00:21.723Z</updated>
+  <updated>2026-09-26T22:14:58.994Z</updated>
   <id>https://hassannazir.dev/blogs</id>
   <author>
     <name>Hassan Nazir</name>
@@ -12,6 +12,14 @@
     <uri>https://hassannazir.dev</uri>
   </author>
   
+  <entry>
+    <title>Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It</title>
+    <link href="https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway" />
+    <id>https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway</id>
+    <updated>2026-09-27T00:00:00.000Z</updated>
+    <summary>Pixel Canary is a free stealth coding model on Vercel AI Gateway (stealth/pixel-canary). Specs, Next.js Agent Evals (90.3% / 96.8%), AI SDK snippets, agent setup, ZDR limits, and a full resource list.</summary>
+    <category term="Artificial Intelligence" />
+  </entry>
   <entry>
     <title>Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model</title>
     <link href="https://hassannazir.dev/blogs/opus-5-5" />

@@ -1,0 +1,107 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="1200" height="675">
+  <defs>
+    <linearGradient id="pcBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+    <linearGradient id="pcCoral" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff5d3d"/>
+      <stop offset="100%" stop-color="#ff8159"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#pcBg)"/>
+
+  <!-- Subtle Blueprint Grid -->
+  <g opacity="0.08" stroke="#d9dee8" stroke-width="1">
+    <line x1="0" y1="135" x2="1200" y2="135"/>
+    <line x1="0" y1="270" x2="1200" y2="270"/>
+    <line x1="0" y1="405" x2="1200" y2="405"/>
+    <line x1="0" y1="540" x2="1200" y2="540"/>
+    <line x1="200" y1="0" x2="200" y2="675"/>
+    <line x1="400" y1="0" x2="400" y2="675"/>
+    <line x1="600" y1="0" x2="600" y2="675"/>
+    <line x1="800" y1="0" x2="800" y2="675"/>
+    <line x1="1000" y1="0" x2="1000" y2="675"/>
+  </g>
+
+  <!-- Top Window Header Bar -->
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)" stroke-width="1"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="14" font-weight="700">stealth / pixel-canary</text>
+  <text x="360" y="73" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="12">// Vercel AI Gateway · Next.js Agent Evals</text>
+  <text x="1110" y="73" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold" text-anchor="end">STATUS: STEALTH · FREE</text>
+
+  <!-- Left: Next.js Agent Evals (pass@4) -->
+  <g transform="translate(60, 115)">
+    <rect x="0" y="0" width="670" height="515" rx="12" fill="#0d0f14" stroke="rgba(255,93,61,0.35)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="670" height="42" rx="12" fill="#1b1210"/>
+    <text x="25" y="27" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">NEXT.JS AGENT EVALS (PASS@4)</text>
+    <text x="645" y="27" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end">25 Sep 2026 · OpenCode harness</text>
+
+    <!-- Baseline Card -->
+    <rect x="25" y="65" width="295" height="155" rx="10" fill="#141720" stroke="rgba(255,93,61,0.45)" stroke-width="1.2"/>
+    <text x="45" y="100" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">BASELINE (NO DOCS)</text>
+    <text x="45" y="155" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="44" font-weight="700">90.3%</text>
+    <text x="45" y="195" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="13">28 / 31 tasks</text>
+
+    <!-- With AGENTS.md Card -->
+    <rect x="350" y="65" width="295" height="155" rx="10" fill="#141720" stroke="rgba(16,185,129,0.45)" stroke-width="1.2"/>
+    <text x="370" y="100" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="600">WITH AGENTS.MD</text>
+    <text x="370" y="155" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="44" font-weight="700">96.8%</text>
+    <text x="370" y="195" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="13">30 / 31 tasks · ties top score</text>
+
+    <!-- Context Envelope & Runtime Specifications -->
+    <rect x="25" y="245" width="620" height="245" rx="10" fill="#141720" stroke="rgba(217,222,232,0.1)" stroke-width="1"/>
+    <text x="45" y="280" fill="#ffffff" font-family="'Satoshi', sans-serif" font-size="16" font-weight="700">Context Envelope &amp; Latency Profile</text>
+    
+    <text x="45" y="325" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="13">Context Window</text>
+    <text x="260" y="325" fill="#ff785d" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">262,144 tokens (262K)</text>
+
+    <text x="45" y="365" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="13">Max Output</text>
+    <text x="260" y="365" fill="#ff785d" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">131,072 tokens (131K)</text>
+
+    <text x="45" y="405" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="13">Avg Eval Duration</text>
+    <text x="260" y="405" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="15" font-weight="700">1015.80s (~17 min / task)</text>
+
+    <rect x="45" y="435" width="580" height="36" rx="6" fill="#1c0f0d" stroke="rgba(255,93,61,0.3)"/>
+    <text x="60" y="458" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">CAVEAT: Zero Data Retention (ZDR) not available · Prompts may train models</text>
+  </g>
+
+  <!-- Right: Architecture & Call Path -->
+  <g transform="translate(755, 115)">
+    <rect x="0" y="0" width="385" height="515" rx="12" fill="#0d0f14" stroke="rgba(217,222,232,0.12)" stroke-width="1.5"/>
+    <rect x="0" y="0" width="385" height="42" rx="12" fill="#141720"/>
+    <text x="22" y="27" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="13" font-weight="bold">AI GATEWAY CALL PATH</text>
+    <text x="365" y="27" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11" text-anchor="end">stealth provider</text>
+
+    <!-- Step 1 -->
+    <rect x="20" y="65" width="345" height="54" rx="8" fill="#141720" stroke="url(#pcCoral)" stroke-width="1.2"/>
+    <text x="35" y="88" fill="#ff5d3d" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">STEP 1: AUTHENTICATION</text>
+    <text x="35" y="106" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="12">Bearer $AI_GATEWAY_API_KEY</text>
+
+    <!-- Step 2 -->
+    <rect x="20" y="135" width="345" height="54" rx="8" fill="#141720" stroke="rgba(217,222,232,0.12)"/>
+    <text x="35" y="158" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">STEP 2: GATEWAY ENDPOINT</text>
+    <text x="35" y="176" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="12">https://ai-gateway.vercel.sh/v1</text>
+
+    <!-- Step 3 -->
+    <rect x="20" y="205" width="345" height="54" rx="8" fill="#141720" stroke="rgba(217,222,232,0.12)"/>
+    <text x="35" y="228" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">STEP 3: MODEL TARGET</text>
+    <text x="35" y="246" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="12">model: "stealth/pixel-canary"</text>
+
+    <!-- Step 4 -->
+    <rect x="20" y="275" width="345" height="54" rx="8" fill="#141720" stroke="rgba(217,222,232,0.12)"/>
+    <text x="35" y="298" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="bold">STEP 4: PROTOCOL</text>
+    <text x="35" y="316" fill="#d9dee8" font-family="'JetBrains Mono', monospace" font-size="12">AI SDK 7 streamText / Chat API</text>
+
+    <!-- Step 5 / AGENTS.md lift -->
+    <rect x="20" y="350" width="345" height="140" rx="8" fill="#0f1c13" stroke="rgba(16,185,129,0.35)" stroke-width="1.2"/>
+    <text x="35" y="378" fill="#10b981" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="bold">OPTIMIZATION: AGENTS.MD</text>
+    <text x="35" y="405" fill="#ffffff" font-family="'JetBrains Mono', monospace" font-size="12">→ node_modules/next/dist/docs/</text>
+    <text x="35" y="435" fill="#aab3c2" font-family="'JetBrains Mono', monospace" font-size="11">Resolves local version-matched docs</text>
+    <text x="35" y="460" fill="#7f8794" font-family="'JetBrains Mono', monospace" font-size="11">App Router · Cache · Fonts · Evals</text>
+  </g>
+</svg>

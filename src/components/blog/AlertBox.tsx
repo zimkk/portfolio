@@ -68,7 +68,7 @@ export const AlertBox: React.FC<AlertBoxProps> = ({ type, title, children }) => 
 
   return (
     <aside
-      className={`my-6 rounded-xl border ${config.border} ${config.bg} p-4.5 text-sm backdrop-blur-sm`}
+      className={`my-6 rounded-xl border ${config.border} ${config.bg} p-5 text-sm backdrop-blur-sm`}
       role="note"
     >
       <div className="flex items-center gap-2.5 font-mono text-xs font-bold uppercase tracking-wider">

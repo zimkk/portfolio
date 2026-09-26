@@ -1,6 +1,6 @@
 Contact: mailto:hassannazir955@gmail.com
 Contact: https://hassannazir.dev/contact
-Expires: 2025-12-31T23:59:59.000Z
+Expires: 2026-12-31T23:59:59.000Z
 Encryption: https://hassannazir.dev/pgp-key.txt
 Preferred-Languages: en, ur
 Canonical: https://hassannazir.dev/.well-known/security.txt

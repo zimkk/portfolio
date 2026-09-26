@@ -36,6 +36,31 @@ const postDateTemplate: Intl.DateTimeFormatOptions = {
 
 const slugify = (text: string) => text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
 
+const getNodeText = (node: React.ReactNode): string => {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return String(node);
+  if (Array.isArray(node)) return node.map(getNodeText).join('');
+  if (React.isValidElement(node) && (node.props as any)?.children) {
+    return getNodeText((node.props as any).children);
+  }
+  return '';
+};
+
+const stripAlertTag = (node: React.ReactNode): React.ReactNode => {
+  if (typeof node === 'string') {
+    return node.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/gi, '').trimStart();
+  }
+  if (Array.isArray(node)) {
+    return node.map((child, index) => (index === 0 ? stripAlertTag(child) : child));
+  }
+  if (React.isValidElement(node) && (node.props as any)?.children) {
+    return React.cloneElement(node as React.ReactElement<any>, {
+      children: stripAlertTag((node.props as any).children),
+    });
+  }
+  return node;
+};
+
 const ArticlePage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const [copiedLink, setCopiedLink] = useState(false);
@@ -308,12 +333,12 @@ const ArticlePage: React.FC = () => {
               {/* Main Content Body */}
               <div className="xl:col-span-3 min-w-0">
                 {/* Cover Image */}
-                {post.image && (
+                {post.image && !post.content.includes(post.image) && (
                   <div className="mb-10 overflow-hidden rounded-2xl border border-white/10 bg-[#111319] shadow-2xl">
                     <img
                       src={post.image}
                       alt={`${post.title} cover`}
-                      className="h-auto w-full object-cover max-h-[460px]"
+                      className="h-auto w-full object-contain max-h-[520px] mx-auto block"
                       loading="lazy"
                     />
                   </div>
@@ -327,15 +352,20 @@ const ArticlePage: React.FC = () => {
                 )}
 
                 {/* Markdown Content */}
-                <div className="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[#d9dee8] prose-p:leading-relaxed prose-p:text-base prose-a:text-[#ff5d3d] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-[#ff785d] prose-code:bg-[#111319] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-li:text-[#d9dee8] prose-table:border prose-table:border-white/10 prose-th:border prose-th:border-white/10 prose-th:bg-[#111319] prose-th:p-3 prose-td:border prose-td:border-white/10 prose-td:p-3">
+                <div className="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[#d9dee8] prose-p:leading-relaxed prose-p:text-base prose-a:text-[#ff5d3d] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-[#ff785d] prose-code:bg-[#111319] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[#d9dee8]">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
                     components={{
+                      // Avoid duplicate H1 since post.title is already in page header
+                      h1() {
+                        return null;
+                      },
+
                       // Custom Heading Anchors with IDs
                       h2({ children, ...props }) {
-                        const text = String(children);
-                        const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        const text = getNodeText(children);
+                        const id = slugify(text);
                         return (
                           <h2 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
                             <a href={`#${id}`} className="no-underline text-white hover:text-[#ff5d3d]">
@@ -345,8 +375,8 @@ const ArticlePage: React.FC = () => {
                         );
                       },
                       h3({ children, ...props }) {
-                        const text = String(children);
-                        const id = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)+/g, '');
+                        const text = getNodeText(children);
+                        const id = slugify(text);
                         return (
                           <h3 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
                             <a href={`#${id}`} className="no-underline text-white hover:text-[#ff5d3d]">
@@ -356,23 +386,68 @@ const ArticlePage: React.FC = () => {
                         );
                       },
 
+                      // Custom Markdown Image Renderer
+                      img({ src, alt, ...props }: any) {
+                        return (
+                          <figure className="my-8 overflow-hidden rounded-2xl border border-white/10 bg-[#111319] shadow-2xl">
+                            <img
+                              src={src}
+                              alt={alt || ''}
+                              className="w-full h-auto object-contain block mx-auto"
+                              loading="lazy"
+                              {...props}
+                            />
+                            {alt && (
+                              <figcaption className="border-t border-white/10 bg-[#0e1117] px-4 py-2.5 text-center text-xs font-mono text-[#7f8794]">
+                                {alt}
+                              </figcaption>
+                            )}
+                          </figure>
+                        );
+                      },
+
+                      // Custom Table Components for Proper Alignment & Overflow Containment
+                      table({ children, ...props }: any) {
+                        return (
+                          <div className="my-8 overflow-x-auto rounded-xl border border-white/10 bg-[#0e1117] shadow-xl">
+                            <table className="w-full border-collapse text-left text-sm" {...props}>
+                              {children}
+                            </table>
+                          </div>
+                        );
+                      },
+                      th({ children, style, ...props }: any) {
+                        return (
+                          <th
+                            style={style}
+                            className="border-b border-white/10 bg-[#111319] px-4 py-3 text-xs font-mono font-semibold uppercase tracking-wider text-[#d9dee8]"
+                            {...props}
+                          >
+                            {children}
+                          </th>
+                        );
+                      },
+                      td({ children, style, ...props }: any) {
+                        return (
+                          <td
+                            style={style}
+                            className="border-b border-white/5 px-4 py-3 text-sm text-[#d9dee8]"
+                            {...props}
+                          >
+                            {children}
+                          </td>
+                        );
+                      },
+
                       // Custom Blockquote / GitHub Alert Parser
                       blockquote({ children, ...props }) {
-                        const rawText = React.Children.toArray(children)
-                          .map((child: any) => (child?.props?.children ? String(child.props.children) : ''))
-                          .join(' ');
-
+                        const rawText = getNodeText(children);
                         const alertMatch = rawText.match(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/i);
                         if (alertMatch) {
                           const type = alertMatch[1].toLowerCase() as AlertType;
                           return (
                             <AlertBox type={type}>
-                              {React.Children.map(children, (child: any) => {
-                                if (typeof child?.props?.children === 'string') {
-                                  return child.props.children.replace(/\[!(NOTE|TIP|IMPORTANT|WARNING|CAUTION)\]/gi, '').trim();
-                                }
-                                return child;
-                              })}
+                              {stripAlertTag(children)}
                             </AlertBox>
                           );
                         }

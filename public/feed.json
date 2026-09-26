@@ -13,6 +13,22 @@
   ],
   "items": [
     {
+      "id": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
+      "url": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
+      "title": "Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It",
+      "summary": "Pixel Canary is a free stealth coding model on Vercel AI Gateway (stealth/pixel-canary). Specs, Next.js Agent Evals (90.3% / 96.8%), AI SDK snippets, agent setup, ZDR limits, and a full resource list.",
+      "date_published": "2026-09-27T00:00:00Z",
+      "tags": [
+        "Pixel Canary",
+        "Vercel AI Gateway",
+        "AI SDK",
+        "Next.js",
+        "Coding Agents",
+        "Stealth Models"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/pixel-canary.svg"
+    },
+    {
       "id": "https://hassannazir.dev/blogs/opus-5-5",
       "url": "https://hassannazir.dev/blogs/opus-5-5",
       "title": "Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model",

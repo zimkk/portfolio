@@ -13,7 +13,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => 
   const [showLineNumbers, setShowLineNumbers] = useState(true);
 
   const rawString = String(children || '').replace(/\n$/, '');
-  const match = /language-([\w-]+)/.exec(className || '');
+  const match = /language-([^\s]+)/.exec(className || '');
   
   let language = match ? match[1] : 'text';
   let title = '';

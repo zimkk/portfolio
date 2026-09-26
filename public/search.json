@@ -1,5 +1,20 @@
 [
   {
+    "title": "Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It",
+    "summary": "Pixel Canary is a free stealth coding model on Vercel AI Gateway (stealth/pixel-canary). Specs, Next.js Agent Evals (90.3% / 96.8%), AI SDK snippets, agent setup, ZDR limits, and a full resource list.",
+    "tags": [
+      "Pixel Canary",
+      "Vercel AI Gateway",
+      "AI SDK",
+      "Next.js",
+      "Coding Agents",
+      "Stealth Models"
+    ],
+    "date": "2026-09-27",
+    "slug": "pixel-canary-vercel-ai-gateway",
+    "url": "/blogs/pixel-canary-vercel-ai-gateway"
+  },
+  {
     "title": "Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model",
     "summary": "Claude Opus 5.5 is Anthropic's latest model for long-running agentic coding and knowledge work. Explore its 1M context, $4/$20 pricing, adaptive thinking, breaking API changes, and real-world engineering benchmarks.",
     "tags": [

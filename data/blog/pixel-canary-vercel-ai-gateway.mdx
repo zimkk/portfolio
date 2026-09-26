@@ -1,0 +1,400 @@
+---
+title: "Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It"
+publishedAt: '2026-09-27'
+date: '2026-09-27'
+lastUpdated: '2026-09-27'
+author: "Hassan Nazir"
+category: "Artificial Intelligence"
+readTime: '16 min read'
+readingTime: '16 min read'
+excerpt: "Pixel Canary is a free stealth coding model on Vercel AI Gateway (stealth/pixel-canary). Specs, Next.js Agent Evals (90.3% / 96.8%), AI SDK snippets, agent setup, ZDR limits, and a full resource list."
+description: "A practical guide to Pixel Canary on Vercel AI Gateway: model ID stealth/pixel-canary, 262K context, Next.js eval scores, AGENTS.md, coding-agent setup, data-retention caveats, and official links."
+slug: "pixel-canary-vercel-ai-gateway"
+tags: ["Pixel Canary", "Vercel AI Gateway", "AI SDK", "Next.js", "Coding Agents", "Stealth Models"]
+seoKeywords: ["Pixel Canary Vercel", "stealth/pixel-canary", "Vercel AI Gateway Pixel Canary", "Next.js Agent Evals", "AI SDK streamText"]
+image: '/images/blogs/pixel-canary.svg'
+featured: true
+---
+
+On **25 September 2026**, Vercel quietly introduced **Pixel Canary** to its [AI Gateway](https://vercel.com/docs/ai-gateway) catalog under the model identifier `stealth/pixel-canary`.
+
+The model is currently offered **free of charge** for a limited time while operating in stealth. Its vendor remains officially unlisted, labeled simply as `stealth`.
+
+```text
+App / Coding Agent
+        │
+        ▼
+Vercel AI Gateway (https://ai-gateway.vercel.sh/v1)
+        │
+        ├─► Auth: Bearer $AI_GATEWAY_API_KEY
+        ├─► Model: stealth/pixel-canary
+        │
+        ▼
+Stealth Execution Engine (262K Context · 131K Output)
+        │
+        ├─► Baseline Eval: 90.3% (28 / 31 tasks)
+        └─► With AGENTS.md: 96.8% (30 / 31 tasks)
+```
+
+Vercel positions Pixel Canary specifically for **full-stack web and mobile development**: App Router layouts, data fetching, server components, interactive screens, and autonomous codebase refactoring. It also features **configurable reasoning effort**, giving developers an adjustable compute dial for complex debugging sessions.
+
+![Pixel Canary on Vercel AI Gateway: Context Envelope, Next.js Eval Benchmarks, and Gateway Call Path](/images/blogs/pixel-canary.svg)
+
+---
+
+## 1. Specifications at a Glance
+
+A quick summary of the technical parameters, pricing terms, and benchmark performance published across Vercel AI Gateway and the Next.js Agent Evals suite:
+
+| Specification | Value | Source |
+| :--- | :--- | :--- |
+| **Model Name** | Pixel Canary | [Vercel Model Catalog](https://vercel.com/ai-gateway/models/pixel-canary) |
+| **Model Identifier** | `stealth/pixel-canary` | Vercel Catalog |
+| **Provider Slug** | `stealth` | Vercel Catalog |
+| **Context Window** | 262,144 tokens (262K) | Vercel Catalog |
+| **Maximum Output** | 131,072 tokens (131K) | Vercel Catalog |
+| **Current Pricing** | Free (limited stealth window) | [Vercel Changelog](https://vercel.com/changelog/pixel-canary-is-now-available-in-stealth-for-free-on-ai-gateway) |
+| **Zero Data Retention (ZDR)** | Not available | Changelog & Catalog |
+| **Prompt Data Retention** | Upstream provider may train on traffic | Changelog & Catalog |
+| **Eval Harness** | OpenCode runner | [Next.js Evals](https://nextjs.org/evals) |
+| **Baseline Pass Rate** | 28 / 31 tasks (**90.3%**) | Next.js Evals |
+| **Pass Rate with `AGENTS.md`** | 30 / 31 tasks (**96.8%**) | Next.js Evals |
+| **Mean Task Duration** | 1015.80s (~16.9 minutes) | Next.js Evals |
+
+---
+
+## 2. What "Stealth" Actually Means in Production
+
+On Vercel AI Gateway, model slugs conventionally reflect the underlying provider: `openai/gpt-5`, `anthropic/claude-3-7-sonnet`, or `meta/llama-3-3-70b`. 
+
+In contrast, `stealth/pixel-canary` decouples the model from its originating laboratory.
+
+Stealth listings allow AI research labs to stress-test frontier checkpoints against real-world engineering workloads without premature brand exposure. However, operating against a stealth model introduces two critical architectural realities:
+
+* **Single-Vendor Gateway Lock-In:** You cannot provision this model on Amazon Bedrock, Google Cloud Vertex, or self-hosted vLLM clusters. There is no public weights repository, tokenizer specification, or Hugging Face repository to pin.
+* **Provider-Side Data Retention:** While Vercel's gateway layer does not train on customer requests, the **upstream stealth provider explicitly reserves rights to retain prompts and outputs for model training**. Zero Data Retention (ZDR) is unsupported.
+
+> [!WARNING]
+> Do not route customer PII, unreleased intellectual property, or production credentials through Pixel Canary. Free inference during a stealth evaluation window is economically traded for model training data.
+
+---
+
+## 3. Benchmark Analysis: Next.js Agent Evals
+
+The [Next.js Agent Evals](https://nextjs.org/evals) benchmark provides an empirical assessment of how effectively autonomous coding agents navigate real-world Next.js codebases.
+
+Unlike standard multiple-choice LLM benchmarks, each test fixture is a standalone repository containing a `PROMPT.md` specification and a rigorous Vitest suite (`EVAL.ts`). The runner ([`@vercel/agent-eval`](https://github.com/vercel/next.js/tree/canary/evals)) spins up an isolated sandbox, allows the agent to execute shell tools and edit files, and verifies the resulting application state.
+
+Scoring follows a **pass@4** distribution: a task is marked successful if the agent passes the verification harness within any of four attempts.
+
+### Leaderboard Results (Run 25 Sep 2026)
+
+| Model | Agent Harness | Avg Duration | Baseline Pass | With AGENTS.md |
+| :--- | :--- | :---: | :---: | :---: |
+| **Claude Opus 5.5** (high) | Claude Code | 269.62s | 97% | 97% |
+| **GPT 6 Sol** (high) | Codex | 285.70s | 97% | 97% |
+| **Claude Fable 5.1** (high) | Claude Code | 247.59s | 97% | 97% |
+| **Grok 4.7** | OpenCode | 337.19s | 94% | 94% |
+| **Pixel Canary** | **OpenCode** | **1015.80s** | **90.3%** | **96.8%** |
+| **Gemini 3.8 Flash** | OpenCode | 434.82s | 90% | 97% |
+| **GPT 6 Astra** (high) | Codex | 251.89s | 90% | 97% |
+| **Kimi K3** | OpenCode | 352.34s | 84% | 97% |
+
+### Key Takeaways from the Data
+
+1. **High Ceiling with Grounded Documentation:** When equipped with repository-local documentation (`AGENTS.md`), Pixel Canary surges from **90.3% to 96.8%**, matching the highest recorded score on the leaderboard.
+2. **The Latency Tradeoff:** Pixel Canary averages **1015.80 seconds (~17 minutes)** per task attempt. This is approximately **3.8× slower** than frontier Claude and GPT models, signaling heavy internal chain-of-thought exploration before committing file edits.
+
+> [!NOTE]
+> Early community feedback in single-turn IDE extensions (such as Cline Desktop) has observed intermittent timeout disconnects during extended thinking phases. For reliable results, ensure your agent client enforces generous network timeouts (minimum 120s) when invoking stealth reasoning models.
+
+---
+
+## 4. Why `AGENTS.md` Yields a 6.5% Benchmark Surge
+
+The Next.js eval harness executes two parallel suites: a **baseline** run without supplementary documentation, and an **agents-md** run that provides direct access to version-matched documentation bundled inside `node_modules`:
+
+```text
+node_modules/next/dist/docs/
+├── 01-app/
+│   ├── 01-getting-started/
+│   ├── 02-guides/
+│   └── 03-api-reference/
+├── 02-pages/
+└── 03-architecture/
+```
+
+Pixel Canary's jump from 28 to 30 passed tasks highlights an essential capability: **the model actively respects and cross-references local documentation rather than hallucinating deprecated APIs**.
+
+### Recommended Production `AGENTS.md`
+
+To give coding agents identical guidance in your own Next.js repositories, add the following configuration:
+
+```md:AGENTS.md
+# Next.js Repository Guidelines for AI Agents
+
+- Always inspect `node_modules/next/dist/docs/` for authoritative API reference before refactoring routes.
+- Adhere strictly to App Router conventions (`layout.tsx`, `page.tsx`, `route.ts`).
+- Avoid mixing legacy Pages Router patterns with Server Component trees.
+- Prefer explicit caching options (`revalidateTag`, `unstable_cache`) over deprecated global fetch parameters.
+```
+
+---
+
+## 5. Implementation Guide: Calling Pixel Canary
+
+Connecting to Pixel Canary requires a Vercel AI Gateway API key and the standard endpoint URL.
+
+### Authentication Setup
+
+Generate an API key through the Vercel dashboard or via the CLI:
+
+```bash
+# Provision a dedicated gateway key via the Vercel CLI
+npx vercel ai-gateway api-keys create --name pixel-canary-dev
+
+# Export key for local development
+export AI_GATEWAY_API_KEY="vck_your_api_key_here"
+```
+
+---
+
+### Integration A: Vercel AI SDK 7 (`streamText`)
+
+Using the unified AI SDK, pass `stealth/pixel-canary` as the model string:
+
+```ts:lib/pixel-canary.ts
+import { streamText } from 'ai'
+
+export async function generateFitnessDashboard() {
+  const result = streamText({
+    model: 'stealth/pixel-canary',
+    prompt: 'Architect a mobile-friendly fitness tracking dashboard using Next.js App Router and Tailwind CSS.',
+  })
+
+  for await (const chunk of result.textStream) {
+    process.stdout.write(chunk)
+  }
+}
+```
+
+---
+
+### Integration B: Non-Streaming Structured Text Generation
+
+```ts:lib/eval-analyzer.ts
+import { generateText } from 'ai'
+
+export async function auditCacheStrategy() {
+  const { text, usage } = await generateText({
+    model: 'stealth/pixel-canary',
+    prompt: 'Identify the top 3 common pitfalls when caching dynamic database queries in Next.js Server Components.',
+  })
+
+  console.log('Analysis:\n', text)
+  console.log('Tokens used:', usage)
+}
+```
+
+---
+
+### Integration C: OpenAI SDK (Python & TypeScript)
+
+Any client supporting OpenAI-compatible Chat Completions can point directly to the Vercel Gateway base URL:
+
+```python:pixel_canary_stream.py
+import os
+from openai import OpenAI
+
+client = OpenAI(
+    api_key=os.environ["AI_GATEWAY_API_KEY"],
+    base_url="https://ai-gateway.vercel.sh/v1",
+)
+
+stream = client.chat.completions.create(
+    model="stealth/pixel-canary",
+    messages=[
+        {"role": "system", "content": "You are a senior Next.js architect."},
+        {"role": "user", "content": "Refactor a legacy Pages API route into an App Router Route Handler with streaming."}
+    ],
+    stream=True,
+)
+
+for chunk in stream:
+    if chunk.choices and chunk.choices[0].delta.content:
+        print(chunk.choices[0].delta.content, end="", flush=True)
+```
+
+---
+
+### Integration D: Raw HTTP / cURL with Reasoning Effort
+
+```bash
+curl --fail-with-body https://ai-gateway.vercel.sh/v1/chat/completions \
+  -H "Authorization: Bearer $AI_GATEWAY_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "stealth/pixel-canary",
+    "messages": [
+      {
+        "role": "user",
+        "content": "Design an optimistic UI mutation pattern using Server Actions and useOptimistic."
+      }
+    ],
+    "stream": false,
+    "reasoning_effort": "high"
+  }'
+```
+
+---
+
+## 6. Configuring Autonomous Coding Agents
+
+Vercel provides automated CLI helpers to bridge gateway endpoints directly into popular coding harnesses:
+
+```bash
+# Automatically detects installed agent tooling and sets up credentials
+npx vercel ai-gateway setup
+```
+
+### Claude Code Setup
+
+```bash
+export ANTHROPIC_BASE_URL="https://ai-gateway.vercel.sh/claude-code"
+export ANTHROPIC_AUTH_TOKEN="$AI_GATEWAY_API_KEY"
+export CLAUDE_CODE_ENABLE_GATEWAY_MODEL_DISCOVERY=1
+```
+
+Once initialized, run `/model` inside the interactive session and select `stealth/pixel-canary`.
+
+### OpenAI Codex CLI
+
+```bash
+codex --model stealth/pixel-canary
+```
+
+Alternatively, configure the gateway endpoint inside `~/.codex/config.toml`:
+
+```toml
+[providers.vercel]
+base_url = "https://ai-gateway.vercel.sh/codex/v1"
+env_key = "AI_GATEWAY_API_KEY"
+wire_api = "responses"
+```
+
+### Universal Agent Compatibility Endpoint
+
+For all other tools (Cursor, Aider, custom autonomous loops), route traffic through the universal endpoint:
+
+```text
+https://ai-gateway.vercel.sh/coding-agent/v1
+```
+
+---
+
+## 7. Practical Engineering Recommendations
+
+Pixel Canary excels in targeted development scenarios but introduces distinct operational constraints. When structuring multi-agent workflows or team evaluation sprints, use the following operational matrix:
+
+### Workload Decision Matrix
+
+| Workload Profile | Suitability | Core Architectural Rationale | Recommended Model |
+| :--- | :---: | :--- | :--- |
+| **Greenfield UI Scaffolding** | **Strong** | High output envelope (131K), 262K context, zero token cost | Pixel Canary (`stealth`) |
+| **Mechanical Next.js Refactors** | **Strong** | 96.8% pass@4 rate when grounded with `AGENTS.md` | Pixel Canary (`stealth`) |
+| **Experimental Overnight Runs** | **Strong** | Free inference allows running deep pass@4 exploration loops | Pixel Canary (`stealth`) |
+| **Enterprise / Regulated Codebases** | **Blocked** | No Zero Data Retention (ZDR); upstream provider may retain data | Claude Opus 5.5 / GPT-4o |
+| **Interactive Pair Programming** | **Poor** | ~17 min mean task duration; high thinking phase latency | Claude 3.5 Sonnet / Gemini 2.5 Flash |
+| **Fragile Single-Turn Agents** | **Poor** | Prone to network timeouts without automated retry harnesses | Frontier standard models |
+
+---
+
+### Optimal Use Cases (Green Light)
+
+* **Greenfield Prototyping & Design Systems**  
+  Generating complete dashboard screens, mobile shells (React Native / Expo), and modular navigation trees where exploring alternative implementations would otherwise burn hundreds of thousands of frontier tokens.
+
+* **Mechanical App Router Migrations**  
+  Translating repetitive `pages/` API endpoints and `getServerSideProps` routines into modern Server Components and Route Handlers, where automated Vitest suites can deterministically verify correctness.
+
+* **Parallel Background Research Agents**  
+  Spinning up autonomous agents in background sandboxes or PR exploration pipelines on non-critical feature branches while core engineering teams stay focused on primary sprint tickets.
+
+---
+
+### Disqualifying Scenarios (Red Light)
+
+* **Strict Corporate Compliance & NDA Work**  
+  Any enterprise codebase governed by SOC2, HIPAA, or strict zero-data-retention agreements. Because the upstream stealth laboratory reserves model-training rights, proprietary code must not touch this endpoint.
+
+* **Synchronous Sub-Second Developer Loops**  
+  Fast interactive coding sessions inside the IDE. Pixel Canary's deep chain-of-thought exploration means multi-step edits take significantly longer than models like Claude 3.5 Sonnet or GPT-4o.
+
+* **Scaffold-Light Single-Attempt Tooling**  
+  Tool harnesses that execute one single shot without retry logic or sandbox assertions. Pixel Canary's 96.8% score is measured under **pass@4**; first-attempt runs without test loops will exhibit much higher variance.
+
+---
+
+## 8. Deployment & Operational Checklist
+
+Before adopting Pixel Canary as a standard development model across your engineering organization, verify each prerequisite:
+
+1. **Verify Gateway Credentials & BYOK Scope**  
+   Confirm `$AI_GATEWAY_API_KEY` is provisioned with appropriate budget caps and stored securely in your team's CI/CD secret manager or local `.env.local` files.
+
+2. **Audit Data Governance & IP Sensitivity**  
+   Obtain explicit clearance that source code processed through `stealth/*` routes does not include proprietary trade secrets, customer credentials, or regulated compliance payloads.
+
+3. **Deploy Local `AGENTS.md` Directives**  
+   Place an `AGENTS.md` file in your repository root pointing to `node_modules/next/dist/docs/` to secure the documented **6.5% pass-rate increase** across App Router tasks.
+
+4. **Calibrate Client Read Timeouts**  
+   Configure agent HTTP clients (OpenCode, Claude Code, Cline) with a minimum **120-second read timeout** to prevent connection dropouts during deep reasoning cycles.
+
+5. **Track Stealth Window Lifecycle**  
+   Subscribe to the Vercel Changelog feed to ensure automated workflows are not caught unprepared when the model transitions from free stealth evaluation to standard commercial pricing.
+
+---
+
+## 9. Official Resources & Primary Sources
+
+### Primary Gateway Documentation
+
+| Resource | Scope & Focus | Destination |
+| :--- | :--- | :---: |
+| **Pixel Canary Model Page** | Official playground, token limits, and live parameter metadata | [View Catalog ↗](https://vercel.com/ai-gateway/models/pixel-canary) |
+| **Launch Changelog** | Architecture announcement and initial benchmark release | [Read Changelog ↗](https://vercel.com/changelog/pixel-canary-is-now-available-in-stealth-for-free-on-ai-gateway) |
+| **AI Gateway Documentation** | Unified API keys, rate limits, OIDC auth, and provider routing | [Read Docs ↗](https://vercel.com/docs/ai-gateway) |
+| **Coding Agents Guide** | Harness integration guides for Claude Code, Codex, and Cursor | [View Guide ↗](https://vercel.com/docs/ai-gateway/coding-agents) |
+| **Security & Compliance** | Data retention terms, privacy boundaries, and ZDR criteria | [View Policy ↗](https://vercel.com/docs/ai-gateway/security-and-compliance) |
+
+---
+
+### Next.js Agent Evals & Fixtures
+
+| Resource | Scope & Focus | Destination |
+| :--- | :--- | :---: |
+| **Live Leaderboard** | Real-time pass@4 rankings across frontier and open coding models | [Inspect Board ↗](https://nextjs.org/evals) |
+| **AI Agent Setup Guide** | Authoritative conventions for `AGENTS.md` and runtime MCP tooling | [Read Guide ↗](https://nextjs.org/docs/app/guides/ai-agents) |
+| **Evaluation Fixtures Repo** | Open-source test runners, prompts, and Vitest harnesses (`vercel/next.js`) | [View Source ↗](https://github.com/vercel/next.js/tree/canary/evals) |
+
+---
+
+### Supported Agent Harnesses
+
+* **[OpenCode](https://opencode.ai)**  
+  The primary open-source agent harness used in Vercel's official Next.js benchmark evaluation runs. Provides direct model configuration via standard gateway parameters.
+
+* **[Cline Autonomous Extension](https://cline.bot)**  
+  Popular VS Code agent featuring native AI Gateway provider support for instant model switching and automated terminal tool execution.
+
+* **[fx Gateway CLI](https://fx.sh)**  
+  Terminal-first coding agent optimized for fast multi-model gateway exploration and interactive REPL sessions.
+
+---
+
+### Production Summary
+
+Pixel Canary is a compelling asset for front-end engineering teams who already utilize Vercel AI Gateway and want to run intensive Next.js or React refactoring experiments without burning commercial token budgets. 
+
+Its **96.8% pass@4 benchmark score** proves that open models with grounded documentation can rival frontier systems on concrete framework tasks. Ground your workspace with an `AGENTS.md` file, maintain strict boundaries around sensitive customer IP, and leverage the free stealth window while it lasts.
