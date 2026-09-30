@@ -13,6 +13,118 @@
   ],
   "items": [
     {
+      "id": "https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute",
+      "url": "https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute",
+      "title": "AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute",
+      "summary": "AWS signed a multi-year chip-design IP deal with Synopsys worth more than $1 billion, and HPE won a $1.2 billion order from Vultr for AMD Helios AI racks with 72 MI455X GPUs each. Plus a fact check on orbital data centers: what Nvidia-backed Starcloud actually trained in space. What these moves mean for AI compute supply.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "AI Infrastructure",
+        "Custom Silicon",
+        "AWS",
+        "AMD",
+        "Data Centers",
+        "AI News"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/ai-infrastructure-deals.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/ai-powered-threat-detection",
+      "url": "https://hassannazir.dev/blogs/ai-powered-threat-detection",
+      "title": "AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads",
+      "summary": "A practical, engineering-first guide to AI-powered threat detection: telemetry normalization with OCSF, layered detection (Sigma rules, behavioral baselines, graph analytics), LLM-assisted triage that treats logs as hostile input, and the base-rate math that decides whether your SOC drowns in false positives.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "Threat Detection",
+        "Cybersecurity",
+        "SOC Automation",
+        "Anomaly Detection",
+        "LLM Security",
+        "MITRE ATT&CK"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/ai-threat-detection.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained",
+      "url": "https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained",
+      "title": "Anthropic's Leaked IPO Prospectus: The Numbers, the 'Existential Risk' Warning, and What Enterprise AI Buyers Should Take From It",
+      "summary": "Anthropic's IPO prospectus, reported by Reuters on September 28, 2026, devotes roughly 80 of 261 pages to risk, warns of 'catastrophic or existential risks to humanity', and reveals about $4.6 billion in 2025 revenue, an operating loss above $8 billion, and $518 billion in compute commitments. Here is what it says and what it means for teams building on frontier models.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "Anthropic",
+        "IPO",
+        "AI Safety",
+        "AI News",
+        "Frontier Models",
+        "Vendor Risk"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/anthropic-ipo-risk.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025",
+      "url": "https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025",
+      "title": "Transformer Attention Mechanisms Explained: From Scaled Dot-Product to FlashAttention, GQA, MLA and Sparse Attention",
+      "summary": "An engineer's guide to how attention works in modern LLMs and why it changed: the scaled dot-product math, KV-cache memory arithmetic, MQA and GQA, DeepSeek's multi-head latent attention, FlashAttention kernels, RoPE context extension, sliding-window and sparse attention, and hybrid linear-attention models.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "Transformers",
+        "Attention Mechanism",
+        "Deep Learning",
+        "LLM Inference",
+        "KV Cache",
+        "FlashAttention"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/transformer-attention.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents",
+      "url": "https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents",
+      "title": "OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives",
+      "summary": "On September 29, 2026, OpenAI launched Dots, always-on agents powered by GPT-6 Astra with their own cloud computer and browser, and Meta expanded its Muse agent to small businesses with Shopify, Stripe, QuickBooks and Slack integrations. A factual breakdown of both launches and the architecture lessons for teams building their own agents.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "OpenAI",
+        "Meta",
+        "AI Agents",
+        "Autonomous Agents",
+        "AI News",
+        "Agent Architecture"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/always-on-agents.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord",
+      "url": "https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord",
+      "title": "Trump's 'Super Intelligence' Executive Order and the White House SI Accord: What Changed and What It Means for AI Teams",
+      "summary": "On September 29, 2026, President Trump ordered federal agencies to replace 'artificial intelligence' with 'Super Intelligence' in non-statutory documents, while leading AI companies signed a voluntary White House accord. Here is what the order actually says, what the accord commits to, how it connects to the US-China AI stance, and what engineering teams should do.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "AI Policy",
+        "Super Intelligence",
+        "Executive Order",
+        "AI Regulation",
+        "AI News",
+        "US China AI"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/ai-policy-super-intelligence.svg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/zero-trust-architecture-implementation",
+      "url": "https://hassannazir.dev/blogs/zero-trust-architecture-implementation",
+      "title": "Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model",
+      "summary": "A hands-on zero trust implementation guide: the NIST SP 800-207 components (policy engine, policy administrator, enforcement points), the five CISA pillars, phishing-resistant MFA, workload identity with mTLS, policy-as-code with OPA, and how to extend zero trust to AI agents as non-human identities.",
+      "date_published": "2026-09-30T00:00:00Z",
+      "tags": [
+        "Zero Trust",
+        "Cybersecurity",
+        "Identity and Access Management",
+        "Service Mesh",
+        "Policy as Code",
+        "AI Agents"
+      ],
+      "image": "https://hassannazir.dev/images/blogs/zero-trust-architecture.svg"
+    },
+    {
       "id": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
       "url": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
       "title": "Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It",
