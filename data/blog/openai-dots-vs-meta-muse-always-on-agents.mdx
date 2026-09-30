@@ -1,0 +1,112 @@
+---
+title: "OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives"
+publishedAt: '2026-09-30'
+lastUpdated: '2026-09-30'
+author: "Hassan Nazir"
+category: "AI News"
+readTime: '10 min read'
+excerpt: "On September 29, 2026, OpenAI launched Dots, always-on agents powered by GPT-6 Astra with their own cloud computer and browser, and Meta expanded its Muse agent to small businesses with Shopify, Stripe, QuickBooks and Slack integrations. A factual breakdown of both launches and the architecture lessons for teams building their own agents."
+tags: ["OpenAI", "Meta", "AI Agents", "Autonomous Agents", "AI News", "Agent Architecture"]
+seoKeywords: ["OpenAI Dots", "OpenAI Dots always-on agents", "GPT-6 Astra", "Meta Muse for Small Business", "always-on AI agents", "AI agents for small business"]
+image: '/images/blogs/always-on-agents.svg'
+---
+
+# OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives
+
+For three years, the dominant AI interface was a chat box: you ask, it answers, it waits. On **September 29, 2026**, two of the largest AI companies shipped products built around a different idea: **agents that keep working when you are not talking to them.**
+
+OpenAI launched **Dots** at DevDay 2026 in San Francisco. The same day, Meta expanded its **Muse** agent to small businesses. Here is what each actually does, how they differ, and what builders should take from the design choices.
+
+## OpenAI Dots: Agents With Their Own Computer
+
+According to OpenAI's launch coverage:
+
+- **Model:** Dots run on **GPT-6 Astra**.
+- **Runtime:** each Dot gets **its own cloud computer and browser**, isolated unless the user connects it to their accounts.
+- **Integrations:** connects to **more than 4,000 apps** through plugins.
+- **Channels:** reachable in ChatGPT (web, desktop, mobile), **Slack**, and **Microsoft Teams**, with text messaging announced as coming.
+- **Always-on behavior:** Dots can work across multiple projects, send progress updates, ask questions mid-task, and do **"proactive research"** in the background. That proactive mode is restricted to **read-only** access to connected apps.
+- **Visibility:** users can watch the Dot's computer while it works instead of waiting for a final answer.
+
+### Controls and Safety
+
+The launch leans heavily on permissioning, which is the right instinct:
+
+- Built-in rules decide what a Dot can do autonomously and what needs approval.
+- **Custom Rules** let users "allow, block or require approval for specific actions."
+- **Auto-review** applies to actions that affect accounts, and sensitive tasks such as password changes require user approval.
+
+### Availability and Pricing
+
+- **One Dot is included at no extra cost** for ChatGPT **Pro** and **Business Premium** users in eligible markets.
+- For Pro, reports list eligible markets as **excluding the European Economic Area, Switzerland, and the UK** at launch.
+- **Enterprise, Edu, and Healthcare** workspaces get a **beta** when an admin enables it, with enterprise pilots for specialist Dots.
+- OpenAI said Dots conversations do not count toward ChatGPT usage limits, and described options to scale a Dot's speed or monthly work volume. Coverage noted **no published per-Dot price** for extra capacity yet.
+
+## Meta Muse for Small Business: Context Over Autonomy
+
+Meta's Muse agent launched earlier in September in the **US and Canada**. On September 29, Meta expanded it with **Muse for Small Business**.
+
+- **Goal:** help owners run operations and customer communication using context about what the business sells, its brand voice, and its customer inquiries.
+- **Integrations:** Shopify, Dropbox, Slack, Asana, Box, Canva, Figma, Granola, HighLevel, Intuit QuickBooks, Klaviyo, Lovable, Notion, Stripe, and Zoom, plus Instagram professional analytics, Facebook Pages, and Meta ad accounts.
+- **Tasks cited in coverage:** customer communication, cash flow and inventory processes, and website creation.
+- **Pricing:** a free tier with usage limits, with reported paid tiers at **$20 and $100 per month**.
+
+Meta's framing, quoted by TechCrunch: small business owners "told us they're short on hours, not ideas."
+
+## Side by Side
+
+| | OpenAI Dots | Meta Muse for Small Business |
+|---|---|---|
+| Launch | Sept 29, 2026 (DevDay) | Sept 29, 2026 (expansion of Muse) |
+| Core idea | General always-on agent with its own computer | Business-context agent inside existing tools |
+| Execution environment | Dedicated cloud computer and browser | Integrations with business software and Meta properties |
+| Integrations | 4,000+ apps via plugins | Shopify, Stripe, QuickBooks, Slack, Notion and more |
+| Background work | Proactive research, read-only | Operations help grounded in business data |
+| Controls | Allow / block / require-approval rules, auto-review | Account-level integrations and usage tiers |
+| Pricing | One Dot included in Pro and Business Premium | Free tier; reported $20 and $100 monthly tiers |
+
+## Architecture Lessons for Teams Building Their Own Agents
+
+Both launches validate patterns I have been recommending to clients building internal agents.
+
+### 1. Give agents a sandbox, not your laptop
+
+Dots run in **isolated cloud computers**. That is the correct default: the blast radius of a confused or manipulated agent is limited to its own environment until a human connects more.
+
+**For your build:** run browser and code-execution agents in ephemeral containers or VMs, with network egress controls and no standing credentials.
+
+### 2. Separate "observe" from "act"
+
+OpenAI restricts background **proactive research to read-only** access. Reading is where agents deliver most value with least risk; writing is where incidents happen.
+
+**For your build:** issue read-scoped tokens by default, and require a separate, approval-gated flow to obtain write scopes.
+
+### 3. Make permissions user-legible
+
+"Allow, block, or require approval" is a permission model a non-engineer can understand. That matters because the person approving actions is usually a business user.
+
+**For your build:** express policies as a small set of human-readable rules per tool and action, backed by enforcement at an API gateway, not by prompt instructions.
+
+### 4. Context is the moat for vertical agents
+
+Meta's bet is that an agent knowing your catalog, customers, and brand voice beats a smarter generic agent. For most businesses, that is correct: **retrieval quality and integration depth** decide usefulness more than raw model capability.
+
+### 5. Always-on means always-attacked
+
+An agent that reads email and web pages continuously is continuously exposed to **prompt injection**. Treat every piece of content the agent reads as untrusted, keep authorization outside the model, and log every action with enough detail to reconstruct what happened.
+
+## Key Takeaways
+
+- **OpenAI Dots** (GPT-6 Astra) are always-on agents with their own cloud computer and browser, 4,000+ app integrations, and allow/block/approval controls; one Dot is included with Pro and Business Premium.
+- **Meta Muse for Small Business** grounds an agent in business context through integrations like Shopify, Stripe, and QuickBooks, with a free tier and reported $20 and $100 paid tiers.
+- The shared design lessons: **sandboxed execution, read-first permissions, user-legible approval rules, and deep context**.
+
+## Sources
+
+- [The Next Web: OpenAI launches Dots, always-on AI agents with their own cloud computers](https://thenextweb.com/news/openai-dots-always-on-ai-agents-cloud-computers-devday)
+- [9to5Google: OpenAI launches Dots, new always-on agents](https://9to5google.com/2026/09/29/openai-dots-agent/)
+- [Traictory: OpenAI's dots and the pricing ladder](https://traictory.com/news/2026-09-30-openai-dots-agents)
+- [TechCrunch: Meta is expanding its AI agent Muse to small businesses](https://techcrunch.com/2026/09/29/meta-is-expanding-its-ai-agent-muse-to-small-businesses/)
+- [CNBC: Meta launches Muse for Small Business](https://www.cnbc.com/2026/09/29/meta-launches-muse-for-small-business-zuckerberg-pushes-enterprise-ai.html)
+- [Axios: Meta takes fresh aim at businesses with Muse tools](https://www.axios.com/2026/09/29/meta-muse-ai-small-business)

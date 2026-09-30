@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">prospectus / risk factors</text>
+  <text x="1120" y="73" fill="#d97757" font-family="monospace" font-size="12" font-weight="bold" text-anchor="end">80 OF 261 PAGES</text>
+  <text x="70" y="250" fill="#edf0f5" font-family="Arial, sans-serif" font-size="58" font-weight="bold" letter-spacing="-2">ANTHROPIC</text>
+  <text x="70" y="318" fill="#d97757" font-family="Arial, sans-serif" font-size="58" font-weight="bold" letter-spacing="-2">IPO PROSPECTUS</text>
+  <rect x="70" y="350" width="120" height="3" fill="#d97757"/>
+  <text x="70" y="400" fill="#7f8794" font-family="monospace" font-size="14">FIELD NOTES · HASSAN NAZIR</text>
+  <rect x="620" y="296" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="327" fill="#d97757" font-family="monospace" font-size="14" font-weight="bold">REV</text>
+  <text x="742" y="327" fill="#d9dee8" font-family="monospace" font-size="14">2025 revenue</text>
+  <text x="1120" y="327" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">~$4.6B</text>
+  <rect x="620" y="358" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="389" fill="#d97757" font-family="monospace" font-size="14" font-weight="bold">LOSS</text>
+  <text x="742" y="389" fill="#d9dee8" font-family="monospace" font-size="14">2025 operating loss</text>
+  <text x="1120" y="389" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">&gt;$8B</text>
+  <rect x="620" y="420" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="451" fill="#d97757" font-family="monospace" font-size="14" font-weight="bold">COMPUTE</text>
+  <text x="742" y="451" fill="#d9dee8" font-family="monospace" font-size="14">Future commitments</text>
+  <text x="1120" y="451" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">~$518B</text>
+  <rect x="620" y="482" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="513" fill="#d97757" font-family="monospace" font-size="14" font-weight="bold">VAL</text>
+  <text x="742" y="513" fill="#d9dee8" font-family="monospace" font-size="14">Target valuation</text>
+  <text x="1120" y="513" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">&gt;$2T</text>
+  <text x="70" y="620" fill="#4a505c" font-family="monospace" font-size="12">hassannazir.dev/blogs</text>
+</svg>

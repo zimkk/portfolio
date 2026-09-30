@@ -4,7 +4,7 @@
   <subtitle>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</subtitle>
   <link href="https://hassannazir.dev/blogs" />
   <link href="https://hassannazir.dev/atom.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-09-26T22:14:58.994Z</updated>
+  <updated>2026-09-30T15:42:58.369Z</updated>
   <id>https://hassannazir.dev/blogs</id>
   <author>
     <name>Hassan Nazir</name>
@@ -12,6 +12,62 @@
     <uri>https://hassannazir.dev</uri>
   </author>
   
+  <entry>
+    <title>AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute</title>
+    <link href="https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute" />
+    <id>https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>AWS signed a multi-year chip-design IP deal with Synopsys worth more than $1 billion, and HPE won a $1.2 billion order from Vultr for AMD Helios AI racks with 72 MI455X GPUs each. Plus a fact check on orbital data centers: what Nvidia-backed Starcloud actually trained in space. What these moves mean for AI compute supply.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads</title>
+    <link href="https://hassannazir.dev/blogs/ai-powered-threat-detection" />
+    <id>https://hassannazir.dev/blogs/ai-powered-threat-detection</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>A practical, engineering-first guide to AI-powered threat detection: telemetry normalization with OCSF, layered detection (Sigma rules, behavioral baselines, graph analytics), LLM-assisted triage that treats logs as hostile input, and the base-rate math that decides whether your SOC drowns in false positives.</summary>
+    <category term="Security Engineering" />
+  </entry>
+  <entry>
+    <title>Anthropic's Leaked IPO Prospectus: The Numbers, the 'Existential Risk' Warning, and What Enterprise AI Buyers Should Take From It</title>
+    <link href="https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained" />
+    <id>https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>Anthropic's IPO prospectus, reported by Reuters on September 28, 2026, devotes roughly 80 of 261 pages to risk, warns of 'catastrophic or existential risks to humanity', and reveals about $4.6 billion in 2025 revenue, an operating loss above $8 billion, and $518 billion in compute commitments. Here is what it says and what it means for teams building on frontier models.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>Transformer Attention Mechanisms Explained: From Scaled Dot-Product to FlashAttention, GQA, MLA and Sparse Attention</title>
+    <link href="https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025" />
+    <id>https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>An engineer's guide to how attention works in modern LLMs and why it changed: the scaled dot-product math, KV-cache memory arithmetic, MQA and GQA, DeepSeek's multi-head latent attention, FlashAttention kernels, RoPE context extension, sliding-window and sparse attention, and hybrid linear-attention models.</summary>
+    <category term="Deep Learning" />
+  </entry>
+  <entry>
+    <title>OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives</title>
+    <link href="https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents" />
+    <id>https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>On September 29, 2026, OpenAI launched Dots, always-on agents powered by GPT-6 Astra with their own cloud computer and browser, and Meta expanded its Muse agent to small businesses with Shopify, Stripe, QuickBooks and Slack integrations. A factual breakdown of both launches and the architecture lessons for teams building their own agents.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>Trump's 'Super Intelligence' Executive Order and the White House SI Accord: What Changed and What It Means for AI Teams</title>
+    <link href="https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord" />
+    <id>https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>On September 29, 2026, President Trump ordered federal agencies to replace 'artificial intelligence' with 'Super Intelligence' in non-statutory documents, while leading AI companies signed a voluntary White House accord. Here is what the order actually says, what the accord commits to, how it connects to the US-China AI stance, and what engineering teams should do.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model</title>
+    <link href="https://hassannazir.dev/blogs/zero-trust-architecture-implementation" />
+    <id>https://hassannazir.dev/blogs/zero-trust-architecture-implementation</id>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <summary>A hands-on zero trust implementation guide: the NIST SP 800-207 components (policy engine, policy administrator, enforcement points), the five CISA pillars, phishing-resistant MFA, workload identity with mTLS, policy-as-code with OPA, and how to extend zero trust to AI agents as non-human identities.</summary>
+    <category term="Security Engineering" />
+  </entry>
   <entry>
     <title>Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It</title>
     <link href="https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway" />

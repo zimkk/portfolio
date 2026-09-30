@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#08090c"/>
+      <stop offset="100%" stop-color="#111319"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="675" fill="url(#bg)"/>
+  <rect x="60" y="45" width="1080" height="46" rx="8" fill="#111319" stroke="rgba(217,222,232,0.12)"/>
+  <circle cx="85" cy="68" r="5" fill="#ff5f56"/>
+  <circle cx="105" cy="68" r="5" fill="#ffbd2e"/>
+  <circle cx="125" cy="68" r="5" fill="#27c93f"/>
+  <text x="155" y="73" fill="#7f8794" font-family="monospace" font-size="13">compute / supply-chain</text>
+  <text x="1120" y="73" fill="#35d0a5" font-family="monospace" font-size="12" font-weight="bold" text-anchor="end">SEPT 30, 2026</text>
+  <text x="70" y="250" fill="#edf0f5" font-family="Arial, sans-serif" font-size="47" font-weight="bold" letter-spacing="-2">AI INFRASTRUCTURE</text>
+  <text x="70" y="318" fill="#35d0a5" font-family="Arial, sans-serif" font-size="47" font-weight="bold" letter-spacing="-2">MOVES</text>
+  <rect x="70" y="350" width="120" height="3" fill="#35d0a5"/>
+  <text x="70" y="400" fill="#7f8794" font-family="monospace" font-size="14">FIELD NOTES · HASSAN NAZIR</text>
+  <rect x="620" y="296" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="327" fill="#35d0a5" font-family="monospace" font-size="14" font-weight="bold">AWS</text>
+  <text x="742" y="327" fill="#d9dee8" font-family="monospace" font-size="14">Synopsys chip IP</text>
+  <text x="1120" y="327" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">$1B+ multi-year</text>
+  <rect x="620" y="358" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="389" fill="#35d0a5" font-family="monospace" font-size="14" font-weight="bold">HPE</text>
+  <text x="742" y="389" fill="#d9dee8" font-family="monospace" font-size="14">Vultr · AMD Helios</text>
+  <text x="1120" y="389" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">$1.2B order</text>
+  <rect x="620" y="420" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="451" fill="#35d0a5" font-family="monospace" font-size="14" font-weight="bold">RACK</text>
+  <text x="742" y="451" fill="#d9dee8" font-family="monospace" font-size="14">72 × MI455X</text>
+  <text x="1120" y="451" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">per Helios rack</text>
+  <rect x="620" y="482" width="520" height="50" rx="8" fill="#0d0f14" stroke="rgba(217,222,232,0.10)"/>
+  <text x="642" y="513" fill="#35d0a5" font-family="monospace" font-size="14" font-weight="bold">ORBIT</text>
+  <text x="742" y="513" fill="#d9dee8" font-family="monospace" font-size="14">Starcloud · nanoGPT</text>
+  <text x="1120" y="513" fill="#7f8794" font-family="monospace" font-size="12" text-anchor="end">not frontier</text>
+  <text x="70" y="620" fill="#4a505c" font-family="monospace" font-size="12">hassannazir.dev/blogs</text>
+</svg>

@@ -30,6 +30,7 @@ for (const file of mdxFiles) {
     title: data.title || slug,
     description: data.excerpt || '',
     published: data.publishedAt || '2026-09-01',
+    updated: data.lastUpdated || data.publishedAt || '2026-09-01',
     category: data.category || 'Engineering',
     tags: data.tags || [],
     image: data.image || '/images/forward-deployed-services.svg',
@@ -83,6 +84,40 @@ const services = [
   },
 ];
 
+// Internal-link graph for crawlers: every article and service page links to related
+// field notes so no URL depends on the /blogs index alone to be discovered.
+const serviceCategories = {
+  'forward-deployed-engineer': ['Forward Deployed Engineering'],
+  'applied-ai-consulting': ['Artificial Intelligence', 'AI News', 'Reasoning Models', 'Structured Outputs', 'Model Fine-Tuning', 'Edge & Local AI', 'Deep Learning'],
+  'ai-agent-development': ['AI Agents', 'RAG & Vector Search', 'Agentic Memory', 'Model Context Protocol', 'Browser & UI Agents', 'AI Code Generation'],
+  'n8n-automation-consultant': ['n8n & AI Automations'],
+  'full-stack-software-development': ['Full-Stack Software Development', 'Infrastructure & Caching', 'Distributed Systems', 'Security Engineering'],
+};
+
+function relatedArticles(article, limit = 4) {
+  const tags = new Set(article.tags.map((t) => t.toLowerCase()));
+  return articles
+    .filter((a) => a.slug !== article.slug)
+    .map((a) => ({
+      a,
+      score: (a.category === article.category ? 3 : 0) + a.tags.filter((t) => tags.has(t.toLowerCase())).length * 2,
+    }))
+    .sort((x, y) => y.score - x.score || new Date(y.a.published).getTime() - new Date(x.a.published).getTime())
+    .slice(0, limit)
+    .map(({ a }) => a);
+}
+
+function articlesForService(slug, limit = 6) {
+  const categories = serviceCategories[slug] || [];
+  const matches = articles.filter((a) => categories.includes(a.category));
+  return (matches.length ? matches : articles).slice(0, limit);
+}
+
+const articleLinkList = (items) => `
+        <ul>
+          ${items.map((a) => `<li><a href="/blogs/${a.slug}">${escapeHtml(a.title)}</a></li>`).join('\n          ')}
+        </ul>`;
+
 const routes = [
   {
     route: '/services',
@@ -119,7 +154,9 @@ const routes = [
     heading: article.title,
     summary: article.description,
     published: article.published,
+    updated: article.updated,
     category: article.category,
+    article,
     image: article.image,
     content: article.content,
   })),
@@ -312,7 +349,7 @@ for (const route of routes) {
         url: canonical,
         mainEntityOfPage: canonical,
         datePublished: `${route.published}T00:00:00Z`,
-        dateModified: `${route.published}T00:00:00Z`,
+        dateModified: `${route.updated || route.published}T00:00:00Z`,
         author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
       }
     : route.type === 'Service'
@@ -358,6 +395,20 @@ for (const route of routes) {
           ${articleHtml}
         </div>
       </article>
+      <section aria-label="Related field notes">
+        <h2>Related field notes</h2>${articleLinkList(relatedArticles(route.article))}
+      </section>
+      <nav aria-label="More articles">
+        ${(() => {
+          const index = articles.findIndex((a) => a.slug === route.article.slug);
+          const newer = articles[index - 1];
+          const older = articles[index + 1];
+          return [
+            newer ? `<a href="/blogs/${newer.slug}" rel="prev">Newer: ${escapeHtml(newer.title)}</a>` : '',
+            older ? `<a href="/blogs/${older.slug}" rel="next">Older: ${escapeHtml(older.title)}</a>` : '',
+          ].filter(Boolean).join(' · ');
+        })()}
+      </nav>
       <footer class="crawler-footer">
         <p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Full-Stack AI Architect.</p>
         <nav aria-label="Site index">
@@ -394,6 +445,15 @@ for (const route of routes) {
         <section>
           <h2>${escapeHtml(route.serviceType)} — Delivery &amp; Scope</h2>
           <p>Production execution across AI automations, agentic systems, full-stack software development, and systems integration for US and global teams.</p>
+        </section>
+        <section>
+          <h2>Field notes from this practice</h2>${articleLinkList(articlesForService(route.route.split('/').pop()))}
+        </section>
+        <section>
+          <h2>Related engineering services</h2>
+          <ul>
+            ${services.filter((s) => `/services/${s.slug}` !== route.route).map((s) => `<li><a href="/services/${s.slug}">${escapeHtml(s.serviceType)}</a></li>`).join('\n            ')}
+          </ul>
         </section>
       </article>
       <footer class="crawler-footer">
@@ -446,6 +506,10 @@ for (const route of routes) {
   await writeFile(path.join(outputDir, 'index.html'), html);
   await writeFile(path.join(distDir, `${route.route.slice(1)}.html`), html);
 }
+
+// Homepage static HTML: surface the newest field notes so crawlers reach them in one hop
+const homeHtml = template.replace('<!-- latest-field-notes -->', () => `<h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 10))}`);
+await writeFile(path.join(distDir, 'index.html'), homeHtml);
 
 // 1. Generate search.json
 const searchIndex = articles.map((a) => ({
@@ -518,7 +582,7 @@ const atomFeed = `<?xml version="1.0" encoding="UTF-8"?>
     <title>${escapeHtml(a.title)}</title>
     <link href="${siteUrl}/blogs/${a.slug}" />
     <id>${siteUrl}/blogs/${a.slug}</id>
-    <updated>${new Date(a.published).toISOString()}</updated>
+    <updated>${new Date(a.updated).toISOString()}</updated>
     <summary>${escapeHtml(a.description)}</summary>
     <category term="${escapeHtml(a.category)}" />
   </entry>`).join('')}
@@ -563,7 +627,7 @@ const sitemapUrls = [
   { loc: `${siteUrl}/services`, changefreq: 'weekly', priority: '0.9' },
   { loc: `${siteUrl}/blogs`, changefreq: 'daily', priority: '0.9' },
   ...services.map((s) => ({ loc: `${siteUrl}/services/${s.slug}`, changefreq: 'monthly', priority: '0.8' })),
-  ...articles.map((a) => ({ loc: `${siteUrl}/blogs/${a.slug}`, changefreq: 'monthly', priority: '0.8', lastmod: a.published })),
+  ...articles.map((a) => ({ loc: `${siteUrl}/blogs/${a.slug}`, changefreq: 'monthly', priority: '0.8', lastmod: a.updated })),
 ];
 
 const sitemapXml = `<?xml version="1.0" encoding="UTF-8"?>
