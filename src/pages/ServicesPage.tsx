@@ -201,7 +201,7 @@ const servicePages: ServicePage[] = [
     description: 'Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.',
     hero: 'Engineered for production from database to interface.',
     directAnswer: 'Full-stack software engineering that connects robust backends, performant APIs, responsive modern frontends, and database architecture into a cohesive, production-grade product.',
-    image: '/images/projects/wonderkit.webp',
+    image: '/images/projects/the-home-club.webp',
     imageAlt: 'Full-stack software architecture and SaaS dashboard interface',
     fit: [
       'You need a high-velocity engineer to build and ship an end-to-end product or MVP.',
@@ -257,7 +257,7 @@ const ServicesPage = () => {
     };
     return (
       <PageTransition>
-        <SEOHead title={hubTitle} description={hubDescription} keywords={['applied AI services', 'forward deployed engineering', 'AI agent development', 'n8n consulting']} url={`${siteConfig.url}/services`} jsonLd={[itemList, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Services', url: `${siteConfig.url}/services` }])]} />
+        <SEOHead title={hubTitle} description={hubDescription} image="/images/og/services.jpg" keywords={['applied AI services', 'forward deployed engineering', 'AI agent development', 'n8n consulting']} url={`${siteConfig.url}/services`} jsonLd={[itemList, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Services', url: `${siteConfig.url}/services` }])]} />
         <main className="route-shell services-shell">
           <EditorialNav />
           <section className="services-hero">
@@ -314,7 +314,7 @@ const ServicesPage = () => {
 
   return (
     <PageTransition>
-      <SEOHead title={service.searchTitle} description={service.description} keywords={service.keywords} url={serviceUrl} jsonLd={[serviceSchema, faqSchema, breadcrumbs]} />
+      <SEOHead title={service.searchTitle} description={service.description} image={`/images/og/service-${service.slug}.jpg`} keywords={service.keywords} url={serviceUrl} jsonLd={[serviceSchema, faqSchema, breadcrumbs]} />
       <main className="route-shell service-detail-shell">
         <EditorialNav />
         <section className="service-detail-hero">

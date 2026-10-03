@@ -113,7 +113,7 @@ const JournalPage: React.FC = () => {
 
   return (
     <PageTransition>
-      <SEOHead page="blogs" jsonLd={articlesSchema} />
+      <SEOHead page="blogs" image="/images/og/blogs.jpg" jsonLd={articlesSchema} />
       <main className="min-h-screen bg-[#08090c] text-[#d9dee8] selection:bg-[#ff5d3d] selection:text-[#08090c]">
         <EditorialNav />
 

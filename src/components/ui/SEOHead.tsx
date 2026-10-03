@@ -95,7 +95,10 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta property="og:url" content={finalUrl} />
       <meta property="og:image" content={finalImage} />
       <meta property="og:image:secure_url" content={finalImage} />
-      <meta property="og:image:alt" content="Hassan Nazir — Forward Deployed Engineer and Applied AI" />
+      {finalImage.includes('/images/og/') && <meta property="og:image:type" content="image/jpeg" />}
+      {finalImage.includes('/images/og/') && <meta property="og:image:width" content="1200" />}
+      {finalImage.includes('/images/og/') && <meta property="og:image:height" content="630" />}
+      <meta property="og:image:alt" content={finalTitle} />
       <meta property="og:site_name" content={siteConfig.name} />
       <meta property="og:locale" content="en_US" />
       {publishedTime && <meta property="article:published_time" content={publishedTime} />}
@@ -106,7 +109,7 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:title" content={finalTitle} />
       <meta name="twitter:description" content={finalDescription} />
       <meta name="twitter:image" content={finalImage} />
-      <meta name="twitter:image:alt" content="Hassan Nazir — Forward Deployed Engineer and Applied AI" />
+      <meta name="twitter:image:alt" content={finalTitle} />
       <meta name="twitter:creator" content={defaultMetadata.twitter.creator} />
 
       <meta name="theme-color" content="#08090c" />

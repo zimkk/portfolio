@@ -26,7 +26,7 @@
         "Cybersecurity",
         "AI Agents"
       ],
-      "image": "https://hassannazir.dev/images/blogs/ai-news-roundup-oct-2026.svg"
+      "image": "https://hassannazir.dev/images/og/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap",
@@ -42,7 +42,7 @@
         "AI Models",
         "AI News"
       ],
-      "image": "https://hassannazir.dev/images/blogs/anthropic-lineup-2026.svg"
+      "image": "https://hassannazir.dev/images/og/anthropic-claude-models-october-2026-lineup-roadmap.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/linkedin-automation-claude-in-chrome-safe-workflow",
@@ -58,7 +58,7 @@
         "AI Agents",
         "Prompt Injection"
       ],
-      "image": "https://hassannazir.dev/images/blogs/linkedin-claude-chrome.svg"
+      "image": "https://hassannazir.dev/images/og/linkedin-automation-claude-in-chrome-safe-workflow.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute",
@@ -74,7 +74,7 @@
         "Data Centers",
         "AI News"
       ],
-      "image": "https://hassannazir.dev/images/blogs/ai-infrastructure-deals.svg"
+      "image": "https://hassannazir.dev/images/og/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/ai-powered-threat-detection",
@@ -90,7 +90,7 @@
         "LLM Security",
         "MITRE ATT&CK"
       ],
-      "image": "https://hassannazir.dev/images/blogs/ai-threat-detection.svg"
+      "image": "https://hassannazir.dev/images/og/ai-powered-threat-detection.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained",
@@ -106,7 +106,7 @@
         "Frontier Models",
         "Vendor Risk"
       ],
-      "image": "https://hassannazir.dev/images/blogs/anthropic-ipo-risk.svg"
+      "image": "https://hassannazir.dev/images/og/anthropic-ipo-prospectus-risk-factors-explained.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025",
@@ -122,7 +122,7 @@
         "KV Cache",
         "FlashAttention"
       ],
-      "image": "https://hassannazir.dev/images/blogs/transformer-attention.svg"
+      "image": "https://hassannazir.dev/images/og/deep-learning-transformers-attention-mechanisms-2025.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents",
@@ -138,7 +138,7 @@
         "AI News",
         "Agent Architecture"
       ],
-      "image": "https://hassannazir.dev/images/blogs/always-on-agents.svg"
+      "image": "https://hassannazir.dev/images/og/openai-dots-vs-meta-muse-always-on-agents.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord",
@@ -154,7 +154,7 @@
         "AI News",
         "US China AI"
       ],
-      "image": "https://hassannazir.dev/images/blogs/ai-policy-super-intelligence.svg"
+      "image": "https://hassannazir.dev/images/og/trump-super-intelligence-executive-order-si-accord.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/zero-trust-architecture-implementation",
@@ -170,7 +170,7 @@
         "Policy as Code",
         "AI Agents"
       ],
-      "image": "https://hassannazir.dev/images/blogs/zero-trust-architecture.svg"
+      "image": "https://hassannazir.dev/images/og/zero-trust-architecture-implementation.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
@@ -186,7 +186,7 @@
         "Coding Agents",
         "Stealth Models"
       ],
-      "image": "https://hassannazir.dev/images/blogs/pixel-canary.svg"
+      "image": "https://hassannazir.dev/images/og/pixel-canary-vercel-ai-gateway.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/opus-5-5",
@@ -202,7 +202,7 @@
         "Claude API",
         "AI Engineering"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/opus-5-5.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer",
@@ -217,7 +217,7 @@
         "Applied AI",
         "Enterprise Engineering"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/the-anatomy-of-a-forward-deployed-engineer.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant",
@@ -232,7 +232,7 @@
         "Engineering Leadership",
         "Applied AI"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/fde-vs-solutions-architect-vs-consultant.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/building-eval-harnesses-for-messy-enterprise-data",
@@ -247,7 +247,7 @@
         "RAG",
         "Data Quality"
       ],
-      "image": "https://hassannazir.dev/images/ai-automation.svg"
+      "image": "https://hassannazir.dev/images/og/building-eval-harnesses-for-messy-enterprise-data.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/embedding-with-non-technical-operators-fde-field-guide",
@@ -262,7 +262,7 @@
         "Workflow Automation",
         "Applied AI"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/embedding-with-non-technical-operators-fde-field-guide.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/day-one-to-production-fde-sprint-architecture",
@@ -277,7 +277,7 @@
         "System Integration",
         "Fast Delivery"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/day-one-to-production-fde-sprint-architecture.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth",
@@ -292,7 +292,7 @@
         "Knowledge Graphs",
         "Applied AI"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/graphrag-vs-vector-rag-production-truth.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/mcp-tool-schema-explosion-jit-routing",
@@ -307,7 +307,7 @@
         "Vector Routing",
         "Production AI"
       ],
-      "image": "https://hassannazir.dev/images/blogs/mcp-schema-overflow.jpg"
+      "image": "https://hassannazir.dev/images/og/mcp-tool-schema-explosion-jit-routing.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/streaming-agent-responses-sse-vs-websockets",
@@ -322,7 +322,7 @@
         "Streaming UI",
         "Full-Stack Development"
       ],
-      "image": "https://hassannazir.dev/images/projects/wonderkit.webp"
+      "image": "https://hassannazir.dev/images/og/streaming-agent-responses-sse-vs-websockets.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/synthetic-data-echo-chamber-model-collapse",
@@ -337,7 +337,7 @@
         "Perplexity Filtering",
         "Open Source AI"
       ],
-      "image": "https://hassannazir.dev/images/blogs/synthetic-model-collapse.svg"
+      "image": "https://hassannazir.dev/images/og/synthetic-data-echo-chamber-model-collapse.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/the-fde-playbook-saving-failing-enterprise-ai-pilots",
@@ -352,7 +352,7 @@
         "Applied AI",
         "System Architecture"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/the-fde-playbook-saving-failing-enterprise-ai-pilots.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/why-n8n-beats-langchain-deterministic-automations",
@@ -367,7 +367,7 @@
         "Enterprise AI",
         "Applied AI"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/why-n8n-beats-langchain-deterministic-automations.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/chunking-strategies-that-break-code-search",
@@ -382,7 +382,7 @@
         "RAG",
         "Developer Tools"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/chunking-strategies-that-break-code-search.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/legacy-codebase-ai-integration-without-breaking-prod",
@@ -397,7 +397,7 @@
         "Forward Deployed Engineering",
         "Microservices"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/legacy-codebase-ai-integration-without-breaking-prod.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/reasoning-models-token-bleed-cognitive-sharding",
@@ -412,7 +412,7 @@
         "Cognitive Sharding",
         "System Architecture"
       ],
-      "image": "https://hassannazir.dev/images/blogs/cognitive-sharding.svg"
+      "image": "https://hassannazir.dev/images/og/reasoning-models-token-bleed-cognitive-sharding.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/self-hosting-n8n-high-availability-kubernetes",
@@ -427,7 +427,7 @@
         "DevOps",
         "High Availability"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/self-hosting-n8n-high-availability-kubernetes.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/air-gapped-on-prem-ai-deployment-blueprint",
@@ -442,7 +442,7 @@
         "vLLM",
         "Enterprise Security"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/air-gapped-on-prem-ai-deployment-blueprint.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/hyde-failure-modes-technical-retrieval",
@@ -457,7 +457,7 @@
         "Information Retrieval",
         "Production AI"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/hyde-failure-modes-technical-retrieval.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/making-8b-models-tool-call-constrained-fsm-logits",
@@ -472,7 +472,7 @@
         "vLLM",
         "Logit Masking"
       ],
-      "image": "https://hassannazir.dev/images/blogs/constrained-fsm-tool.svg"
+      "image": "https://hassannazir.dev/images/og/making-8b-models-tool-call-constrained-fsm-logits.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/optimistic-ui-patterns-for-slow-llm-inference",
@@ -487,7 +487,7 @@
         "Frontend Engineering",
         "Performance"
       ],
-      "image": "https://hassannazir.dev/images/projects/wonderkit.webp"
+      "image": "https://hassannazir.dev/images/og/optimistic-ui-patterns-for-slow-llm-inference.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/silent-kv-cache-eviction-multi-agent-dag",
@@ -502,7 +502,7 @@
         "Cloud Costs",
         "Performance"
       ],
-      "image": "https://hassannazir.dev/images/blogs/kv-cache-eviction.svg"
+      "image": "https://hassannazir.dev/images/og/silent-kv-cache-eviction-multi-agent-dag.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/webhook-backpressure-rate-limiting-ai-workflows",
@@ -517,7 +517,7 @@
         "System Architecture",
         "Production Engineering"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/webhook-backpressure-rate-limiting-ai-workflows.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/multimodal-rag-messy-scanned-pdf-tables",
@@ -532,7 +532,7 @@
         "Computer Vision",
         "Document AI"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/multimodal-rag-messy-scanned-pdf-tables.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/nextjs-server-components-ai-streaming-gotchas",
@@ -547,7 +547,7 @@
         "Streaming",
         "TypeScript"
       ],
-      "image": "https://hassannazir.dev/images/projects/wonderkit.webp"
+      "image": "https://hassannazir.dev/images/og/nextjs-server-components-ai-streaming-gotchas.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/pydantic-structured-output-schema-traps",
@@ -562,7 +562,7 @@
         "LLM Reliability",
         "Python"
       ],
-      "image": "https://hassannazir.dev/images/blogs/pydantic-schema-trap.svg"
+      "image": "https://hassannazir.dev/images/og/pydantic-structured-output-schema-traps.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/replacing-zapier-with-self-hosted-n8n-cost-breakdown",
@@ -577,7 +577,7 @@
         "Workflow Automation",
         "Enterprise IT"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/replacing-zapier-with-self-hosted-n8n-cost-breakdown.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/shadow-ai-in-enterprise-operations",
@@ -592,7 +592,7 @@
         "API Gateway",
         "Forward Deployed Engineering"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/shadow-ai-in-enterprise-operations.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/autonomous-coding-agents-test-degradation-drift",
@@ -607,7 +607,7 @@
         "Mutation Testing",
         "Software Testing"
       ],
-      "image": "https://hassannazir.dev/images/blogs/test-degradation-drift.svg"
+      "image": "https://hassannazir.dev/images/og/autonomous-coding-agents-test-degradation-drift.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/human-in-the-loop-approval-workflows-slack-n8n",
@@ -622,7 +622,7 @@
         "Interactive Workflows",
         "Applied AI"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/human-in-the-loop-approval-workflows-slack-n8n.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/rag-eval-why-llm-as-a-judge-fails",
@@ -637,7 +637,7 @@
         "Production AI",
         "Data Quality"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/rag-eval-why-llm-as-a-judge-fails.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/securing-ai-endpoints-prompt-injection-defense",
@@ -652,7 +652,7 @@
         "API Gateway",
         "Cybersecurity"
       ],
-      "image": "https://hassannazir.dev/images/projects/wonderkit.webp"
+      "image": "https://hassannazir.dev/images/og/securing-ai-endpoints-prompt-injection-defense.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/zero-downtime-database-migrations-with-ai-agents",
@@ -667,7 +667,7 @@
         "System Architecture",
         "Production Engineering"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/zero-downtime-database-migrations-with-ai-agents.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/bridging-the-stakeholder-developer-ai-gap",
@@ -682,7 +682,7 @@
         "System Architecture",
         "Consulting"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/bridging-the-stakeholder-developer-ai-gap.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/context-poisoning-long-session-agentic-memory",
@@ -697,7 +697,7 @@
         "RAG",
         "Knowledge Graphs"
       ],
-      "image": "https://hassannazir.dev/images/blogs/context-poisoning.svg"
+      "image": "https://hassannazir.dev/images/og/context-poisoning-long-session-agentic-memory.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/dead-letter-queues-automated-rollback-n8n",
@@ -712,7 +712,7 @@
         "Idempotency",
         "System Reliability"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/dead-letter-queues-automated-rollback-n8n.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders",
@@ -727,7 +727,7 @@
         "BGE Reranker",
         "RAG Optimization"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/browser-agents-dom-volatility-action-buffering",
@@ -742,7 +742,7 @@
         "Vision Models",
         "DOM Race Conditions"
       ],
-      "image": "https://hassannazir.dev/images/blogs/browser-agent-dom.svg"
+      "image": "https://hassannazir.dev/images/og/browser-agents-dom-volatility-action-buffering.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/context-caching-hierarchical-rag-pipelines",
@@ -757,7 +757,7 @@
         "Context Engineering",
         "Enterprise AI"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/context-caching-hierarchical-rag-pipelines.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/lora-vs-qlora-vs-full-finetuning-2026",
@@ -772,7 +772,7 @@
         "Deep Learning",
         "GPU Optimization"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/lora-vs-qlora-vs-full-finetuning-2026.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/multi-agent-deadlocks-langgraph-cycle-resolution",
@@ -787,7 +787,7 @@
         "State Machines",
         "Production AI"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/multi-agent-deadlocks-langgraph-cycle-resolution.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/multi-tenant-credential-security-n8n",
@@ -802,7 +802,7 @@
         "Multi-Tenancy",
         "Enterprise Security"
       ],
-      "image": "https://hassannazir.dev/images/projects/n8nhub.webp"
+      "image": "https://hassannazir.dev/images/og/multi-tenant-credential-security-n8n.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/observability-for-soft-errors-in-production-llms",
@@ -817,7 +817,7 @@
         "Production AI",
         "Monitoring"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/observability-for-soft-errors-in-production-llms.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/pgvector-vs-dedicated-vector-dbs-10m-benchmark",
@@ -832,7 +832,7 @@
         "Qdrant",
         "Database Performance"
       ],
-      "image": "https://hassannazir.dev/images/cloud.svg"
+      "image": "https://hassannazir.dev/images/og/pgvector-vs-dedicated-vector-dbs-10m-benchmark.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/soft-failures-distributed-agents-invariant-checkpoints",
@@ -847,7 +847,7 @@
         "Observability",
         "Production Architecture"
       ],
-      "image": "https://hassannazir.dev/images/blogs/invariant-gates.svg"
+      "image": "https://hassannazir.dev/images/og/soft-failures-distributed-agents-invariant-checkpoints.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/the-real-cost-of-building-vs-buying-ai-systems",
@@ -862,7 +862,7 @@
         "Forward Deployed Engineering",
         "Consulting"
       ],
-      "image": "https://hassannazir.dev/images/forward-deployed-services.svg"
+      "image": "https://hassannazir.dev/images/og/the-real-cost-of-building-vs-buying-ai-systems.jpg"
     },
     {
       "id": "https://hassannazir.dev/blogs/zero-latency-client-side-caching-repetitive-prompts",
@@ -877,7 +877,7 @@
         "Performance",
         "Full-Stack"
       ],
-      "image": "https://hassannazir.dev/images/projects/wonderkit.webp"
+      "image": "https://hassannazir.dev/images/og/zero-latency-client-side-caching-repetitive-prompts.jpg"
     }
   ]
 }
