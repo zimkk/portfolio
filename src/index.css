@@ -707,6 +707,8 @@ button { cursor: pointer; }
 .route-actions { display: flex; align-items: center; justify-self: end; gap: 20px; }
 .route-github { display: grid; width: 34px; height: 34px; place-items: center; border: 1px solid var(--line); border-radius: 50%; color: #a0a8b7; text-decoration: none; transition: color 200ms ease,border-color 200ms ease,transform 200ms ease; }
 .route-github:hover { border-color: var(--acid); color: var(--acid); transform: translateY(-2px); }
+.route-menu-toggle { display: none; }
+.route-mobile-menu { display: none; }
 .route-contact { display: inline-flex; align-items: center; gap: 9px; padding: 0 0 4px; border: 0; border-bottom: 1px solid #74746c; background: transparent; color: inherit; font: inherit; font-size: 13px; text-decoration: none; cursor: pointer; }
 
 .journal-hero {
@@ -1023,6 +1025,28 @@ button { cursor: pointer; }
   .route-nav { grid-template-columns: 1fr auto; min-height: 62px; padding-inline: 15px; }
   .route-nav nav { display: none; }
   .route-brand { font-size: 11px; }
+  .route-actions { gap: 10px; }
+  .route-desktop-only { display: none; }
+  .route-menu-toggle { display: grid; background: transparent; cursor: pointer; }
+  .route-menu-toggle[aria-expanded="true"] { border-color: var(--acid); color: var(--acid); }
+  .route-mobile-menu {
+    position: fixed; z-index: 99; top: 62px; right: 0; left: 0;
+    display: flex; flex-direction: column; gap: 28px;
+    max-height: calc(100dvh - 62px); overflow-y: auto;
+    padding: 28px 15px 32px;
+    border-bottom: 1px solid var(--line);
+    background: rgba(9,10,9,.97); backdrop-filter: blur(18px);
+    opacity: 0; visibility: hidden; transform: translateY(-8px);
+    transition: opacity 200ms ease, transform 200ms ease, visibility 0s linear 200ms;
+  }
+  .route-mobile-menu.is-open { opacity: 1; visibility: visible; transform: none; transition: opacity 200ms ease, transform 200ms ease, visibility 0s; }
+  .route-mobile-menu nav { display: flex; flex-direction: column; }
+  .route-mobile-menu nav a { padding: 14px 0; border-bottom: 1px solid var(--line); color: #a0a097; font-size: 22px; font-weight: 600; letter-spacing: -.02em; text-decoration: none; }
+  .route-mobile-menu nav a.is-active { color: var(--paper); }
+  .route-mobile-menu-actions { display: flex; flex-direction: column; gap: 14px; }
+  .route-mobile-cta { justify-content: center; width: 100%; height: 46px; font-size: 12px; }
+  .route-mobile-github { display: inline-flex; align-items: center; justify-content: center; gap: 8px; height: 42px; border: 1px solid var(--line); color: #a0a8b7; font-family: var(--mono); font-size: 11px; letter-spacing: .05em; text-transform: uppercase; text-decoration: none; }
+  body.nav-menu-open { overflow: hidden; }
   .route-contact { font-size: 10px; }
   .archive-hero, .journal-hero { width: calc(100% - 28px); padding: 125px 0 80px; }
   .archive-hero h1, .journal-hero h1 { font-size: clamp(3.6rem,16vw,6rem); }
