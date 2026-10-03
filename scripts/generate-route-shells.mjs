@@ -511,6 +511,24 @@ for (const route of routes) {
 const homeHtml = template.replace('<!-- latest-field-notes -->', () => `<h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 10))}`);
 await writeFile(path.join(distDir, 'index.html'), homeHtml);
 
+// 404 page: Vercel serves dist/404.html with a real 404 status for any path without a static
+// file, so unknown URLs stop returning 200 (soft 404s). The SPA still boots and renders NotFoundPage.
+let notFoundHtml = template
+  .replace(/<title>.*?<\/title>/, '<title>Page not found | Hassan Nazir</title>')
+  .replace(/\s*<link rel="canonical"[^>]*>/, '')
+  .replace(/\s*<link rel="preload" as="image" href="\/images\/profile-hero\.webp" fetchpriority="high" \/>/, '')
+  .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, '')
+  .replace(/\s*<!-- prepaint-hero:start -->[\s\S]*?<!-- prepaint-hero:end -->/, '')
+  .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, () => `<main class="crawler-fallback">
+        <h1>Page not found</h1>
+        <p>This page does not exist or has moved.</p>
+        <h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 6))}
+        <nav aria-label="Site index"><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a></nav>
+      </main>`);
+notFoundHtml = replaceMeta(notFoundHtml, 'name="robots"', 'noindex,follow');
+notFoundHtml = replaceMeta(notFoundHtml, 'name="googlebot"', 'noindex,follow');
+await writeFile(path.join(distDir, '404.html'), notFoundHtml);
+
 // 1. Generate search.json
 const searchIndex = articles.map((a) => ({
   title: a.title,
