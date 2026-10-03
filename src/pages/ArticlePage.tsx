@@ -154,7 +154,7 @@ const ArticlePage: React.FC = () => {
         title={`${post.title} | Hassan Nazir`}
         description={post.excerpt}
         keywords={post.seoKeywords || post.tags}
-        image={post.image}
+        image={`/images/og/${post.slug}.jpg`}
         url={articleUrl}
         type="article"
         publishedTime={publishedTime}

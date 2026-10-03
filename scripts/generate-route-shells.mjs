@@ -76,7 +76,7 @@ const services = [
   },
   {
     slug: 'full-stack-software-development',
-    image: '/images/projects/wonderkit.webp',
+    image: '/images/projects/the-home-club.webp',
     title: 'Full-Stack Software Development & Custom AI Systems | Hassan Nazir',
     description: 'Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.',
     heading: 'Engineered for production from database to interface.',
@@ -332,6 +332,13 @@ function markdownToHtml(markdown) {
   return htmlParts.join('\n');
 }
 
+// Search results truncate descriptions around 155-160 characters; cut at a word boundary.
+const metaDescription = (text) => {
+  if (text.length <= 160) return text;
+  const cut = text.slice(0, 157);
+  return `${cut.slice(0, cut.lastIndexOf(' ')).replace(/[,.;:\s]+$/, '')}...`;
+};
+
 const replaceMeta = (html, selector, value) => {
   const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
   const expression = new RegExp(`(<meta ${escapedSelector} content=")[^"]*("[^>]*>)`);
@@ -340,6 +347,10 @@ const replaceMeta = (html, selector, value) => {
 
 for (const route of routes) {
   const canonical = `${siteUrl}${route.route}`;
+  const ogKey = route.type === 'BlogPosting' ? route.article.slug
+    : route.type === 'Service' ? `service-${route.route.split('/').pop()}`
+    : route.route.slice(1);
+  const ogImage = `${siteUrl}/images/og/${ogKey}.jpg`;
   const schema = route.type === 'BlogPosting'
     ? {
         '@context': 'https://schema.org',
@@ -350,7 +361,12 @@ for (const route of routes) {
         mainEntityOfPage: canonical,
         datePublished: `${route.published}T00:00:00Z`,
         dateModified: `${route.updated || route.published}T00:00:00Z`,
-        author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
+        image: [ogImage],
+        inLanguage: 'en',
+        articleSection: route.category,
+        keywords: route.article.tags.join(', '),
+        author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir', url: siteUrl },
+        publisher: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir', url: siteUrl, image: `${siteUrl}/images/profile.png` },
       }
     : route.type === 'Service'
       ? {
@@ -360,6 +376,7 @@ for (const route of routes) {
           serviceType: route.serviceType,
           description: route.description,
           url: canonical,
+          image: ogImage,
           provider: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
           areaServed: [
             { '@type': 'Country', name: 'United States', identifier: 'US' },
@@ -381,7 +398,8 @@ for (const route of routes) {
 
   let bodyContent = '';
   if (route.type === 'BlogPosting') {
-    const articleHtml = markdownToHtml(route.content);
+    // The shell already renders the title as the page's single <h1>; drop the markdown's own H1.
+    const articleHtml = markdownToHtml(route.content.replace(/^\s*#\s+.+\r?\n/, ''));
     bodyContent = `
       <article>
         <h1>${escapeHtml(route.heading)}</h1>
@@ -493,13 +511,17 @@ for (const route of routes) {
     ? html.replace('/images/profile-hero.webp', () => route.image)
     : html.replace(/\s*<link rel="preload" as="image" href="\/images\/profile-hero\.webp" fetchpriority="high" \/>/, '');
 
-  html = replaceMeta(html, 'name="description"', route.description);
+  html = replaceMeta(html, 'name="description"', metaDescription(route.description));
+  html = replaceMeta(html, 'property="og:image"', ogImage);
+  html = replaceMeta(html, 'name="twitter:image"', ogImage);
+  html = replaceMeta(html, 'property="og:image:alt"', route.heading);
+  html = replaceMeta(html, 'name="twitter:image:alt"', route.heading);
   html = replaceMeta(html, 'property="og:type"', route.type === 'BlogPosting' ? 'article' : 'website');
   html = replaceMeta(html, 'property="og:url"', canonical);
   html = replaceMeta(html, 'property="og:title"', route.title);
   html = replaceMeta(html, 'property="og:description"', route.description);
   html = replaceMeta(html, 'name="twitter:title"', route.title);
-  html = replaceMeta(html, 'name="twitter:description"', route.description);
+  html = replaceMeta(html, 'name="twitter:description"', metaDescription(route.description));
 
   const outputDir = path.join(distDir, route.route.slice(1));
   await mkdir(outputDir, { recursive: true });
@@ -577,7 +599,7 @@ const rssFeed = `<?xml version="1.0" encoding="UTF-8"?>
       <description>${escapeHtml(a.description)}</description>
       <category>${escapeHtml(a.category)}</category>
       ${(a.tags || []).map((t) => `<category>${escapeHtml(t)}</category>`).join('\n      ')}
-      ${a.image ? `<media:content url="${siteUrl}${a.image}" medium="image" />` : ''}
+      <media:content url="${siteUrl}/images/og/${a.slug}.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>`).join('')}
   </channel>
 </rss>`;
@@ -626,7 +648,7 @@ const jsonFeed = {
     summary: a.description,
     date_published: `${a.published}T00:00:00Z`,
     tags: a.tags,
-    image: a.image ? `${siteUrl}${a.image}` : undefined,
+    image: `${siteUrl}/images/og/${a.slug}.jpg`,
   })),
 };
 

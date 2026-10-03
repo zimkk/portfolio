@@ -2,7 +2,7 @@ export const siteConfig = {
   name: 'Hassan Nazir',
   legalName: 'Hassan Nazir',
   title: 'Forward Deployed Engineering, AI Automations & Full-Stack Software Development — Hassan Nazir',
-  description: 'Hire a Forward Deployed Engineer for AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG Pipelines, and n8n Enterprise Workflows. Available for US & Global Teams.',
+  description: 'Hire a Forward Deployed Engineer for AI automations, full-stack software development, AI agents, RAG pipelines, and n8n workflows. For US and global teams.',
   url: 'https://hassannazir.dev',
   ogImage: 'https://hassannazir.dev/images/profile.png',
   location: 'Dubai, UAE / Islamabad, PK (Available for US & Global Remote Engagements)',
@@ -45,7 +45,7 @@ export const defaultMetadata = {
   ],
   creator: siteConfig.name,
   openGraph: {
-    images: [{ url: siteConfig.ogImage, width: 1024, height: 1024, alt: 'Forward Deployed Engineering, AI Automations & Full-Stack Software Development' }],
+    images: [{ url: `${siteConfig.url}/images/og/default.jpg`, width: 1200, height: 630, alt: 'Forward Deployed Engineering, AI Automations & Full-Stack Software Development' }],
   },
   twitter: { creator: '@hassannazir' },
 };

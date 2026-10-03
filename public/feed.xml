@@ -5,7 +5,7 @@
     <link>https://hassannazir.dev/blogs</link>
     <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
     <language>en-US</language>
-    <lastBuildDate>Sat, 03 Oct 2026 22:33:37 GMT</lastBuildDate>
+    <lastBuildDate>Sat, 03 Oct 2026 23:34:58 GMT</lastBuildDate>
     <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <docs>https://www.rssboard.org/rss-specification</docs>
     
@@ -23,7 +23,7 @@
       <category>AI Safety</category>
       <category>Cybersecurity</category>
       <category>AI Agents</category>
-      <media:content url="https://hassannazir.dev/images/blogs/ai-news-roundup-oct-2026.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Anthropic's Claude Lineup in October 2026: Sonnet 5.5, Opus 5.5, Fable 5.1, Mythos 5.1, and What Is Officially Coming Next</title>
@@ -39,7 +39,7 @@
       <category>Claude Fable 5.1</category>
       <category>AI Models</category>
       <category>AI News</category>
-      <media:content url="https://hassannazir.dev/images/blogs/anthropic-lineup-2026.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/anthropic-claude-models-october-2026-lineup-roadmap.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>LinkedIn Automation With Claude in Chrome: What Works, What Gets Accounts Restricted, and a Safe Human-in-the-Loop Workflow</title>
@@ -55,7 +55,7 @@
       <category>Sales Automation</category>
       <category>AI Agents</category>
       <category>Prompt Injection</category>
-      <media:content url="https://hassannazir.dev/images/blogs/linkedin-claude-chrome.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/linkedin-automation-claude-in-chrome-safe-workflow.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute</title>
@@ -71,7 +71,7 @@
       <category>AMD</category>
       <category>Data Centers</category>
       <category>AI News</category>
-      <media:content url="https://hassannazir.dev/images/blogs/ai-infrastructure-deals.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads</title>
@@ -87,7 +87,7 @@
       <category>Anomaly Detection</category>
       <category>LLM Security</category>
       <category>MITRE ATT&amp;CK</category>
-      <media:content url="https://hassannazir.dev/images/blogs/ai-threat-detection.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/ai-powered-threat-detection.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Anthropic's Leaked IPO Prospectus: The Numbers, the 'Existential Risk' Warning, and What Enterprise AI Buyers Should Take From It</title>
@@ -103,7 +103,7 @@
       <category>AI News</category>
       <category>Frontier Models</category>
       <category>Vendor Risk</category>
-      <media:content url="https://hassannazir.dev/images/blogs/anthropic-ipo-risk.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/anthropic-ipo-prospectus-risk-factors-explained.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Transformer Attention Mechanisms Explained: From Scaled Dot-Product to FlashAttention, GQA, MLA and Sparse Attention</title>
@@ -119,7 +119,7 @@
       <category>LLM Inference</category>
       <category>KV Cache</category>
       <category>FlashAttention</category>
-      <media:content url="https://hassannazir.dev/images/blogs/transformer-attention.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/deep-learning-transformers-attention-mechanisms-2025.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives</title>
@@ -135,7 +135,7 @@
       <category>Autonomous Agents</category>
       <category>AI News</category>
       <category>Agent Architecture</category>
-      <media:content url="https://hassannazir.dev/images/blogs/always-on-agents.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/openai-dots-vs-meta-muse-always-on-agents.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Trump's 'Super Intelligence' Executive Order and the White House SI Accord: What Changed and What It Means for AI Teams</title>
@@ -151,7 +151,7 @@
       <category>AI Regulation</category>
       <category>AI News</category>
       <category>US China AI</category>
-      <media:content url="https://hassannazir.dev/images/blogs/ai-policy-super-intelligence.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/trump-super-intelligence-executive-order-si-accord.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model</title>
@@ -167,7 +167,7 @@
       <category>Service Mesh</category>
       <category>Policy as Code</category>
       <category>AI Agents</category>
-      <media:content url="https://hassannazir.dev/images/blogs/zero-trust-architecture.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/zero-trust-architecture-implementation.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It</title>
@@ -183,7 +183,7 @@
       <category>Next.js</category>
       <category>Coding Agents</category>
       <category>Stealth Models</category>
-      <media:content url="https://hassannazir.dev/images/blogs/pixel-canary.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/pixel-canary-vercel-ai-gateway.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model</title>
@@ -199,7 +199,7 @@
       <category>Agentic Coding</category>
       <category>Claude API</category>
       <category>AI Engineering</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/opus-5-5.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data</title>
@@ -214,7 +214,7 @@
       <category>Production Delivery</category>
       <category>Applied AI</category>
       <category>Enterprise Engineering</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/the-anatomy-of-a-forward-deployed-engineer.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide</title>
@@ -229,7 +229,7 @@
       <category>Enterprise Software</category>
       <category>Engineering Leadership</category>
       <category>Applied AI</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/fde-vs-solutions-architect-vs-consultant.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The FDE Guide to Building Production Evaluation Harnesses for Messy Enterprise Data</title>
@@ -244,7 +244,7 @@
       <category>Production Engineering</category>
       <category>RAG</category>
       <category>Data Quality</category>
-      <media:content url="https://hassannazir.dev/images/ai-automation.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/building-eval-harnesses-for-messy-enterprise-data.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery</title>
@@ -259,7 +259,7 @@
       <category>Product Discovery</category>
       <category>Workflow Automation</category>
       <category>Applied AI</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/embedding-with-non-technical-operators-fde-field-guide.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Day 1 to Production in 30 Days: The Architecture of an FDE Sprint</title>
@@ -274,7 +274,7 @@
       <category>Production Cutover</category>
       <category>System Integration</category>
       <category>Fast Delivery</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/day-one-to-production-fde-sprint-architecture.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful)</title>
@@ -289,7 +289,7 @@
       <category>RAG</category>
       <category>Knowledge Graphs</category>
       <category>Applied AI</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/graphrag-vs-vector-rag-production-truth.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The MCP Tool Schema Explosion: Why Connecting 20 Servers Kills Agent Context (And How JIT Routing Fixes It)</title>
@@ -304,7 +304,7 @@
       <category>Context Engineering</category>
       <category>Vector Routing</category>
       <category>Production AI</category>
-      <media:content url="https://hassannazir.dev/images/blogs/mcp-schema-overflow.jpg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/mcp-tool-schema-explosion-jit-routing.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Server-Sent Events vs. WebSockets: Architecting Low-Latency Streaming for Multi-Agent UIs</title>
@@ -319,7 +319,7 @@
       <category>React</category>
       <category>Streaming UI</category>
       <category>Full-Stack Development</category>
-      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/streaming-agent-responses-sse-vs-websockets.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Synthetic Data Echo Chamber: How to Fine-Tune Domain Models Without Triggering Mode Collapse</title>
@@ -334,7 +334,7 @@
       <category>Model Collapse</category>
       <category>Perplexity Filtering</category>
       <category>Open Source AI</category>
-      <media:content url="https://hassannazir.dev/images/blogs/synthetic-model-collapse.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/synthetic-data-echo-chamber-model-collapse.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The FDE Playbook: How I Rescue Failing $2M Enterprise AI Pilots in 14 Days</title>
@@ -349,7 +349,7 @@
       <category>Production Delivery</category>
       <category>Applied AI</category>
       <category>System Architecture</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/the-fde-playbook-saving-failing-enterprise-ai-pilots.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Why n8n Beats Code-First Agent Frameworks for 90% of Enterprise Automations</title>
@@ -364,7 +364,7 @@
       <category>LangChain</category>
       <category>Enterprise AI</category>
       <category>Applied AI</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/why-n8n-beats-langchain-deterministic-automations.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Why Fixed-Token Chunking Destroys Code Search (And How AST-Aware Splitting Fixes It)</title>
@@ -379,7 +379,7 @@
       <category>AST Chunking</category>
       <category>RAG</category>
       <category>Developer Tools</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/chunking-strategies-that-break-code-search.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Taming the Monolith: Safely Injecting AI Agents into 10-Year-Old Enterprise Codebases</title>
@@ -394,7 +394,7 @@
       <category>AI Agents</category>
       <category>Forward Deployed Engineering</category>
       <category>Microservices</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/legacy-codebase-ai-integration-without-breaking-prod.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Stop Burning 4,000 Thinking Tokens on Regex: Architecting Cognitive Sharding for Reasoning Models</title>
@@ -409,7 +409,7 @@
       <category>OpenAI o1</category>
       <category>Cognitive Sharding</category>
       <category>System Architecture</category>
-      <media:content url="https://hassannazir.dev/images/blogs/cognitive-sharding.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/reasoning-models-token-bleed-cognitive-sharding.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Scaling Self-Hosted n8n to 100k Daily Executions with Kubernetes and Redis Queues</title>
@@ -424,7 +424,7 @@
       <category>Redis</category>
       <category>DevOps</category>
       <category>High Availability</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/self-hosting-n8n-high-availability-kubernetes.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Air-Gapped AI Blueprint: Deploying Sovereign LLMs in Regulated Defense and Banking</title>
@@ -439,7 +439,7 @@
       <category>Air-Gapped Systems</category>
       <category>vLLM</category>
       <category>Enterprise Security</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/air-gapped-on-prem-ai-deployment-blueprint.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Dark Side of HyDE: Why Hypothetical Document Embeddings Fail on Precise Technical Queries</title>
@@ -454,7 +454,7 @@
       <category>RAG Hallucinations</category>
       <category>Information Retrieval</category>
       <category>Production AI</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/hyde-failure-modes-technical-retrieval.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Making 8B Models Tool-Call Like GPT-4: Grammatically Constrained Logit Masking for On-Prem AI</title>
@@ -469,7 +469,7 @@
       <category>Constrained Decoding</category>
       <category>vLLM</category>
       <category>Logit Masking</category>
-      <media:content url="https://hassannazir.dev/images/blogs/constrained-fsm-tool.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/making-8b-models-tool-call-constrained-fsm-logits.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Masking the 4-Second Wait: Optimistic UI Patterns for High-Latency AI Workflows</title>
@@ -484,7 +484,7 @@
       <category>React</category>
       <category>Frontend Engineering</category>
       <category>Performance</category>
-      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/optimistic-ui-patterns-for-slow-llm-inference.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The $12,000 Typo: Why Your Multi-Agent DAG Is Silently Evicting KV-Caches on Every Turn</title>
@@ -499,7 +499,7 @@
       <category>LangGraph</category>
       <category>Cloud Costs</category>
       <category>Performance</category>
-      <media:content url="https://hassannazir.dev/images/blogs/kv-cache-eviction.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/silent-kv-cache-eviction-multi-agent-dag.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Handling the Tsunami: Webhook Backpressure and Rate Limiting in High-Volume AI Workflows</title>
@@ -514,7 +514,7 @@
       <category>n8n</category>
       <category>System Architecture</category>
       <category>Production Engineering</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/webhook-backpressure-rate-limiting-ai-workflows.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Taming the Unstructured: Accurate Table and Chart Extraction from Scanned PDF Documents</title>
@@ -529,7 +529,7 @@
       <category>Table Parsing</category>
       <category>Computer Vision</category>
       <category>Document AI</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/multimodal-rag-messy-scanned-pdf-tables.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Next.js Server Components and AI SDK: The 5 Subtle Gotchas That Break Production Streaming</title>
@@ -544,7 +544,7 @@
       <category>Vercel AI SDK</category>
       <category>Streaming</category>
       <category>TypeScript</category>
-      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/nextjs-server-components-ai-streaming-gotchas.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Pydantic Trap: Why Strict Structured Outputs Cause Silent Semantic Truncation in Production</title>
@@ -559,7 +559,7 @@
       <category>Grammar Decoding</category>
       <category>LLM Reliability</category>
       <category>Python</category>
-      <media:content url="https://hassannazir.dev/images/blogs/pydantic-schema-trap.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/pydantic-structured-output-schema-traps.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Slashing $4,000/Month: The Complete Guide to Migrating from Zapier to Self-Hosted n8n</title>
@@ -574,7 +574,7 @@
       <category>Cost Optimization</category>
       <category>Workflow Automation</category>
       <category>Enterprise IT</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/replacing-zapier-with-self-hosted-n8n-cost-breakdown.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Shadow AI Crisis: Regaining Control Over Unsanctioned Prompts in Enterprise Ops</title>
@@ -589,7 +589,7 @@
       <category>Data Privacy</category>
       <category>API Gateway</category>
       <category>Forward Deployed Engineering</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/shadow-ai-in-enterprise-operations.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Your Coding Agent Did Not Fix the Bug: Solving Test Degradation Drift in Autonomous CI Systems</title>
@@ -604,7 +604,7 @@
       <category>CI CD</category>
       <category>Mutation Testing</category>
       <category>Software Testing</category>
-      <media:content url="https://hassannazir.dev/images/blogs/test-degradation-drift.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/autonomous-coding-agents-test-degradation-drift.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Building Bulletproof Human-in-the-Loop Approval Workflows with Slack and n8n</title>
@@ -619,7 +619,7 @@
       <category>n8n</category>
       <category>Interactive Workflows</category>
       <category>Applied AI</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/human-in-the-loop-approval-workflows-slack-n8n.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Judge is Blind: Why LLM-as-a-Judge Correlates Poorly with Human Domain Experts</title>
@@ -634,7 +634,7 @@
       <category>Evaluation Metrics</category>
       <category>Production AI</category>
       <category>Data Quality</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/rag-eval-why-llm-as-a-judge-fails.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Fortified LLM Gateway: Defending Against Direct and Indirect Prompt Injection Attacks</title>
@@ -649,7 +649,7 @@
       <category>LLM Security</category>
       <category>API Gateway</category>
       <category>Cybersecurity</category>
-      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/securing-ai-endpoints-prompt-injection-defense.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Zero-Downtime Database Migrations Using Autonomous Verification Agents</title>
@@ -664,7 +664,7 @@
       <category>PostgreSQL</category>
       <category>System Architecture</category>
       <category>Production Engineering</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/zero-downtime-database-migrations-with-ai-agents.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Translating Ambiguity into Code: How Forward Deployed Engineers Bridge the Executive-Dev Divide</title>
@@ -679,7 +679,7 @@
       <category>Enterprise AI</category>
       <category>System Architecture</category>
       <category>Consulting</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/bridging-the-stakeholder-developer-ai-gap.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Context Poisoning: Why Your AI Agent Gets Dumber the Longer You Chat with It (And How Vector Pruning Saves It)</title>
@@ -694,7 +694,7 @@
       <category>Vector Search</category>
       <category>RAG</category>
       <category>Knowledge Graphs</category>
-      <media:content url="https://hassannazir.dev/images/blogs/context-poisoning.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/context-poisoning-long-session-agentic-memory.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>When Workflows Fail at 3 AM: Designing Dead-Letter Queues and Auto-Rollback in n8n</title>
@@ -709,7 +709,7 @@
       <category>n8n</category>
       <category>Idempotency</category>
       <category>System Reliability</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/dead-letter-queues-automated-rollback-n8n.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Reranker Advantage: Slashing Hallucinations by 40% with Two-Stage Retrieval</title>
@@ -724,7 +724,7 @@
       <category>Cohere Rerank</category>
       <category>BGE Reranker</category>
       <category>RAG Optimization</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The 3-Second Blindspot: Solving DOM Volatility in Vision-Based Browser Agents</title>
@@ -739,7 +739,7 @@
       <category>Playwright</category>
       <category>Vision Models</category>
       <category>DOM Race Conditions</category>
-      <media:content url="https://hassannazir.dev/images/blogs/browser-agent-dom.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/browser-agents-dom-volatility-action-buffering.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Hierarchical RAG: Architecting Document Trees for Sub-Second Retrieval Across 100k Pages</title>
@@ -754,7 +754,7 @@
       <category>Information Retrieval</category>
       <category>Context Engineering</category>
       <category>Enterprise AI</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/context-caching-hierarchical-rag-pipelines.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>LoRA vs. QLoRA vs. Full Parameter Tuning in 2026: Practical Benchmarks for Enterprise Domain Models</title>
@@ -769,7 +769,7 @@
       <category>QLoRA</category>
       <category>Deep Learning</category>
       <category>GPU Optimization</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/lora-vs-qlora-vs-full-finetuning-2026.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Breaking the Loop: Resolving State Deadlocks in Autonomous Multi-Agent DAGs</title>
@@ -784,7 +784,7 @@
       <category>Agent Deadlocks</category>
       <category>State Machines</category>
       <category>Production AI</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/multi-agent-deadlocks-langgraph-cycle-resolution.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Zero-Leakage Credential Security in Multi-Tenant n8n Architectures</title>
@@ -799,7 +799,7 @@
       <category>n8n</category>
       <category>Multi-Tenancy</category>
       <category>Enterprise Security</category>
-      <media:content url="https://hassannazir.dev/images/projects/n8nhub.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/multi-tenant-credential-security-n8n.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Beyond HTTP 500s: Building Observability for Semantic Drift in Production AI</title>
@@ -814,7 +814,7 @@
       <category>Semantic Drift</category>
       <category>Production AI</category>
       <category>Monitoring</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/observability-for-soft-errors-in-production-llms.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>PostgreSQL pgvector vs. Pinecone and Qdrant: A 10-Million Vector Production Benchmark</title>
@@ -829,7 +829,7 @@
       <category>Pinecone</category>
       <category>Qdrant</category>
       <category>Database Performance</category>
-      <media:content url="https://hassannazir.dev/images/cloud.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/pgvector-vs-dedicated-vector-dbs-10m-benchmark.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Silent Semantic Regressions: Why Distributed Agents Need Invariant Gates, Not Just Unit Tests</title>
@@ -844,7 +844,7 @@
       <category>LangGraph</category>
       <category>Observability</category>
       <category>Production Architecture</category>
-      <media:content url="https://hassannazir.dev/images/blogs/invariant-gates.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/soft-failures-distributed-agents-invariant-checkpoints.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>The Build vs. Buy Lie: What Enterprise AI Actually Costs in Years Two and Three</title>
@@ -859,7 +859,7 @@
       <category>ROI</category>
       <category>Forward Deployed Engineering</category>
       <category>Consulting</category>
-      <media:content url="https://hassannazir.dev/images/forward-deployed-services.svg" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/the-real-cost-of-building-vs-buying-ai-systems.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
     <item>
       <title>Sub-Millisecond AI: Client-Side Semantic Caching for High-Frequency User Queries</title>
@@ -874,7 +874,7 @@
       <category>WebAssembly</category>
       <category>Performance</category>
       <category>Full-Stack</category>
-      <media:content url="https://hassannazir.dev/images/projects/wonderkit.webp" medium="image" />
+      <media:content url="https://hassannazir.dev/images/og/zero-latency-client-side-caching-repetitive-prompts.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
     </item>
   </channel>
 </rss>
