@@ -50,6 +50,24 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/linkedin-automation-claude-in-chrome-safe-workflow</loc>
+    <lastmod>2026-10-04</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute</loc>
     <lastmod>2026-09-30</lastmod>
     <changefreq>monthly</changefreq>
