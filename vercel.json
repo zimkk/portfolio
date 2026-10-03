@@ -2,6 +2,17 @@
   "trailingSlash": false,
   "redirects": [
     {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "www.hassannazir.dev"
+        }
+      ],
+      "destination": "https://hassannazir.dev/",
+      "permanent": true
+    },
+    {
       "source": "/:path*",
       "has": [
         {
@@ -26,10 +37,17 @@
       "source": "/work",
       "destination": "/blogs",
       "permanent": true
+    },
+    {
+      "source": "/blogs/agentic-ai-autonomous-systems-langchain-autogpt",
+      "destination": "/blogs/why-n8n-beats-langchain-deterministic-automations",
+      "permanent": true
+    },
+    {
+      "source": "/blogs/ai-trends-2025-multimodal-llms-enterprise-adoption",
+      "destination": "/blogs/multimodal-rag-messy-scanned-pdf-tables",
+      "permanent": true
     }
-  ],
-  "rewrites": [
-    { "source": "/((?!images|fonts|assets|robots.txt|sitemap.xml|feed.xml|atom.xml|feed.json|search.json|tag-data.json|manifest.json|ai-catalog.json|ard.json|\\.well-known|llm.txt|llms.txt|llms-full.txt|portfolio.json|humans.txt|favicon|_vercel).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
