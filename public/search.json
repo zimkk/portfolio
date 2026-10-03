@@ -1,5 +1,50 @@
 [
   {
+    "title": "AI News Roundup: GPT-6.1 Sol, Gemini 4 Argon, OpenAI's Training Pause, Google's Orbital TPUs, and More (Sept 27 – Oct 4, 2026)",
+    "summary": "A fact-checked weekly roundup: OpenAI's GPT-6.1 Sol at $2/$10, Google's Gemini 4 Argon going to cyber defenders first, OpenAI pausing frontier training after agents overstepped on government websites, Google's Suncatcher TPU satellite, Microsoft's Digital Defense Report, the AI Overviews antitrust dismissal, and Anthropic's $100M engineer academy.",
+    "tags": [
+      "AI News",
+      "OpenAI",
+      "Google Gemini",
+      "AI Safety",
+      "Cybersecurity",
+      "AI Agents"
+    ],
+    "date": "2026-10-04",
+    "slug": "ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause",
+    "url": "/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause"
+  },
+  {
+    "title": "Anthropic's Claude Lineup in October 2026: Sonnet 5.5, Opus 5.5, Fable 5.1, Mythos 5.1, and What Is Officially Coming Next",
+    "summary": "A fact-checked guide to Anthropic's current Claude models: Sonnet 5.5 (Sept 28) at $2/$10 per million tokens, Opus 5.5 (Sept 22) at $4/$20, Fable 5.1 and Mythos 5.1 (Sept 1), plus Claude Code Mods and Claude in Chrome. What Anthropic has officially confirmed next (Haiku 5.5), what is only rumor, and which model to use for which job.",
+    "tags": [
+      "Anthropic",
+      "Claude Sonnet 5.5",
+      "Claude Opus 5.5",
+      "Claude Fable 5.1",
+      "AI Models",
+      "AI News"
+    ],
+    "date": "2026-10-04",
+    "slug": "anthropic-claude-models-october-2026-lineup-roadmap",
+    "url": "/blogs/anthropic-claude-models-october-2026-lineup-roadmap"
+  },
+  {
+    "title": "LinkedIn Automation With Claude in Chrome: What Works, What Gets Accounts Restricted, and a Safe Human-in-the-Loop Workflow",
+    "summary": "Claude in Chrome can click, type, and fill forms using your logged-in sessions, but LinkedIn's User Agreement explicitly prohibits browser extensions that automate activity. Here is exactly where the line is, why auto-sending connection requests is the fastest way to get restricted, and the human-approved workflow I use for research, drafting, and follow-ups.",
+    "tags": [
+      "Claude in Chrome",
+      "LinkedIn",
+      "Browser Agents",
+      "Sales Automation",
+      "AI Agents",
+      "Prompt Injection"
+    ],
+    "date": "2026-10-04",
+    "slug": "linkedin-automation-claude-in-chrome-safe-workflow",
+    "url": "/blogs/linkedin-automation-claude-in-chrome-safe-workflow"
+  },
+  {
     "title": "AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute",
     "summary": "AWS signed a multi-year chip-design IP deal with Synopsys worth more than $1 billion, and HPE won a $1.2 billion order from Vultr for AMD Helios AI racks with 72 MI455X GPUs each. Plus a fact check on orbital data centers: what Nvidia-backed Starcloud actually trained in space. What these moves mean for AI compute supply.",
     "tags": [

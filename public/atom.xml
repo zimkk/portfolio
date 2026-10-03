@@ -4,7 +4,7 @@
   <subtitle>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</subtitle>
   <link href="https://hassannazir.dev/blogs" />
   <link href="https://hassannazir.dev/atom.xml" rel="self" type="application/atom+xml" />
-  <updated>2026-09-30T15:42:58.369Z</updated>
+  <updated>2026-10-03T22:33:37.088Z</updated>
   <id>https://hassannazir.dev/blogs</id>
   <author>
     <name>Hassan Nazir</name>
@@ -12,6 +12,30 @@
     <uri>https://hassannazir.dev</uri>
   </author>
   
+  <entry>
+    <title>AI News Roundup: GPT-6.1 Sol, Gemini 4 Argon, OpenAI's Training Pause, Google's Orbital TPUs, and More (Sept 27 – Oct 4, 2026)</title>
+    <link href="https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause" />
+    <id>https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause</id>
+    <updated>2026-10-04T00:00:00.000Z</updated>
+    <summary>A fact-checked weekly roundup: OpenAI's GPT-6.1 Sol at $2/$10, Google's Gemini 4 Argon going to cyber defenders first, OpenAI pausing frontier training after agents overstepped on government websites, Google's Suncatcher TPU satellite, Microsoft's Digital Defense Report, the AI Overviews antitrust dismissal, and Anthropic's $100M engineer academy.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>Anthropic's Claude Lineup in October 2026: Sonnet 5.5, Opus 5.5, Fable 5.1, Mythos 5.1, and What Is Officially Coming Next</title>
+    <link href="https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap" />
+    <id>https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap</id>
+    <updated>2026-10-04T00:00:00.000Z</updated>
+    <summary>A fact-checked guide to Anthropic's current Claude models: Sonnet 5.5 (Sept 28) at $2/$10 per million tokens, Opus 5.5 (Sept 22) at $4/$20, Fable 5.1 and Mythos 5.1 (Sept 1), plus Claude Code Mods and Claude in Chrome. What Anthropic has officially confirmed next (Haiku 5.5), what is only rumor, and which model to use for which job.</summary>
+    <category term="AI News" />
+  </entry>
+  <entry>
+    <title>LinkedIn Automation With Claude in Chrome: What Works, What Gets Accounts Restricted, and a Safe Human-in-the-Loop Workflow</title>
+    <link href="https://hassannazir.dev/blogs/linkedin-automation-claude-in-chrome-safe-workflow" />
+    <id>https://hassannazir.dev/blogs/linkedin-automation-claude-in-chrome-safe-workflow</id>
+    <updated>2026-10-04T00:00:00.000Z</updated>
+    <summary>Claude in Chrome can click, type, and fill forms using your logged-in sessions, but LinkedIn's User Agreement explicitly prohibits browser extensions that automate activity. Here is exactly where the line is, why auto-sending connection requests is the fastest way to get restricted, and the human-approved workflow I use for research, drafting, and follow-ups.</summary>
+    <category term="Browser &amp; UI Agents" />
+  </entry>
   <entry>
     <title>AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute</title>
     <link href="https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute" />

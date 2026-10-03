@@ -1,0 +1,116 @@
+---
+title: "Anthropic's Claude Lineup in October 2026: Sonnet 5.5, Opus 5.5, Fable 5.1, Mythos 5.1, and What Is Officially Coming Next"
+publishedAt: '2026-10-04'
+lastUpdated: '2026-10-04'
+author: "Hassan Nazir"
+category: "AI News"
+readTime: '11 min read'
+excerpt: "A fact-checked guide to Anthropic's current Claude models: Sonnet 5.5 (Sept 28) at $2/$10 per million tokens, Opus 5.5 (Sept 22) at $4/$20, Fable 5.1 and Mythos 5.1 (Sept 1), plus Claude Code Mods and Claude in Chrome. What Anthropic has officially confirmed next (Haiku 5.5), what is only rumor, and which model to use for which job."
+tags: ["Anthropic", "Claude Sonnet 5.5", "Claude Opus 5.5", "Claude Fable 5.1", "AI Models", "AI News"]
+seoKeywords: ["Claude Sonnet 5.5", "Claude Sonnet 5.5 pricing", "Anthropic new models 2026", "Claude Haiku 5.5 release date", "Claude model comparison", "Anthropic roadmap 2026"]
+image: '/images/blogs/anthropic-lineup-2026.svg'
+---
+
+# Anthropic's Claude Lineup in October 2026
+
+September 2026 was Anthropic's busiest release month yet: **three model launches in four weeks**, plus new tooling for agents. If you build on Claude, the lineup now has clear lanes, and choosing the wrong one can easily cost you 2–5× more than necessary.
+
+This guide covers what is shipped, what is officially confirmed, and what is only speculation.
+
+## Release Timeline (2026)
+
+| Date | Release |
+|---|---|
+| Feb 5 | Claude Opus 4.6 |
+| Feb 17 | Claude Sonnet 4.6 |
+| Apr 7 | Claude Mythos Preview (limited access) |
+| Apr 16 | Claude Opus 4.7 |
+| May 28 | Claude Opus 4.8 |
+| Jun 9 | Claude Fable 5 and Claude Mythos 5 |
+| Jun 30 | Claude Sonnet 5 |
+| Jul 24 | Claude Opus 5 |
+| Aug 26 | Claude in Chrome generally available |
+| **Sep 1** | **Claude Fable 5.1 and Claude Mythos 5.1** |
+| **Sep 22** | **Claude Opus 5.5** |
+| **Sep 28** | **Claude Sonnet 5.5** |
+| Oct 1 | Claude Code Mods |
+
+## Claude Sonnet 5.5 (September 28, 2026)
+
+Anthropic describes Sonnet 5.5 as a clear upgrade over Sonnet 5 that runs **30% faster** and **costs up to 30% less** per task.
+
+- **Pricing:** unchanged from Sonnet 5 at **$2 per million input tokens** and **$10 per million output tokens**, with cache reads at $0.20 per million. The lower per-task cost comes from using fewer tokens for the same work.
+- **Benchmarks reported at launch:**
+  - Terminal-Bench 4.0: **70.6%**
+  - OSWorld 2.1 (computer use): **80.1%**, up from 57.0% for Sonnet 5
+  - GDPval-AA (knowledge work): **1,844**, versus 1,846 for Opus 5.5
+  - CursorBench 4.0: **55.5%**, versus 57.8% for Opus 5.5
+- **Safety:** the first Sonnet model shipped with the **cyber safeguards and fallbacks** previously reserved for Anthropic's most capable models, plus classifiers against distillation attacks. Anthropic says most software development and life sciences work is unaffected.
+- **Availability:** Claude apps, the Claude API, and major cloud platforms.
+
+**What it means:** for most production agent and coding workloads, Sonnet 5.5 now sits within a couple of points of Opus 5.5 at half the token price. It should be the default you test first.
+
+## Claude Opus 5.5 (September 22, 2026)
+
+Anthropic says Opus 5.5 performs **at the level of Claude Fable 5.1 on most work** and **costs 40% less to run than Opus 5**.
+
+- **Pricing:** **$4 / $20** per million input/output tokens (down from Opus 5's $5 / $25)
+- **Context:** 1M tokens, with up to 128K output tokens
+- **Positioning:** long-running agentic coding and complex knowledge work
+
+I covered migration details, breaking API changes, and benchmarks in depth in my [Claude Opus 5.5 guide](/blogs/opus-5-5).
+
+## Claude Fable 5.1 and Mythos 5.1 (September 1, 2026)
+
+Anthropic calls these **its most advanced models for coding and knowledge work**.
+
+- **Fable 5.1** is the most capable generally available model and Anthropic's heavy-reasoning tier ($10 / $50 per million tokens). Reported efficiency gains make typical workloads roughly **25% cheaper** than on Fable 5, and agentic workloads up to about **45% cheaper**, because it needs fewer tokens.
+- **Mythos 5.1** continues the Mythos line, which is available only through a **limited trusted-access program** focused on high-capability use cases such as defensive cybersecurity.
+
+## Tooling: Claude Code Mods and Claude in Chrome
+
+**Claude Code Mods (October 1).** Mods are small TypeScript functions that hook into Claude Code's events. They can rewrite prompts, block or retry tool calls, approve or deny permission requests, redact secrets from tool output, and replace interface elements. They ship as plugins and work in the CLI and desktop app. Anthropic is explicit that **mods are not sandboxed**: they run with the same machine access as Claude Code, so install only mods you trust. On Team and Enterprise plans, a built-in security mod loads first to prevent risky overrides of permission rules.
+
+**Claude in Chrome (generally available August 26).** The browser extension can navigate, click, type, and fill forms using your existing logins, and can act without per-step approval. I wrote about where that is and is not appropriate in [LinkedIn Automation With Claude in Chrome](/blogs/linkedin-automation-claude-in-chrome-safe-workflow).
+
+## Which Model for Which Job
+
+| Workload | Start with | Escalate to | Why |
+|---|---|---|---|
+| High-volume classification, extraction, routing | Haiku 4.5 (until Haiku 5.5 ships) | Sonnet 5.5 | Lowest cost and latency |
+| Production agents, coding, computer use | **Sonnet 5.5** | Opus 5.5 | Near-Opus quality at $2/$10 |
+| Long-horizon agentic engineering, 1M-token context | **Opus 5.5** | Fable 5.1 | Strong long-run reliability at $4/$20 |
+| Hardest reasoning, research, high-stakes analysis | **Fable 5.1** | none | Most capable generally available model |
+
+A pattern that works well: run the agent loop on Sonnet 5.5, and **escalate only the hard steps** to Opus 5.5 or Fable 5.1. Pair that with evaluation suites so routing decisions are evidence-based.
+
+## What Is Officially Coming Next
+
+**Confirmed by Anthropic:**
+
+- **Claude Haiku 5.5** was announced alongside Opus 5.5 on September 22 as arriving **"in the coming weeks."** No date, price, or benchmarks have been published. Until it ships, Haiku 4.5 remains the current Haiku model.
+
+**Context, not a product announcement:**
+
+- Reports around the Sonnet 5.5 launch noted it came after CEO Dario Amodei published an essay urging AI companies to **coordinate a slowdown** in frontier capability gains. How that affects Anthropic's own release cadence is not yet clear.
+- Anthropic's IPO preparations are widely reported. Public-company reporting would bring more regular, formal disclosure about products and risks.
+
+**Speculation (not announced):**
+
+- A **Mythos 5.5** or **Fable 5.5** release is plausible given past patterns, but Anthropic has not announced either. Treat any specific date you see online as rumor.
+
+## Key Takeaways
+
+- **Sonnet 5.5** (Sept 28) is the new default for most builders: about 30% faster, up to 30% cheaper per task, $2/$10 pricing, and close to Opus 5.5 on key benchmarks.
+- **Opus 5.5** (Sept 22) matches Fable 5.1 on most work at $4/$20; **Fable 5.1** remains the top generally available model.
+- **Haiku 5.5** is officially "coming in the coming weeks"; everything beyond that is speculation.
+- **Claude Code Mods** make the coding agent programmable, but they are unsandboxed, so treat them like installed software.
+
+## Sources
+
+- [Anthropic Newsroom](https://www.anthropic.com/news)
+- [SiliconANGLE: Anthropic debuts Claude Sonnet 5.5](https://siliconangle.com/2026/09/28/anthropic-debuts-claude-sonnet-5-5-running-30-faster-than-the-previous-generation-ai-model/)
+- [The Decoder: Sonnet 5.5 nearly matches Opus 5.5 on benchmarks](https://the-decoder.com/anthropics-claude-sonnet-5-5-nearly-matches-opus-5-5-on-benchmarks-while-costing-up-to-30-percent-less-per-task/)
+- [CNBC: Anthropic Sonnet 5.5 launch](https://www.cnbc.com/2026/09/28/anthropic-sonnet-5-5-launch.html)
+- [Claude blog: Customize Claude Code with mods in TypeScript](https://claude.com/blog/claude-code-mods)
+- [Wikipedia: Claude (language model)](https://en.wikipedia.org/wiki/Claude_(language_model))
