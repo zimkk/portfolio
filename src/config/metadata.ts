@@ -1,7 +1,7 @@
 export const siteConfig = {
   name: 'Hassan Nazir',
   legalName: 'Hassan Nazir',
-  title: 'Forward Deployed Engineering, AI Automations & Full-Stack Software Development — Hassan Nazir',
+  title: 'Forward Deployed Engineer & AI Automation | Hassan Nazir',
   description: 'Hire a Forward Deployed Engineer for AI automations, full-stack software development, AI agents, RAG pipelines, and n8n workflows. For US and global teams.',
   url: 'https://hassannazir.dev',
   ogImage: 'https://hassannazir.dev/images/profile.png',
@@ -52,7 +52,7 @@ export const defaultMetadata = {
 
 export const pageMetadata = {
   home: {
-    title: 'Forward Deployed Engineering, AI Automations & Full-Stack Software Development',
+    title: 'Forward Deployed Engineer & AI Automation | Hassan Nazir',
     description: 'Specialized engineering services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development, Autonomous AI Agents, RAG architectures, and n8n workflows.',
     keywords: [
       'Forward Deployed Engineer',
