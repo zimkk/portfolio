@@ -40,6 +40,7 @@ export const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePat
     id: idCounter++,
     slug,
     title: data.title || '',
+    seoTitle: data.seoTitle,
     category: data.category || 'Engineering',
     readTime: data.readTime || '8 min read',
     publishedAt: data.publishedAt || '2026-09-01',

@@ -29,7 +29,7 @@ const servicePages: ServicePage[] = [
   {
     slug: 'forward-deployed-engineer',
     name: 'Forward Deployed Engineering',
-    searchTitle: 'Forward Deployed Engineer for Applied AI and Software Delivery | Hassan Nazir',
+    searchTitle: 'Forward Deployed Engineer for Applied AI | Hassan Nazir',
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     hero: 'Put an engineer where the ambiguity lives.',
     directAnswer: 'A Forward Deployed Engineer works inside the operating context, not from a detached specification. I join the team, learn the workflow, build against real constraints, integrate with existing systems, and remain accountable through deployment.',
@@ -155,7 +155,7 @@ const servicePages: ServicePage[] = [
   {
     slug: 'n8n-automation-consultant',
     name: 'n8n Automation Consulting',
-    searchTitle: 'n8n Automation Consultant for AI Workflows and Integrations | Hassan Nazir',
+    searchTitle: 'AI Automations & n8n Workflow Consulting | Hassan Nazir',
     description: 'n8n automation consulting for reliable AI workflows, API integrations, data pipelines, lead operations, document processing, and self-hosted production delivery.',
     hero: 'Automate the operation, not just the happy path.',
     directAnswer: 'Reliable n8n work requires workflow design, API engineering, data contracts, retries, credentials, queues, observability, and a plan for exceptions. I build automations that can be understood and operated after launch.',
@@ -197,7 +197,7 @@ const servicePages: ServicePage[] = [
   {
     slug: 'full-stack-software-development',
     name: 'Full-Stack Software Development',
-    searchTitle: 'Full-Stack Software Development & Custom AI Systems | Hassan Nazir',
+    searchTitle: 'Full-Stack Software Development & AI Systems | Hassan Nazir',
     description: 'Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.',
     hero: 'Engineered for production from database to interface.',
     directAnswer: 'Full-stack software engineering that connects robust backends, performant APIs, responsive modern frontends, and database architecture into a cohesive, production-grade product.',
@@ -247,7 +247,7 @@ const ServicesPage = () => {
   }
 
   if (!service) {
-    const hubTitle = 'Forward Deployed Engineering and Applied AI Services | Hassan Nazir';
+    const hubTitle = 'Forward Deployed Engineering & AI Services | Hassan Nazir';
     const hubDescription = 'Engineering services for US and European teams that need applied AI, agents, RAG, n8n automation, and production software delivered through real operational constraints.';
     const itemList = {
       '@context': 'https://schema.org',

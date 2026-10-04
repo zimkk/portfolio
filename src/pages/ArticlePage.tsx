@@ -151,7 +151,10 @@ const ArticlePage: React.FC = () => {
   return (
     <PageTransition>
       <SEOHead
-        title={`${post.title} | Hassan Nazir`}
+        title={(() => {
+          const base = post.seoTitle || post.title;
+          return `${base} | Hassan Nazir`.length <= 65 ? `${base} | Hassan Nazir` : base;
+        })()}
         description={post.excerpt}
         keywords={post.seoKeywords || post.tags}
         image={`/images/og/${post.slug}.jpg`}

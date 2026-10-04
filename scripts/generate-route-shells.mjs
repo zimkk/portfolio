@@ -28,6 +28,7 @@ for (const file of mdxFiles) {
   articles.push({
     slug,
     title: data.title || slug,
+    seoTitle: data.seoTitle || data.title || slug,
     description: data.excerpt || '',
     published: data.publishedAt || '2026-09-01',
     updated: data.lastUpdated || data.publishedAt || '2026-09-01',
@@ -45,7 +46,7 @@ const services = [
   {
     slug: 'forward-deployed-engineer',
     image: '/images/forward-deployed-services.svg',
-    title: 'Forward Deployed Engineer for Applied AI and Software Delivery | Hassan Nazir',
+    title: 'Forward Deployed Engineer for Applied AI | Hassan Nazir',
     description: 'Hire a Forward Deployed Engineer who embeds with your team, turns unclear operational requirements into working software, integrates it, and owns the path to production.',
     heading: 'Put an engineer where the ambiguity lives.',
     serviceType: 'Forward Deployed Engineering',
@@ -77,7 +78,7 @@ const services = [
   {
     slug: 'full-stack-software-development',
     image: '/images/projects/the-home-club.webp',
-    title: 'Full-Stack Software Development & Custom AI Systems | Hassan Nazir',
+    title: 'Full-Stack Software Development & AI Systems | Hassan Nazir',
     description: 'Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.',
     heading: 'Engineered for production from database to interface.',
     serviceType: 'Full-Stack Software Development',
@@ -118,11 +119,17 @@ const articleLinkList = (items) => `
           ${items.map((a) => `<li><a href="/blogs/${a.slug}">${escapeHtml(a.title)}</a></li>`).join('\n          ')}
         </ul>`;
 
+// Search engines flag <title> over ~65 chars; add the name suffix only when it fits.
+function documentTitle(title) {
+  const branded = `${title} | Hassan Nazir`;
+  return branded.length <= 65 ? branded : title;
+}
+
 const routes = [
   {
     route: '/services',
     image: '/images/forward-deployed-services.svg',
-    title: 'Forward Deployed Engineering and Applied AI Services | Hassan Nazir',
+    title: 'Forward Deployed Engineering & AI Services | Hassan Nazir',
     description: 'Engineering services for US and European teams that need applied AI, agents, RAG, n8n automation, and production software delivered through real operational constraints.',
     type: 'CollectionPage',
     heading: 'Technical delivery where strategy usually breaks.',
@@ -148,7 +155,8 @@ const routes = [
   },
   ...articles.map((article) => ({
     route: `/blogs/${article.slug}`,
-    title: `${article.title} | Hassan Nazir`,
+    title: documentTitle(article.seoTitle),
+    socialTitle: article.title,
     description: article.description,
     type: 'BlogPosting',
     heading: article.title,
@@ -518,9 +526,9 @@ for (const route of routes) {
   html = replaceMeta(html, 'name="twitter:image:alt"', route.heading);
   html = replaceMeta(html, 'property="og:type"', route.type === 'BlogPosting' ? 'article' : 'website');
   html = replaceMeta(html, 'property="og:url"', canonical);
-  html = replaceMeta(html, 'property="og:title"', route.title);
+  html = replaceMeta(html, 'property="og:title"', route.socialTitle || route.title);
   html = replaceMeta(html, 'property="og:description"', route.description);
-  html = replaceMeta(html, 'name="twitter:title"', route.title);
+  html = replaceMeta(html, 'name="twitter:title"', route.socialTitle || route.title);
   html = replaceMeta(html, 'name="twitter:description"', metaDescription(route.description));
 
   const outputDir = path.join(distDir, route.route.slice(1));
