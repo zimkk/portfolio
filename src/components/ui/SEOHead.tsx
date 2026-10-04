@@ -21,7 +21,6 @@ const absoluteUrl = (value: string) => value.startsWith('http') ? value : `${sit
 export const SEOHead: React.FC<SEOHeadProps> = ({
   title,
   description,
-  keywords = [],
   image,
   url,
   type,
@@ -35,7 +34,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
   const pathname = typeof window !== 'undefined' ? window.location.pathname : '/';
   const finalTitle = title || pageMeta?.title || defaultMetadata.title.default;
   const finalDescription = description || pageMeta?.description || defaultMetadata.description;
-  const finalKeywords = Array.from(new Set([...(pageMeta?.keywords || []), ...keywords, ...defaultMetadata.keywords]));
   const finalImage = absoluteUrl(image || defaultMetadata.openGraph.images[0].url);
   const finalUrl = url || `${siteConfig.url}${pathname === '/' ? '' : pathname.replace(/\/$/, '')}`;
   const finalType = type || (page === 'home' ? 'profile' : 'website');
@@ -77,7 +75,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <html lang="en" />
       <title>{finalTitle}</title>
       <meta name="description" content={finalDescription} />
-      <meta name="keywords" content={finalKeywords.join(', ')} />
       <meta name="author" content={siteConfig.name} />
       <meta name="robots" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
       <meta name="googlebot" content={noindex ? 'noindex,nofollow' : 'index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1'} />
