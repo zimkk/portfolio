@@ -5,10 +5,27 @@
     <link>https://hassannazir.dev/blogs</link>
     <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
     <language>en-US</language>
-    <lastBuildDate>Sat, 03 Oct 2026 23:34:58 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 22 Oct 2026 19:50:42 GMT</lastBuildDate>
     <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <docs>https://www.rssboard.org/rss-specification</docs>
     
+    <item>
+      <title>PHP2Shell: The Ghost in the Worker (CVE-2026-109618 &amp; CVE-2026-109619)</title>
+      <link>https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis</guid>
+      <pubDate>Fri, 23 Oct 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>From a Marvel-style comic chronicle of the heist inside Worker Process 40912 to an exhaustive systems research paper: the complete technical autopsy of PHP2Shell (CVE-2026-109618 &amp; CVE-2026-109619).</description>
+      <category>Full-Stack Software Development</category>
+      <category>Security</category>
+      <category>PHP</category>
+      <category>PHP2Shell</category>
+      <category>RCE</category>
+      <category>Systems Engineering</category>
+      <category>Memory Safety</category>
+      <category>Vulnerability Analysis</category>
+      <media:content url="https://hassannazir.dev/images/og/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
     <item>
       <title>AI News Roundup: GPT-6.1 Sol, Gemini 4 Argon, OpenAI's Training Pause, Google's Orbital TPUs, and More (Sept 27 – Oct 4, 2026)</title>
       <link>https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause</link>

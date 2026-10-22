@@ -13,6 +13,23 @@
   ],
   "items": [
     {
+      "id": "https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis",
+      "url": "https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis",
+      "title": "PHP2Shell: The Ghost in the Worker (CVE-2026-109618 & CVE-2026-109619)",
+      "summary": "From a Marvel-style comic chronicle of the heist inside Worker Process 40912 to an exhaustive systems research paper: the complete technical autopsy of PHP2Shell (CVE-2026-109618 & CVE-2026-109619).",
+      "date_published": "2026-10-23T00:00:00Z",
+      "tags": [
+        "Security",
+        "PHP",
+        "PHP2Shell",
+        "RCE",
+        "Systems Engineering",
+        "Memory Safety",
+        "Vulnerability Analysis"
+      ],
+      "image": "https://hassannazir.dev/images/og/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis.jpg"
+    },
+    {
       "id": "https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause",
       "url": "https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause",
       "title": "AI News Roundup: GPT-6.1 Sol, Gemini 4 Argon, OpenAI's Training Pause, Google's Orbital TPUs, and More (Sept 27 – Oct 4, 2026)",
