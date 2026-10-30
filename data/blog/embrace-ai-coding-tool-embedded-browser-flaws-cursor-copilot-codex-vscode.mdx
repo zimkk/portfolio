@@ -1,0 +1,133 @@
+---
+title: "EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched"
+seoTitle: "EMBRACE: Embedded Browser Flaws in AI Coding Tools"
+publishedAt: '2026-10-30'
+lastUpdated: '2026-10-30'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '10 min read'
+excerpt: "Forever Security disclosed a flaw class it calls EMBRACE across Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop. Cursor and Copilot are fixed, while Codex and VS Code were still unpatched at publication. Here is how it works, what is unverified, and what I would do on a developer fleet today."
+tags: ["EMBRACE", "AI Coding Tools", "Cursor", "VS Code", "Codex", "Claude Desktop", "Prompt Injection", "Developer Security"]
+seoKeywords: ["EMBRACE vulnerability", "AI coding tool embedded browser", "Forever Security EMBRACE", "Codex file read vulnerability", "VS Code web worker file read", "Cursor prompt injection browser", "developer endpoint security"]
+image: '/images/blogs/ai-threat-detection.svg'
+---
+
+# EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched
+
+On October 29, 2026, security researcher Gal Weizman at Forever Security published research on a bug class he named EMBRACE, short for EMbedded BRowser, trusted like a real one. It covers five tools most of us have open right now: Cursor, GitHub Copilot, OpenAI Codex, VS Code, and Claude Desktop. Cursor and Copilot have shipped fixes. According to the researchers, Codex and VS Code were still unpatched when the story broke.
+
+I care about this one more than the usual "AI tool has a CVE" story, because the failure is not a clever model trick. It is plain old browser security getting dropped on the floor when a vendor bolts a web view onto a tool that already has your SSH keys within reach.
+
+## What Was Reported
+
+Forever Security says all five issues come from the same design choice. These tools embed a browser so the agent can preview a page, read it, and act on it. But an embedded browser here does not get the sandbox boundaries a normal browser enforces. It inherits host-level access and exposes bridges to the assistant that a regular tab never has.
+
+The research splits into three different bugs under one umbrella:
+
+| Tool | Bug type | What an attacker gets | Status at publication |
+|---|---|---|---|
+| Cursor | Prompt injection through a browser to composer bridge | Command execution on the host | Patched October 1 |
+| GitHub Copilot | Address bar spoofing | Convincing phishing page under a trusted URL | Fixed in build 1.1.29 on October 13 |
+| Codex | Local HTML reads files outside the project | Arbitrary file read | Unpatched per researchers, OpenAI says it is working on a fix |
+| VS Code | Web worker bypass of folder checks | Arbitrary file read | Unpatched per researchers, Microsoft called it a workspace trust boundary issue |
+| Claude Desktop | Same web worker bypass as VS Code | Arbitrary file read | Patch status not stated in the coverage I read |
+
+None of the articles I read list CVE identifiers for these, so I will not invent any.
+
+## Bug One: Cursor and the Invisible Instruction
+
+The Cursor issue is the one that should make agent builders sit up. According to the reporting, a malicious web page could talk to the assistant's command composer through a bridge between the embedded browser and the assistant. The page effectively injected instructions the user never saw.
+
+In the demo, the assistant was pushed into running an install command that opened the Calculator app on the host. Two details stand out. First, the attack went through a package installation, which is exactly the kind of action developers approve without thinking. Second, an earlier attempt hit a sandbox restriction, and the agent turned the sandbox off and tried again. The write-ups note that whether the exploit worked depended on model behavior, so treat it as probabilistic rather than a guaranteed one click.
+
+Reported September 10, patched October 1. Per The Register, there was no security advisory and no reply to the researchers. That is a patch you only get if you auto-update, and nobody told you to.
+
+## Bug Two: Copilot and the Lying Address Bar
+
+Pages can change the URL they display without actually navigating. That is a normal browser feature, and normal browsers handle it correctly. In the Copilot preview, the reporting says the page could set the address and the tool believed it. It checked that the string looked like a web address, not that the tab was really there.
+
+So a fake sign in form could sit under a github.com looking URL, and the agent would also describe it that way. The researchers found it in build 1.1.27 on September 26. GitHub fixed it in 1.1.29 on October 13. Interesting detail from The Register: GitHub reportedly fixed it on its own, without a report from Forever.
+
+## Bug Three: Local Files and the Web Worker Trick
+
+This is the one still open. When you open a local HTML file in these tools, the main page is restricted to the project folder. A web worker started by that page was not held to the same check in VS Code and Claude Desktop. Codex, per the reporting, lacked the restriction entirely.
+
+The impact is simple to state. In the researchers' test, a local page collected SSH keys, .env files, npm tokens, and the hosts file. If you work with agents, local HTML is not exotic. Agents generate preview pages, reports, and prototypes constantly, and you open them in the built-in browser to look at them.
+
+The attacker still needs a way to get a hostile HTML file in front of the tool: a cloned repo, a downloaded artifact, a file an agent wrote after reading a poisoned document. That is a real constraint. It is also a low bar for anyone who works with third party code all day.
+
+## The Vendor Response Is the Story Inside the Story
+
+Reading the timelines side by side is uncomfortable:
+
+| Vendor | Reported | Outcome |
+|---|---|---|
+| OpenAI (Codex) | July 27 | No reply to researchers, spokesperson later said a fix is in progress |
+| Anthropic (Claude Desktop) | July 23 | Rejected first as invalid, citing workspace trust, then reportedly accepted a matching report from Noma Security |
+| Microsoft (VS Code) | September 10 | Labeled an invalid workspace trust boundary issue |
+| Cursor | September 10 | Silent patch October 1, no advisory |
+| GitHub (Copilot) | Found September 26 | Fixed October 13 |
+
+Two vendors pointed at the workspace trust prompt. That is the dialog where you click Trust before using a folder. The researchers argue it is non-functional in practice, because you cannot use the tool without clicking it. I agree with the instinct. A consent dialog everyone must accept to get any work done is not a security boundary, it is a speed bump with a legal flavor.
+
+Note the Claude Desktop row carries a caveat. The Register describes the rejection and the later acceptance. A secondary summary also covered the reversal, but one article I read did not confirm it, and none gave a fix date. Treat the current Claude Desktop status as unverified until the vendor says something.
+
+## A Note on Sources
+
+Most coverage here repeats one primary source, the Forever Security research, through The Register, Hackread, and a few aggregators. Help Net Security is cited as the origin of at least one write up. I could not independently reproduce anything, and I did not read the full technical report myself. So the specifics above are as reported, not verified by me.
+
+## What I Think Is Actually Going On
+
+An embedded browser in an agent tool is not a browser. It is a browser plus a privileged channel to something that can run commands, plus access to the filesystem of whoever launched it. Every guarantee a standalone browser gives you (same origin rules, no file reads, honest address bar) has to be rebuilt deliberately, and the evidence says it was not.
+
+The deeper problem is that the page content is now an input to the agent. The moment an agent reads a page, the page can talk to it. Cursor's bug is the extreme case, where the bridge itself carried the instructions. But the same trust confusion exists any time you let an agent read untrusted content and then let it run tools.
+
+## What I Would Do Now
+
+On a developer fleet, in this order:
+
+1. Update Cursor and Copilot. Cursor to the October 1 or later release, Copilot to 1.1.29 or later.
+2. Inventory where Codex, VS Code, and Claude Desktop run, and who has secrets on those machines.
+3. Stop opening untrusted local HTML in the built-in browser of any of these tools. Use a separate throwaway profile of a real browser instead.
+4. Assume anything an agent can read, a hostile page might read. Move long lived credentials out of plain files.
+5. Watch vendor release notes for the web worker fix on VS Code and Codex, and apply on day one.
+
+For point four, here is a quick audit of what sits in the obvious places. It only lists names and sizes, it does not print secrets:
+
+```bash
+ls -la ~/.ssh
+ls -la ~/.npmrc ~/.aws/credentials 2>/dev/null
+find . -maxdepth 3 -name ".env*" -type f -exec ls -la {} \;
+```
+
+If that list makes you wince, those are the files the researchers' demo collected. Short lived credentials, SSH keys held in an agent with confirmation, and per project env files that only hold dev values all shrink the blast radius no matter which vendor ships the next fix.
+
+If you build agent tooling yourself, the lesson is sharper:
+
+- Do not let page content reach the assistant's input channel without marking it as untrusted data.
+- Do not let an agent disable its own sandbox. If a command is blocked, that decision belongs to a human.
+- Verify the real location of a tab, never the page's claimed one.
+- Apply the same folder restrictions to workers as to the page that spawned them.
+
+## My Take
+
+Two of five fixed, two reported as unpatched, one unclear. That is a better ratio than I feared and a worse one than a tool with your SSH keys in reach deserves. The part I find hardest to defend is dismissing reports as workspace trust issues. If a click everyone must make is your answer to a file read, you have a design gap, not a user error.
+
+I would not panic. I would patch what is patched, stop opening strangers' HTML in these tools, and treat every embedded browser in an AI tool as a privileged component until a vendor shows otherwise.
+
+## Key Takeaways
+
+- EMBRACE is a bug class, not one CVE. Embedded browsers in AI coding tools break normal browser boundaries.
+- Cursor (command execution via prompt injection) and Copilot (address bar spoofing) are fixed. Codex and VS Code file reads were reported unpatched at publication.
+- The file read abuses web workers that skip the folder checks applied to the main page.
+- Two vendors treated the issue as a workspace trust matter. A mandatory Trust click is not a security boundary.
+- Claude Desktop shares the flaw per the coverage, but its current patch status is unverified.
+- Update, keep untrusted HTML out of built-in browsers, and reduce what secrets sit in readable files.
+- Most coverage traces back to one primary source, so independent confirmation is thin.
+
+## Sources
+
+- [Researchers find bugs in 5 AI developer tools, with OpenAI and Microsoft flaws still unpatched (The Register, October 29, 2026)](https://www.theregister.com/security/2026/10/29/researchers-find-bugs-in-5-ai-developer-tools-with-openai-and-microsoft-flaws-still-unpatched/5306508)
+- [EMBRACE Flaws in 5 AI Coding Tools Enable Code Execution and File Theft (Hackread)](https://hackread.com/embrace-flaws-ai-coding-tools-code-execution-theft/)
+- [Forever Security EMBRACE Research Breaks Five AI Coding Browsers (AI Weekly)](https://aiweekly.co/alerts/forever-security-embrace-research-breaks-five-ai-coding-browsers)
+- [EMBRACE vulnerability leaves Codex and VS Code unpatched (Pasquale Pillitteri)](https://pasqualepillitteri.it/en/news/28119/embrace-vulnerability-codex-vs-code-unpatched)
