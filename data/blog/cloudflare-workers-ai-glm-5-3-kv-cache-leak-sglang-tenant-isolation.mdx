@@ -1,0 +1,149 @@
+---
+title: "Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check"
+seoTitle: "Cloudflare Workers AI KV Cache Leak Explained"
+publishedAt: '2026-10-31'
+lastUpdated: '2026-10-31'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '10 min read'
+excerpt: "Cloudflare disclosed on October 26, 2026 that 155 GLM-5.3 responses on Workers AI carried data from other customers' requests. The trigger was a very long prompt, the cause was an over-promised context window, and the lesson applies to every team that hosts or buys LLM inference."
+tags: ["Cloudflare", "Workers AI", "SGLang", "KV Cache", "LLM Security", "Multi-Tenancy", "Incident Analysis"]
+seoKeywords: ["Cloudflare Workers AI leak", "GLM-5.3 KV cache exposure", "SGLang vulnerability", "LLM tenant isolation", "KV cache cross request leak", "AI inference security", "long context security"]
+image: '/images/blogs/kv-cache-eviction.svg'
+---
+
+# Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check
+
+On **October 26, 2026**, Cloudflare published a post-incident write-up about something every team running shared LLM inference should read twice. For about two weeks in late summer, a hosted model on Workers AI sometimes answered one customer using leftover data from other customers' requests. The count Cloudflare reported is small: **155 responses**. The design lesson is not small at all.
+
+A sourcing note first, because I like to be upfront about it. Cloudflare's own post is the primary source, but I could not open it directly in my tooling. Everything below about its contents comes from three secondary write-ups that cite it, and they agree with each other on the core facts. That also means this is mostly one primary statement echoed by several outlets, and I could not find independent confirmation of details beyond it. Where something rests on a single secondary source, I say so.
+
+## What Happened
+
+Here is the timeline as reported.
+
+| Date (2026) | Event |
+|---|---|
+| Aug 27 | GLM-5.3 launches on Workers AI. The exposure window starts. |
+| Sep 8 | A security researcher reports odd behavior through Cloudflare's bug bounty program. |
+| Sep 9, 13:22 UTC | Cloudflare declares an incident. |
+| Sep 9, about 14:00 UTC | The model is pulled offline, reportedly 38 minutes after the declaration. |
+| Sep 9, 19:40 UTC | The model returns after a memory pool fix and a patch to the serving software. |
+| Oct 26 | Public write-up, coordinated with the maintainers of the serving software. |
+
+The headline facts: 155 responses contained data that belonged to other customers' earlier requests, only GLM-5.3 was affected, and Cloudflare says it found no sign anyone deliberately exploited the bug. The reported trigger was a prompt longer than **681,280 tokens**.
+
+Two things are not public, at least not in what I could read. One is how many distinct customers were affected, and the other is what kind of content leaked. Cloudflare's report, as described by the secondary sources, also does not explain how affected customers were notified. Treat anyone who tells you exactly what was exposed as guessing.
+
+## The Mechanism, Explained Without Hype
+
+To understand the bug you need one concept: the **KV cache**. When a transformer model reads your prompt, it computes key and value tensors for every token and keeps them in GPU memory so it does not recompute them for each new output token. Inference servers do not allocate this as one big block per request. They carve GPU memory into fixed pages and hand pages to requests as needed, the same way an operating system hands out memory. That is what makes it possible to serve many users on the same GPU.
+
+The model Cloudflare ran advertises a context window of 1,048,576 tokens. According to the write-ups, the pool of cache memory Cloudflare actually reserved for it held only **681,280 tokens**. So the product promised about one million tokens of context, but the memory behind it could hold roughly two thirds of that.
+
+Normally that mismatch is harmless, because the serving software is supposed to reject a request that does not fit. Here is where the reports say it went wrong:
+
+1. A prompt larger than the pool arrived and was marked as rejected.
+2. The inference engine (SGLang) did not stop that request cleanly as it moved through the split prefill and decode stages.
+3. The prefill stage wrote almost nothing for the request, reportedly a single placeholder token.
+4. The decode stage then read the pages that had been reserved for the request.
+5. Those pages were never wiped after earlier requests used them, so they still held someone else's cache data.
+6. The model generated its answer conditioned on that stale data, and the API returned a normal success response.
+
+The part that should bother you is step 6. There was no error. The caller got a 200 and a fluent answer. Nothing on the client side would tell you something went wrong.
+
+I want to be careful here. The leftover memory does not mean the model printed another customer's text word for word in every case. What the sources describe is that responses "contained data from other customers' requests". How much raw text versus how much influence on the output, I cannot tell you from public material. That distinction matters for severity, and it is unverified.
+
+One more claim to flag: one secondary article says the upstream issue was filed in the SGLang tracker in early July 2026, before the Workers AI launch. I could only find that in a single source and did not verify it. If true, it is a reminder that "known upstream bug" and "bug that affects my deployment" are different lists, and somebody has to join them.
+
+## Why This Class of Bug Is Hard to See
+
+Classic multi-tenant isolation bugs leak through shared databases, shared caches, shared file systems. LLM serving adds a new shared resource that most security reviews do not list: **GPU memory pages that hold derived data about user prompts**. The pages are fast, unzeroed, and reused aggressively on purpose, because zeroing them costs throughput.
+
+A few properties make this resource especially risky:
+
+- **The trigger was an edge case in sizing, not in logic.** The code path that mattered only ran when the prompt exceeded what the memory could back.
+- **Failure looked like success.** A rejected request that quietly turns into a generated answer is the worst failure mode, because monitoring watches error rates.
+- **Output is probabilistic.** Even if you suspect a leak, you cannot diff a response against an expected value. A model answer polluted by foreign context reads like a slightly odd answer.
+- **Tests focused on speed and status codes.** One secondary source says the team had tested response codes and performance on oversized inputs, but not the content of the output. That is the type of gap I see in a lot of AI launches, and I do not say that to point fingers. Latency and status codes are the easy things to assert.
+
+## Where I Think the Real Lesson Is
+
+Cloudflare did a lot right by the account I read: a researcher reported through a bounty program, the incident was declared within a day, the model was offline within about 40 minutes of declaration, and a public write-up followed with credit to the maintainers. I would be happy with that response on my own team.
+
+My issue is with the layer below the response: **capability claims and capacity were allowed to drift apart.** If the product page says one million tokens and the memory behind it holds 681,280, you have a latent bug that no one owns. It is not a code bug, it is a configuration contract bug. I have seen the same shape in plenty of systems that are not AI: a rate limiter configured higher than the database can serve, a queue with a max message size larger than the broker allows. The difference here is the failure mode leaks other people's data instead of just falling over.
+
+## What To Do If You Used Workers AI
+
+If you called GLM-5.3 on Workers AI between **August 27 and September 9, 2026**, here is my short checklist:
+
+1. Search your request logs for prompts over about 680,000 tokens in that window. Few teams send prompts that big, so the list may be short or empty.
+2. If you find any, ask Cloudflare whether those requests were among the affected 155 and what the exposed data was. Do not assume silence means safe.
+3. Review what those prompts contained. If they held personal data, contracts, or credentials, decide whether you have a notification duty under the rules that apply to you. I am not a lawyer, so ask yours.
+4. Rotate anything secret that was in those prompts.
+
+## What To Do If You Host Your Own Inference
+
+This is the section I would act on first, because the same engine runs on a lot of private GPU boxes.
+
+- **Upgrade the serving software.** The reports say the first upstream patch landed in SGLang v0.5.20, with follow ups in v0.5.21 and v0.5.22, and recommend v0.5.22 or later. Check the release notes yourself before you rely on that.
+- **Make the advertised context length match the memory.** Compute the pool size from your real hardware, then set the maximum accepted prompt length at or below it. One source calls the mismatch a configuration problem, and I agree that is the cheap fix.
+- **Enforce limits before the engine.** Put the length check in your gateway so an oversized request never reaches the scheduler. A sketch of the idea:
+
+```ts
+// Gateway-side guard. Illustrative sketch, not Cloudflare's code.
+const POOL_TOKENS = 681_280;      // what the KV pool can really hold
+const SAFETY_MARGIN = 0.9;        // leave headroom for output tokens
+const MAX_PROMPT = Math.floor(POOL_TOKENS * SAFETY_MARGIN);
+
+export function admit(promptTokens: number): void {
+  if (promptTokens > MAX_PROMPT) {
+    // Fail loudly with a real error. Never let the engine decide.
+    throw new HttpError(413, "prompt exceeds served context limit");
+  }
+}
+```
+
+- **Test for isolation, not just status.** Write a canary test: send request A with a unique marker string, then send oversized and boundary sized requests B, and assert the marker never shows up in B's output. Run it on every model, engine, and config change.
+- **Treat zeroing as a policy decision.** If you disable page scrubbing for speed, write down who accepted that risk and what compensating controls exist.
+- **Alert on weird successes.** Track the rate of requests near or over the limit and the distribution of prompt lengths. A sudden cluster of near limit prompts that all return 200 is worth a look.
+
+## What To Do If You Buy Inference From Someone Else
+
+Most teams are in this group. A short list of questions I would put in a vendor review, in plain language:
+
+| Question | Why it matters |
+|---|---|
+| Is my traffic on shared or dedicated capacity? | Shared GPU memory is where this bug lived. |
+| What happens to a request over the limit? | You want a hard error, not a best effort answer. |
+| Are cache pages scrubbed between tenants? | Reuse without scrubbing is the root hazard. |
+| How soon will you tell me about an incident? | Get a number into the contract. |
+| Do you test output content for isolation? | Status code tests would not have caught this. |
+| Do you run a bounty or external testing? | This one was found by an outside researcher. |
+
+Also reduce what you send. Splitting giant documents into smaller requests lowers exposure for this particular bug and usually lowers cost too. Do not put secrets in prompts. That advice was true before this incident and it is still the cheapest control you have.
+
+## My Take
+
+I do not think this is a scandal about one vendor. It is a preview of a bug family. As context windows grow from thousands to millions of tokens, memory management in the serving layer becomes a security boundary, and the people who wrote those schedulers were optimizing for throughput, not for tenant isolation. The incentives are lopsided: zeroing pages and rejecting requests cost money, a leak that nobody notices costs nothing until a researcher finds it.
+
+What I would push on is boring discipline. Keep one number for what you advertise and one for what you can back, and make a test fail when they diverge. Assert on outputs, not only on status codes. And when you adopt an inference engine, subscribe to its security and bug trackers the way you would for a database or a web server. An AI stack is still a stack.
+
+I also want to be honest about limits. I did not read the primary report myself, the customer impact is undisclosed, and several details above come from secondary summaries that could contain errors. If you operate in this space, read Cloudflare's post directly and check the numbers against what I wrote.
+
+## Key Takeaways
+
+- Between August 27 and September 9, 2026, 155 responses from GLM-5.3 on Cloudflare Workers AI reportedly contained other customers' data.
+- Only prompts over 681,280 tokens triggered it, while the advertised window was 1,048,576 tokens.
+- The failure returned a normal success response, so error monitoring could not catch it.
+- Cloudflare reported no evidence of deliberate exploitation, and the number of affected customers and the content exposed are not public.
+- If you self host SGLang, upgrade (reports say v0.5.22 or later), align context limits with real memory, and enforce length checks at the gateway.
+- If you buy inference, ask about shared capacity, over limit behavior, cache scrubbing, and incident notice deadlines.
+- Add canary isolation tests that assert on output content, not just status codes.
+
+## Sources
+
+- [Cloudflare, Cross-request KV cache exposure in the GLM-5.3 Workers AI model, and our remediation with SGLang (primary, October 26, 2026; not opened directly, cited via the articles below)](https://blog.cloudflare.com/kv-cache-exposure-remediation)
+- [Origami, Cloudflare AI Data Leak: 155 Responses Carried Other Customers' Data](https://origami.sa/en/blog/cloudflare-ai-data-leak-other-customers/)
+- [Tech Insider, Cloudflare GLM 5.3 Workers AI KV cache leak, 155 responses](https://tech-insider.org/cloudflare-glm-5-3-workers-ai-kv-cache-leak-155-responses-2026/)
+- [Digitechbytes, A Stranger's AI Answer Inside Cloudflare's KV Cache Leak](https://digitechbytes.com/technology-news-gadgets/a-stranger-s-ai-answer-inside-cloudflare-s-kv-cache-leak/)
