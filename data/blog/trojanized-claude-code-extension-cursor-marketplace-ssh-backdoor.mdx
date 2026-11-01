@@ -1,0 +1,139 @@
+---
+title: "A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor"
+seoTitle: "Trojanized Claude Code Extension on Cursor Marketplace"
+publishedAt: '2026-11-01'
+lastUpdated: '2026-11-01'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '10 min read'
+excerpt: "On October 29, 2026, tampered builds of the Claude Code extension sat in Cursor's marketplace for about 11 hours and tried to install a persistent SSH backdoor. Here is what the loader did, why it mostly failed, why that is not a clean bill of health, and how to check your machines."
+tags: ["Cursor", "Claude Code", "Supply Chain Security", "VS Code Extensions", "SSH Backdoor", "Developer Security", "Incident Analysis"]
+seoKeywords: ["Claude Code extension malicious", "Cursor marketplace compromise", "anthropic.claude-code 2.1.312", "svc-telemetry SSH key", "VS Code extension supply chain attack", "Cursor security incident", "developer workstation backdoor"]
+image: '/images/blogs/ai-threat-detection.svg'
+---
+
+# A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor
+
+On **October 29, 2026**, Cursor disclosed that two tampered builds of the Claude Code extension, versions 2.1.312 and 2.1.313, had been served from its own extension marketplace for roughly eleven hours. The code inside tried to give an attacker a permanent SSH door into the developer's machine. Cursor's first estimate was up to 5,000 affected users.
+
+The short version for anyone skimming: the loader was sloppy, it mostly failed on default setups, the command server is now offline, and none of that means you can skip the cleanup. Uninstalling the extension does not remove what it dropped.
+
+I am writing this one from the angle of someone who runs dev tooling for a team, because that is who gets hurt here. A developer laptop holds repo access, cloud credentials, and signing keys. An editor extension runs with all of it.
+
+## What Was Reported
+
+Cursor's security notice is the primary source, and two independent write-ups line up with it: StepSecurity's analysis and a DevOps.com report. A fourth, from the research firm Phorion, is cited by DevOps.com but I could not open it, so I do not rely on it directly.
+
+| Detail | What the sources say |
+|---|---|
+| Affected builds | anthropic.claude-code 2.1.312 and 2.1.313, macOS and Windows |
+| Where from | Cursor's VS Code extension marketplace only |
+| Window | 2:27 a.m. to 1:35 p.m. Pacific, October 29, 2026 |
+| Exposure estimate | Up to 5,000 users, Cursor's initial figure |
+| Who built it | Not Anthropic, per Cursor and per Anthropic's own statement |
+| Command server | Taken offline with the hosting provider's help |
+
+Anthropic's position, relayed by StepSecurity from public comments by an Anthropic engineer, matters here. Anthropic says its systems and employee laptops were not compromised, that the official channels are unaffected, and that 2.1.313 was never published to Open VSX, the Microsoft marketplace, or its other official hosts. The official line then skipped to 2.1.314 to avoid confusion. So this is a Cursor marketplace incident that borrowed Anthropic's name, not a break-in at Anthropic.
+
+One correction worth knowing about: StepSecurity first described Open VSX as the origin and later fixed that. Early coverage of this story was messy, so check the date on whatever you read.
+
+## What the Loader Actually Did
+
+StepSecurity recovered the malicious extension.js from a malware sample repository and read it without running it. Its findings are unusually concrete.
+
+The tampering is a pure prepend. A single block of about 7.4 KB was glued onto the front of the clean 2.1.312 bundle, and the remaining 3.6 MB is byte for byte the legitimate code. There is no second backdoor buried deeper. The loader is not obfuscated either: it is minified JavaScript with plain text constants, and the only encoding is base64 around an embedded private key.
+
+It runs as soon as the module loads. No VS Code API, no chat with Claude, no package manager hook. Opening the editor with the extension enabled was enough.
+
+Then it works through six stages, each wrapped in a try/catch that swallows errors and records a status string:
+
+| Stage | What it tries to do |
+|---|---|
+| Recon | Collects hostname, username, OS, architecture, home and working directories, Git email, and the names of up to 40 environment variables matching words like KEY, TOKEN, SECRET, PASS, AWS, GCP |
+| Key implant | Appends an attacker Ed25519 public key labeled svc-telemetry to the authorized_keys file |
+| Enable SSH | Turns on the local SSH service: a sudo call on macOS, a Windows capability install on Windows, systemctl on Linux |
+| Reverse tunnel | Drops an embedded private key and loops an outbound SSH connection that asks the attacker's server to forward a port back to your machine, retrying every 60 seconds |
+| Persistence | Cron on Linux, a LaunchAgent on macOS, a scheduled task or Startup script on Windows |
+| Beacon | Looks up your public IP and POSTs everything above to the attacker's server |
+
+Two details I like for analysis. First, it only exfiltrated environment variable names, never values. That tells the operator which machines hold cloud credentials without sending secrets over plain HTTP. It is a shopping list, not a theft. Second, the persistence names are chosen to blend in: a LaunchAgent called com.apple.sysmond and a task called SysMon. Names like that survive a casual glance.
+
+According to StepSecurity there is no second stage download and no credential reading in the code. The real danger was never the loader itself. It was whatever a human operator could do through an open SSH session afterward.
+
+## Why It Mostly Failed, and Why That Is Not Good Enough
+
+Cursor says that outside unusual cases, the step that turns on SSH fails, because it needs admin rights the extension normally lacks on macOS and Windows. DevOps.com, citing Phorion, adds that a faulty permissions check on macOS can stop remote login from being switched on.
+
+So most people got a loader that wrote a key, installed persistence, sent a beacon, and then hit a wall. Good. But follow the logic one step further:
+
+- The attacker key is written into authorized_keys before the SSH service step. It is there whether or not the tunnel works.
+- Machines that already had SSH enabled for any reason (remote work habits, a home lab, a build box) do not need the failing step at all.
+- The persistence scripts keep retrying the tunnel. Cursor says the server is dead now, which cuts the tunnel, but the key and the scripts stay on disk until someone removes them.
+
+Cursor says plainly that uninstalling the extension may not be enough, since the payload drops standalone persistence scripts. I agree with the conservative reading. A failed connection tells you the attacker did not get in through that path. It does not tell you the machine is clean.
+
+## How to Check a Machine
+
+Cursor's notice gives the check, and it is a one liner on macOS. The key comment is the giveaway:
+
+```bash
+grep -qs svc-telemetry ~/.ssh/authorized_keys && echo "key found" || echo "no key"
+```
+
+Cursor publishes a Windows PowerShell version and removal scripts for macOS and Windows on its notice page. Use those rather than my paraphrase, and run them from the folder where you saved them. For a fleet, StepSecurity suggests sweeping installed extension bundles for two strings, svc-telemetry and the attacker address:
+
+```bash
+grep -rlF -e svc-telemetry -e 134.209.82.225 <your editor extensions directory>
+```
+
+Other artifacts to look for, all from the vendor lists: files named .smt and .smtk under the .config folder, a hidden file starting with .stk_ in the temp directory, the com.apple.sysmond LaunchAgent on macOS, a SysMon scheduled task on Windows, and long running ssh or autossh processes with a reverse forward flag.
+
+Keep one scoping fact in mind. Having 2.1.312 or 2.1.313 installed does not by itself mean compromise. StepSecurity downloaded the 2.1.312 build served through Open VSX and found it clean. The question is where and when your copy came from.
+
+## What I Think Actually Went Wrong
+
+Here is the part nobody has published: how the attacker got publish access to the marketplace. Cursor says it audited access, rotated keys, and rebuilt the marketplace, and Anthropic says the attacker used access to Cursor's marketplace. Neither says how. I am not going to guess at a root cause. If a post mortem lands, that is the document to read.
+
+What I can say without guessing is about the shape of the failure.
+
+**The extension ID was the trust anchor, and it was enough.** Developers saw the official publisher name and a normal version number and had no reason to doubt it. The attacker even bumped to a version number that the real publisher never shipped. An ID plus a version string is a label, not a proof.
+
+**Editors are privileged software that update themselves.** An extension update is arbitrary code execution as your user, delivered silently. We treat npm packages with suspicion and treat editor extensions as furniture. Same threat model, much less scrutiny.
+
+**AI coding extensions raise the stakes.** Tools like this are exactly the ones people install fast and trust deeply, and the machines they sit on tend to hold the juiciest credentials. The attacker clearly knew whose machines they wanted.
+
+## What Teams Should Do Now
+
+This is my opinion, built on the facts above, not a vendor checklist.
+
+1. Run the check across every developer machine that used Cursor on October 29, on macOS and Windows. Do it from a trusted system and keep a record of results.
+2. If the key is found, isolate the host, remove the key and persistence, and decide whether to rebuild. Rotate every credential reachable from that machine, including cloud keys, Git tokens, and SSH keys. The environment variable names that were collected are a map to the secrets worth rotating first.
+3. Review authorized_keys on any machine you manage, looking for comments or keys nobody can explain. Do it for CI runners and shared build hosts too.
+4. Restrict outbound SSH from developer laptops to a short list of known hosts. A reverse tunnel to a random server is a clean signal when egress is controlled.
+5. Turn off silent auto update for extensions on managed machines, or at least route them through an allowlist of publisher IDs with pinned versions.
+6. Alert on new LaunchAgents, scheduled tasks, and cron entries created by an editor process. Real extensions almost never need them.
+
+Tip: if you cannot do a fleet sweep today, start with whoever holds production cloud access. Those machines are where a backdoor does the most damage.
+
+## My Take
+
+The detail that stays with me is how unremarkable the attack was. A small block of plain JavaScript in front of a legitimate bundle, no obfuscation, no zero day, and it still reached a marketplace that thousands of developers pull from. The attacker's mistakes saved a lot of people, and I would not build a security plan on the hope that the next attacker is equally careless.
+
+I also want to be fair to the vendors. Cursor took the marketplace offline, rotated keys, worked with the host to kill the server, and published indicators and removal scripts within a day. Anthropic spoke up quickly about scope. That is a decent response. The open question is the one both are silent on: how publish access was obtained. Until that is public, assume other marketplaces and other publishers are exposed to the same class of problem.
+
+## Key Takeaways
+
+- Tampered Claude Code extension builds 2.1.312 and 2.1.313 were served from Cursor's marketplace for about 11 hours on October 29, 2026, for macOS and Windows.
+- Anthropic says it was not compromised and that the official channels are unaffected. The attacker used access to Cursor's marketplace.
+- The loader profiled the host, planted an SSH key labeled svc-telemetry, installed persistence, and tried to open a reverse tunnel. It exfiltrated variable names, not values.
+- The SSH enable step usually failed without admin rights, but the key and persistence scripts stay on disk, so uninstalling is not enough.
+- Check for the key, remove the persistence, and rotate credentials reachable from any affected machine.
+- The root cause of the marketplace access is not public. Treat any claim about it as unverified.
+- Most coverage traces back to Cursor's notice and one security vendor's analysis, so independent confirmation beyond those is thin.
+
+## Sources
+
+- [Security notice on Anthropic.claude-code 2.1.312 and 2.1.313 (Cursor, October 29, 2026, updated October 30)](https://cursor.com/blog/claude-code-extension-security-notice)
+- [Trojanized Claude Code Extension Delivered Persistent SSH Backdoor to Developer Machines (StepSecurity, October 30, 2026, updated November 1)](https://www.stepsecurity.io/blog/claude-code-extension-trojanized)
+- [Malicious Claude Code Extension Affects Up to 5,000 Cursor Users (DevOps.com)](https://devops.com/malicious-claude-code-extension-affects-up-to-5000-cursor-users)
+- [Official Claude Code Extension Compromise: Security Advisory (Phorion, not opened directly, cited via DevOps.com)](https://phorion.io/blog/offical-claude-code-vsx-compromise/)
