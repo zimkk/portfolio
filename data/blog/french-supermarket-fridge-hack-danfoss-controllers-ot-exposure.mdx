@@ -1,0 +1,115 @@
+---
+title: "Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers"
+seoTitle: "French Supermarket Fridge Hack: Danfoss Controllers"
+publishedAt: '2026-11-02'
+lastUpdated: '2026-11-02'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '9 min read'
+excerpt: "In October 2026, attackers reached refrigeration controllers at hundreds of French supermarkets and heated the cold rooms to about 50 degrees Celsius. On November 1 Fortune reported the Pentagon is probing similar failures at US military commissaries. Here is what is confirmed, what is not, and what to do about the boring box in your own plant room."
+tags: ["Danfoss", "OT Security", "Industrial Control Systems", "Critical Infrastructure", "Incident Analysis", "End of Life Devices", "Network Segmentation"]
+seoKeywords: ["French supermarket cyberattack", "Danfoss AK-SM AK-SC attack", "refrigeration controller hack", "CERT-FR refrigeration alert", "OT security internet exposure", "end of life controllers", "Pentagon commissary cyberattack"]
+image: '/images/blogs/ai-threat-detection.svg'
+---
+
+# Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers
+
+On the night of October 11, 2026, attackers took remote control of the refrigeration systems at hundreds of supermarkets in France, pushed the cold rooms to roughly 50 degrees Celsius, and left store staff to find the damage in the morning. Food was thrown out, some equipment caught fire, and the Paris prosecutor called it a large-scale attack. On November 1, a Fortune report added a second chapter: the Pentagon is treating refrigeration failures at several US military commissaries as a possible cyberattack, though nobody has shown a link to France.
+
+I am not a refrigeration engineer. I am writing this because the failure pattern is one I have seen described a hundred times in software and almost never taken seriously in hardware: a management interface reachable from the open internet, on a device nobody patches, run by a contractor nobody audits. Swap the freezer for a build server and you have the same story.
+
+## What Was Reported
+
+Most coverage here traces back to a handful of statements: the French cyber agency alerts, Danfoss comments to the press, and reporting from Reuters and AFP that other outlets repeat. I used The Hacker News, ABC News (Australia) and Fortune as my secondary sources, and they agree on the core facts. They disagree on counts, which I will flag.
+
+| Detail | What the sources say |
+|---|---|
+| When | Overnight, October 11 to 12, 2026, with reports on October 12 and 13 |
+| What happened | Fridge and freezer controllers were reconfigured to heat or defrost, reaching up to about 50 degrees Celsius |
+| Retailers named | Intermarché and Netto (Les Mousquetaires), Carrefour, Monoprix, Coopérative U, and E.Leclerc |
+| Store counts | Vary by source. Carrefour is reported at about 80 stores. Intermarché is reported at about 150 stores by one source and at 300 or more across Intermarché and Netto by another |
+| Devices named by CERT-FR | Danfoss AK-SM and AK-SC series, with a later widening to Copeland and Dixell units according to the trade press |
+| Entry method | Not public. No vulnerability, firmware version or indicators of compromise have been named by the authorities |
+| Other countries | A Sekoia analyst told Reuters that Spain, Portugal, Poland, Germany and Belgium were also affected, with no detail given |
+
+Danfoss told reporters it knew of incidents affecting a limited number of its refrigeration management systems and that the affected units were running outdated firmware. The Hacker News reports that Danfoss says many of the hit units are old models that no longer get software or security updates. It lists the AK-SM 800 as end of life since May 2021 and the AK-SC 355 as phased out in 2016. Treat the exact dates as the vendor's claim relayed by one outlet.
+
+On the damage, the number that stuck with me is the one Intermarché's chief executive gave: losses that could reach tens of millions of euros nationwide in a single day. That is a statement about potential loss, not an audited figure. A separate Sud Ouest figure of about 270,000 euros in stock damage for two chains appears in the Fortune piece, which shows how wide the spread of estimates is.
+
+## What Is Not Known
+
+Here is the part I want to be loud about, because several blog posts I read this week blur it.
+
+No authority has said how the attackers got in. A person close to the French Prime Minister told reporters that the national cyber agency, ANSSI, found a vulnerability in software from a Danish company and notified the vendor. No CVE was named. Nobody has confirmed whether the attackers used a software flaw, default or stolen credentials, or a compromised maintenance provider that had remote access to many stores at once.
+
+There is a tempting story that links this to research published in August 2025 by Claroty on the Danfoss AK-SM 800A, which described an authentication bypass and command injection issues that were later fixed. The Hacker News notes that no authority or Danfoss has linked those flaws to this attack, and that the research was lab work that did not cover the older models. So I treat that link as unverified. It is a reasonable lead for defenders to check, not a finding.
+
+The same caution applies to the American side. Fortune reports refrigeration failures at more than half a dozen commissaries in August 2026, citing Military Times, and four officials told Reuters the Pentagon is treating them as a possible cyberattack. ABC says about a dozen. The Defense Criminal Investigative Service is leading a joint investigation with French authorities. But the article says there is no proof that the failures were caused by a hack at all, nor that they connect to France. I would not repeat the linkage as a fact.
+
+## Why This Class of Device Is So Exposed
+
+A refrigeration controller is a small web server with a very good job. It reads sensors, drives compressors and defrost cycles, and exposes a management page so a maintenance company can tune setpoints remotely. Then the lifecycle goes wrong in a predictable way.
+
+**The device outlives its support window.** Industrial gear gets installed for fifteen years. Software vendors stop issuing fixes long before that. An end of life controller with a known weakness has no fix to apply. The only remediations are to move it behind a wall or replace it.
+
+**Remote access is added for convenience, not designed.** A maintenance contractor needs to reach a few hundred stores. The cheapest way is a port forward from each store router to the controller. That is how a device ends up on the public internet, and it is why scanners find thousands of them.
+
+**One shared weakness scales across retailers.** Fortune quotes experts making this exact point: similar devices run across many chains, so a method that works on one can be reused on the next. The same supplier firmware shows up behind different store brands.
+
+**The blast radius is physical and fast.** In IT, a compromised host costs you data. Here, six hours at 50 degrees costs you a whole cold chain, and the loss cannot be undone with a restore from backup. ABC reports that fridges at roughly 150 Intermarché stores were heated for about six hours overnight.
+
+## What the Official Advice Says
+
+According to the Hacker News summary, CERT-FR advises not exposing management interfaces to the internet at all. Where remote access cannot be avoided, it suggests restricting it to trusted IP addresses. For a controller that may already be compromised, it lists an order of steps: limit network access to the service provider only, factory reset, apply every available fix, change secrets, review accounts, and reconfigure from scratch. ANSSI's director called it urgent to take the two controller series off the internet or filter access tightly.
+
+Notice step three for owners of end of life devices. Apply all available fixes is not an option when the vendor stopped shipping them. For those units the real answer is replacement, and until then, isolation.
+
+## What I Would Do If I Ran Any Plant, Warehouse or Retail Estate
+
+I am keeping this to what follows directly from the facts above. It is my opinion, not a vendor checklist.
+
+1. Inventory every network connected controller you did not buy as IT: refrigeration, HVAC, building management, UPS, door access, label printers. If it has an IP address, it goes on the list with a model, firmware version and support status.
+2. Check what is reachable from the internet. Look at your router and firewall configs and at an external scan of your own address ranges, including the ranges your contractors manage on your behalf. Do not rely on what the contractor tells you.
+3. Remove direct exposure first. If a port forward exists to a management page, delete it and replace it with a VPN or a single managed jump point that logs sessions.
+4. For devices that are still reachable, restrict by source address as a stopgap. A minimal example for a Linux gateway sitting in front of a controller looks like this:
+
+```text
+table inet ot_guard {
+  chain input {
+    type filter hook input priority 0; policy accept;
+    ip saddr 203.0.113.10 tcp dport 443 accept
+    tcp dport { 80, 443 } drop
+  }
+}
+```
+
+   The address there is a documentation placeholder. Put your own jump host in its place. This is a stopgap, not a fix, because anything allowed to reach the controller can still attack it.
+5. Put a temperature alarm on a separate, independent sensor path. If the only thing watching the cold room is the controller an attacker owns, nobody finds out until morning. A cheap standalone logger with its own cellular link catches this scenario.
+6. Ask your contractors three questions in writing: how do they connect to our devices, who holds the credentials, and how would we know if their account was abused. Their answers are part of your attack surface.
+7. Budget the replacement of end of life controllers now. The vendor has said some hit units were years past support. That is a procurement decision, and it is cheaper before an incident.
+
+**Tip:** if you can only do one thing this week, do step 2. Finding out that a controller has been sitting on the open internet is worth more than any policy document.
+
+## My Take
+
+This is a good reminder that the boring parts of infrastructure are where the real risk is hiding. The headline detail is the temperature, but the lesson is the exposure. Nobody needed a clever exploit chain to be worried here. A device that holds physical safety and money in its hands was reachable, was old, and was managed by someone else.
+
+I also think the response so far has a gap that deserves pressure. Several weeks on, the public still does not know the entry method. CERT-FR published guidance but, per the coverage I read, no indicators of compromise. Defenders need indicators to check whether they were hit, not just advice to unplug things. Retailers, the vendor and the agencies should publish what they know as soon as it is safe to do so, because every operator of the same gear in other countries is guessing.
+
+On the Pentagon angle, I will wait. If it turns out that the commissary failures were an attack on the same class of device, the story changes from a retail incident to a national infrastructure one. If it turns out to be equipment failure, the lesson about monitoring still stands. Both are worth preparing for.
+
+## Key Takeaways
+
+- Overnight on October 11 to 12, 2026, attackers heated refrigeration systems at hundreds of French supermarkets to about 50 degrees Celsius. Store counts differ by source.
+- CERT-FR tied the incidents to Danfoss AK-SM and AK-SC controllers, and the trade press reports Copeland and Dixell units were hit too.
+- Danfoss says many hit units are old models with no security updates, and some newer units were on outdated firmware.
+- The entry method is not public. Any claim about a specific vulnerability is unverified.
+- Fortune reports on November 1 that the Pentagon is investigating commissary refrigeration failures as a possible attack. No link to France has been shown.
+- Remove direct internet exposure, restrict remote access to known addresses, and put an independent temperature alarm on every cold room.
+- Most coverage repeats the same few official statements and wire reports, so independent technical confirmation is thin.
+
+## Sources
+
+- [Attackers Heat French Supermarket Fridges Up to 50C by Hijacking Danfoss Controllers (The Hacker News, October 2026)](https://thehackernews.com/2026/10/attackers-heat-french-supermarket.html)
+- [Hackers raise fridge temperatures at hundreds of French supermarkets to spoil food (ABC News Australia, October 13, 2026)](https://www.abc.net.au/news/2026-10-13/french-supermarkets-hacked-causing-fires-and-food-loss/107258724)
+- [Fridge outages are next hacking frontier, and Pentagon is asking if US military bases were targets (Fortune, November 1, 2026)](https://fortune.com/2026/11/01/hackers-pushed-freezers-at-hundreds-of-french-supermarkets-to-122-degrees-pentagon-investigating-us-military-bases/)
