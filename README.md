@@ -4,13 +4,13 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.5-blue.svg)](https://www.typescriptlang.org/)
 [![React](https://img.shields.io/badge/React-18-cyan.svg)](https://reactjs.org/)
 [![Vite](https://img.shields.io/badge/Vite-5.4-purple.svg)](https://vitejs.dev/)
-[![SEO / AEO](https://img.shields.io/badge/SEO%20%2F%20AEO-48%20Route%20Shells-emerald.svg)](https://hassannazir.dev/sitemap.xml)
+[![SEO / AEO](https://img.shields.io/badge/SEO%20%2F%20AEO-92%20Route%20Shells-emerald.svg)](https://hassannazir.dev/sitemap.xml)
 
 <p align="center">
   <img src="./public/images/readme-hero.svg" alt="Hassan Nazir Portfolio & Engineering System Architecture" width="100%" />
 </p>
 
-The public portfolio, commercial services hub, and technical engineering blog of **Hassan Nazir** — Forward Deployed Engineer & Full-Stack AI Architect.
+The public portfolio, services hub and engineering blog of **Hassan Nazir**, Forward Deployed Engineer. AI Environment Engineer at Outsentia, ML Researcher at Anthology and AI Architect at Uno OS.
 
 🌐 **Live Website**: [https://hassannazir.dev](https://hassannazir.dev)
 
@@ -18,8 +18,10 @@ The public portfolio, commercial services hub, and technical engineering blog of
 
 ## ⚡ Overview & Features
 
-- **Editorial & Physics-Driven Interface**: Dark glassmorphic design system (`#08090c`, `#111319`, `#ff5d3d` coral accent) powered by **GSAP ScrollTrigger** and **Framer Motion**.
-- **Gold-Standard File-Based `.mdx` Blog Architecture**: 40 production engineering field guides located in `data/blog/*.mdx` with YAML frontmatter, dynamically indexed at build time using `import.meta.glob` and `gray-matter`.
+- **Clean light/dark design system**: white `#FFFFFF` and grey `#F5F5F7` surfaces, ink `#111113` type and one blue accent `#2F5BFF`, with pill buttons and rounded cards. The theme follows the system setting and can be switched in the footer.
+- **Hand-built interactive SVGs**: a 3D d20 hero where every face links to a real role, project or credential, a roles-only git-style career graph, a gantt career timeline and an icosahedron status marker.
+- **Real routes**: `/about`, `/work`, `/work/:slug`, `/services/:slug`, `/blogs/:slug` and `/contact`, all internally cross-linked. Work, career and quick-answer content each come from one JSON file in `src/data/`.
+- **Gold-Standard File-Based `.mdx` Blog Architecture**: 67 production engineering field guides located in `data/blog/*.mdx` with YAML frontmatter, dynamically indexed at build time using `import.meta.glob` and `gray-matter`.
 - **Remark & Rehype Markdown Pipeline**:
   - **KaTeX LaTeX Math**: Full LaTeX formula typesetting ($T_{\text{total}}$, attention matrices, loss formulations) powered by `remark-math` and `rehype-katex`.
   - **Syntax-Highlighted Code Blocks**: Multi-language code fences with tabbed file headers, clipboard copying, and line numbers (`react-syntax-highlighter`).
@@ -30,8 +32,10 @@ The public portfolio, commercial services hub, and technical engineering blog of
   - **GitHub Discussions (Giscus)**: Developer comments synced to GitHub repository discussions.
 - **Instant Scheduling**: Embedded [Calendly](https://calendly.com) booking drawer for 30-minute technical sessions, themed to match light and dark mode.
 - **Enterprise SEO & AEO (AI Engine Optimization)**:
-  - 48 static crawler-first HTML route shells generated at build time.
-  - Comprehensive `llms.txt` and `llms-full.txt` machine-readable manifests for ChatGPT Search, Perplexity, Claude, and Gemini.
+  - 92 static crawler-first HTML route shells generated at build time, each with a JSON-LD `@graph` and `BreadcrumbList`, plus `FAQPage` data and visible quick answers on `/about`.
+  - `llms.txt`, the `llms-full.txt` index, `portfolio.json` and the `ai-catalog.json` / `ard.json` agent catalog are regenerated from the site data on every build (`scripts/generate-ai-files.mjs`).
+  - WebMCP tools for browser agents (profile, work, services, articles, booking) in `src/utils/webmcp.ts`.
+  - Branded Open Graph cards for every page and project (`node scripts/generate-og-images.mjs`), and IndexNow submission (`npm run seo:submit`).
   - Automated XML Sitemaps (`sitemap.xml`), RSS 2.0 (`feed.xml`), Atom 1.0 (`atom.xml`), and JSON Feed 1.1 (`feed.json`).
   - Client-side search index (`search.json`) and real-time hashtag tag cloud (`tag-data.json`).
 
@@ -57,10 +61,10 @@ The public portfolio, commercial services hub, and technical engineering blog of
 
 | Category | Technologies |
 |---|---|
-| **Core & UI** | React 18, TypeScript 5.5, Vite 5.4, Tailwind CSS, GSAP ScrollTrigger, Framer Motion |
+| **Core & UI** | React 18, TypeScript 5.5, Vite 5.4, React Router 6, scoped CSS design system, hand-written SVG, Tailwind CSS (blog pages), Framer Motion (booking drawer) |
 | **Content Engine** | MDX, Gray-Matter, React-Markdown, Remark-GFM, Remark-Math, Rehype-KaTeX, KaTeX |
 | **Integrations** | Calendly (Scheduling), EmailJS (Contact form), Giscus (GitHub Discussions) |
-| **SEO & Feeds** | 48 Static HTML Route Shells, RSS 2.0, Atom 1.0, JSON Feed 1.1, JSON-LD Schema Graphs |
+| **SEO & Feeds** | 92 Static HTML Route Shells, RSS 2.0, Atom 1.0, JSON Feed 1.1, JSON-LD Schema Graphs, llms.txt, WebMCP, IndexNow |
 
 ---
 
@@ -92,7 +96,7 @@ npm run dev
 ```bash
 npm run build
 ```
-This compiles the Vite bundle and generates all 48 static pre-rendered HTML route shells, search indexes, feeds, and sitemaps in `dist/`.
+This compiles the Vite bundle, generates all 92 pre-rendered HTML route shells, the search index, feeds and sitemap, then regenerates the LLM and agent files in `public/` and `dist/`.
 
 ---
 
@@ -103,6 +107,7 @@ To publish a new article, simply create a new `.mdx` file in `data/blog/`:
 ```yaml
 ---
 title: "Your Article Title Here"
+seoTitle: "Optional shorter search title (60 characters or less)"
 publishedAt: '2026-09-03'
 category: "Forward Deployed Engineering"
 readTime: '10 min read'

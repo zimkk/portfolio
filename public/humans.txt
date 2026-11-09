@@ -3,7 +3,8 @@
 
 # TEAM
 
-    Hassan Nazir -- Forward Deployed Engineer & Applied AI -- hassannazir955@gmail.com
+    Hassan Nazir, Forward Deployed Engineer, hassannazir955@gmail.com
+    AI Environment Engineer at Outsentia, ML Researcher at Anthology, AI Architect at Uno OS
 
 # AI / LLM RESOURCES
 
@@ -11,6 +12,8 @@
     llms.txt: https://hassannazir.dev/llms.txt
     llms-full.txt: https://hassannazir.dev/llms-full.txt
     portfolio.json: https://hassannazir.dev/portfolio.json
+    ai-catalog.json: https://hassannazir.dev/.well-known/ai-catalog.json
+    sitemap.xml: https://hassannazir.dev/sitemap.xml
     feed.xml: https://hassannazir.dev/feed.xml
     robots.txt allows search and AI retrieval crawlers
 
@@ -21,14 +24,14 @@
 # TECHNOLOGY COLOPHON
 
     HTML5, CSS3, JavaScript, TypeScript
-    React, Vite, Tailwind CSS
+    React, Vite, React Router, hand-written SVG and CSS
     AI/ML: LangGraph, LangChain, Hugging Face, n8n, OpenAI, Claude, PyTorch, TensorFlow
     DevOps: Docker, Kubernetes, AWS, GCP
     Testing: Selenium, Playwright
 
 # SITE
 
-    Last update: 2026/08/26
+    Last update: 2026/11/09
     Language: English
     Doctype: HTML5
 
@@ -43,6 +46,14 @@
     LinkedIn: https://linkedin.com/in/hassannazirrr
     GitHub: https://github.com/zimkk
     Twitter: https://twitter.com/hassannazir
+
+# PAGES
+
+    About: https://hassannazir.dev/about
+    Work: https://hassannazir.dev/work
+    Services: https://hassannazir.dev/services
+    Writing: https://hassannazir.dev/blogs
+    Contact: https://hassannazir.dev/contact
 
 # DEPLOYED PROJECTS
 
