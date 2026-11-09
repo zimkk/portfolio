@@ -1,6 +1,19 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!-- Theme: the visitor's saved choice, otherwise the system setting. Runs before first paint so there is no flash. -->
+    <script>
+      (function () {
+        var pref = 'system';
+        try { pref = localStorage.getItem('hn-theme') || 'system'; } catch (e) {}
+        var dark = pref === 'dark' || (pref === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        var root = document.documentElement;
+        root.setAttribute('data-theme', dark ? 'dark' : 'light');
+        root.setAttribute('data-theme-pref', pref);
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute('content', dark ? '#0B0B0D' : '#FFFFFF');
+      })();
+    </script>
     <!-- Google tag (gtag.js) -->
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -30,7 +43,7 @@
     <meta name="author" content="Hassan Nazir" data-rh="true" />
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" data-rh="true" />
     <meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1" data-rh="true" />
-    <meta name="theme-color" content="#08090c" data-rh="true" />
+    <meta name="theme-color" content="#FFFFFF" />
     <meta name="msvalidate.01" content="5CD5545C253FBDC05F1AF84F6F70C070" />
 
     <link rel="canonical" href="https://hassannazir.dev" data-rh="true" />
@@ -45,6 +58,8 @@
     <link rel="alternate" type="application/atom+xml" href="/atom.xml" title="Hassan Nazir engineering blogs (Atom)" data-rh="true" />
     <link rel="alternate" type="application/feed+json" href="/feed.json" title="Hassan Nazir engineering blogs (JSON Feed)" data-rh="true" />
     <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
+    <link rel="preconnect" href="https://assets.calendly.com" crossorigin />
+    <link rel="dns-prefetch" href="https://calendly.com" />
     <link rel="manifest" href="/manifest.json" />
     <link rel="preload" as="image" href="/images/profile-hero.webp" fetchpriority="high" />
     <link rel="preload" as="font" type="font/woff2" href="/fonts/satoshi-400.woff2" crossorigin />
@@ -247,45 +262,32 @@
     </script>
 
     <style>
-      :root {
-        color-scheme: dark;
-        --ink: #08090c;
-        --ink-soft: #111319;
-        --paper: #d9dee8;
-        --paper-deep: #aab3c2;
-        --muted: #8e98a8;
-        --line: rgba(217, 222, 232, 0.16);
-        --acid: #ff5d3d;
-        --acid-deep: #d9452b;
-        --blue: #202a48;
-        --blue-deep: #111729;
-        --frame: 1760px;
-        --content-frame: 1760px;
-        --mono: 'IBM Plex Mono', monospace;
-      }
+      /* Critical CSS for the first paint, before the app stylesheet arrives. */
       * { box-sizing: border-box; }
-      html { scroll-behavior: smooth; background: #08090c; -webkit-text-size-adjust: 100%; }
-      body { margin: 0; min-width: 320px; overflow-x: hidden; background: #08090c; color: #d9dee8; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
-      #root:empty { min-height: 100vh; background: #08090c; }
-      .portfolio-shell { position: relative; background: #08090c; min-height: 100vh; }
-      .site-nav { position: fixed; z-index: 100; top: 0; left: 0; width: 100%; min-height: 70px; background: rgba(8,9,12,.92); border-bottom: 1px solid rgba(217,222,232,.16); }
-      .crawler-fallback { min-height: 100vh; padding: 8rem max(1.5rem, calc((100vw - 80rem)/2)); background: #08090c; color: #d9dee8; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+      html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+      body { margin: 0; min-width: 320px; overflow-x: hidden; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+      #root:empty { min-height: 100vh; }
+      .crawler-fallback { min-height: 100vh; padding: 8rem max(1.5rem, calc((100vw - 80rem)/2)); font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
       .crawler-fallback h1 { max-width: 70rem; margin: 0; font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1.05; }
       .crawler-fallback p { max-width: 52rem; font-size: 1.1rem; line-height: 1.7; }
       .crawler-fallback a { color: inherit; }
+      /* Theme (light / dark), set before first paint by the script at the top of <head> */
+      html[data-theme="light"], html[data-theme="light"] body, html[data-theme="light"] #root:empty, html[data-theme="light"] .crawler-fallback { background: #FFFFFF; color: #111113; color-scheme: light; }
+      html[data-theme="dark"], html[data-theme="dark"] body, html[data-theme="dark"] #root:empty, html[data-theme="dark"] .crawler-fallback { background: #0B0B0D; color: #F2F2F4; color-scheme: dark; }
+      .hn-prepaint { display: block; min-height: 100vh; padding: 200px max(16px, calc((100vw - 1240px) / 2 + 48px)) 40px; font-family: 'Satoshi', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; }
+      .hn-prepaint p { margin: 0 0 26px; font-family: 'IBM Plex Mono', monospace; font-size: 11.5px; letter-spacing: .12em; color: #9A9AA3; }
+      .hn-prepaint div { font-size: clamp(58px, 7.6vw, 120px); font-weight: 900; letter-spacing: -.06em; line-height: .84; }
+      .hn-prepaint strong { display: block; margin-top: 30px; font-size: clamp(22px, 2.2vw, 30px); font-weight: 700; letter-spacing: -.03em; }
+      .hn-prepaint mark { background: none; color: #8E8E95; }
     </style>
   </head>
   <body>
     <div id="root">
       <!-- prepaint-hero:start -->
-      <section class="hero-section fde-hero" aria-hidden="true">
-        <div class="hero-orbit"><span></span><i></i><b></b></div>
-        <div class="fde-title">
-          <span class="hero-line-wrap fde-line"><span class="masthead-word fde-forward">FORWARD</span></span>
-          <span class="hero-line-wrap fde-line"><span class="masthead-word fde-deployed">DEPLOYED</span></span>
-          <span class="hero-line-wrap fde-line fde-engineer-line"><span class="masthead-word hero-foreground-word">ENGINEER</span></span>
-        </div>
-        <figure class="hero-portrait"><img src="/images/profile-hero.webp" width="768" height="768" fetchpriority="high" alt="Hassan Nazir, Forward Deployed Engineer working in applied AI" /></figure>
+      <section class="hn-prepaint" aria-hidden="true">
+        <p>FORWARD DEPLOYED ENGINEER · ISLAMABAD / DUBAI</p>
+        <div>Hassan<br />Nazir</div>
+        <strong>Twenty sides. <mark>One job.</mark></strong>
       </section>
       <!-- prepaint-hero:end -->
       <main class="crawler-fallback">

@@ -2,7 +2,6 @@ import 'react';
 
 declare global {
   interface Window {
-    Cal?: any;
     modelContext?: any;
   }
 

@@ -15,7 +15,6 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks: {
-          gsap: ['gsap', '@gsap/react', 'gsap/ScrollTrigger'],
           react: ['react', 'react-dom', 'react-router-dom', 'react-helmet-async'],
         },
       },

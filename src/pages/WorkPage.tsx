@@ -1,139 +1,54 @@
-import { useState } from 'react';
-import { ArrowRight, ArrowUpRight } from 'lucide-react';
-import EditorialNav from '../components/ui/EditorialNav';
-import PageTransition from '../components/ui/PageTransition';
+import { Link } from 'react-router-dom';
+import { ArrowRight } from 'lucide-react';
 import SEOHead from '../components/ui/SEOHead';
-import { schemaIds, siteConfig } from '../config/metadata';
+import { PageShell } from '../components/hn/chrome';
+import { BuildLogSection, CtaBand, PageHero, WorkSection } from '../components/hn/sections';
+import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
+import { projectPath, projects } from '../data/work';
 
-const workProjects = [
-  {
-    title: 'Enterprise AI Automation Platform',
-    client: 'NDT Legacy Group',
-    duration: '6 months',
-    year: '2025',
-    category: 'AI Automations',
-    description: 'A production automation platform spanning document processing, AI decision support, internal services, third-party APIs, queues, and audit controls.',
-    image: '/images/ai-automation.svg',
-    technologies: ['Python', 'n8n', 'LangChain', 'OpenAI API', 'PostgreSQL', 'Docker'],
-    challenges: ['Integrating legacy systems', 'Real-time processing at scale', 'Domain-specific model behavior'],
-    solutions: ['Custom API bridges and service boundaries', 'Event-driven workflows backed by Redis', 'Evaluation datasets and tuned model integrations'],
-    results: ['60% less manual processing', '95% automated-decision accuracy', '$200K+ estimated annual savings'],
-    stats: [['Manual work', '−60%'], ['Accuracy', '95%'], ['Annual value', '$200K+']],
-    href: 'https://n8nhub.hassannazir.dev',
-  },
-  {
-    title: 'Full-Stack Membership & Athletic Platform',
-    client: 'The Home Club',
-    duration: '5 months',
-    year: '2025',
-    category: 'Full-Stack Development',
-    description: 'A custom full-stack sports platform unifying memberships, program enrollments, real-time court scheduling, and payment pipelines.',
-    image: '/images/projects/the-home-club.webp',
-    technologies: ['TypeScript', 'Next.js', 'React', 'Node.js', 'PostgreSQL', 'Tailwind CSS'],
-    challenges: ['High-concurrency court booking slots', 'Unified billing with Stripe subscription lifecycle', 'Responsive zero-latency client UI'],
-    solutions: ['Serverless Next.js API routes with transaction isolation', 'Optimistic concurrency control for slot reservations', 'Modular component architecture with server components'],
-    results: ['99.9% booking uptime', '4x increase in online member self-service', 'Zero double-booking incidents'],
-    stats: [['Uptime', '99.9%'], ['Self-service', '+400%'], ['Double bookings', '0']],
-    href: 'https://thehomeclubsports.com',
-  },
-  {
-    title: 'Cloud Security Monitoring System',
-    client: 'Gridcore',
-    duration: '5 months',
-    year: '2024—2025',
-    category: 'Cloud / Security',
-    description: 'A threat-detection and incident-response layer for distributed cloud infrastructure, designed to improve signal quality without interrupting legitimate operations.',
-    image: '/images/cloud.svg',
-    technologies: ['Python', 'AWS', 'Terraform', 'Grafana', 'Elasticsearch', 'Docker'],
-    challenges: ['Cross-environment threat detection', 'Reducing false-positive noise', 'Safe automated response'],
-    solutions: ['ML-assisted anomaly detection', 'Context-aware alert filtering', 'Graduated response with manual override'],
-    results: ['99.2% monitored-system uptime', '85% faster incident response', 'Zero successful breaches during deployment'],
-    stats: [['Uptime', '99.2%'], ['Response', '−85%'], ['Breaches', '0']],
-  },
-  {
-    title: 'Automated QA Testing Framework',
-    client: 'Brilliant Gaming',
-    duration: '4 months',
-    year: '2025',
-    category: 'Quality / Testing',
-    description: 'A modular automation framework for critical gaming and payment journeys, integrated into CI/CD and designed for reliable parallel execution.',
-    image: '/images/software-testing.svg',
-    technologies: ['Python', 'Selenium', 'Pytest', 'Jenkins', 'Allure', 'Docker'],
-    challenges: ['Complex transaction scenarios', 'Existing CI/CD integration', 'Cross-environment test reliability'],
-    solutions: ['Reusable modular test architecture', 'Parallel execution and resource allocation', 'Environment-independent configuration'],
-    results: ['70% less manual test time', '95% critical-journey coverage', '50% faster release cycles'],
-    stats: [['Testing time', '−70%'], ['Coverage', '95%'], ['Release speed', '+50%']],
-  },
-];
+const url = `${siteConfig.url}/work`;
 
-const WorkPage = () => {
-  const [selectedCategory, setSelectedCategory] = useState('All work');
-  const categories = ['All work', ...Array.from(new Set(workProjects.map((project) => project.category)))];
-  const visibleProjects = selectedCategory === 'All work' ? workProjects : workProjects.filter((project) => project.category === selectedCategory);
-  const workSchema = {
+export default function WorkPage() {
+  const schema = {
     '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    name: 'Selected engineering case studies by Hassan Nazir',
-    numberOfItems: workProjects.length,
-    itemListElement: workProjects.map((project, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'CreativeWork',
-        name: project.title,
-        description: project.description,
-        image: `${siteConfig.url}${project.image}`,
-        creator: { '@id': schemaIds.personId },
-        dateCreated: project.year.slice(0, 4),
-        keywords: project.technologies.join(', '),
-        url: project.href || `${siteConfig.url}/work`,
-      },
-    })),
+    '@type': 'CollectionPage',
+    '@id': `${url}#work`,
+    url,
+    name: 'Work by Hassan Nazir',
+    author: { '@id': schemaIds.personId },
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: projects.map((project, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${siteConfig.url}${projectPath(project.slug)}`,
+        name: project.name,
+      })),
+    },
   };
-
   return (
-    <PageTransition>
-      <SEOHead page="work" jsonLd={workSchema} />
-      <main className="route-shell overflow-x-hidden w-full max-w-full">
-        <EditorialNav />
-        <section className="archive-hero">
-          <p>Case studies in forward deployed engineering, enterprise AI automations, and full-stack software development.</p>
-          <h1>Systems that made it past the demo.</h1>
-          <div><span>Forward Deployed</span><span>AI Automations</span><span>Full-Stack Systems</span></div>
-        </section>
-
-        <div className="archive-filters" role="group" aria-label="Filter case studies">
-          {categories.map((category) => <button type="button" key={category} onClick={() => setSelectedCategory(category)} aria-pressed={selectedCategory === category}>{category}</button>)}
-        </div>
-
-        <section className="study-list">
-          {visibleProjects.map((project) => (
-            <article className="study" key={project.title}>
-              <div className="study-heading">
-                <p>{project.category} · {project.year}</p>
-                <h2>{project.title}</h2>
-                <div><span>{project.client}</span><span>{project.duration}</span></div>
-              </div>
-              <div className="study-media"><img src={project.image} loading="lazy" decoding="async" alt={project.title} /></div>
-              <div className="study-overview">
-                <p>{project.description}</p>
-                <ul>{project.technologies.map((technology) => <li key={technology}>{technology}</li>)}</ul>
-                {project.href && <a href={project.href} target="_blank" rel="noopener noreferrer">Open related product <ArrowUpRight size={16} /></a>}
-              </div>
-              <div className="study-stats">{project.stats.map(([label, value]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
-              <div className="study-detail">
-                <div><h3>The constraint</h3><ul>{project.challenges.map((item) => <li key={item}>{item}</li>)}</ul></div>
-                <div><h3>The engineering response</h3><ul>{project.solutions.map((item) => <li key={item}>{item}</li>)}</ul></div>
-                <div><h3>What changed</h3><ul>{project.results.map((item) => <li key={item}>{item}</li>)}</ul></div>
-              </div>
-            </article>
-          ))}
-        </section>
-
-        <section className="route-cta"><p>Have a system with real constraints?</p><h2>Let’s work through the difficult part.</h2><a href="/#contact">Start with a concise brief <ArrowRight size={18} /></a></section>
-      </main>
-    </PageTransition>
+    <>
+      <SEOHead
+        title="Work: Live Products and Open Source | Hassan Nazir"
+        description="Live products and public source code by Hassan Nazir: AI agents, n8n automation, ML pipelines, security tooling and full-stack software, each with its own write-up."
+        url={url}
+        image="/images/og/default.jpg"
+        jsonLd={[schema, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Work', url }])]}
+      />
+      <PageShell>
+        <PageHero
+          eyebrow="Work"
+          title="Things that are running"
+          mark="somewhere right now."
+          lede={`${projects.length} projects. Live products people use, and public source you can read. Every one has its own page with the stack, the parts that were hard, and the services it sits under.`}
+        >
+          <Link to="/services" className="hn-btn hn-btn-ghost">How I can help <ArrowRight size={16} /></Link>
+          <Link to="/blogs" className="hn-link">The writing behind it <ArrowRight size={14} /></Link>
+        </PageHero>
+        <WorkSection index="01" cta={false} />
+        <BuildLogSection index="02" />
+        <CtaBand heading="Got something that should be on this page?" line="Tell me what it is, what it should do, and what it does instead." />
+      </PageShell>
+    </>
   );
-};
-
-export default WorkPage;
+}

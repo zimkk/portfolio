@@ -47,7 +47,7 @@ export function registerWebMCPTools(): void {
           ],
           contact: {
             email: 'hassannazir955@gmail.com',
-            calendarUrl: 'https://cal.com/hassannazir/30min',
+            calendarUrl: 'https://calendly.com/hassannazir955/30min',
             website: 'https://hassannazir.dev',
             github: 'https://github.com/zimkk',
             linkedin: 'https://linkedin.com/in/hassannazirrr',
@@ -138,7 +138,7 @@ export function registerWebMCPTools(): void {
       execute: async () => {
         return JSON.stringify({
           provider: 'Cal.com',
-          bookingUrl: 'https://cal.com/hassannazir/30min',
+          bookingUrl: 'https://calendly.com/hassannazir955/30min',
           durationMinutes: 30,
           type: 'Technical Working Session & Architecture Review',
           availability: 'Monday through Friday, overlapping with US Eastern (EST), Central (CST), and Pacific (PST) hours.',

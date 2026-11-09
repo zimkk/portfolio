@@ -32,7 +32,7 @@ const mdxModules = import.meta.glob('/data/blog/*.mdx', {
 }) as Record<string, string>;
 
 let idCounter = 1;
-export const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePath, rawContent]) => {
+const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePath, rawContent]) => {
   const { data, content } = parseFrontmatter(rawContent);
   const slug = filePath.split('/').pop()?.replace(/\.mdx?$/, '') || '';
 

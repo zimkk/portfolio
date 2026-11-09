@@ -1,4 +1,5 @@
 import { mkdir, readdir, readFile, writeFile } from 'node:fs/promises';
+import { existsSync } from 'node:fs';
 import path from 'node:path';
 import matter from 'gray-matter';
 
@@ -38,6 +39,17 @@ for (const file of mdxFiles) {
     content: content || '',
   });
 }
+
+// Projects: one page each at /work/:slug. Same JSON the React app reads.
+const work = JSON.parse(await readFile(path.resolve('src/data/work.json'), 'utf8')).projects;
+const serviceNames = {
+  'forward-deployed-engineer': 'Forward Deployed Engineering',
+  'applied-ai-consulting': 'Applied AI Consulting',
+  'ai-agent-development': 'AI Agent and RAG Development',
+  'n8n-automation-consultant': 'AI Automations & n8n',
+  'full-stack-software-development': 'Full-Stack Software Development',
+};
+const disciplineLabel = { 'full-stack': 'Full-stack', ml: 'Applied ML', automation: 'Automation', security: 'Security' };
 
 // Sort newest first
 articles.sort((a, b) => new Date(b.published).getTime() - new Date(a.published).getTime());
@@ -114,6 +126,34 @@ function articlesForService(slug, limit = 6) {
   return (matches.length ? matches : articles).slice(0, limit);
 }
 
+function postsForKeywords(keywords, limit = 4) {
+  const words = keywords.map((w) => w.toLowerCase());
+  return articles
+    .map((a) => {
+      const hay = `${a.title} ${a.description} ${a.tags.join(' ')}`.toLowerCase();
+      return { a, score: words.reduce((n, w) => n + (hay.includes(w) ? 1 : 0), 0) };
+    })
+    .filter(({ score }) => score > 0)
+    .sort((x, y) => y.score - x.score || new Date(y.a.published).getTime() - new Date(x.a.published).getTime())
+    .slice(0, limit)
+    .map(({ a }) => a);
+}
+
+function relatedWork(project, limit = 3) {
+  return work
+    .filter((o) => o.slug !== project.slug)
+    .map((o) => ({ o, score: o.services.filter((s) => project.services.includes(s)).length * 2 + (o.discipline === project.discipline ? 1 : 0) }))
+    .filter(({ score }) => score > 0)
+    .sort((x, y) => y.score - x.score)
+    .slice(0, limit)
+    .map(({ o }) => o);
+}
+
+const workLinkList = (items) => `
+        <ul>
+          ${items.map((w) => `<li><a href="/work/${w.slug}">${escapeHtml(w.name)}</a>: ${escapeHtml(w.summary)}</li>`).join('\n          ')}
+        </ul>`;
+
 const articleLinkList = (items) => `
         <ul>
           ${items.map((a) => `<li><a href="/blogs/${a.slug}">${escapeHtml(a.title)}</a></li>`).join('\n          ')}
@@ -145,6 +185,40 @@ const routes = [
     serviceType: service.serviceType,
     image: service.image,
   })),
+  {
+    route: '/about',
+    title: 'About Hassan Nazir | Forward Deployed Engineer',
+    description: 'Who Hassan Nazir is, how he works with teams, the stack he covers from interface to infrastructure, and six years of QA, full-stack, ML and security work.',
+    type: 'AboutPage',
+    heading: 'QA, then full-stack, then architecture, then AI. Same person throughout.',
+    summary: 'I join teams that have a messy operation and a deadline, and I stay until the software holding it together is running.',
+  },
+  {
+    route: '/work',
+    title: 'Work: Live Products and Open Source | Hassan Nazir',
+    description: 'Live products and public source code by Hassan Nazir: AI agents, n8n automation, ML pipelines, security tooling and full-stack software, each with its own write-up.',
+    type: 'CollectionPage',
+    heading: 'Things that are running somewhere right now.',
+    summary: `${work.length} projects. Live products people use, and public source you can read.`,
+  },
+  ...work.map((project) => ({
+    route: `/work/${project.slug}`,
+    title: documentTitle(`${project.name}: ${disciplineLabel[project.discipline]} Project`),
+    description: `${project.summary} ${project.stack.slice(0, 4).join(', ')}.`,
+    type: 'Project',
+    heading: project.name,
+    summary: project.summary,
+    project,
+    image: project.image,
+  })),
+  {
+    route: '/contact',
+    title: 'Contact Hassan Nazir | Book a 30 Minute Call',
+    description: 'Send Hassan Nazir a short brief or book a 30 minute call about AI automation, agents, n8n workflows or full-stack software. Remote, with US, UK and EU overlap.',
+    type: 'ContactPage',
+    heading: 'Bring me the part that keeps breaking.',
+    summary: 'A few lines is enough. What it is, what it should do, and what it does instead.',
+  },
   {
     route: '/blogs',
     title: 'Applied AI & Software Engineering Blogs | Hassan Nazir',
@@ -358,7 +432,9 @@ for (const route of routes) {
   const ogKey = route.type === 'BlogPosting' ? route.article.slug
     : route.type === 'Service' ? `service-${route.route.split('/').pop()}`
     : route.route.slice(1);
-  const ogImage = `${siteUrl}/images/og/${ogKey}.jpg`;
+  const ogImage = existsSync(path.join(publicDir, 'images', 'og', `${ogKey}.jpg`))
+    ? `${siteUrl}/images/og/${ogKey}.jpg`
+    : (route.project?.image ? `${siteUrl}${route.project.image}` : `${siteUrl}/images/og/default.jpg`);
   const schema = route.type === 'BlogPosting'
     ? {
         '@context': 'https://schema.org',
@@ -376,6 +452,29 @@ for (const route of routes) {
         author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir', url: siteUrl },
         publisher: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir', url: siteUrl, image: `${siteUrl}/images/profile.png` },
       }
+    : route.type === 'Project'
+      ? {
+          '@context': 'https://schema.org',
+          '@type': route.project.repo && !route.project.live ? 'SoftwareSourceCode' : 'CreativeWork',
+          name: route.project.name,
+          description: route.project.description,
+          url: canonical,
+          image: ogImage,
+          keywords: route.project.stack.join(', '),
+          author: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir', url: siteUrl },
+          ...(route.project.repo ? { codeRepository: route.project.repo } : {}),
+          ...(route.project.live ? { sameAs: route.project.live } : {}),
+        }
+    : route.type === 'AboutPage' || route.type === 'ContactPage'
+      ? {
+          '@context': 'https://schema.org',
+          '@type': route.type,
+          name: route.title,
+          description: route.description,
+          url: canonical,
+          inLanguage: 'en',
+          mainEntity: { '@type': 'Person', '@id': `${siteUrl}/#hassan-nazir`, name: 'Hassan Nazir' },
+        }
     : route.type === 'Service'
       ? {
           '@context': 'https://schema.org',
@@ -438,7 +537,88 @@ for (const route of routes) {
       <footer class="crawler-footer">
         <p>Written and maintained by <a href="${siteUrl}">Hassan Nazir</a>, Forward Deployed Engineer and Full-Stack AI Architect.</p>
         <nav aria-label="Site index">
-          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.type === 'Project') {
+    const pr = route.project;
+    bodyContent = `
+      <article>
+        <h1>${escapeHtml(pr.name)}</h1>
+        <p><strong>${escapeHtml(pr.summary)}</strong></p>
+        <p>${escapeHtml(pr.description)}</p>
+        <h2>Highlights</h2>
+        <ul>${pr.highlights.map((h) => `<li>${escapeHtml(h)}</li>`).join('')}</ul>
+        <p>Stack: ${escapeHtml(pr.stack.join(', '))}</p>
+        <p>${pr.live ? `<a href="${pr.live}" rel="noopener">Live product</a>` : ''}${pr.live && pr.repo ? ' · ' : ''}${pr.repo ? `<a href="${pr.repo}" rel="noopener">Source code</a>` : ''}</p>
+        <section>
+          <h2>Where it fits</h2>
+          <ul>${pr.services.map((s) => `<li><a href="/services/${s}">${escapeHtml(serviceNames[s])}</a></li>`).join('')}</ul>
+        </section>
+        <section>
+          <h2>Related work</h2>${workLinkList(relatedWork(pr))}
+        </section>
+        <section>
+          <h2>Related field notes</h2>${articleLinkList(postsForKeywords(pr.keywords, 4))}
+        </section>
+      </article>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.route === '/work') {
+    bodyContent = `
+      <section>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <p>${escapeHtml(route.summary)}</p>
+        <h2>Live products</h2>${workLinkList(work.filter((w) => w.kind === 'product'))}
+        <h2>Public source</h2>${workLinkList(work.filter((w) => w.kind === 'repo'))}
+      </section>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.type === 'AboutPage') {
+    bodyContent = `
+      <section>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <p>${escapeHtml(route.summary)}</p>
+        <p>Hassan Nazir is a forward deployed engineer based in Islamabad and Dubai, working remotely with US, UK and EU teams. He started in QA, moved into full-stack, then architecture, then applied AI. Credentials: CEH-P, PEH, ISO/IEC 27001. BS Computer Science, Air University.</p>
+        <h2>Career</h2>
+        <ul>
+          <li>AI Architect, Uno OS (May 2026 to now)</li>
+          <li>Software Architect and Full-Stack Engineer, GridCore (Aug 2021 to now)</li>
+          <li>Senior AI Engineer, NDT Legacy Group (Aug 2025 to Apr 2026)</li>
+          <li>Senior AI Engineer, Schmoozzer (Oct 2025 to Jan 2026)</li>
+          <li>Lead QA Engineer, Brilliant Gaming (Feb 2025 to Sep 2025)</li>
+          <li>QA Executive, Touchstone Communications (2020 to 2023)</li>
+        </ul>
+        <h2>Selected work</h2>${workLinkList(work.filter((w) => w.glyph || w.kind === 'product').slice(0, 8))}
+        <h2>Services</h2>
+        <ul>${services.map((sv) => `<li><a href="/services/${sv.slug}">${escapeHtml(sv.serviceType)}</a></li>`).join('')}</ul>
+      </section>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
+        </nav>
+      </footer>
+    `;
+  } else if (route.type === 'ContactPage') {
+    bodyContent = `
+      <section>
+        <h1>${escapeHtml(route.heading)}</h1>
+        <p>${escapeHtml(route.summary)}</p>
+        <p>Email <a href="mailto:hassannazir955@gmail.com">hassannazir955@gmail.com</a>, or book a 30 minute call. Based in Islamabad and Dubai, working with US, UK and EU teams.</p>
+        <p>Not sure what to ask for? <a href="/services">See the five ways I work with teams</a> or <a href="/work">look at the work</a>.</p>
+      </section>
+      <footer class="crawler-footer">
+        <nav aria-label="Site index">
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
         </nav>
       </footer>
     `;
@@ -459,7 +639,7 @@ for (const route of routes) {
       </section>
       <footer class="crawler-footer">
         <nav aria-label="Site index">
-          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
         </nav>
       </footer>
     `;
@@ -473,6 +653,9 @@ for (const route of routes) {
           <p>Production execution across AI automations, agentic systems, full-stack software development, and systems integration for US and global teams.</p>
         </section>
         <section>
+          <h2>Work behind this service</h2>${workLinkList(work.filter((w) => w.services.includes(route.route.split('/').pop())))}
+        </section>
+        <section>
           <h2>Field notes from this practice</h2>${articleLinkList(articlesForService(route.route.split('/').pop()))}
         </section>
         <section>
@@ -484,7 +667,7 @@ for (const route of routes) {
       </article>
       <footer class="crawler-footer">
         <nav aria-label="Site index">
-          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
         </nav>
       </footer>
     `;
@@ -502,7 +685,7 @@ for (const route of routes) {
       </ul>
       <footer class="crawler-footer">
         <nav aria-label="Site index">
-          <a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/llms.txt">AI-readable index</a>
+          <a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a> · <a href="/llms.txt">AI-readable index</a>
         </nav>
       </footer>
     `;
@@ -538,7 +721,10 @@ for (const route of routes) {
 }
 
 // Homepage static HTML: surface the newest field notes so crawlers reach them in one hop
-const homeHtml = template.replace('<!-- latest-field-notes -->', () => `<h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 10))}`);
+// The portrait is no longer above the fold on the home page, so don't spend the LCP budget preloading it.
+const homeHtml = template
+  .replace('<!-- latest-field-notes -->', () => `<h2>Selected Work</h2>${workLinkList(work)}<h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 10))}`)
+  .replace(/\s*<link rel="preload" as="image" href="\/images\/profile-hero\.webp" fetchpriority="high" \/>/, '');
 await writeFile(path.join(distDir, 'index.html'), homeHtml);
 
 // 404 page: Vercel serves dist/404.html with a real 404 status for any path without a static
@@ -553,7 +739,7 @@ let notFoundHtml = template
         <h1>Page not found</h1>
         <p>This page does not exist or has moved.</p>
         <h2>Latest Field Notes</h2>${articleLinkList(articles.slice(0, 6))}
-        <nav aria-label="Site index"><a href="/">Home</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a></nav>
+        <nav aria-label="Site index"><a href="/">Home</a> · <a href="/work">Work</a> · <a href="/about">About</a> · <a href="/services">Services</a> · <a href="/blogs">Blogs</a> · <a href="/contact">Contact</a></nav>
       </main>`);
 notFoundHtml = replaceMeta(notFoundHtml, 'name="robots"', 'noindex,follow');
 notFoundHtml = replaceMeta(notFoundHtml, 'name="googlebot"', 'noindex,follow');
@@ -672,6 +858,10 @@ await writeFile(path.join(distDir, 'feed.json'), JSON.stringify(jsonFeed, null, 
 // 4. Generate sitemap.xml
 const sitemapUrls = [
   { loc: `${siteUrl}/`, changefreq: 'weekly', priority: '1.0' },
+  { loc: `${siteUrl}/work`, changefreq: 'weekly', priority: '0.9' },
+  { loc: `${siteUrl}/about`, changefreq: 'monthly', priority: '0.8' },
+  { loc: `${siteUrl}/contact`, changefreq: 'yearly', priority: '0.6' },
+  ...work.map((w) => ({ loc: `${siteUrl}/work/${w.slug}`, changefreq: 'monthly', priority: '0.7' })),
   { loc: `${siteUrl}/services`, changefreq: 'weekly', priority: '0.9' },
   { loc: `${siteUrl}/blogs`, changefreq: 'daily', priority: '0.9' },
   ...services.map((s) => ({ loc: `${siteUrl}/services/${s.slug}`, changefreq: 'monthly', priority: '0.8' })),

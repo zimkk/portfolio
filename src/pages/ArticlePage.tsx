@@ -17,11 +17,11 @@ import {
   Tag as TagIcon,
   BookOpen
 } from 'lucide-react';
-import EditorialNav from '../components/ui/EditorialNav';
+import { SiteFooter, StandaloneNav } from '../components/hn/chrome';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
-import { blogPosts } from './BlogsPage';
+import { blogPosts } from '../data/blogs';
 import CodeBlock from '../components/blog/CodeBlock';
 import AlertBox, { AlertType } from '../components/blog/AlertBox';
 import TOCInline, { extractHeadingsFromMarkdown } from '../components/blog/TOCInline';
@@ -75,19 +75,20 @@ const ArticlePage: React.FC = () => {
     return (
       <PageTransition>
         <SEOHead title="Article not found — Hassan Nazir" description="This article does not exist." noindex />
-        <main className="min-h-screen bg-[#08090c] text-[#d9dee8]">
-          <EditorialNav />
+        <main className="min-h-screen bg-[var(--bg)] text-[var(--fg-body)]">
+          <StandaloneNav />
           <div className="mx-auto max-w-4xl px-4 pt-40 pb-20 text-center">
-            <h1 className="text-3xl font-semibold text-white sm:text-5xl font-['Satoshi']">Article not found</h1>
-            <p className="mt-4 text-[#7f8794]">The requested blog post could not be located.</p>
+            <h1 className="text-3xl font-semibold text-[var(--fg)] sm:text-5xl font-['Satoshi']">Article not found</h1>
+            <p className="mt-4 text-[var(--fg-3)]">The requested blog post could not be located.</p>
             <Link
               to="/blogs"
-              className="mt-8 inline-flex items-center gap-2 rounded-lg border border-white/10 bg-[#111319] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-white/15"
+              className="mt-8 inline-flex items-center gap-2 rounded-lg border border-[var(--line)] bg-[var(--tint)] px-5 py-2.5 text-sm font-medium text-[var(--fg)] transition hover:bg-[var(--hover)]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to all blogs
             </Link>
           </div>
+          <SiteFooter />
         </main>
       </PageTransition>
     );
@@ -108,7 +109,7 @@ const ArticlePage: React.FC = () => {
         title: post.title,
         text: post.excerpt,
         url: window.location.href,
-      }).catch(() => {});
+      }).catch(() => undefined);
     } else {
       navigator.clipboard.writeText(window.location.href);
       setCopiedLink(true);
@@ -156,7 +157,6 @@ const ArticlePage: React.FC = () => {
           return `${base} | Hassan Nazir`.length <= 65 ? `${base} | Hassan Nazir` : base;
         })()}
         description={post.excerpt}
-        keywords={post.seoKeywords || post.tags}
         image={`/images/og/${post.slug}.jpg`}
         url={articleUrl}
         type="article"
@@ -165,15 +165,15 @@ const ArticlePage: React.FC = () => {
         jsonLd={[articleSchema, articleBreadcrumbs]}
       />
 
-      <main className="min-h-screen bg-[#08090c] text-[#d9dee8] selection:bg-[#ff5d3d] selection:text-[#08090c]">
-        <EditorialNav />
+      <main className="min-h-screen bg-[var(--bg)] text-[var(--fg-body)] selection:bg-[#2F5BFF] selection:text-white">
+        <StandaloneNav />
 
         <div className="mx-auto max-w-5xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
           {/* Back link */}
           <div className="mb-8">
             <Link
               to="/blogs"
-              className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-[#ff5d3d] uppercase transition hover:text-[#ff785d]"
+              className="inline-flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-[var(--accent-text)] uppercase transition hover:text-[var(--accent-text)]"
             >
               <ArrowLeft className="h-4 w-4" />
               Back to all blogs
@@ -182,27 +182,27 @@ const ArticlePage: React.FC = () => {
 
           <article>
             {/* Header / Post Meta */}
-            <header className="border-b border-white/10 pb-10 text-center">
+            <header className="border-b border-[var(--line)] pb-10 text-center">
               <div className="space-y-4">
-                <dl className="flex items-center justify-center gap-3 text-xs font-mono text-[#7f8794]">
+                <dl className="flex items-center justify-center gap-3 text-xs font-mono text-[var(--fg-3)]">
                   <dt className="sr-only">Published on</dt>
-                  <dd className="flex items-center gap-1.5 text-[#aab3c2]">
-                    <Calendar className="h-3.5 w-3.5 text-[#7f8794]" />
+                  <dd className="flex items-center gap-1.5 text-[var(--fg-2)]">
+                    <Calendar className="h-3.5 w-3.5 text-[var(--fg-3)]" />
                     <time dateTime={post.publishedAt}>{formattedDate}</time>
                   </dd>
                   <span>•</span>
-                  <dd className="flex items-center gap-1.5 text-[#aab3c2]">
-                    <Clock className="h-3.5 w-3.5 text-[#7f8794]" />
+                  <dd className="flex items-center gap-1.5 text-[var(--fg-2)]">
+                    <Clock className="h-3.5 w-3.5 text-[var(--fg-3)]" />
                     <span>{post.readTime}</span>
                   </dd>
                 </dl>
 
-                <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto font-['Satoshi']">
+                <h1 className="text-3xl font-semibold tracking-tight text-[var(--fg)] sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto font-['Satoshi']">
                   {post.title}
                 </h1>
 
                 <div className="flex items-center justify-center gap-2 pt-2">
-                  <span className="rounded-full border border-[#ff5d3d]/30 bg-[#ff5d3d]/10 px-3.5 py-1 text-xs font-mono font-semibold text-[#ff5d3d] uppercase tracking-wider">
+                  <span className="rounded-full border border-[#2F5BFF]/30 bg-[#2F5BFF]/10 px-3.5 py-1 text-xs font-mono font-semibold text-[var(--accent-text)] uppercase tracking-wider">
                     {post.category}
                   </span>
                 </div>
@@ -212,35 +212,35 @@ const ArticlePage: React.FC = () => {
             {/* Grid Layout: Sidebar + Main Content */}
             <div className="mt-10 grid grid-cols-1 gap-12 xl:grid-cols-4">
               {/* Left Sidebar (Desktop) */}
-              <aside className="xl:col-span-1 xl:border-r xl:border-white/10 xl:pr-8">
+              <aside className="xl:col-span-1 xl:border-r xl:border-[var(--line)] xl:pr-8">
                 <div className="sticky top-28 space-y-8">
                   {/* Author Box */}
                   <div>
-                    <h2 className="text-xs font-mono font-semibold tracking-wider text-[#7f8794] uppercase">
+                    <h2 className="text-xs font-mono font-semibold tracking-wider text-[var(--fg-3)] uppercase">
                       Written By
                     </h2>
                     <div className="mt-4 flex items-center gap-3">
                       <img
                         src="/images/profile-hero.webp"
                         alt="Hassan Nazir"
-                        className="h-11 w-11 rounded-full border border-white/10 object-cover"
+                        className="h-11 w-11 rounded-full border border-[var(--line)] object-cover"
                         onError={(e) => {
                           (e.target as HTMLElement).style.display = 'none';
                         }}
                       />
                       <div>
-                        <strong className="block text-sm font-semibold text-white">Hassan Nazir</strong>
-                        <span className="block text-xs text-[#7f8794]">Forward Deployed Engineer</span>
+                        <strong className="block text-sm font-semibold text-[var(--fg)]">Hassan Nazir</strong>
+                        <span className="block text-xs text-[var(--fg-3)]">Forward Deployed Engineer</span>
                       </div>
                     </div>
 
-                    <div className="mt-4 flex items-center gap-3 text-xs text-[#aab3c2] font-mono">
+                    <div className="mt-4 flex items-center gap-3 text-xs text-[var(--fg-2)] font-mono">
                       <a
                         href="https://github.com/zimkk"
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="GitHub Profile"
-                        className="flex items-center gap-1.5 transition hover:text-[#ff5d3d]"
+                        className="flex items-center gap-1.5 transition hover:text-[var(--accent-text)]"
                       >
                         <Github className="h-3.5 w-3.5" />
                         <span>GitHub</span>
@@ -251,7 +251,7 @@ const ArticlePage: React.FC = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="LinkedIn Profile"
-                        className="flex items-center gap-1.5 transition hover:text-[#ff5d3d]"
+                        className="flex items-center gap-1.5 transition hover:text-[var(--accent-text)]"
                       >
                         <Linkedin className="h-3.5 w-3.5" />
                         <span>LinkedIn</span>
@@ -261,16 +261,16 @@ const ArticlePage: React.FC = () => {
 
                   {/* Interactive Table of Contents */}
                   {tocHeadings.length > 0 && (
-                    <div className="hidden xl:block border-t border-white/10 pt-6">
+                    <div className="hidden xl:block border-t border-[var(--line)] pt-6">
                       <TOCInline headings={tocHeadings} className="my-0 bg-transparent border-0 p-0" />
                     </div>
                   )}
 
                   {/* Topics without hashtags */}
                   {post.tags && post.tags.length > 0 && (
-                    <div className="border-t border-white/10 pt-6">
-                      <h2 className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-[#7f8794] uppercase">
-                        <TagIcon className="h-3.5 w-3.5 text-[#ff5d3d]" />
+                    <div className="border-t border-[var(--line)] pt-6">
+                      <h2 className="flex items-center gap-2 text-xs font-mono font-semibold tracking-wider text-[var(--fg-3)] uppercase">
+                        <TagIcon className="h-3.5 w-3.5 text-[var(--accent-text)]" />
                         Topics
                       </h2>
                       <div className="mt-3 flex flex-wrap gap-2">
@@ -278,7 +278,7 @@ const ArticlePage: React.FC = () => {
                           <Link
                             key={tag}
                             to={`/blogs?tag=${slugify(tag)}`}
-                            className="rounded-lg bg-[#111319] border border-white/10 px-2.5 py-1 text-xs font-mono text-[#aab3c2] transition hover:border-[#ff5d3d]/40 hover:text-[#ff5d3d]"
+                            className="rounded-lg bg-[var(--tint)] border border-[var(--line)] px-2.5 py-1 text-xs font-mono text-[var(--fg-2)] transition hover:border-[#2F5BFF]/40 hover:text-[var(--accent-text)]"
                           >
                             {tag}
                           </Link>
@@ -289,15 +289,15 @@ const ArticlePage: React.FC = () => {
 
                   {/* Previous / Next Article in Sidebar (Desktop XL) */}
                   {(prevPost || nextPost) && (
-                    <div className="hidden border-t border-white/10 pt-6 xl:block space-y-6">
+                    <div className="hidden border-t border-[var(--line)] pt-6 xl:block space-y-6">
                       {prevPost && (
                         <div>
-                          <span className="text-[11px] font-mono font-semibold text-[#7f8794] uppercase tracking-wider">
+                          <span className="text-[11px] font-mono font-semibold text-[var(--fg-3)] uppercase tracking-wider">
                             ← Previous Article
                           </span>
                           <Link
                             to={`/blogs/${prevPost.slug}`}
-                            className="mt-1.5 block text-xs font-medium text-[#d9dee8] hover:text-[#ff5d3d] transition line-clamp-2 leading-relaxed"
+                            className="mt-1.5 block text-xs font-medium text-[var(--fg-body)] hover:text-[var(--accent-text)] transition line-clamp-2 leading-relaxed"
                           >
                             {prevPost.title}
                           </Link>
@@ -305,12 +305,12 @@ const ArticlePage: React.FC = () => {
                       )}
                       {nextPost && (
                         <div>
-                          <span className="text-[11px] font-mono font-semibold text-[#7f8794] uppercase tracking-wider">
+                          <span className="text-[11px] font-mono font-semibold text-[var(--fg-3)] uppercase tracking-wider">
                             Next Article →
                           </span>
                           <Link
                             to={`/blogs/${nextPost.slug}`}
-                            className="mt-1.5 block text-xs font-medium text-[#d9dee8] hover:text-[#ff5d3d] transition line-clamp-2 leading-relaxed"
+                            className="mt-1.5 block text-xs font-medium text-[var(--fg-body)] hover:text-[var(--accent-text)] transition line-clamp-2 leading-relaxed"
                           >
                             {nextPost.title}
                           </Link>
@@ -320,13 +320,13 @@ const ArticlePage: React.FC = () => {
                   )}
 
                   {/* Share & Actions */}
-                  <div className="border-t border-white/10 pt-6">
+                  <div className="border-t border-[var(--line)] pt-6">
                     <button
                       onClick={handleShare}
                       type="button"
-                      className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[#aab3c2] transition hover:text-white"
+                      className="inline-flex items-center gap-2 text-xs font-mono font-medium text-[var(--fg-2)] transition hover:text-[var(--fg)]"
                     >
-                      <Share2 className="h-3.5 w-3.5 text-[#ff5d3d]" />
+                      <Share2 className="h-3.5 w-3.5 text-[var(--accent-text)]" />
                       <span>{copiedLink ? 'Link copied!' : 'Share this article'}</span>
                     </button>
                   </div>
@@ -337,7 +337,7 @@ const ArticlePage: React.FC = () => {
               <div className="xl:col-span-3 min-w-0">
                 {/* Cover Image */}
                 {post.image && !post.content.includes(post.image) && (
-                  <div className="mb-10 overflow-hidden rounded-2xl border border-white/10 bg-[#111319] shadow-2xl">
+                  <div className="mb-10 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
                     <img
                       src={post.image}
                       alt={`${post.title} cover`}
@@ -355,7 +355,7 @@ const ArticlePage: React.FC = () => {
                 )}
 
                 {/* Markdown Content */}
-                <div className="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-white prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-white/10 prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[#d9dee8] prose-p:leading-relaxed prose-p:text-base prose-a:text-[#ff5d3d] prose-a:no-underline hover:prose-a:underline prose-strong:text-white prose-code:text-[#ff785d] prose-code:bg-[#111319] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[#d9dee8]">
+                <div className="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--fg)] prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--line)] prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[var(--fg-body)] prose-p:leading-relaxed prose-p:text-base prose-a:text-[var(--accent-text)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--fg)] prose-code:text-[var(--accent-text)] prose-code:bg-[var(--tint)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[var(--fg-body)]">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
@@ -371,7 +371,7 @@ const ArticlePage: React.FC = () => {
                         const id = slugify(text);
                         return (
                           <h2 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
-                            <a href={`#${id}`} className="no-underline text-white hover:text-[#ff5d3d]">
+                            <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">
                               {children}
                             </a>
                           </h2>
@@ -382,7 +382,7 @@ const ArticlePage: React.FC = () => {
                         const id = slugify(text);
                         return (
                           <h3 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
-                            <a href={`#${id}`} className="no-underline text-white hover:text-[#ff5d3d]">
+                            <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">
                               {children}
                             </a>
                           </h3>
@@ -392,7 +392,7 @@ const ArticlePage: React.FC = () => {
                       // Custom Markdown Image Renderer
                       img({ src, alt, ...props }: any) {
                         return (
-                          <figure className="my-8 overflow-hidden rounded-2xl border border-white/10 bg-[#111319] shadow-2xl">
+                          <figure className="my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
                             <img
                               src={src}
                               alt={alt || ''}
@@ -401,7 +401,7 @@ const ArticlePage: React.FC = () => {
                               {...props}
                             />
                             {alt && (
-                              <figcaption className="border-t border-white/10 bg-[#0e1117] px-4 py-2.5 text-center text-xs font-mono text-[#7f8794]">
+                              <figcaption className="border-t border-[var(--line)] bg-[var(--tint)] px-4 py-2.5 text-center text-xs font-mono text-[var(--fg-3)]">
                                 {alt}
                               </figcaption>
                             )}
@@ -412,7 +412,7 @@ const ArticlePage: React.FC = () => {
                       // Custom Table Components for Proper Alignment & Overflow Containment
                       table({ children, ...props }: any) {
                         return (
-                          <div className="my-8 overflow-x-auto rounded-xl border border-white/10 bg-[#0e1117] shadow-xl">
+                          <div className="my-8 overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--tint)] shadow-xl">
                             <table className="w-full border-collapse text-left text-sm" {...props}>
                               {children}
                             </table>
@@ -423,7 +423,7 @@ const ArticlePage: React.FC = () => {
                         return (
                           <th
                             style={style}
-                            className="border-b border-white/10 bg-[#111319] px-4 py-3 text-xs font-mono font-semibold uppercase tracking-wider text-[#d9dee8]"
+                            className="border-b border-[var(--line)] bg-[var(--tint)] px-4 py-3 text-xs font-mono font-semibold uppercase tracking-wider text-[var(--fg-body)]"
                             {...props}
                           >
                             {children}
@@ -434,7 +434,7 @@ const ArticlePage: React.FC = () => {
                         return (
                           <td
                             style={style}
-                            className="border-b border-white/5 px-4 py-3 text-sm text-[#d9dee8]"
+                            className="border-b border-[var(--line)] px-4 py-3 text-sm text-[var(--fg-body)]"
                             {...props}
                           >
                             {children}
@@ -457,7 +457,7 @@ const ArticlePage: React.FC = () => {
 
                         return (
                           <blockquote
-                            className="my-6 border-l-2 border-[#ff5d3d] bg-[#111319]/80 py-2.5 px-4 rounded-r-lg italic text-[#d9dee8]"
+                            className="my-6 border-l-2 border-[#2F5BFF] bg-[var(--tint)] py-2.5 px-4 rounded-r-lg italic text-[var(--fg-body)]"
                             {...props}
                           >
                             {children}
@@ -472,7 +472,7 @@ const ArticlePage: React.FC = () => {
                           return <CodeBlock className={className}>{codeString}</CodeBlock>;
                         }
                         return (
-                          <code className="rounded bg-[#111319] border border-white/10 px-1.5 py-0.5 font-mono text-xs text-[#ff785d]" {...props}>
+                          <code className="rounded bg-[var(--tint)] border border-[var(--line)] px-1.5 py-0.5 font-mono text-xs text-[var(--accent-text)]" {...props}>
                             {children}
                           </code>
                         );
@@ -484,13 +484,13 @@ const ArticlePage: React.FC = () => {
                 </div>
 
                 {/* Post Footer Links (Discuss & GitHub) */}
-                <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-white/10 pt-6 text-xs font-mono text-[#7f8794]">
+                <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] pt-6 text-xs font-mono text-[var(--fg-3)]">
                   <div className="flex items-center gap-4">
                     <a
                       href={`https://twitter.com/search?q=${encodeURIComponent(articleUrl)}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 hover:text-[#ff5d3d] transition"
+                      className="flex items-center gap-1.5 hover:text-[var(--accent-text)] transition"
                     >
                       <Twitter className="h-3.5 w-3.5" />
                       <span>Discuss on Twitter / X</span>
@@ -500,42 +500,42 @@ const ArticlePage: React.FC = () => {
                       href="https://github.com/zimkk/portfolio"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 hover:text-[#ff5d3d] transition"
+                      className="flex items-center gap-1.5 hover:text-[var(--accent-text)] transition"
                     >
                       <Github className="h-3.5 w-3.5" />
                       <span>View on GitHub</span>
                     </a>
                   </div>
 
-                  <Link to="/blogs" className="text-[#ff5d3d] hover:underline">
+                  <Link to="/blogs" className="text-[var(--accent-text)] hover:underline">
                     &larr; Back to all blogs
                   </Link>
                 </div>
 
                 {/* Mobile / Tablet Prev-Next Post navigation */}
                 {(prevPost || nextPost) && (
-                  <div className="mt-8 flex flex-col sm:flex-row justify-between gap-4 border-t border-white/10 pt-8 xl:hidden">
+                  <div className="mt-8 flex flex-col sm:flex-row justify-between gap-4 border-t border-[var(--line)] pt-8 xl:hidden">
                     {prevPost && (
-                      <div className="flex-1 rounded-xl border border-white/10 bg-[#111319]/70 p-4">
-                        <span className="text-[11px] font-mono font-semibold text-[#7f8794] uppercase tracking-wider">
+                      <div className="flex-1 rounded-xl border border-[var(--line)] bg-[var(--tint)] p-4">
+                        <span className="text-[11px] font-mono font-semibold text-[var(--fg-3)] uppercase tracking-wider">
                           ← Previous Article
                         </span>
                         <Link
                           to={`/blogs/${prevPost.slug}`}
-                          className="mt-1.5 block text-sm font-semibold text-white hover:text-[#ff5d3d] transition leading-snug"
+                          className="mt-1.5 block text-sm font-semibold text-[var(--fg)] hover:text-[var(--accent-text)] transition leading-snug"
                         >
                           {prevPost.title}
                         </Link>
                       </div>
                     )}
                     {nextPost && (
-                      <div className="flex-1 rounded-xl border border-white/10 bg-[#111319]/70 p-4 sm:text-right">
-                        <span className="text-[11px] font-mono font-semibold text-[#7f8794] uppercase tracking-wider">
+                      <div className="flex-1 rounded-xl border border-[var(--line)] bg-[var(--tint)] p-4 sm:text-right">
+                        <span className="text-[11px] font-mono font-semibold text-[var(--fg-3)] uppercase tracking-wider">
                           Next Article →
                         </span>
                         <Link
                           to={`/blogs/${nextPost.slug}`}
-                          className="mt-1.5 block text-sm font-semibold text-white hover:text-[#ff5d3d] transition leading-snug"
+                          className="mt-1.5 block text-sm font-semibold text-[var(--fg)] hover:text-[var(--accent-text)] transition leading-snug"
                         >
                           {nextPost.title}
                         </Link>
@@ -546,9 +546,9 @@ const ArticlePage: React.FC = () => {
 
                 {/* Related Articles */}
                 {related.length > 0 && (
-                  <div className="mt-16 border-t border-white/10 pt-10">
-                    <h3 className="font-mono text-xs font-semibold tracking-wider text-[#7f8794] uppercase flex items-center gap-2">
-                      <BookOpen className="h-4 w-4 text-[#ff5d3d]" />
+                  <div className="mt-16 border-t border-[var(--line)] pt-10">
+                    <h3 className="font-mono text-xs font-semibold tracking-wider text-[var(--fg-3)] uppercase flex items-center gap-2">
+                      <BookOpen className="h-4 w-4 text-[var(--accent-text)]" />
                       Related Reading
                     </h3>
                     <div className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2">
@@ -556,20 +556,20 @@ const ArticlePage: React.FC = () => {
                         <Link
                           key={item.id}
                           to={`/blogs/${item.slug}`}
-                          className="group rounded-xl border border-white/10 bg-[#111319]/50 p-5 transition hover:border-[#ff5d3d]/40 hover:bg-[#111319]/90 flex flex-col justify-between"
+                          className="group rounded-xl border border-[var(--line)] bg-[var(--tint)] p-5 transition hover:border-[#2F5BFF]/40 hover:bg-[var(--tint)] flex flex-col justify-between"
                         >
                           <div>
-                            <span className="text-[11px] font-mono text-[#ff5d3d] uppercase tracking-wider">
+                            <span className="text-[11px] font-mono text-[var(--accent-text)] uppercase tracking-wider">
                               {item.category} • {item.readTime}
                             </span>
-                            <h4 className="mt-2 text-base font-semibold text-white transition group-hover:text-[#ff5d3d] font-['Satoshi']">
+                            <h4 className="mt-2 text-base font-semibold text-[var(--fg)] transition group-hover:text-[var(--accent-text)] font-['Satoshi']">
                               {item.title}
                             </h4>
-                            <p className="mt-2 text-xs text-[#7f8794] line-clamp-2 leading-relaxed">
+                            <p className="mt-2 text-xs text-[var(--fg-3)] line-clamp-2 leading-relaxed">
                               {item.excerpt}
                             </p>
                           </div>
-                          <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[#ff5d3d]">
+                          <div className="mt-4 flex items-center gap-1 text-xs font-semibold text-[var(--accent-text)]">
                             <span>Read article</span>
                             <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                           </div>
@@ -587,20 +587,21 @@ const ArticlePage: React.FC = () => {
         </div>
 
         {/* Footer */}
-        <footer className="mt-20 border-t border-white/10 bg-[#08090c] py-12 text-center text-xs text-[#7f8794]">
+        <footer className="mt-20 border-t border-[var(--line)] bg-[var(--bg)] py-12 text-center text-xs text-[var(--fg-3)]">
           <div className="mx-auto max-w-5xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <strong className="text-white">Hassan Nazir</strong>
-              <p className="mt-0.5 text-[#7f8794]">Forward Deployed Engineer · Applied AI</p>
+              <strong className="text-[var(--fg)]">Hassan Nazir</strong>
+              <p className="mt-0.5 text-[var(--fg-3)]">Forward Deployed Engineer · Applied AI</p>
             </div>
             <div className="flex items-center gap-6">
-              <Link to="/" className="hover:text-[#ff5d3d] transition">Home</Link>
-              <Link to="/services" className="hover:text-[#ff5d3d] transition">Services</Link>
-              <Link to="/blogs" className="text-[#ff5d3d] font-medium">Blogs</Link>
-              <a href="/#contact" className="hover:text-[#ff5d3d] transition">Contact</a>
+              <Link to="/" className="hover:text-[var(--accent-text)] transition">Home</Link>
+              <Link to="/services" className="hover:text-[var(--accent-text)] transition">Services</Link>
+              <Link to="/blogs" className="text-[var(--accent-text)] font-medium">Blogs</Link>
+              <a href="/#contact" className="hover:text-[var(--accent-text)] transition">Contact</a>
             </div>
           </div>
         </footer>
+        <SiteFooter />
       </main>
     </PageTransition>
   );

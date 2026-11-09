@@ -34,11 +34,6 @@
       "permanent": true
     },
     {
-      "source": "/work",
-      "destination": "/blogs",
-      "permanent": true
-    },
-    {
       "source": "/blogs/agentic-ai-autonomous-systems-langchain-autogpt",
       "destination": "/blogs/why-n8n-beats-langchain-deterministic-automations",
       "permanent": true

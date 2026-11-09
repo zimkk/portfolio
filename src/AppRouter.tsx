@@ -7,6 +7,10 @@ const JournalPage = lazy(() => import('./pages/JournalPage'));
 const ArticlePage = lazy(() => import('./pages/ArticlePage'));
 const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const WorkPage = lazy(() => import('./pages/WorkPage'));
+const ProjectPage = lazy(() => import('./pages/ProjectPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
 
 function BlogSlugRedirect() {
   const { slug } = useParams<{ slug: string }>();
@@ -42,7 +46,10 @@ function AnimatedRoutes() {
         <Route path="/blogs/:slug" element={<ArticlePage />} />
         <Route path="/blog" element={<Navigate to="/blogs" replace />} />
         <Route path="/blog/:slug" element={<BlogSlugRedirect />} />
-        <Route path="/work" element={<Navigate to="/blogs" replace />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/work" element={<WorkPage />} />
+        <Route path="/work/:slug" element={<ProjectPage />} />
+        <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
