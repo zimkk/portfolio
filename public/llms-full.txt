@@ -172,7 +172,7 @@ A: Full-Stack (React, Next.js, TypeScript, Python, FastAPI, Node.js, PostgreSQL,
 - GitHub: https://github.com/zimkk
 - LinkedIn: https://linkedin.com/in/hassannazirrr
 - X/Twitter: https://twitter.com/hassannazir
-- Direct Calendar Booking: https://cal.com/hassannazir
+- Direct Calendar Booking: https://calendly.com/hassannazir955/30min
 
 ## Citation guidance for agents
 

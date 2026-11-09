@@ -63,7 +63,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
     script.setAttribute('data-reactions-enabled', '1');
     script.setAttribute('data-emit-metadata', '0');
     script.setAttribute('data-input-position', 'bottom');
-    script.setAttribute('data-theme', 'transparent_dark');
+    script.setAttribute('data-theme', document.documentElement.dataset.theme === 'dark' ? 'transparent_dark' : 'light');
     script.setAttribute('data-lang', 'en');
     script.setAttribute('crossorigin', 'anonymous');
     script.async = true;
@@ -120,28 +120,28 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
   };
 
   return (
-    <section className="mt-16 border-t border-white/10 pt-10" id="comments">
+    <section className="mt-16 border-t border-[var(--line)] pt-10" id="comments">
       {/* Header & Mode Switcher */}
       <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h3 className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#7f8794]">
-            <MessageSquare className="h-4 w-4 text-[#ff5d3d]" />
+          <h3 className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--fg-3)]">
+            <MessageSquare className="h-4 w-4 text-[var(--accent-text)]" />
             <span>Discussion &amp; Community Feedback</span>
           </h3>
-          <p className="mt-1 text-xs text-[#aab3c2]">
+          <p className="mt-1 text-xs text-[var(--fg-2)]">
             Join the conversation. Choose your preferred way to comment:
           </p>
         </div>
 
         {/* Dual Mode Switcher Tabs */}
-        <div className="inline-flex rounded-xl border border-white/10 bg-[#111319] p-1 font-mono text-xs">
+        <div className="inline-flex rounded-xl border border-[var(--line)] bg-[var(--tint)] p-1 font-mono text-xs">
           <button
             type="button"
             onClick={() => setCommentMode('guest')}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition ${
               commentMode === 'guest'
-                ? 'bg-[#ff5d3d] text-[#08090c] font-bold shadow-md'
-                : 'text-[#aab3c2] hover:text-white'
+                ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                : 'text-[var(--fg-2)] hover:text-[var(--fg)]'
             }`}
           >
             <User className="h-3.5 w-3.5" />
@@ -152,8 +152,8 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
             onClick={() => setCommentMode('github')}
             className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition ${
               commentMode === 'github'
-                ? 'bg-[#ff5d3d] text-[#08090c] font-bold shadow-md'
-                : 'text-[#aab3c2] hover:text-white'
+                ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                : 'text-[var(--fg-2)] hover:text-[var(--fg)]'
             }`}
           >
             <Github className="h-3.5 w-3.5" />
@@ -167,9 +167,9 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
         <div className="space-y-8">
           <form
             onSubmit={handleGuestSubmit}
-            className="rounded-2xl border border-white/10 bg-[#111319]/80 p-5 sm:p-6 backdrop-blur-sm"
+            className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-5 sm:p-6 backdrop-blur-sm"
           >
-            <h4 className="font-['Satoshi'] text-base font-semibold text-white mb-4">
+            <h4 className="font-['Satoshi'] text-base font-semibold text-[var(--fg)] mb-4">
               Leave a response
             </h4>
 
@@ -177,9 +177,9 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
               <div>
                 <label
                   htmlFor="comment-name"
-                  className="block font-mono text-xs font-medium text-[#aab3c2] mb-1.5"
+                  className="block font-mono text-xs font-medium text-[var(--fg-2)] mb-1.5"
                 >
-                  Name <span className="text-[#ff5d3d]">*</span>
+                  Name <span className="text-[var(--accent-text)]">*</span>
                 </label>
                 <input
                   id="comment-name"
@@ -188,16 +188,16 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                   value={authorName}
                   onChange={(e) => setAuthorName(e.target.value)}
                   placeholder="e.g. Alex Chen"
-                  className="w-full rounded-xl border border-white/10 bg-[#08090c] px-3.5 py-2.5 text-sm text-[#d9dee8] placeholder-[#7f8794] focus:border-[#ff5d3d] focus:outline-none"
+                  className="w-full rounded-xl border border-[var(--line)] bg-[var(--bg)] px-3.5 py-2.5 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] focus:border-[#2F5BFF] focus:outline-none"
                 />
               </div>
 
               <div>
                 <label
                   htmlFor="comment-email"
-                  className="block font-mono text-xs font-medium text-[#aab3c2] mb-1.5"
+                  className="block font-mono text-xs font-medium text-[var(--fg-2)] mb-1.5"
                 >
-                  Email <span className="text-[#7f8794] font-normal">(Optional · Private)</span>
+                  Email <span className="text-[var(--fg-3)] font-normal">(Optional · Private)</span>
                 </label>
                 <input
                   id="comment-email"
@@ -205,7 +205,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                   value={authorEmail}
                   onChange={(e) => setAuthorEmail(e.target.value)}
                   placeholder="alex@company.com"
-                  className="w-full rounded-xl border border-white/10 bg-[#08090c] px-3.5 py-2.5 text-sm text-[#d9dee8] placeholder-[#7f8794] focus:border-[#ff5d3d] focus:outline-none"
+                  className="w-full rounded-xl border border-[var(--line)] bg-[var(--bg)] px-3.5 py-2.5 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] focus:border-[#2F5BFF] focus:outline-none"
                 />
               </div>
             </div>
@@ -213,9 +213,9 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
             <div className="mb-4">
               <label
                 htmlFor="comment-text"
-                className="block font-mono text-xs font-medium text-[#aab3c2] mb-1.5"
+                className="block font-mono text-xs font-medium text-[var(--fg-2)] mb-1.5"
               >
-                Your Insight or Question <span className="text-[#ff5d3d]">*</span>
+                Your Insight or Question <span className="text-[var(--accent-text)]">*</span>
               </label>
               <textarea
                 id="comment-text"
@@ -224,12 +224,12 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                 value={commentText}
                 onChange={(e) => setCommentText(e.target.value)}
                 placeholder="Share your technical experience, edge cases, or feedback on this architecture..."
-                className="w-full rounded-xl border border-white/10 bg-[#08090c] p-3.5 text-sm text-[#d9dee8] placeholder-[#7f8794] focus:border-[#ff5d3d] focus:outline-none leading-relaxed"
+                className="w-full rounded-xl border border-[var(--line)] bg-[var(--bg)] p-3.5 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] focus:border-[#2F5BFF] focus:outline-none leading-relaxed"
               />
             </div>
 
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pt-2">
-              <span className="text-xs text-[#7f8794] font-mono">
+              <span className="text-xs text-[var(--fg-3)] font-mono">
                 Markdown supported. Comments appear immediately.
               </span>
 
@@ -243,7 +243,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting || !authorName.trim() || !commentText.trim()}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#ff5d3d] px-5 py-2.5 text-xs font-mono font-bold text-[#08090c] transition hover:bg-[#ff7254] disabled:opacity-40 disabled:cursor-not-allowed shadow-md"
+                  className="inline-flex items-center gap-2 rounded-xl bg-[#2F5BFF] px-5 py-2.5 text-xs font-mono font-bold text-white transition hover:bg-[#1E46E8] disabled:opacity-40 disabled:cursor-not-allowed shadow-md"
                 >
                   <Send className="h-3.5 w-3.5" />
                   <span>{isSubmitting ? 'Posting...' : 'Post Comment'}</span>
@@ -254,39 +254,39 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
 
           {/* List of Direct Comments */}
           <div className="space-y-4">
-            <div className="flex items-center justify-between border-b border-white/10 pb-2">
-              <span className="font-mono text-xs text-[#aab3c2] uppercase tracking-wider">
+            <div className="flex items-center justify-between border-b border-[var(--line)] pb-2">
+              <span className="font-mono text-xs text-[var(--fg-2)] uppercase tracking-wider">
                 {comments.length} {comments.length === 1 ? 'Response' : 'Responses'}
               </span>
             </div>
 
             {comments.length === 0 ? (
-              <div className="rounded-xl border border-dashed border-white/10 p-8 text-center bg-[#111319]/30">
-                <p className="text-xs text-[#7f8794] font-mono">
+              <div className="rounded-xl border border-dashed border-[var(--line)] p-8 text-center bg-[var(--tint)]">
+                <p className="text-xs text-[var(--fg-3)] font-mono">
                   No direct comments yet. Be the first to start the discussion!
                 </p>
               </div>
             ) : (
-              <div className="divide-y divide-white/10">
+              <div className="divide-y divide-[var(--line)]">
                 {comments.map((comm) => (
                   <div key={comm.id} className="py-5 space-y-2.5">
                     <div className="flex items-center justify-between gap-3">
                       <div className="flex items-center gap-2.5">
-                        <div className="h-7 w-7 rounded-full bg-[#ff5d3d]/20 border border-[#ff5d3d]/40 flex items-center justify-center font-mono text-xs font-bold text-[#ff5d3d]">
+                        <div className="h-7 w-7 rounded-full bg-[#2F5BFF]/20 border border-[#2F5BFF]/40 flex items-center justify-center font-mono text-xs font-bold text-[var(--accent-text)]">
                           {comm.avatarSeed}
                         </div>
-                        <strong className="text-sm font-semibold text-white font-['Satoshi']">
+                        <strong className="text-sm font-semibold text-[var(--fg)] font-['Satoshi']">
                           {comm.author}
                         </strong>
                       </div>
 
-                      <time className="flex items-center gap-1 font-mono text-[11px] text-[#7f8794]">
+                      <time className="flex items-center gap-1 font-mono text-[11px] text-[var(--fg-3)]">
                         <Clock className="h-3 w-3" />
                         {formatCommentDate(comm.createdAt)}
                       </time>
                     </div>
 
-                    <p className="text-sm text-[#d9dee8] pl-9 leading-relaxed whitespace-pre-line">
+                    <p className="text-sm text-[var(--fg-body)] pl-9 leading-relaxed whitespace-pre-line">
                       {comm.content}
                     </p>
                   </div>
@@ -299,9 +299,9 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
 
       {/* Mode 2: GitHub Discussions (Giscus) */}
       {commentMode === 'github' && (
-        <div className="rounded-2xl border border-white/10 bg-[#111319]/60 p-6 backdrop-blur-sm">
-          <div className="mb-4 flex items-center gap-2 text-xs font-mono text-[#aab3c2]">
-            <Github className="h-4 w-4 text-white" />
+        <div className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-6 backdrop-blur-sm">
+          <div className="mb-4 flex items-center gap-2 text-xs font-mono text-[var(--fg-2)]">
+            <Github className="h-4 w-4 text-[var(--fg)]" />
             <span>Comments synced with GitHub Discussions on zimkk/portfolio</span>
           </div>
           <div ref={giscusContainerRef} className="min-h-[160px]" />

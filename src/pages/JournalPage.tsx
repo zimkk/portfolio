@@ -1,11 +1,12 @@
 import React, { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { Search, X, ArrowRight, Tag as TagIcon, Clock, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
-import EditorialNav from '../components/ui/EditorialNav';
+import { SiteFooter, StandaloneNav } from '../components/hn/chrome';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { schemaIds, siteConfig } from '../config/metadata';
-import { blogPosts } from './BlogsPage';
+import { blogPosts, noteLabel } from '../data/blogs';
+import Ico from '../components/hn/graphics/Ico';
 
 const POSTS_PER_PAGE = 5;
 
@@ -114,20 +115,20 @@ const JournalPage: React.FC = () => {
   return (
     <PageTransition>
       <SEOHead page="blogs" image="/images/og/blogs.jpg" jsonLd={articlesSchema} />
-      <main className="min-h-screen bg-[#08090c] text-[#d9dee8] selection:bg-[#ff5d3d] selection:text-[#08090c]">
-        <EditorialNav />
+      <main className="min-h-screen bg-[var(--bg)] text-[var(--fg-body)] selection:bg-[#2F5BFF] selection:text-white">
+        <StandaloneNav />
 
         {/* Hero Section */}
         <div className="mx-auto max-w-6xl px-4 pt-32 pb-8 sm:px-6 lg:px-8">
-          <div className="border-b border-white/10 pb-8">
+          <div className="border-b border-[var(--line)] pb-8">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-xs font-semibold tracking-wider text-[#ff5d3d] uppercase">
-                Engineering Field Notes &amp; Production Architectures
+              <span className="hn-blog-eyebrow">
+                <Ico size={15} /> Field notes <i>{blogPosts.length} entries, newest first</i>
               </span>
-              <h1 className="text-4xl font-semibold tracking-tight text-white sm:text-5xl md:text-6xl font-['Satoshi']">
-                Blogs
+              <h1 className="hn-blog-title">
+                I write down <span>what broke.</span>
               </h1>
-              <p className="mt-2 max-w-3xl text-base text-[#7f8794] sm:text-lg leading-relaxed">
+              <p className="mt-2 max-w-3xl text-base text-[var(--fg-3)] sm:text-lg leading-relaxed">
                 Technical field notes and implementation guides on enterprise AI automations, autonomous multi-agent systems, full-stack software development, and cloud security.
               </p>
             </div>
@@ -138,7 +139,7 @@ const JournalPage: React.FC = () => {
                 Search articles
               </label>
               <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3.5">
-                <Search className="h-4 w-4 text-[#7f8794]" />
+                <Search className="h-4 w-4 text-[var(--fg-3)]" />
               </div>
               <input
                 id="search-articles"
@@ -146,14 +147,14 @@ const JournalPage: React.FC = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder="Search articles by title, topic, or keyword..."
-                className="block w-full rounded-xl border border-white/10 bg-[#111319] py-3 pr-10 pl-10 text-sm text-[#d9dee8] placeholder-[#7f8794] transition-all focus:border-[#ff5d3d] focus:bg-[#111319] focus:ring-1 focus:ring-[#ff5d3d] focus:outline-none font-['Satoshi']"
+                className="block w-full rounded-xl border border-[var(--line)] bg-[var(--tint)] py-3 pr-10 pl-10 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] transition-all focus:border-[#2F5BFF] focus:bg-[var(--tint)] focus:ring-1 focus:ring-[#2F5BFF] focus:outline-none font-['Satoshi']"
               />
               {searchQuery && (
                 <button
                   type="button"
                   onClick={clearSearch}
                   aria-label="Clear search query"
-                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[#7f8794] hover:text-[#d9dee8]"
+                  className="absolute inset-y-0 right-0 flex items-center pr-3 text-[var(--fg-3)] hover:text-[var(--fg-body)]"
                 >
                   <X className="h-4 w-4" />
                 </button>
@@ -165,17 +166,17 @@ const JournalPage: React.FC = () => {
           <div className="mt-10 flex flex-col lg:flex-row lg:gap-12">
             {/* Compact Static Sidebar Container with Internal Scrollable List */}
             <aside className="mb-8 w-full shrink-0 lg:mb-0 lg:w-72">
-              <div className="sticky top-28 rounded-2xl border border-white/10 bg-[#111319]/80 p-5 backdrop-blur-md shadow-xl">
+              <div className="sticky top-28 rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-5 backdrop-blur-md shadow-xl">
                 {/* Header */}
-                <div className="mb-3 flex items-center justify-between border-b border-white/10 pb-3">
-                  <h2 className="flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[#7f8794] uppercase">
-                    <TagIcon className="h-3.5 w-3.5 text-[#ff5d3d]" />
+                <div className="mb-3 flex items-center justify-between border-b border-[var(--line)] pb-3">
+                  <h2 className="flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[var(--fg-3)] uppercase">
+                    <TagIcon className="h-3.5 w-3.5 text-[var(--accent-text)]" />
                     Filter by Topic
                   </h2>
                   {activeTag !== 'ALL' && (
                     <button
                       onClick={() => handleTagSelect('ALL')}
-                      className="font-mono text-xs text-[#ff5d3d] hover:underline"
+                      className="font-mono text-xs text-[var(--accent-text)] hover:underline"
                     >
                       Reset
                     </button>
@@ -190,7 +191,7 @@ const JournalPage: React.FC = () => {
                       value={tagSearchQuery}
                       onChange={(e) => setTagSearchQuery(e.target.value)}
                       placeholder="Quick filter topics..."
-                      className="w-full rounded-lg border border-white/10 bg-[#08090c] px-3 py-1.5 text-xs text-[#d9dee8] placeholder-[#7f8794] focus:border-[#ff5d3d] focus:outline-none font-mono"
+                      className="w-full rounded-lg border border-[var(--line)] bg-[var(--bg)] px-3 py-1.5 text-xs text-[var(--fg-body)] placeholder-[var(--fg-3)] focus:border-[#2F5BFF] focus:outline-none font-mono"
                     />
                   </div>
                 )}
@@ -200,12 +201,12 @@ const JournalPage: React.FC = () => {
                   onClick={() => handleTagSelect('ALL')}
                   className={`mb-2 flex items-center justify-between rounded-xl px-3.5 py-2 text-xs font-medium transition-colors w-full text-left font-mono ${
                     activeTag === 'ALL'
-                      ? 'bg-[#ff5d3d] text-[#08090c] font-bold shadow-md'
-                      : 'text-[#aab3c2] hover:bg-white/5 hover:text-white border border-transparent'
+                      ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                      : 'text-[var(--fg-2)] hover:bg-[var(--hover)] hover:text-[var(--fg)] border border-transparent'
                   }`}
                 >
                   <span>All Writing</span>
-                  <span className={`text-[11px] font-mono ${activeTag === 'ALL' ? 'text-[#08090c]' : 'text-[#7f8794]'}`}>
+                  <span className={`text-[11px] font-mono ${activeTag === 'ALL' ? 'text-white' : 'text-[var(--fg-3)]'}`}>
                     ({blogPosts.length})
                   </span>
                 </button>
@@ -213,7 +214,7 @@ const JournalPage: React.FC = () => {
                 {/* Fixed Max-Height Scrollable Tag List */}
                 <div className="max-h-[320px] overflow-y-auto pr-1.5 space-y-1 scrollbar-thin scrollbar-thumb-white/10 hover:scrollbar-thumb-white/20">
                   {filteredTags.length === 0 ? (
-                    <div className="py-4 text-center text-xs text-[#7f8794] font-mono">
+                    <div className="py-4 text-center text-xs text-[var(--fg-3)] font-mono">
                       No matching topics
                     </div>
                   ) : (
@@ -225,12 +226,12 @@ const JournalPage: React.FC = () => {
                           onClick={() => handleTagSelect(tag)}
                           className={`flex items-center justify-between rounded-xl px-3.5 py-2 text-xs font-medium transition-colors w-full text-left font-mono ${
                             isSelected
-                              ? 'bg-[#ff5d3d] text-[#08090c] font-bold shadow-md'
-                              : 'text-[#aab3c2] hover:bg-white/5 hover:text-white border border-transparent'
+                              ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                              : 'text-[var(--fg-2)] hover:bg-[var(--hover)] hover:text-[var(--fg)] border border-transparent'
                           }`}
                         >
                           <span className="truncate">{tag}</span>
-                          <span className={`ml-2 text-[11px] font-mono shrink-0 ${isSelected ? 'text-[#08090c]' : 'text-[#7f8794]'}`}>
+                          <span className={`ml-2 text-[11px] font-mono shrink-0 ${isSelected ? 'text-white' : 'text-[var(--fg-3)]'}`}>
                             ({tagCounts[tag]})
                           </span>
                         </button>
@@ -241,9 +242,9 @@ const JournalPage: React.FC = () => {
 
                 {/* Active Filter Footer inside sidebar */}
                 {activeTag !== 'ALL' && (
-                  <div className="mt-3 pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-[#7f8794]">
-                    <span>Active: <strong className="text-[#ff5d3d]">{activeTag}</strong></span>
-                    <button onClick={() => handleTagSelect('ALL')} className="hover:text-white underline">
+                  <div className="mt-3 pt-3 border-t border-[var(--line)] flex items-center justify-between text-[11px] font-mono text-[var(--fg-3)]">
+                    <span>Active: <strong className="text-[var(--accent-text)]">{activeTag}</strong></span>
+                    <button onClick={() => handleTagSelect('ALL')} className="hover:text-[var(--fg)] underline">
                       Clear
                     </button>
                   </div>
@@ -254,8 +255,8 @@ const JournalPage: React.FC = () => {
             {/* Articles List */}
             <div className="flex-1 min-w-0">
               {filteredPosts.length === 0 ? (
-                <div className="rounded-2xl border border-dashed border-white/10 p-16 text-center bg-[#111319]/40">
-                  <p className="text-base text-[#7f8794]">
+                <div className="rounded-2xl border border-dashed border-[var(--line)] p-16 text-center bg-[var(--tint)]">
+                  <p className="text-base text-[var(--fg-3)]">
                     No articles found matching &ldquo;{searchQuery}&rdquo; {activeTag !== 'ALL' && `under ${activeTag}`}.
                   </p>
                   <button
@@ -263,35 +264,37 @@ const JournalPage: React.FC = () => {
                       clearSearch();
                       handleTagSelect('ALL');
                     }}
-                    className="mt-4 inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#111319] px-4 py-2 text-xs font-medium text-white transition hover:bg-white/10"
+                    className="mt-4 inline-flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--tint)] px-4 py-2 text-xs font-medium text-[var(--fg)] transition hover:bg-[var(--hover)]"
                   >
                     Reset all filters
                   </button>
                 </div>
               ) : (
-                <div className="divide-y divide-white/10">
+                <div className="divide-y divide-[var(--line)]">
                   {currentDisplayPosts.map((post) => (
-                    <article key={post.id} className="py-8 first:pt-0 group">
+                    <article key={post.id} className="hn-blog-row py-8 group">
                       <div className="space-y-3.5">
                         {/* Meta: Date & Read Time */}
-                        <div className="flex flex-wrap items-center gap-3 text-xs text-[#7f8794] font-mono">
-                          <time dateTime={post.publishedAt} className="flex items-center gap-1.5 text-[#aab3c2]">
-                            <Calendar className="h-3.5 w-3.5 text-[#7f8794]" />
+                        <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--fg-3)] font-mono">
+                          <span className="hn-note-no">{noteLabel(post.slug)}</span>
+                          {post.slug === blogPosts[0].slug && <span className="hn-note-latest"><Ico size={12} /> Latest</span>}
+                          <time dateTime={post.publishedAt} className="flex items-center gap-1.5 text-[var(--fg-2)]">
+                            <Calendar className="h-3.5 w-3.5 text-[var(--fg-3)]" />
                             {formatDate(post.publishedAt)}
                           </time>
                           <span>•</span>
-                          <span className="flex items-center gap-1.5 text-[#aab3c2]">
-                            <Clock className="h-3.5 w-3.5 text-[#7f8794]" />
+                          <span className="flex items-center gap-1.5 text-[var(--fg-2)]">
+                            <Clock className="h-3.5 w-3.5 text-[var(--fg-3)]" />
                             {post.readTime}
                           </span>
                           <span>•</span>
-                          <span className="rounded-md bg-[#ff5d3d]/10 border border-[#ff5d3d]/20 px-2.5 py-0.5 text-[11px] text-[#ff5d3d] font-mono uppercase tracking-wider font-semibold">
+                          <span className="rounded-md bg-[#2F5BFF]/10 border border-[#2F5BFF]/20 px-2.5 py-0.5 text-[11px] text-[var(--accent-text)] font-mono uppercase tracking-wider font-semibold">
                             {post.category}
                           </span>
                         </div>
 
                         {/* Title */}
-                        <h2 className="text-2xl font-semibold tracking-tight text-white transition-colors group-hover:text-[#ff5d3d] sm:text-3xl font-['Satoshi'] leading-snug">
+                        <h2 className="text-2xl font-semibold tracking-tight text-[var(--fg)] transition-colors group-hover:text-[var(--accent-text)] sm:text-3xl font-['Satoshi'] leading-snug">
                           <Link to={`/blogs/${post.slug}`}>
                             {post.title}
                           </Link>
@@ -304,7 +307,7 @@ const JournalPage: React.FC = () => {
                               key={tag}
                               type="button"
                               onClick={() => handleTagSelect(tag)}
-                              className="rounded-lg bg-[#111319] border border-white/10 px-2.5 py-1 text-xs font-mono text-[#aab3c2] transition hover:border-[#ff5d3d]/40 hover:text-[#ff5d3d]"
+                              className="rounded-lg bg-[var(--tint)] border border-[var(--line)] px-2.5 py-1 text-xs font-mono text-[var(--fg-2)] transition hover:border-[#2F5BFF]/40 hover:text-[var(--accent-text)]"
                             >
                               {tag}
                             </button>
@@ -312,7 +315,7 @@ const JournalPage: React.FC = () => {
                         </div>
 
                         {/* Excerpt */}
-                        <p className="text-sm leading-relaxed text-[#7f8794] line-clamp-3">
+                        <p className="text-sm leading-relaxed text-[var(--fg-3)] line-clamp-3">
                           {post.excerpt}
                         </p>
 
@@ -320,7 +323,7 @@ const JournalPage: React.FC = () => {
                         <div className="pt-2">
                           <Link
                             to={`/blogs/${post.slug}`}
-                            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[#ff5d3d] transition group-hover:translate-x-1"
+                            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[var(--accent-text)] transition group-hover:translate-x-1"
                           >
                             <span>Read the article</span>
                             <ArrowRight className="h-3.5 w-3.5" />
@@ -334,20 +337,20 @@ const JournalPage: React.FC = () => {
 
               {/* Pagination Controls */}
               {totalPages > 1 && (
-                <div className="mt-12 flex items-center justify-between border-t border-white/10 pt-6">
+                <div className="mt-12 flex items-center justify-between border-t border-[var(--line)] pt-6">
                   <button
                     disabled={currentPage === 1}
                     onClick={() => {
                       setCurrentPage((prev) => Math.max(prev - 1, 1));
                       window.scrollTo({ top: 150, behavior: 'smooth' });
                     }}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#111319] px-4 py-2 text-xs font-mono font-medium text-[#d9dee8] transition hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--tint)] px-4 py-2 text-xs font-mono font-medium text-[var(--fg-body)] transition hover:bg-[var(--hover)] disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     <ChevronLeft className="h-4 w-4" />
                     Previous
                   </button>
 
-                  <span className="font-mono text-xs text-[#7f8794]">
+                  <span className="font-mono text-xs text-[var(--fg-3)]">
                     Page {currentPage} of {totalPages}
                   </span>
 
@@ -357,7 +360,7 @@ const JournalPage: React.FC = () => {
                       setCurrentPage((prev) => Math.min(prev + 1, totalPages));
                       window.scrollTo({ top: 150, behavior: 'smooth' });
                     }}
-                    className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-[#111319] px-4 py-2 text-xs font-mono font-medium text-[#d9dee8] transition hover:bg-white/10 disabled:opacity-40 disabled:cursor-not-allowed"
+                    className="inline-flex items-center gap-2 rounded-xl border border-[var(--line)] bg-[var(--tint)] px-4 py-2 text-xs font-mono font-medium text-[var(--fg-body)] transition hover:bg-[var(--hover)] disabled:opacity-40 disabled:cursor-not-allowed"
                   >
                     Next
                     <ChevronRight className="h-4 w-4" />
@@ -368,21 +371,7 @@ const JournalPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 border-t border-white/10 bg-[#08090c] py-12 text-center text-xs text-[#7f8794]">
-          <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <strong className="text-white">Hassan Nazir</strong>
-              <p className="mt-0.5 text-[#7f8794]">Forward Deployed Engineer · Applied AI</p>
-            </div>
-            <div className="flex items-center gap-6 font-mono">
-              <Link to="/" className="hover:text-[#ff5d3d] transition">Home</Link>
-              <Link to="/services" className="hover:text-[#ff5d3d] transition">Services</Link>
-              <Link to="/blogs" className="text-[#ff5d3d] font-medium">Blogs</Link>
-              <a href="/#contact" className="hover:text-[#ff5d3d] transition">Contact</a>
-            </div>
-          </div>
-        </footer>
+        <SiteFooter />
       </main>
     </PageTransition>
   );

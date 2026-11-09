@@ -32,20 +32,20 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => 
   };
 
   return (
-    <div className="group relative my-6 overflow-hidden rounded-xl border border-white/10 bg-[#0e1117] shadow-2xl">
+    <div className="hn-code-island group relative my-6 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
       {/* Top Titlebar */}
-      <div className="flex items-center justify-between border-b border-white/10 bg-[#111319] px-4 py-2 text-xs font-mono text-[#7f8794]">
+      <div className="flex items-center justify-between border-b border-[var(--line)] bg-[var(--tint)] px-4 py-2 text-xs font-mono text-[var(--fg-3)]">
         <div className="flex items-center gap-2">
           {title ? (
             <>
-              <FileCode className="h-3.5 w-3.5 text-[#ff5d3d]" />
-              <span className="font-semibold text-white">{title}</span>
-              <span className="text-[10px] text-[#7f8794] uppercase font-mono">({language})</span>
+              <FileCode className="h-3.5 w-3.5 text-[var(--accent-text)]" />
+              <span className="font-semibold text-[var(--fg)]">{title}</span>
+              <span className="text-[10px] text-[var(--fg-3)] uppercase font-mono">({language})</span>
             </>
           ) : (
             <>
-              <Terminal className="h-3.5 w-3.5 text-[#7f8794]" />
-              <span className="font-semibold uppercase tracking-wider text-[#ff5d3d]">{language}</span>
+              <Terminal className="h-3.5 w-3.5 text-[var(--fg-3)]" />
+              <span className="font-semibold uppercase tracking-wider text-[var(--accent-text)]">{language}</span>
             </>
           )}
         </div>
@@ -54,7 +54,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => 
           <button
             type="button"
             onClick={() => setShowLineNumbers(!showLineNumbers)}
-            className="hidden sm:inline-flex rounded px-2 py-0.5 text-[10px] font-mono text-[#7f8794] hover:text-[#d9dee8] transition"
+            className="hidden sm:inline-flex rounded px-2 py-0.5 text-[10px] font-mono text-[var(--fg-3)] hover:text-[var(--fg-body)] transition"
             title="Toggle line numbers"
           >
             {showLineNumbers ? 'Lines: On' : 'Lines: Off'}
@@ -64,7 +64,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => 
             onClick={handleCopy}
             type="button"
             aria-label="Copy code to clipboard"
-            className="flex items-center gap-1.5 rounded-md border border-white/10 bg-white/5 px-2.5 py-1 text-[11px] font-mono text-[#d9dee8] transition hover:border-[#ff5d3d]/50 hover:bg-white/10 hover:text-white"
+            className="flex items-center gap-1.5 rounded-md border border-[var(--line)] bg-[var(--hover)] px-2.5 py-1 text-[11px] font-mono text-[var(--fg-body)] transition hover:border-[#2F5BFF]/50 hover:bg-[var(--hover)] hover:text-[var(--fg)]"
           >
             {copied ? (
               <>

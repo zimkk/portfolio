@@ -1,7 +1,7 @@
 import React from 'react';
 import { ListOrdered } from 'lucide-react';
 
-export interface TOCHeading {
+interface TOCHeading {
   value: string;
   depth: number;
   url: string;
@@ -44,10 +44,10 @@ export const TOCInline: React.FC<TOCInlineProps> = ({ headings, className = '' }
   return (
     <nav
       aria-label="Table of contents"
-      className={`my-6 rounded-xl border border-white/10 bg-[#111319]/70 p-5 backdrop-blur-sm ${className}`}
+      className={`my-6 rounded-xl border border-[var(--line)] bg-[var(--tint)] p-5 backdrop-blur-sm ${className}`}
     >
-      <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-[#7f8794]">
-        <ListOrdered className="h-4 w-4 text-[#ff5d3d]" />
+      <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--fg-3)]">
+        <ListOrdered className="h-4 w-4 text-[var(--accent-text)]" />
         <span>Table of Contents</span>
       </div>
 
@@ -60,9 +60,9 @@ export const TOCInline: React.FC<TOCInlineProps> = ({ headings, className = '' }
             <a
               href={heading.url}
               onClick={(e) => handleScrollTo(e, heading.url)}
-              className="group flex items-center gap-2 text-[#aab3c2] transition hover:text-[#ff5d3d]"
+              className="group flex items-center gap-2 text-[var(--fg-2)] transition hover:text-[var(--accent-text)]"
             >
-              <span className="h-1 w-1 rounded-full bg-[#7f8794] transition group-hover:bg-[#ff5d3d]" />
+              <span className="h-1 w-1 rounded-full bg-[var(--fg-3)] transition group-hover:bg-[#2F5BFF]" />
               <span className="truncate">{heading.value}</span>
             </a>
           </li>

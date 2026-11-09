@@ -28,7 +28,7 @@ The public portfolio, commercial services hub, and technical engineering blog of
 - **Dual-Mode Commenting Suite**:
   - **Direct / Guest Comments**: Instant local commenting without forcing login barriers.
   - **GitHub Discussions (Giscus)**: Developer comments synced to GitHub repository discussions.
-- **Instant Scheduling**: Embedded [Cal.com](https://cal.com) interactive booking modal for 30-minute technical sessions.
+- **Instant Scheduling**: Embedded [Calendly](https://calendly.com) booking drawer for 30-minute technical sessions, themed to match light and dark mode.
 - **Enterprise SEO & AEO (AI Engine Optimization)**:
   - 48 static crawler-first HTML route shells generated at build time.
   - Comprehensive `llms.txt` and `llms-full.txt` machine-readable manifests for ChatGPT Search, Perplexity, Claude, and Gemini.
@@ -59,7 +59,7 @@ The public portfolio, commercial services hub, and technical engineering blog of
 |---|---|
 | **Core & UI** | React 18, TypeScript 5.5, Vite 5.4, Tailwind CSS, GSAP ScrollTrigger, Framer Motion |
 | **Content Engine** | MDX, Gray-Matter, React-Markdown, Remark-GFM, Remark-Math, Rehype-KaTeX, KaTeX |
-| **Integrations** | Cal.com (Scheduling), EmailJS (Contact form), Giscus (GitHub Discussions) |
+| **Integrations** | Calendly (Scheduling), EmailJS (Contact form), Giscus (GitHub Discussions) |
 | **SEO & Feeds** | 48 Static HTML Route Shells, RSS 2.0, Atom 1.0, JSON Feed 1.1, JSON-LD Schema Graphs |
 
 ---
@@ -134,5 +134,5 @@ Special thanks and appreciation to the open-source projects and creators that in
 - **[Timothy Lin (@timlrx)](https://github.com/timlrx)** for the award-winning **[tailwind-nextjs-starter-blog](https://github.com/timlrx/tailwind-nextjs-starter-blog)** — which served as the primary architectural inspiration for the blog layout structure, tag categorization, KBar search indexing concepts, and syndication feed patterns.
 - **[Giscus Team](https://giscus.app)** for providing the open-source GitHub Discussions-backed commenting widget.
 - **[KaTeX Project](https://katex.org)** by Khan Academy for fast LaTeX math typesetting on the web.
-- **[Cal.com](https://cal.com)** for the open-source scheduling infrastructure and embed React SDK.
+- **[Calendly](https://calendly.com)** for scheduling and the embeddable booking widget.
 - **[Lucide Icons](https://lucide.dev)** for clean, consistent developer iconography.

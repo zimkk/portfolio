@@ -32,7 +32,7 @@ const mdxModules = import.meta.glob('/data/blog/*.mdx', {
 }) as Record<string, string>;
 
 let idCounter = 1;
-export const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePath, rawContent]) => {
+const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePath, rawContent]) => {
   const { data, content } = parseFrontmatter(rawContent);
   const slug = filePath.split('/').pop()?.replace(/\.mdx?$/, '') || '';
 
@@ -56,3 +56,7 @@ export const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePat
 export const blogPosts: BlogPost[] = allBlogPosts.sort(
   (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 );
+
+// Field-note numbers: the oldest post is #001, the newest has the highest number.
+const noteNumbers = new Map(blogPosts.map((post, index) => [post.slug, blogPosts.length - index]));
+export const noteLabel = (slug: string) => `#${String(noteNumbers.get(slug) ?? 0).padStart(3, '0')}`;

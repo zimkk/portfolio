@@ -1,12 +1,10 @@
 import { chromium } from 'playwright';
-import { mkdir } from 'fs/promises';
+import { mkdir, readFile } from 'fs/promises';
 
-const sites = [
-  { slug: 'the-home-club', url: 'https://thehomeclubsports.com' },
-  { slug: 'n8nhub', url: 'https://n8nhub.hassannazir.dev' },
-  { slug: 'speedyinfluencer', url: 'https://speedyinfluencer.com' },
-  { slug: 'smartfurs', url: 'https://smartfurs.vercel.app' },
-];
+// Refreshes the screenshots of every live product listed in src/data/work.json.
+// Run with: npm run screenshots
+const { projects } = JSON.parse(await readFile('src/data/work.json', 'utf8'));
+const sites = projects.filter((project) => project.live).map((project) => ({ slug: project.slug, url: project.live }));
 
 await mkdir('public/images/projects', { recursive: true });
 

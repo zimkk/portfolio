@@ -1,9 +1,13 @@
 import { Link, useParams } from 'react-router-dom';
-import { ArrowRight, ArrowUpRight, Check, Github } from 'lucide-react';
-import EditorialNav from '../components/ui/EditorialNav';
-import PageTransition from '../components/ui/PageTransition';
+import Ico from '../components/hn/graphics/Ico';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Mail } from 'lucide-react';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
+import { Reveal, SectionHead, SiteFooter, SiteNav } from '../components/hn/chrome';
+import { useBooking } from '../components/hn/hooks';
+import { CtaArt, ProofArt, ServiceGlyph, TermIcon } from '../components/hn/graphics/glyphs';
+import { RelatedPosts, RepoCard } from '../components/hn/sections';
+import { projectsForService } from '../data/work';
 
 const PROJECT_CONTACT_HREF = 'mailto:hassannazir955@gmail.com?subject=Project%20inquiry';
 
@@ -56,8 +60,8 @@ const servicePages: ServicePage[] = [
     proof: {
       title: 'A monitor built around an operation, not a scrape.',
       body: 'The NY Municipal Monitor tracks decision-makers across 60 county sites, imports an existing baseline, detects personnel and contact changes, preserves history, sends webhooks, and gives operators a working dashboard.',
-      href: 'https://github.com/zimkk/erdman-ny-county',
-      label: 'Inspect the public source',
+      href: '/work/ny-municipal-monitor',
+      label: 'Read how it works',
     },
     technologies: ['Python', 'TypeScript', 'FastAPI', 'Next.js', 'PostgreSQL', 'Redis', 'Docker', 'AWS', 'Playwright'],
     faq: [
@@ -98,8 +102,8 @@ const servicePages: ServicePage[] = [
     proof: {
       title: 'Legal AI with generation and verification in the same loop.',
       body: 'The Legal Document Summarizer covers dataset preparation, Llama 3 fine-tuning, local Ollama deployment, PDF and DOCX processing, structured output, batch execution, and Gemma-based verification.',
-      href: 'https://github.com/zimkk/legal-Document-Summerizer',
-      label: 'Review the implementation',
+      href: '/work/legal-intelligence',
+      label: 'Read how it works',
     },
     technologies: ['OpenAI', 'Claude', 'Ollama', 'Hugging Face', 'PyTorch', 'LangChain', 'FastAPI', 'PostgreSQL', 'pgvector'],
     faq: [
@@ -140,8 +144,8 @@ const servicePages: ServicePage[] = [
     proof: {
       title: 'An agent-native SaaS foundation built for extension.',
       body: 'WonderKit includes four persisted agents, provider abstraction across Anthropic, OpenAI, OpenRouter, and Ollama, pgvector memory, an evaluation harness, durable jobs, multi-tenant permissions, usage accounting, and deployment paths.',
-      href: 'https://github.com/zimkk/wonderkit',
-      label: 'Inspect WonderKit',
+      href: '/work/wonderkit',
+      label: 'Read about WonderKit',
     },
     technologies: ['LangGraph', 'LangChain', 'OpenAI', 'Claude', 'Ollama', 'pgvector', 'Pinecone', 'PostgreSQL', 'Inngest'],
     faq: [
@@ -182,8 +186,8 @@ const servicePages: ServicePage[] = [
     proof: {
       title: 'More than 2,000 workflows made searchable.',
       body: 'n8nHub organizes a large workflow corpus through search, categories, detail views, diagrams, analytics, MongoDB indexing, JSON export, and community discussion.',
-      href: 'https://github.com/zimkk/n8nhub',
-      label: 'Review n8nHub',
+      href: '/work/n8nhub',
+      label: 'Read about N8NHUB',
     },
     technologies: ['n8n', 'Webhooks', 'REST APIs', 'PostgreSQL', 'MongoDB', 'Redis', 'Docker', 'OpenAI', 'Playwright'],
     faq: [
@@ -224,8 +228,8 @@ const servicePages: ServicePage[] = [
     proof: {
       title: 'An agent-native full-stack SaaS platform.',
       body: 'WonderKit demonstrates end-to-end full-stack engineering: Next.js frontend, PostgreSQL & pgvector data layer, Prisma ORM, Inngest background jobs, Stripe billing, and multi-provider AI agents.',
-      href: 'https://github.com/zimkk/wonderkit',
-      label: 'Explore WonderKit on GitHub',
+      href: '/work/wonderkit',
+      label: 'Read about WonderKit',
     },
     technologies: ['TypeScript', 'Python', 'React', 'Next.js', 'FastAPI', 'Node.js', 'PostgreSQL', 'pgvector', 'Docker', 'AWS', 'TailwindCSS'],
     faq: [
@@ -240,10 +244,41 @@ const servicePages: ServicePage[] = [
 
 const ServicesPage = () => {
   const { slug } = useParams();
+  const { openBooking, prefetch, modal } = useBooking();
   const service = slug ? servicePages.find((item) => item.slug === slug) : undefined;
 
+  const cta = (heading: string, line: string) => (
+    <section className="hn-band hn-alt hn-cta" style={{ marginBottom: 0 }}>
+      <div className="hn-frame" style={{ position: 'relative' }}>
+        <CtaArt />
+        <p className="hn-mono" style={{ color: 'var(--fg-2)', marginBottom: 18 }}>Start with the operation</p>
+        <h2>{heading}</h2>
+        <p>{line}</p>
+        <div className="hn-cta-actions">
+          <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes <ArrowUpRight size={16} /></button>
+          <a href={PROJECT_CONTACT_HREF} className="hn-btn hn-btn-ghost"><Mail size={16} /> Send a short brief</a>
+        </div>
+      </div>
+    </section>
+  );
+
   if (slug && !service) {
-    return <><SEOHead title="Service not found | Hassan Nazir" description="This service page does not exist." noindex /><main className="route-shell article-missing"><EditorialNav /><h1>That service does not exist.</h1><Link to="/services">View engineering services</Link></main></>;
+    return (
+      <>
+        <SEOHead title="Service not found | Hassan Nazir" description="This service page does not exist." noindex />
+        <div className="hn">
+          <SiteNav onBook={openBooking} onPrefetch={prefetch} />
+          <main className="hn-page-hero hn-alt" style={{ minHeight: '70vh' }}>
+            <div className="hn-frame">
+              <h1 className="hn-title">That service does not exist.</h1>
+              <p className="hn-lede"><Link to="/services" className="hn-link">See the ones that do <ArrowUpRight size={16} /></Link></p>
+            </div>
+          </main>
+          <SiteFooter />
+        </div>
+        {modal}
+      </>
+    );
   }
 
   if (!service) {
@@ -256,44 +291,51 @@ const ServicesPage = () => {
       itemListElement: servicePages.map((item, index) => ({ '@type': 'ListItem', position: index + 1, item: { '@type': 'Service', name: item.name, url: `${siteConfig.url}/services/${item.slug}`, provider: { '@id': schemaIds.personId } } })),
     };
     return (
-      <PageTransition>
-        <SEOHead title={hubTitle} description={hubDescription} image="/images/og/services.jpg" keywords={['applied AI services', 'forward deployed engineering', 'AI agent development', 'n8n consulting']} url={`${siteConfig.url}/services`} jsonLd={[itemList, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Services', url: `${siteConfig.url}/services` }])]} />
-        <main className="route-shell services-shell">
-          <EditorialNav />
-          <section className="services-hero">
-            <div className="services-hero-copy">
-              <p>Engineering services for operational AI</p>
-              <h1>Technical delivery where strategy usually breaks.</h1>
-              <p>I work with US and European teams that need one engineer to connect discovery, models, software, integration, and production ownership.</p>
-              <div><a href={PROJECT_CONTACT_HREF}>Discuss the system <ArrowUpRight size={16} /></a><Link to="/blogs">Read engineering blogs <ArrowRight size={16} /></Link></div>
-            </div>
-            <figure><img src="/images/forward-deployed-services.svg" width="1440" height="810" fetchPriority="high" decoding="async" alt="Forward Deployed Engineering operating mesh and live invariant telemetry console" /></figure>
-          </section>
+      <>
+        <SEOHead title={hubTitle} description={hubDescription} image="/images/og/services.jpg" url={`${siteConfig.url}/services`} jsonLd={[itemList, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Services', url: `${siteConfig.url}/services` }])]} />
+        <div className="hn">
+          <SiteNav onBook={openBooking} onPrefetch={prefetch} />
+          <main>
+            <section className="hn-page-hero hn-alt" aria-labelledby="hn-svc-title">
+              <div className="hn-frame">
+                <SectionHead index="01" label="Services" aside={<span>{servicePages.length} ways to work together</span>} />
+                <h1 id="hn-svc-title" className="hn-title">Pick the problem. <span className="hn-mark">Not the buzzword.</span></h1>
+                <p className="hn-lede">Five kinds of engagement. Same rule for all of them: I stay accountable from the first conversation to the thing running in production.</p>
+              </div>
+            </section>
 
-          <section className="services-index" aria-labelledby="services-index-title">
-            <header><h2 id="services-index-title">Choose the constraint, not the buzzword.</h2><p>Each engagement has a different center of gravity. The delivery model stays accountable from discovery through operation.</p></header>
-            <div>
-              {servicePages.map((item, index) => (
-                <Link to={`/services/${item.slug}`} key={item.slug} className={index % 2 ? 'is-offset' : undefined}>
-                  <span>{item.name}</span><h3>{item.hero}</h3><p>{item.directAnswer}</p><strong>Open service detail <ArrowUpRight size={16} /></strong>
-                </Link>
-              ))}
-            </div>
-          </section>
+            <section className="hn-section hn-frame" aria-label="All services">
+              <div className="hn-svc-list">
+                {servicePages.map((item, index) => (
+                  <Link key={item.slug} to={`/services/${item.slug}`} className="hn-svc-row">
+                    <span className="hn-mono">0{index + 1}</span>
+                    <ServiceGlyph slug={item.slug} />
+                    <h2>{item.name}</h2>
+                    <p>{item.hero}</p>
+                    <ArrowUpRight size={26} />
+                  </Link>
+                ))}
+              </div>
+            </section>
 
-          <section className="services-region">
-            <div><h2>Built for distributed US and European teams.</h2><p>No invented local office. Delivery is remote-first, documented, and structured around agreed working overlap, security boundaries, and the operating environment you already have.</p></div>
-            <dl>
-              <div><dt>Working overlap</dt><dd>Scheduled sessions for discovery, architecture, reviews, and releases, with focused asynchronous implementation between them.</dd></div>
-              <div><dt>Decision record</dt><dd>Architecture, interfaces, assumptions, test evidence, and operating procedures are written down so knowledge survives the engagement.</dd></div>
-              <div><dt>Governance-aware delivery</dt><dd>Systems can be designed around access, audit, provider, retention, and data-residency requirements without making unsupported compliance claims.</dd></div>
-            </dl>
-          </section>
+            <section className="hn-section hn-frame" aria-labelledby="hn-remote-title">
+              <SectionHead index="02" label="Remote, properly" />
+              <Reveal>
+                <h2 id="hn-remote-title" className="hn-title-sm" style={{ maxWidth: '18ch', marginBottom: 'clamp(32px, 5vw, 56px)' }}>Built for distributed US and European teams. No invented local office.</h2>
+              </Reveal>
+              <div className="hn-terms">
+                <Reveal className="hn-term"><TermIcon name="overlap" /><h3>Working overlap</h3><p>Scheduled sessions for discovery, architecture, reviews and releases. Focused async work in between.</p></Reveal>
+                <Reveal className="hn-term" delay={90}><TermIcon name="record" /><h3>Decisions written down</h3><p>Architecture, interfaces, assumptions, test evidence and runbooks, so the knowledge outlives the engagement.</p></Reveal>
+                <Reveal className="hn-term" delay={180}><TermIcon name="shield" /><h3>Governance aware</h3><p>Designed around access, audit, retention and data residency, without making compliance claims I can't back.</p></Reveal>
+              </div>
+            </section>
 
-          <section className="route-cta"><p>Start with the operation</p><h2>Bring the workflow that is expensive, unclear, or stuck.</h2><a href={PROJECT_CONTACT_HREF}>Send a concise brief <ArrowRight size={18} /></a></section>
-          <footer className="route-footer"><Link to="/">Hassan Nazir</Link><p>Forward Deployed Engineer and Applied AI.</p><a href="mailto:hassannazir955@gmail.com">hassannazir955@gmail.com</a></footer>
-        </main>
-      </PageTransition>
+            {cta('Bring the workflow that is expensive, unclear or stuck.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
+          </main>
+          <SiteFooter />
+        </div>
+        {modal}
+      </>
     );
   }
 
@@ -313,55 +355,122 @@ const ServicesPage = () => {
   const breadcrumbs = breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Services', url: `${siteConfig.url}/services` }, { name: service.name, url: serviceUrl }]);
 
   return (
-    <PageTransition>
-      <SEOHead title={service.searchTitle} description={service.description} image={`/images/og/service-${service.slug}.jpg`} keywords={service.keywords} url={serviceUrl} jsonLd={[serviceSchema, faqSchema, breadcrumbs]} />
-      <main className="route-shell service-detail-shell">
-        <EditorialNav />
-        <section className="service-detail-hero">
-          <div>
-            <Link to="/services">All engineering services</Link>
-            <h1>{service.hero}</h1>
-            <p>{service.directAnswer}</p>
-            <div><a href={PROJECT_CONTACT_HREF}>Discuss your system <ArrowUpRight size={16} /></a><a href={service.proof.href} target="_blank" rel="noopener noreferrer"><Github size={16} /> Review public proof</a></div>
-          </div>
-          <figure><img src={service.image} width="1440" height="810" fetchPriority="high" decoding="async" alt={service.imageAlt} /></figure>
-        </section>
+    <>
+      <SEOHead title={service.searchTitle} description={service.description} image={`/images/og/service-${service.slug}.jpg`} url={serviceUrl} jsonLd={[serviceSchema, faqSchema, breadcrumbs]} />
+      <div className="hn">
+        <SiteNav onBook={openBooking} onPrefetch={prefetch} />
+        <main>
+          <section className="hn-page-hero hn-alt" aria-labelledby="hn-svc-detail-title">
+            <div className="hn-frame hn-svc-detail-hero">
+            <div>
+              <Link to="/services" className="hn-crumb hn-mono"><ArrowLeft size={14} /> Services / {service.name}</Link>
+              <h1 id="hn-svc-detail-title" className="hn-title">{service.hero}</h1>
+              <p className="hn-lede">{service.directAnswer}</p>
+              <div className="hn-hero-actions">
+                <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes</button>
+                <Link to={service.proof.href} className="hn-link">See the proof <ArrowRight size={16} /></Link>
+              </div>
+            </div>
+            <div className="hn-svc-art" aria-hidden="true"><ServiceGlyph slug={service.slug} className="" /></div>
+            </div>
+          </section>
 
-        <section className="service-fit">
-          <div><h2>This engagement fits when the handoffs are the problem.</h2></div>
-          <ul>{service.fit.map((item) => <li key={item}><Check size={18} />{item}</li>)}</ul>
-        </section>
+          <section className="hn-section hn-frame" aria-labelledby="hn-fit-title">
+            <SectionHead index="01" label="When it fits" />
+            <div className="hn-fit">
+              <Reveal><h2 id="hn-fit-title" className="hn-title-sm">This fits when the <span className="hn-mark">handoffs</span> are the problem.</h2></Reveal>
+              <ul>
+                {service.fit.map((item) => (
+                  <li key={item}>
+                    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" className="g-accent" /><path d="M6.5 11.5l3 3 6-7" className="hn-line" /></svg>
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
 
-        <section className="service-outcomes">
-          <header><h2>What gets built.</h2><p>The scope is shaped around the operating result. These are the engineering layers commonly required to reach it.</p></header>
-          <div>{service.outcomes.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
-        </section>
+          <section className="hn-section hn-frame" aria-labelledby="hn-built-title">
+            <SectionHead index="02" label="What gets built" />
+            <Reveal><h2 id="hn-built-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>Shaped around the result, not a template.</h2></Reveal>
+            <div className="hn-outcomes">
+              {service.outcomes.map((item, index) => (
+                <Reveal key={item.title} className="hn-outcome" delay={index * 80}>
+                  <span>0{index + 1}</span>
+                  <h3>{item.title}</h3>
+                  <p>{item.body}</p>
+                </Reveal>
+              ))}
+            </div>
+          </section>
 
-        <section className="service-proof">
-          <figure><img src={service.image} width="1440" height="810" loading="lazy" decoding="async" alt={service.imageAlt} /></figure>
-          <div><h2>{service.proof.title}</h2><p>{service.proof.body}</p><a href={service.proof.href} target="_blank" rel="noopener noreferrer">{service.proof.label} <ArrowUpRight size={16} /></a></div>
-        </section>
+          <section className="hn-section hn-frame" aria-labelledby="hn-process-title">
+            <SectionHead index="03" label="How the work moves" />
+            <Reveal><h2 id="hn-process-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>Four steps. Each one ends in something you can check.</h2></Reveal>
+            <ol className="hn-process">
+              {service.process.map((item) => (
+                <li key={item.title}><h3>{item.title}</h3><p>{item.body}</p></li>
+              ))}
+            </ol>
+            <div className="hn-tech">{service.technologies.map((item) => <span key={item} className="hn-chip">{item}</span>)}</div>
+          </section>
 
-        <section className="service-process">
-          <header><h2>How the work moves.</h2></header>
-          <div>{service.process.map((item) => <article key={item.title}><h3>{item.title}</h3><p>{item.body}</p></article>)}</div>
-          <div className="service-technology"><p>Working technology</p><div>{service.technologies.map((item) => <span key={item}>{item}</span>)}</div></div>
-        </section>
+          <section className="hn-section hn-frame" aria-labelledby="hn-proof-title">
+            <SectionHead index="04" label="Proof" />
+            <Reveal className="hn-proof">
+              <ProofArt />
+              <div>
+                <h2 id="hn-proof-title">{service.proof.title}</h2>
+                <p>{service.proof.body}</p>
+                <Link to={service.proof.href} className="hn-link">{service.proof.label} <ArrowRight size={16} /></Link>
+              </div>
+            </Reveal>
+          </section>
 
-        <section className="service-faq">
-          <header><h2>Questions technical buyers ask.</h2></header>
-          <div>{service.faq.map((item) => <details key={item.question}><summary>{item.question}<span>+</span></summary><p>{item.answer}</p></details>)}</div>
-        </section>
+          {projectsForService(service.slug).length > 0 && (
+            <section className="hn-section hn-frame" aria-labelledby="hn-svc-work-title">
+              <SectionHead index="05" label="Work behind this" />
+              <h2 id="hn-svc-work-title" className="hn-title-sm" style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}>Projects where this is what the job was.</h2>
+              <div className="hn-repos is-short is-three">
+                {projectsForService(service.slug).slice(0, 6).map((project) => <RepoCard key={project.slug} project={project} />)}
+              </div>
+            </section>
+          )}
 
-        <section className="service-related">
-          <h2>Related engineering services</h2>
-          <div>{servicePages.filter((item) => item.slug !== service.slug).map((item) => <Link to={`/services/${item.slug}`} key={item.slug}><span>{item.name}</span><ArrowUpRight size={17} /></Link>)}</div>
-        </section>
+          <section className="hn-section hn-frame" aria-labelledby="hn-faq-title">
+            <SectionHead index="06" label="Questions" />
+            <Reveal><h2 id="hn-faq-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>What technical buyers usually ask.</h2></Reveal>
+            <div className="hn-faq">
+              {service.faq.map((item) => (
+                <details key={item.question}>
+                  <summary>{item.question}<i aria-hidden="true" /></summary>
+                  <p>{item.answer}</p>
+                </details>
+              ))}
+            </div>
+          </section>
 
-        <section className="route-cta"><p>Start with the difficult part</p><h2>Describe the system, the constraint, and what needs to change.</h2><a href={PROJECT_CONTACT_HREF}>Send a concise brief <ArrowRight size={18} /></a></section>
-        <footer className="route-footer"><Link to="/">Hassan Nazir</Link><p>{service.name}</p><a href="mailto:hassannazir955@gmail.com">Start a conversation</a></footer>
-      </main>
-    </PageTransition>
+          <RelatedPosts index="07" keywords={service.keywords.concat(service.technologies).map((word) => word.toLowerCase().replace(/ (consultant|services|engineer|developer|consulting)$/, ''))} />
+
+          <section className="hn-section hn-frame" aria-labelledby="hn-related-title">
+            <SectionHead index="08" label="Related services" />
+            <h2 id="hn-related-title" className="hn-sr">Related engineering services</h2>
+            <div className="hn-related">
+              {servicePages.filter((item) => item.slug !== service.slug).map((item) => (
+                <Link to={`/services/${item.slug}`} key={item.slug}>
+                  <ServiceGlyph slug={item.slug} className="" />
+                  <span>{item.name}</span>
+                </Link>
+              ))}
+            </div>
+          </section>
+
+          {cta('Describe the system, the constraint, and what needs to change.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
+        </main>
+        <SiteFooter />
+      </div>
+      {modal}
+    </>
   );
 };
 

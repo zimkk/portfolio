@@ -5,7 +5,6 @@ import { breadcrumbSchema, defaultMetadata, pageMetadata, schemaIds, siteConfig,
 interface SEOHeadProps {
   title?: string;
   description?: string;
-  keywords?: readonly string[];
   image?: string;
   url?: string;
   type?: 'website' | 'article' | 'profile';
@@ -40,18 +39,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
 
   const pageSchemas: object[] = [structuredData.person, structuredData.website];
   if (page === 'home') pageSchemas.push(structuredData.profilePage, structuredData.service, structuredData.projects, structuredData.faq);
-  if (page === 'services') {
-    pageSchemas.push(structuredData.service, breadcrumbSchema([
-      { name: 'Home', url: siteConfig.url },
-      { name: 'Services', url: `${siteConfig.url}/services` },
-    ]));
-  }
-  if (page === 'work') {
-    pageSchemas.push(breadcrumbSchema([
-      { name: 'Home', url: siteConfig.url },
-      { name: 'Work', url: `${siteConfig.url}/work` },
-    ]));
-  }
   if (page === 'blogs') {
     pageSchemas.push({
       '@context': 'https://schema.org',
@@ -109,7 +96,6 @@ export const SEOHead: React.FC<SEOHeadProps> = ({
       <meta name="twitter:image:alt" content={finalTitle} />
       <meta name="twitter:creator" content={defaultMetadata.twitter.creator} />
 
-      <meta name="theme-color" content="#08090c" />
       <meta name="referrer" content="strict-origin-when-cross-origin" />
       <meta name="geo.region" content="PK-IS" />
       <meta name="geo.placename" content="Dubai, UAE / Islamabad, PK" />
