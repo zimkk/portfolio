@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "npx vite",
-    "build": "npx vite build && node scripts/generate-route-shells.mjs",
+    "build": "npx vite build && node scripts/generate-route-shells.mjs && node scripts/generate-ai-files.mjs",
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "seo:submit": "node scripts/submit-indexnow.mjs",
     "preview": "npx vite preview",

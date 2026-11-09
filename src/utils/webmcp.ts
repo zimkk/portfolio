@@ -4,6 +4,11 @@
  * Implements both current document.modelContext (Chrome 150+) and legacy navigator.modelContext.
  */
 
+import career from '../data/career.json';
+import work from '../data/work.json';
+
+const SITE = 'https://hassannazir.dev';
+
 export function registerWebMCPTools(): void {
   if (typeof window === 'undefined') return;
 
@@ -32,6 +37,10 @@ export function registerWebMCPTools(): void {
           name: 'Hassan Nazir',
           title: 'Forward Deployed Engineer & Applied AI Architect',
           location: 'Dubai, UAE / Islamabad, PK (Dedicated US business hours overlap: EST/CST/PST)',
+          currentRoles: career.current.map((role) => ({ organization: role.org, role: role.role, type: role.type, since: role.start, focus: 'focus' in role ? role.focus : undefined })),
+          previousRoles: career.past.map((role) => ({ organization: role.org, role: role.role, from: role.start, to: role.end })),
+          aboutUrl: `${SITE}/about`,
+          workUrl: `${SITE}/work`,
           specializations: [
             'Forward Deployed Engineering',
             'Applied AI Consulting & LLM Architecture',
@@ -125,7 +134,36 @@ export function registerWebMCPTools(): void {
       },
     });
 
-    // 3. Scheduling Tool
+    // 3. Work Tool: every project, with its page on this site
+    modelContext.registerTool({
+      name: 'browse_work',
+      description:
+        "List Hassan Nazir's live products and public source projects, each with a summary, stack, and its page on hassannazir.dev. Optionally filter by discipline (full-stack, ml, automation, security).",
+      inputSchema: {
+        type: 'object',
+        properties: {
+          discipline: { type: 'string', description: 'Optional filter: "full-stack", "ml", "automation" or "security"' },
+        },
+        additionalProperties: false,
+      },
+      execute: async (params: { discipline?: string } = {}) => {
+        const items = work.projects
+          .filter((project) => !params.discipline || project.discipline === params.discipline.toLowerCase())
+          .map((project) => ({
+            name: project.name,
+            kind: project.kind,
+            discipline: project.discipline,
+            summary: project.summary,
+            stack: project.stack,
+            url: `${SITE}/work/${project.slug}`,
+            live: 'live' in project ? project.live : undefined,
+            source: 'repo' in project ? project.repo : undefined,
+          }));
+        return JSON.stringify(items);
+      },
+    });
+
+    // 4. Scheduling Tool
     modelContext.registerTool({
       name: 'get_booking_availability',
       description:
@@ -137,7 +175,7 @@ export function registerWebMCPTools(): void {
       },
       execute: async () => {
         return JSON.stringify({
-          provider: 'Cal.com',
+          provider: 'Calendly',
           bookingUrl: 'https://calendly.com/hassannazir955/30min',
           durationMinutes: 30,
           type: 'Technical Working Session & Architecture Review',

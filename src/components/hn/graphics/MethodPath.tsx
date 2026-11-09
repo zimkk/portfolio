@@ -2,10 +2,10 @@ import { useEffect, useRef, useState } from 'react';
 import { MethodIcon } from './glyphs';
 
 const STEPS = [
-  { icon: 'eye', title: 'Sit in', body: 'Watch the work happen. Read the logs. Talk to the person doing it by hand.' },
-  { icon: 'flask', title: 'Prove the risky bit', body: 'Build the smallest thing that tests the scariest assumption, on real data.' },
-  { icon: 'plug', title: 'Wire it in', body: 'Into your auth, your database and your deploy pipeline. Not bolted on next to them.' },
-  { icon: 'pulse', title: 'Stay', body: 'Monitor it, fix what breaks, write it down, and hand it over properly.' },
+  { icon: 'eye', title: 'Understand the work', body: 'Watch the workflow, read the logs, and talk to the people who run it today.' },
+  { icon: 'flask', title: 'Prove the risky part', body: 'Build the smallest thing that tests the riskiest assumption, on real data.' },
+  { icon: 'plug', title: 'Integrate it', body: 'Into your auth, your data and your deployment pipeline, not alongside them.' },
+  { icon: 'pulse', title: 'Run and hand over', body: 'Monitor it, improve it, document it, and hand it over to the team properly.' },
 ] as const;
 
 export default function MethodPath() {

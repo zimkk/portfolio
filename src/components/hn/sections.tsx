@@ -9,9 +9,11 @@ import { RepoGlyph } from './graphics/glyphs';
 import StackExplode from './graphics/StackExplode';
 import MethodPath from './graphics/MethodPath';
 import CareerTimeline from './graphics/CareerTimeline';
+import CareerGraph from './graphics/CareerGraph';
 import ProfileCard from './graphics/ProfileCard';
 import Clocks from './graphics/Clocks';
 import { DISCIPLINE_LABEL, Post, Project, products, projectPath, repos, useRelatedPosts } from '../../data/work';
+import answers from '../../data/answers.json';
 
 const formatDate = (value: string) => new Date(`${value}T00:00:00`).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, '');
@@ -32,7 +34,7 @@ export function WhoSection({ index = '02', teaser = false }: { index?: string; t
             <div><dt className="hn-mono">Speaks</dt><dd>English, Urdu, TypeScript, Python</dd></div>
             <div><dt className="hn-mono">Security</dt><dd>CEH-P · PEH · ISO/IEC 27001</dd></div>
             {!teaser && <div><dt className="hn-mono">Studied</dt><dd>BS Computer Science, Air University</dd></div>}
-            {!teaser && <div><dt className="hn-mono">Now</dt><dd>AI architect at Uno OS, lead architect at GridCore</dd></div>}
+            {!teaser && <div><dt className="hn-mono">Now</dt><dd>AI Environment Engineer at Outsentia, ML Researcher at Anthology, AI Architect at Uno OS</dd></div>}
           </dl>
           {teaser && (
             <div className="hn-section-cta">
@@ -52,7 +54,7 @@ export function RangeSection({ index = '03' }: { index?: string }) {
     <section className="hn-section hn-frame" aria-labelledby="hn-range-title">
       <SectionHead index={index} label="Range" />
       <Reveal>
-        <h2 id="hn-range-title" className="hn-title">The whole stack, including the <span className="hn-mark">boring layers.</span></h2>
+        <h2 id="hn-range-title" className="hn-title">The whole stack, from interface <span className="hn-mark">to infrastructure.</span></h2>
         <p className="hn-lede" style={{ marginTop: 22, marginBottom: 20 }}>Hover a layer. Security isn't one of them. It runs through all of them.</p>
       </Reveal>
       <StackExplode />
@@ -66,7 +68,7 @@ export function MethodSection({ index = '04' }: { index?: string }) {
       <div className="hn-frame">
         <SectionHead index={index} label="Method" />
         <Reveal>
-          <h2 id="hn-method-title" className="hn-title" style={{ marginBottom: 'clamp(40px, 6vw, 72px)' }}>How a deployment <span className="hn-mark">actually</span> goes.</h2>
+          <h2 id="hn-method-title" className="hn-title" style={{ marginBottom: 'clamp(40px, 6vw, 72px)' }}>How an engagement <span className="hn-mark">runs.</span></h2>
         </Reveal>
         <MethodPath />
         <div className="hn-section-cta" style={{ marginTop: 40 }}>
@@ -82,9 +84,25 @@ export function CareerSection({ index = '05' }: { index?: string }) {
     <section className="hn-section hn-frame" aria-labelledby="hn-career-title">
       <SectionHead index={index} label="Career" />
       <Reveal>
-        <h2 id="hn-career-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Six years, <span className="hn-mark">mostly overlapping.</span></h2>
+        <h2 id="hn-career-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Six years, every role <span className="hn-mark">on one timeline.</span></h2>
       </Reveal>
       <CareerTimeline />
+    </section>
+  );
+}
+
+/** Career as a git log: branches for each discipline, merging into the current role. */
+export function CareerLogSection({ index = '05' }: { index?: string }) {
+  return (
+    <section className="hn-section hn-frame" aria-labelledby="hn-career-log-title">
+      <SectionHead index={index} label="Career" />
+      <Reveal>
+        <h2 id="hn-career-log-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Six years across QA, <span className="hn-mark">full‑stack and AI.</span></h2>
+      </Reveal>
+      <CareerGraph />
+      <div className="hn-section-cta" style={{ marginTop: 36 }}>
+        <Link to="/about" className="hn-btn hn-btn-ghost">The full timeline <ArrowRight size={16} /></Link>
+      </div>
     </section>
   );
 }
@@ -241,12 +259,12 @@ export function WritingSection({ index = '05' }: { index?: string }) {
     <section className="hn-section hn-frame" aria-labelledby="hn-writing-title">
       <SectionHead index={index} label="Writing" />
       <Reveal>
-        <h2 id="hn-writing-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>I write down <span className="hn-mark">what broke.</span></h2>
+        <h2 id="hn-writing-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Field notes from <span className="hn-mark">production work.</span></h2>
       </Reveal>
       <div ref={ref}>
         <NoteList notes={notes} />
         <div className="hn-writing-foot">
-          <p className="hn-lede">{total ? `${total} field notes` : 'Field notes'} on agents, RAG, automation, security and the parts of production nobody demos.</p>
+          <p className="hn-lede">{total ? `${total} field notes` : 'Field notes'} on agents, RAG, automation, security and what it takes to run AI in production.</p>
           <Link to="/blogs" className="hn-link">Read them all <ArrowRight size={16} /></Link>
         </div>
       </div>
@@ -300,7 +318,7 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
         <SectionHead index={index} label="Contact" />
         <div className="hn-contact">
           <Reveal>
-            <Heading id="hn-contact-title" className="hn-title">Bring me the part that <span className="hn-mark">keeps breaking.</span></Heading>
+            <Heading id="hn-contact-title" className="hn-title">Tell me what <span className="hn-mark">needs to work.</span></Heading>
             <p className="hn-lede">A few lines is enough. What it is, what it should do, and what it does instead.</p>
             <Clocks />
             <div className="hn-direct">
@@ -329,7 +347,7 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
                 </label>
               </div>
               <label>
-                <span className="hn-mono">What's breaking?</span>
+                <span className="hn-mono">What are you building?</span>
                 <textarea required name="message" rows={6} value={formState.message} onChange={(event) => setFormState({ ...formState, message: event.target.value })} placeholder="Two or three sentences is plenty." toolparamdescription="Project description, architecture requirements, or engagement timeline" />
               </label>
               <div className="hn-form-foot">
@@ -344,6 +362,28 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
           </Reveal>
         </div>
       </div>
+    </section>
+  );
+}
+
+/** Plain, citable answers to the questions people (and answer engines) ask most. */
+export const QUICK_ANSWERS = answers.items;
+
+export function QuickAnswersSection({ index }: { index: string }) {
+  return (
+    <section className="hn-section hn-frame" aria-labelledby="hn-answers-title">
+      <SectionHead index={index} label="Quick answers" />
+      <Reveal>
+        <h2 id="hn-answers-title" className="hn-title-sm" style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}>The short version.</h2>
+      </Reveal>
+      <dl className="hn-answers">
+        {QUICK_ANSWERS.map((item) => (
+          <div key={item.q}>
+            <dt>{item.q}</dt>
+            <dd>{item.a}</dd>
+          </div>
+        ))}
+      </dl>
     </section>
   );
 }

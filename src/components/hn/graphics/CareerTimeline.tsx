@@ -18,18 +18,20 @@ const at = (year: number, month: number) => year + (month - 1) / 12;
 const ROLES: Role[] = [
   { id: 'touchstone', org: 'Touchstone Communications', role: 'QA Executive', segments: [[at(2020, 7), at(2021, 6)], [at(2022, 12), at(2023, 12)]], period: 'Jul 2020 to May 2021, Dec 2022 to Nov 2023', mode: 'Part-time · Hybrid', detail: 'Quality, compliance and internal systems QA across 14+ teams. Where I learned to test the unhappy path first.' },
   { id: 'air', org: 'Air University', role: 'BS Computer Science', segments: [[at(2020, 9), at(2024, 7)]], period: '2020 to 2024', mode: 'Islamabad', detail: 'Bachelor of Science in Computer Science.', edu: true },
-  { id: 'gridcore', org: 'GridCore', role: 'Software Architect', segments: [[at(2021, 8), 'now']], period: 'Aug 2021 to now', mode: 'Hybrid', detail: 'Promoted into lead architect across web, mobile and desktop teams. Client discovery, NestJS and React delivery, and applied AI where it actually helps operations.' },
+  { id: 'gridcore', org: 'GridCore', role: 'Software Architect', segments: [[at(2021, 8), at(2026, 11)]], period: 'Aug 2021 to Oct 2026', mode: 'Full-time · Hybrid', detail: 'Promoted into lead architect across web, mobile and desktop teams. Client discovery, NestJS and React delivery, and applied AI where it actually helps operations. Moved on in October 2026 after five years.' },
   { id: 'brilliant', org: 'Brilliant Gaming', role: 'Lead QA Engineer', segments: [[at(2025, 2), at(2025, 10)]], period: 'Feb 2025 to Sep 2025', mode: 'Contract · Remote', detail: 'Led an eight-person QA team on payment-critical casino flows. UI, API and regression coverage.' },
   { id: 'ndt', org: 'NDT Legacy Group', role: 'Senior AI Engineer', segments: [[at(2025, 8), at(2026, 5)]], period: 'Aug 2025 to Apr 2026', mode: 'Part-time · Remote', detail: 'Client AI automation from discovery to production, with n8n, Zapier, REST APIs and LLM integrations.' },
   { id: 'schmoozzer', org: 'Schmoozzer', role: 'Senior AI Engineer', segments: [[at(2025, 10), at(2026, 2)]], period: 'Oct 2025 to Jan 2026', mode: 'Contract · Remote', detail: 'Small business automation with LLMs and n8n across seven or eight clients, including auditing and reporting workflows.' },
   { id: 'uno', org: 'Uno OS', role: 'AI Architect', segments: [[at(2026, 5), 'now']], period: 'May 2026 to now', mode: 'Part-time · Remote', detail: 'The final technical call on the AI and software portfolio. Architecting an AI-native business OS with a team of seven.' },
+  { id: 'anthology', org: 'Anthology', role: 'ML Researcher', segments: [[at(2026, 10), 'now']], period: 'Oct 2026 to now', mode: 'Contract · Part-time', detail: 'Inference optimisation and GPU kernels, and research on frontier LLMs.' },
+  { id: 'outsentia', org: 'Outsentia', role: 'AI Environment Engineer', segments: [[at(2026, 10), 'now']], period: 'Oct 2026 to now', mode: 'Full-time', detail: 'Joined full time in October 2026.' },
 ];
 
 const START = at(2020, 5);
 
 export default function CareerTimeline() {
   const [ref, inView] = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -15% 0px' });
-  const [active, setActive] = useState('uno');
+  const [active, setActive] = useState('outsentia');
   const now = useMemo(() => {
     const date = new Date();
     return date.getFullYear() + date.getMonth() / 12 + date.getDate() / 365;

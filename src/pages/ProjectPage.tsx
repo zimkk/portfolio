@@ -41,7 +41,7 @@ export default function ProjectPage() {
         title={`${project.name}: ${DISCIPLINE_LABEL[project.discipline]} Project | Hassan Nazir`}
         description={`${project.summary} ${project.stack.slice(0, 4).join(', ')}.`}
         url={url}
-        image={project.image ?? '/images/og/default.jpg'}
+        image={`/images/og/work-${project.slug}.jpg`}
         jsonLd={[schema, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Work', url: `${siteConfig.url}/work` }, { name: project.name, url }])]}
       />
       <PageShell>

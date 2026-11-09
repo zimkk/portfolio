@@ -5,32 +5,32 @@ type Layer = { key: string; label: string; name: string; line: string; tools: st
 
 const LAYERS: Layer[] = [
   {
-    key: 'interface', label: 'INTERFACE', name: 'Interface', line: 'The part people actually click.',
+    key: 'interface', label: 'INTERFACE', name: 'Interface', line: 'Interfaces people rely on every day.',
     tools: ['React', 'Next.js', 'TypeScript', 'Tailwind'],
     glyph: <><rect x="18" y="18" width="64" height="64" rx="6" /><path d="M18 32h64M28 44h22M28 54h34M28 64h14" /></>,
   },
   {
-    key: 'services', label: 'SERVICES', name: 'Services', line: 'APIs that say clearly when they fail.',
+    key: 'services', label: 'SERVICES', name: 'Services', line: 'APIs that are explicit about failure.',
     tools: ['NestJS', 'FastAPI', 'Node.js', 'REST', 'Webhooks'],
     glyph: <path d="M18 30h56l-8-7M18 50h56l-8-7M82 70H26l8 7" />,
   },
   {
-    key: 'models', label: 'MODELS', name: 'Intelligence', line: 'Models, kept on a short leash.',
+    key: 'models', label: 'MODELS', name: 'Intelligence', line: 'Models with guardrails and evaluation.',
     tools: ['Claude', 'OpenAI', 'LangGraph', 'Ollama', 'RAG', 'Evals'],
     glyph: <><circle cx="28" cy="28" r="7" /><circle cx="72" cy="28" r="7" /><circle cx="50" cy="52" r="9" /><circle cx="28" cy="76" r="7" /><circle cx="72" cy="76" r="7" /><path d="M34 33l9 12M66 33l-9 12M34 71l9-12M66 71l-9-12" /></>,
   },
   {
-    key: 'automation', label: 'AUTOMATION', name: 'Automation', line: 'The boring work, done on schedule.',
+    key: 'automation', label: 'AUTOMATION', name: 'Automation', line: 'Repetitive work, scheduled and monitored.',
     tools: ['n8n', 'Playwright', 'Queues', 'Cron', 'Zapier'],
     glyph: <><rect x="14" y="40" width="20" height="20" rx="5" /><rect x="44" y="20" width="20" height="20" rx="5" /><rect x="44" y="60" width="20" height="20" rx="5" /><rect x="74" y="40" width="14" height="20" rx="5" /><path d="M34 50h4l6-20M38 50l6 20M64 30l10 16M64 70l10-16" /></>,
   },
   {
-    key: 'data', label: 'DATA', name: 'Data', line: 'Where the truth lives. Usually.',
+    key: 'data', label: 'DATA', name: 'Data', line: 'The source of truth, designed to stay one.',
     tools: ['PostgreSQL', 'pgvector', 'Redis', 'MongoDB', 'Supabase'],
     glyph: <path d="M18 24h64M18 40h64M18 56h64M18 72h64M40 18v62M62 18v62" />,
   },
   {
-    key: 'infra', label: 'INFRA', name: 'Infrastructure', line: 'Boxes that stay up at 3am.',
+    key: 'infra', label: 'INFRA', name: 'Infrastructure', line: 'Infrastructure built to stay up.',
     tools: ['Docker', 'Kubernetes', 'AWS', 'GCP', 'CI/CD'],
     glyph: <><rect x="18" y="18" width="26" height="26" rx="4" /><rect x="56" y="18" width="26" height="26" rx="4" /><rect x="18" y="56" width="26" height="26" rx="4" /><rect x="56" y="56" width="26" height="26" rx="4" /></>,
   },

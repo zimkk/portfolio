@@ -32,14 +32,14 @@ export default function WorkPage() {
         title="Work: Live Products and Open Source | Hassan Nazir"
         description="Live products and public source code by Hassan Nazir: AI agents, n8n automation, ML pipelines, security tooling and full-stack software, each with its own write-up."
         url={url}
-        image="/images/og/default.jpg"
+        image="/images/og/work.jpg"
         jsonLd={[schema, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Work', url }])]}
       />
       <PageShell>
         <PageHero
           eyebrow="Work"
-          title="Things that are running"
-          mark="somewhere right now."
+          title="Products and code"
+          mark="running in production."
           lede={`${projects.length} projects. Live products people use, and public source you can read. Every one has its own page with the stack, the parts that were hard, and the services it sits under.`}
         >
           <Link to="/services" className="hn-btn hn-btn-ghost">How I can help <ArrowRight size={16} /></Link>

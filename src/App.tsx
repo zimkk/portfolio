@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import SEOHead from './components/ui/SEOHead';
 import { PageShell, useBookingCtx } from './components/hn/chrome';
-import { BuildLogSection, ContactSection, WhoSection, WorkSection, WritingSection } from './components/hn/sections';
+import { BuildLogSection, CareerLogSection, ContactSection, MethodSection, RangeSection, WhoSection, WorkSection, WritingSection } from './components/hn/sections';
 import Ico from './components/hn/graphics/Ico';
 import D20 from './components/hn/graphics/D20';
 
@@ -17,8 +17,8 @@ function HomeHero() {
             <span><span>Hassan</span></span>
             <span><span>Nazir</span></span>
           </h1>
-          <p className="hn-hero-claim">Twenty sides. <span className="hn-mark">One job.</span></p>
-          <p className="hn-hero-copy">QA, full-stack, ML and security, all on the same die. Whichever face lands, I work inside your team until the messy part of the operation runs on software.</p>
+          <p className="hn-hero-claim">From QA to production AI. <span className="hn-mark">One engineer.</span></p>
+          <p className="hn-hero-copy">I work inside your team until the hardest part of the operation runs reliably on software. Every face of the die is a real role, project or credential.</p>
           <div className="hn-hero-actions">
             <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}>
               <Ico /> Book 30 minutes <ArrowUpRight size={16} />
@@ -38,11 +38,14 @@ export function App() {
       <SEOHead page="home" />
       <PageShell>
         <HomeHero />
-        <WhoSection index="02" teaser />
-        <WorkSection index="03" />
-        <BuildLogSection index="04" limit={4} />
-        <WritingSection index="05" />
-        <ContactSection index="06" />
+        <WhoSection index="02" />
+        <RangeSection index="03" />
+        <MethodSection index="04" />
+        <WorkSection index="05" />
+        <BuildLogSection index="06" />
+        <CareerLogSection index="07" />
+        <WritingSection index="08" />
+        <ContactSection index="09" />
       </PageShell>
     </>
   );

@@ -12,8 +12,17 @@
       "type": "text/html",
       "url": "https://hassannazir.dev/services/forward-deployed-engineer",
       "description": "Embedded technical execution bridging product discovery, AI prototyping, systems integration, and production delivery.",
-      "tags": ["forward-deployed-engineering", "applied-ai", "full-stack", "production-delivery"],
-      "capabilities": ["TechnicalDelivery", "SystemIntegration", "AIPrototyping"],
+      "tags": [
+        "forward-deployed-engineering",
+        "applied-ai",
+        "full-stack",
+        "production-delivery"
+      ],
+      "capabilities": [
+        "TechnicalDelivery",
+        "SystemIntegration",
+        "AIPrototyping"
+      ],
       "representativeQueries": [
         "hire a forward deployed engineer",
         "embedded AI software delivery",
@@ -26,8 +35,17 @@
       "type": "text/html",
       "url": "https://hassannazir.dev/services/applied-ai-consulting",
       "description": "Applied AI consulting for teams needing working LLM applications, document intelligence, automation, evaluation, and production infrastructure.",
-      "tags": ["applied-ai", "llm-architecture", "eval-harness", "rag-systems"],
-      "capabilities": ["LLMArchitecture", "RAGOptimization", "EvaluationHarnesses"],
+      "tags": [
+        "applied-ai",
+        "llm-architecture",
+        "eval-harness",
+        "rag-systems"
+      ],
+      "capabilities": [
+        "LLMArchitecture",
+        "RAGOptimization",
+        "EvaluationHarnesses"
+      ],
       "representativeQueries": [
         "applied AI consulting services",
         "production LLM architecture consulting",
@@ -40,8 +58,18 @@
       "type": "text/html",
       "url": "https://hassannazir.dev/services/ai-agent-development",
       "description": "Production AI agent and RAG development using LangGraph, model tools, vector search, evaluation, durable jobs, observability, and full-stack product engineering.",
-      "tags": ["ai-agents", "rag", "langgraph", "vector-search", "pgvector"],
-      "capabilities": ["AgenticWorkflows", "HybridVectorSearch", "DurableExecution"],
+      "tags": [
+        "ai-agents",
+        "rag",
+        "langgraph",
+        "vector-search",
+        "pgvector"
+      ],
+      "capabilities": [
+        "AgenticWorkflows",
+        "HybridVectorSearch",
+        "DurableExecution"
+      ],
       "representativeQueries": [
         "hire AI agent developer",
         "LangGraph multi-agent engineering",
@@ -54,8 +82,17 @@
       "type": "text/html",
       "url": "https://hassannazir.dev/services/n8n-automation-consultant",
       "description": "Enterprise n8n automation consulting, custom node integrations, self-hosted n8n infrastructure, and reliable lead operations.",
-      "tags": ["n8n", "ai-automation", "enterprise-workflows", "webhook-orchestration"],
-      "capabilities": ["n8nWorkflows", "CustomNodeDevelopment", "SelfHostedAutomation"],
+      "tags": [
+        "n8n",
+        "ai-automation",
+        "enterprise-workflows",
+        "webhook-orchestration"
+      ],
+      "capabilities": [
+        "n8nWorkflows",
+        "CustomNodeDevelopment",
+        "SelfHostedAutomation"
+      ],
       "representativeQueries": [
         "hire n8n automation consultant",
         "enterprise n8n workflow consulting",
@@ -68,12 +105,308 @@
       "type": "text/html",
       "url": "https://hassannazir.dev/services/full-stack-software-development",
       "description": "Full-stack software development and custom AI application engineering with TypeScript, React, Next.js, Python, FastAPI, PostgreSQL, and cloud infrastructure.",
-      "tags": ["full-stack", "typescript", "react", "nextjs", "python", "fastapi"],
-      "capabilities": ["FullStackEngineering", "APIDevelopment", "CloudDeployment"],
+      "tags": [
+        "full-stack",
+        "typescript",
+        "react",
+        "nextjs",
+        "python",
+        "fastapi"
+      ],
+      "capabilities": [
+        "FullStackEngineering",
+        "APIDevelopment",
+        "CloudDeployment"
+      ],
       "representativeQueries": [
         "hire full stack developer US overlap",
         "custom AI SaaS development",
         "FastAPI React software engineer"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:pages:about",
+      "displayName": "About Hassan Nazir",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/about",
+      "description": "Background, current roles, the stack he covers, how engagements run, and every role on one timeline.",
+      "tags": [
+        "about",
+        "career",
+        "profile"
+      ],
+      "representativeQueries": [
+        "who is Hassan Nazir",
+        "Hassan Nazir current role",
+        "Hassan Nazir experience"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:pages:work",
+      "displayName": "Work by Hassan Nazir",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work",
+      "description": "Live products and public source code, each with its own page.",
+      "tags": [
+        "portfolio",
+        "projects",
+        "open-source"
+      ],
+      "representativeQueries": [
+        "Hassan Nazir projects",
+        "Hassan Nazir open source"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:pages:blogs",
+      "displayName": "Field notes",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/blogs",
+      "description": "67 long-form technical field notes on applied AI, agents, RAG, automation and security.",
+      "tags": [
+        "writing",
+        "blog"
+      ],
+      "representativeQueries": [
+        "Hassan Nazir blog",
+        "forward deployed engineering articles"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:pages:contact",
+      "displayName": "Contact Hassan Nazir",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/contact",
+      "description": "Send a short brief or book a 30 minute call.",
+      "tags": [
+        "contact",
+        "booking"
+      ],
+      "representativeQueries": [
+        "contact Hassan Nazir",
+        "book a call with a forward deployed engineer"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:the-home-club",
+      "displayName": "The Home Club",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/the-home-club",
+      "description": "A sports platform that turns memberships, programmes and community into one clear journey.",
+      "tags": [
+        "full-stack",
+        "next.js",
+        "typescript",
+        "react"
+      ],
+      "representativeQueries": [
+        "The Home Club by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:n8nhub",
+      "displayName": "N8NHUB",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/n8nhub",
+      "description": "Over 2,000 searchable n8n workflows, for people who want a working pattern rather than another tutorial.",
+      "tags": [
+        "automation",
+        "next.js",
+        "mongodb",
+        "typescript"
+      ],
+      "representativeQueries": [
+        "N8NHUB by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:speedyinfluencer",
+      "displayName": "SpeedyInfluencer",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/speedyinfluencer",
+      "description": "Campaigns, creators and performance data in one focused workspace for brands.",
+      "tags": [
+        "full-stack",
+        "saas",
+        "custom apis",
+        "full stack"
+      ],
+      "representativeQueries": [
+        "SpeedyInfluencer by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:smartfurs",
+      "displayName": "SmartFurs",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/smartfurs",
+      "description": "A storefront built around buyer confidence and a low-friction enquiry path.",
+      "tags": [
+        "full-stack",
+        "react",
+        "commerce",
+        "full-stack ui"
+      ],
+      "representativeQueries": [
+        "SmartFurs by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:wonderkit",
+      "displayName": "WonderKit",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/wonderkit",
+      "description": "A multi-tenant AI SaaS foundation with provider-swappable LLMs and durable agent runs.",
+      "tags": [
+        "ml",
+        "typescript",
+        "next.js",
+        "pgvector"
+      ],
+      "representativeQueries": [
+        "WonderKit by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:vigil",
+      "displayName": "Vigil",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/vigil",
+      "description": "Security research tooling that makes security work part of the engineering record.",
+      "tags": [
+        "security",
+        "python",
+        "security research"
+      ],
+      "representativeQueries": [
+        "Vigil by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:ny-municipal-monitor",
+      "displayName": "NY Municipal Monitor",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/ny-municipal-monitor",
+      "description": "Watches 60 New York county sites for personnel and contact changes.",
+      "tags": [
+        "automation",
+        "python",
+        "fastapi",
+        "next.js"
+      ],
+      "representativeQueries": [
+        "NY Municipal Monitor by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:maps-lead-engine",
+      "displayName": "Maps Lead Engine",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/maps-lead-engine",
+      "description": "An async, resumable Playwright scraper that turns map listings into outreach datasets.",
+      "tags": [
+        "automation",
+        "python",
+        "playwright",
+        "async"
+      ],
+      "representativeQueries": [
+        "Maps Lead Engine by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:mynecraft",
+      "displayName": "Mynecraft",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/mynecraft",
+      "description": "A voxel engine written by hand, running in the browser.",
+      "tags": [
+        "full-stack",
+        "typescript",
+        "three.js",
+        "webgl"
+      ],
+      "representativeQueries": [
+        "Mynecraft by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:legal-intelligence",
+      "displayName": "Legal Intelligence",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/legal-intelligence",
+      "description": "A local legal-document pipeline: Llama 3 fine-tuned with LoRA, with a second model checking every summary.",
+      "tags": [
+        "ml",
+        "python",
+        "llama 3",
+        "lora"
+      ],
+      "representativeQueries": [
+        "Legal Intelligence by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:transcription-analyzer",
+      "displayName": "Transcription Analyzer",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/transcription-analyzer",
+      "description": "Speech, OCR, NLP and sentiment, stitched into one pipeline.",
+      "tags": [
+        "ml",
+        "python",
+        "speech",
+        "ocr"
+      ],
+      "representativeQueries": [
+        "Transcription Analyzer by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:anomaly-detection",
+      "displayName": "Anomaly Detection",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/anomaly-detection",
+      "description": "ML ensembles running over streaming data.",
+      "tags": [
+        "ml",
+        "python",
+        "ml ensembles",
+        "streaming"
+      ],
+      "representativeQueries": [
+        "Anomaly Detection by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:gpt-2-generator",
+      "displayName": "GPT-2 Generator",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/gpt-2-generator",
+      "description": "Local text generation with keyword extraction.",
+      "tags": [
+        "ml",
+        "python",
+        "gpt-2",
+        "local inference"
+      ],
+      "representativeQueries": [
+        "GPT-2 Generator by Hassan Nazir"
+      ]
+    },
+    {
+      "identifier": "urn:air:hassannazir.dev:work:witty-404",
+      "displayName": "witty-404",
+      "type": "text/html",
+      "url": "https://hassannazir.dev/work/witty-404",
+      "description": "A Cloudflare Worker that writes a different excuse for every missing page.",
+      "tags": [
+        "full-stack",
+        "cloudflare workers",
+        "typescript"
+      ],
+      "representativeQueries": [
+        "witty-404 by Hassan Nazir"
       ]
     }
   ]

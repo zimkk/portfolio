@@ -126,7 +126,7 @@ const JournalPage: React.FC = () => {
                 <Ico size={15} /> Field notes <i>{blogPosts.length} entries, newest first</i>
               </span>
               <h1 className="hn-blog-title">
-                I write down <span>what broke.</span>
+                Field notes from <span>production work.</span>
               </h1>
               <p className="mt-2 max-w-3xl text-base text-[var(--fg-3)] sm:text-lg leading-relaxed">
                 Technical field notes and implementation guides on enterprise AI automations, autonomous multi-agent systems, full-stack software development, and cloud security.

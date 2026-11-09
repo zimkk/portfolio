@@ -363,8 +363,17 @@ const ArticlePage: React.FC = () => {
                     rehypePlugins={[rehypeKatex]}
                     components={{
                       // Avoid duplicate H1 since post.title is already in page header
-                      h1() {
-                        return null;
+                      // The page header already shows the title, so a body H1 that repeats it is skipped.
+                      // Any other H1 (e.g. "Part I") is a real section heading, rendered as an H2.
+                      h1({ children }) {
+                        const text = getNodeText(children);
+                        if (text.trim().toLowerCase() === post.title.trim().toLowerCase()) return null;
+                        const id = slugify(text);
+                        return (
+                          <h2 id={id} className="group scroll-mt-24 font-['Satoshi']">
+                            <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">{children}</a>
+                          </h2>
+                        );
                       },
 
                       // Custom Heading Anchors with IDs

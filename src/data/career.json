@@ -1,0 +1,22 @@
+{
+  "_note": "Roles only. Read by scripts/generate-route-shells.mjs (llms.txt, portfolio.json, /about shell) and the WebMCP profile tool. Keep in step with the career graph and timeline components.",
+  "current": [
+    { "org": "Outsentia", "role": "AI Environment Engineer", "start": "2026-10", "type": "Full-time" },
+    { "org": "Anthology", "role": "ML Researcher", "start": "2026-10", "type": "Part-time contract", "focus": "Inference optimization, GPU kernels and research on frontier LLMs" },
+    { "org": "Uno OS", "role": "AI Architect", "start": "2026-05", "type": "Part-time, remote", "focus": "Final technical decision-maker for an AI-native business OS" }
+  ],
+  "past": [
+    { "org": "GridCore", "role": "Software Architect & Full-Stack Engineer", "start": "2021-08", "end": "2026-10", "type": "Full-time, hybrid", "focus": "Promoted to lead architect across web, mobile and desktop teams" },
+    { "org": "NDT Legacy Group", "role": "Senior AI Engineer", "start": "2025-08", "end": "2026-04", "type": "Part-time, remote", "focus": "Client AI automation from discovery to production with n8n, APIs and LLMs" },
+    { "org": "Schmoozzer", "role": "Senior AI Engineer", "start": "2025-10", "end": "2026-01", "type": "Contract, remote", "focus": "Small business automation with LLMs and n8n across seven or eight clients" },
+    { "org": "Brilliant Gaming", "role": "Lead QA Engineer", "start": "2025-02", "end": "2025-09", "type": "Contract, remote", "focus": "Led an eight-person QA team on payment-critical flows" },
+    { "org": "Touchstone Communications", "role": "QA Executive", "start": "2022-12", "end": "2023-11", "type": "Part-time, hybrid" },
+    { "org": "Touchstone Communications", "role": "QA Executive", "start": "2020-07", "end": "2021-05", "type": "Part-time, hybrid" }
+  ],
+  "education": { "school": "Air University, Islamabad", "degree": "BS Computer Science", "years": "2020 to 2024" },
+  "credentials": [
+    { "name": "Certified Ethical Hacker Practical (CEH-P)", "by": "EC-Council" },
+    { "name": "Practical Ethical Hacking (PEH)", "by": "TCM Security Academy" },
+    { "name": "ISO/IEC 27001 Information Security Associate", "by": "SkillFront" }
+  ]
+}

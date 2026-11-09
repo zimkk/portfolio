@@ -1,0 +1,11 @@
+{
+  "_note": "Quick answers shown on /about and published as FAQPage data. Read by AboutPage.tsx and scripts/generate-route-shells.mjs. Plain, factual, citable sentences.",
+  "items": [
+    { "q": "Who is Hassan Nazir?", "a": "Hassan Nazir is a forward deployed engineer based in Islamabad and Dubai. He builds AI automation, AI agents and full-stack software inside the teams that use them, and works remotely with US, UK and EU teams." },
+    { "q": "What does Hassan Nazir do now?", "a": "He is an AI Environment Engineer at Outsentia (full-time, since October 2026), an ML Researcher at Anthology on a part-time contract working on inference optimization and GPU kernels (since October 2026), and AI Architect at Uno OS (part-time, since May 2026)." },
+    { "q": "What did he do before?", "a": "Five years at GridCore (August 2021 to October 2026), from full-stack engineer to lead architect across web, mobile and desktop. Before and alongside that: senior AI engineering at NDT Legacy Group and Schmoozzer, and QA leadership at Brilliant Gaming and Touchstone Communications." },
+    { "q": "What can you hire him for?", "a": "Forward deployed engineering, applied AI consulting, AI agent and RAG development, AI automation with n8n, and full-stack software development." },
+    { "q": "What are his credentials?", "a": "A BS in Computer Science from Air University, Islamabad, and the CEH-P, PEH and ISO/IEC 27001 Information Security Associate certifications." },
+    { "q": "How do you contact him?", "a": "Through the contact page at hassannazir.dev/contact, by booking a 30 minute call on Calendly, or by email at hassannazir955@gmail.com." }
+  ]
+}

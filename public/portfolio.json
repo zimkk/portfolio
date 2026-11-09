@@ -3,209 +3,842 @@
   "@type": "ProfilePage",
   "@id": "https://hassannazir.dev/#profile",
   "url": "https://hassannazir.dev",
-  "dateModified": "2026-09-03",
+  "dateModified": "2026-11-09",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://hassannazir.dev/#hassan-nazir",
     "name": "Hassan Nazir",
-    "alternateName": ["Hassan Nazir", "zimkk"],
     "jobTitle": "Forward Deployed Engineer & Full-Stack AI Architect",
-    "description": "Forward Deployed Engineer and Full-Stack AI Architect building production AI systems, AI automations, full-stack software products, and scalable workflows for US and global teams.",
-    "homeLocation": {
-      "@type": "Place",
-      "name": "Dubai, UAE & Islamabad, Pakistan"
-    },
-    "areaServed": [
-      { "@type": "Country", "name": "United States", "identifier": "US" },
-      { "@type": "Place", "name": "North America" },
-      { "@type": "Country", "name": "United Kingdom", "identifier": "GB" },
-      { "@type": "Place", "name": "European Union" },
-      { "@type": "Place", "name": "Worldwide" }
-    ],
+    "url": "https://hassannazir.dev",
+    "image": "https://hassannazir.dev/images/profile.png",
     "sameAs": [
       "https://github.com/zimkk",
-      "https://linkedin.com/in/hassannazirrr",
-      "https://twitter.com/hassannazir"
+      "https://linkedin.com/in/hassannazirrr"
     ],
-    "knowsAbout": [
-      "Forward deployed engineering",
-      "AI Automations & n8n workflows",
-      "Full-stack software development",
-      "Custom software engineering",
-      "Applied artificial intelligence",
-      "AI agents & LangGraph",
-      "Retrieval-augmented generation (RAG)",
-      "Large language model systems",
-      "Python",
-      "TypeScript",
-      "Java",
-      "Spring Boot",
-      "React",
-      "Next.js",
-      "FastAPI",
-      "PostgreSQL",
-      "pgvector",
-      "MySQL",
-      "Vector databases",
-      "Docker",
-      "Kubernetes",
-      "AWS",
-      "GCP",
-      "PyTorch",
-      "TensorFlow",
-      "Hugging Face",
-      "Cybersecurity",
-      "Linux administration"
+    "homeLocation": {
+      "@type": "Place",
+      "name": "Islamabad, Pakistan and Dubai, UAE"
+    },
+    "worksFor": [
+      {
+        "@type": "Organization",
+        "name": "Outsentia",
+        "description": "AI Environment Engineer (Full-time) since October 2026"
+      },
+      {
+        "@type": "Organization",
+        "name": "Anthology",
+        "description": "ML Researcher (Part-time contract) since October 2026: Inference optimization, GPU kernels and research on frontier LLMs"
+      },
+      {
+        "@type": "Organization",
+        "name": "Uno OS",
+        "description": "AI Architect (Part-time, remote) since May 2026: Final technical decision-maker for an AI-native business OS"
+      }
     ],
     "alumniOf": {
       "@type": "CollegeOrUniversity",
-      "name": "Air University",
-      "sameAs": "https://www.au.edu.pk/",
-      "description": "Bachelors in Science, Computer Science (2020–2024)"
+      "name": "Air University, Islamabad",
+      "description": "BS Computer Science (2020 to 2024)"
     },
     "hasCredential": [
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Certified Ethical Hacker Practical (CEH-P)",
-        "recognizedBy": { "@type": "Organization", "name": "EC-Council" }
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "EC-Council"
+        }
       },
       {
         "@type": "EducationalOccupationalCredential",
         "name": "Practical Ethical Hacking (PEH)",
-        "recognizedBy": { "@type": "Organization", "name": "TCM Security Academy" }
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "TCM Security Academy"
+        }
       },
       {
         "@type": "EducationalOccupationalCredential",
         "name": "ISO/IEC 27001 Information Security Associate",
-        "recognizedBy": { "@type": "Organization", "name": "SkillFront" }
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "SkillFront"
+        }
       }
+    ],
+    "knowsAbout": [
+      "Forward deployed engineering",
+      "AI agents",
+      "Retrieval-augmented generation",
+      "n8n automation",
+      "Full-stack software development",
+      "LLM inference optimization",
+      "GPU kernels",
+      "Frontier LLM research",
+      "Security engineering"
     ]
   },
   "hasPart": [
     {
+      "@type": "CreativeWork",
+      "name": "The Home Club",
+      "url": "https://hassannazir.dev/work/the-home-club",
+      "description": "A public-facing sports platform. Memberships, programmes and community activity live in one journey instead of three disconnected tools, so a visitor can go from browsing to joining without being bounced around.",
+      "keywords": "Next.js, TypeScript, React, Full stack",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "sameAs": "https://thehomeclubsports.com"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "N8NHUB",
+      "url": "https://hassannazir.dev/work/n8nhub",
+      "description": "A searchable library of more than 2,000 n8n workflows. Each one is categorised and documented, so a builder can find a pattern that already works, read how it fits together, and adapt it instead of starting from a blank canvas.",
+      "keywords": "Next.js, MongoDB, TypeScript, n8n",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/n8nhub",
+      "sameAs": "https://n8nhub.hassannazir.dev"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "SpeedyInfluencer",
+      "url": "https://hassannazir.dev/work/speedyinfluencer",
+      "description": "A SaaS workspace for creator campaigns. Brands manage campaigns, collaborate with creators and read performance data in one place, backed by custom APIs.",
+      "keywords": "SaaS, Custom APIs, Full stack",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "sameAs": "https://speedyinfluencer.com"
+    },
+    {
+      "@type": "CreativeWork",
+      "name": "SmartFurs",
+      "url": "https://hassannazir.dev/work/smartfurs",
+      "description": "A modern storefront for puppy discovery. The structure is built around buyer confidence: clean navigation, clear listings and an enquiry path with as little friction as possible.",
+      "keywords": "React, Commerce, Full-stack UI",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "sameAs": "https://smartfurs.vercel.app"
+    },
+    {
       "@type": "SoftwareSourceCode",
       "name": "WonderKit",
-      "codeRepository": "https://github.com/zimkk/wonderkit",
-      "programmingLanguage": "TypeScript",
-      "description": "Agent-native full-stack SaaS foundation with pgvector, multi-tenant auth, durable agent runs, and Stripe billing"
+      "url": "https://hassannazir.dev/work/wonderkit",
+      "description": "An agent-native SaaS foundation. LLM providers can be swapped without touching product code, agent runs are durable and resumable, memory lives in pgvector, and usage is metered for billing. Evaluation and deployment paths are part of the base, not an afterthought.",
+      "keywords": "TypeScript, Next.js, pgvector, PostgreSQL",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/wonderkit"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "NY Municipal Decision-Maker Monitor",
-      "codeRepository": "https://github.com/zimkk/erdman-ny-county",
-      "programmingLanguage": "Python",
-      "description": "Tracks public decision-makers across 60 New York county websites with scheduled scraping and change detection"
+      "name": "Vigil",
+      "url": "https://hassannazir.dev/work/vigil",
+      "description": "A cybersecurity research tool. The aim is simple: security findings should live alongside the engineering work, so teams ship more complete products instead of treating security as a separate audit at the end.",
+      "keywords": "Python, Security research",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/vigil"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "Google Maps Lead Scraper",
-      "codeRepository": "https://github.com/zimkk/Lead-Scraper-Google-Maps",
-      "programmingLanguage": "Python",
-      "description": "Resilient Playwright lead extraction engine with 250+ passing tests"
+      "name": "NY Municipal Monitor",
+      "url": "https://hassannazir.dev/work/ny-municipal-monitor",
+      "description": "A decision-maker monitoring system across 60 New York county sites. It imports an existing baseline, runs scheduled collection, detects personnel and contact changes, keeps the history, fires webhook alerts and gives operators a working dashboard.",
+      "keywords": "Python, FastAPI, Next.js, Webhooks",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/erdman-ny-county"
+    },
+    {
+      "@type": "SoftwareSourceCode",
+      "name": "Maps Lead Engine",
+      "url": "https://hassannazir.dev/work/maps-lead-engine",
+      "description": "Searches by city, area or geographic grid and turns map listings into qualified outreach datasets. It is async, resumable and crash-safe, so a long run picks up where it stopped, and exports to CSV and Excel.",
+      "keywords": "Python, Playwright, Async",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/Lead-Scraper-Google-Maps"
     },
     {
       "@type": "SoftwareSourceCode",
       "name": "Mynecraft",
-      "codeRepository": "https://github.com/zimkk/mynecraft",
-      "programmingLanguage": "TypeScript",
-      "description": "Browser 3D voxel engine written in TypeScript with Three.js and worker-streamed procedural terrain"
+      "url": "https://hassannazir.dev/work/mynecraft",
+      "description": "A hand-built voxel engine with procedural worlds, chunks streamed from web workers, custom lighting, AABB physics, mob AI, multiple dimensions and versioned saves. It runs on two runtime dependencies.",
+      "keywords": "TypeScript, Three.js, WebGL, Web Workers",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/mynecraft"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "Legal Document Summarizer",
-      "codeRepository": "https://github.com/zimkk/legal-Document-Summerizer",
-      "programmingLanguage": "Python",
-      "description": "Fine-tuned Llama 3 legal summarization and Gemma verification pipeline"
+      "name": "Legal Intelligence",
+      "url": "https://hassannazir.dev/work/legal-intelligence",
+      "description": "A local pipeline for legal documents. It covers dataset preparation, Llama 3 fine-tuning with LoRA, PDF and DOCX processing, structured summaries and batch execution, with Gemma verifying each summary before it is trusted.",
+      "keywords": "Python, Llama 3, LoRA, Ollama, Gemma",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/legal-Document-Summerizer"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "n8nHub",
-      "codeRepository": "https://github.com/zimkk/n8nhub",
-      "programmingLanguage": "TypeScript",
-      "description": "Next.js platform organizing 2,000+ n8n workflow automations"
+      "name": "Transcription Analyzer",
+      "url": "https://hassannazir.dev/work/transcription-analyzer",
+      "description": "An early ML pipeline that combines speech transcription, OCR, NLP and sentiment analysis, with scraping to feed it real inputs.",
+      "keywords": "Python, Speech, OCR, NLP",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/Transcription-and-Sentiment-Analyzer"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "Fooocus",
-      "codeRepository": "https://github.com/zimkk/Fooocus",
-      "programmingLanguage": "Python",
-      "description": "SDXL-based image generation tool with streamlined prompting and high-quality visual output"
+      "name": "Anomaly Detection",
+      "url": "https://hassannazir.dev/work/anomaly-detection",
+      "description": "An anomaly detection system that runs ML ensembles over streaming analysis, flagging the records that do not behave like the rest.",
+      "keywords": "Python, ML ensembles, Streaming",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/Anomaly-Detection-System"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "Anomaly Detection System",
-      "codeRepository": "https://github.com/zimkk/Anomaly-Detection-System",
-      "programmingLanguage": "Python",
-      "description": "Python-based anomaly detection for unusual network behavior using data science techniques"
+      "name": "GPT-2 Generator",
+      "url": "https://hassannazir.dev/work/gpt-2-generator",
+      "description": "Local text generation on GPT-2 with keyword extraction, built to understand how generation behaves without a hosted API in the way.",
+      "keywords": "Python, GPT-2, Local inference",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/GPT-2-Content-Generator"
     },
     {
       "@type": "SoftwareSourceCode",
-      "name": "genAi",
-      "codeRepository": "https://github.com/zimkk/genAi",
-      "programmingLanguage": "TypeScript",
-      "description": "Generative AI workspace for prototypes and practical GenAI implementation"
-    },
-    {
-      "@type": "WebApplication",
-      "name": "The Home Club",
-      "url": "https://thehomeclubsports.com",
-      "description": "Sports club platform for memberships, programs, and community engagement"
-    },
-    {
-      "@type": "WebApplication",
-      "name": "SpeedyInfluencer",
-      "url": "https://speedyinfluencer.com",
-      "description": "Influencer marketing platform connecting brands and creators with campaign tools and analytics"
-    },
-    {
-      "@type": "WebApplication",
-      "name": "SmartFurs",
-      "url": "https://smartfurs.vercel.app",
-      "description": "E-commerce platform for purebred puppies with breed listings and buyer discovery"
+      "name": "witty-404",
+      "url": "https://hassannazir.dev/work/witty-404",
+      "description": "The API behind this site's 404 page. Ask it for a path that does not exist and it returns a joke, a fake diagnostic log and a footnote. Small, fast and served from the edge.",
+      "keywords": "Cloudflare Workers, TypeScript",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      },
+      "codeRepository": "https://github.com/zimkk/witty-404"
     }
   ],
   "subjectOf": [
     {
-      "@type": "CollectionPage",
-      "name": "Engineering Services: Forward Deployed Engineering, AI Automations, Full-Stack Software Development",
-      "url": "https://hassannazir.dev/services",
-      "hasPart": [
-        {
-          "@type": "Service",
-          "name": "Forward Deployed Engineering",
-          "url": "https://hassannazir.dev/services/forward-deployed-engineer"
-        },
-        {
-          "@type": "Service",
-          "name": "AI Automations & n8n Consulting",
-          "url": "https://hassannazir.dev/services/n8n-automation-consultant"
-        },
-        {
-          "@type": "Service",
-          "name": "Full-Stack Software Development",
-          "url": "https://hassannazir.dev/services/full-stack-software-development"
-        },
-        {
-          "@type": "Service",
-          "name": "AI Agent and RAG Development",
-          "url": "https://hassannazir.dev/services/ai-agent-development"
-        },
-        {
-          "@type": "Service",
-          "name": "Applied AI Consulting",
-          "url": "https://hassannazir.dev/services/applied-ai-consulting"
-        }
-      ]
+      "@type": "BlogPosting",
+      "headline": "GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months",
+      "url": "https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap",
+      "datePublished": "2026-11-08",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
     },
     {
-      "@type": "CollectionPage",
-      "name": "Engineering work",
-      "url": "https://hassannazir.dev/work"
+      "@type": "BlogPosting",
+      "headline": "Polymarket Lost 2.7 Million USD to a Monitoring Script: Why Every Third Party Tag on a Money Page Is Production Code",
+      "url": "https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain",
+      "datePublished": "2026-11-05",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
     },
     {
-      "@type": "CollectionPage",
-      "name": "Technical field notes",
-      "url": "https://hassannazir.dev/blogs"
+      "@type": "BlogPosting",
+      "headline": "The 6.3 Billion Dollar Binance Heist: One DevOps Laptop, One Service Container, and Withdrawals Nobody Stopped",
+      "url": "https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls",
+      "datePublished": "2026-11-03",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers",
+      "url": "https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure",
+      "datePublished": "2026-11-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor",
+      "url": "https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor",
+      "datePublished": "2026-11-01",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check",
+      "url": "https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation",
+      "datePublished": "2026-10-31",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched",
+      "url": "https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode",
+      "datePublished": "2026-10-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Sony So-net and plala Breach: 2.58 Million Records, 54,401 Mailbox Passwords, and the Parts Nobody Has Explained",
+      "url": "https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords",
+      "datePublished": "2026-10-29",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Railway Breach Explained: What Leaked, What to Rotate, and Why Stored Secrets Are the New Target",
+      "url": "https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook",
+      "datePublished": "2026-10-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "PHP2Shell: The Ghost in the Worker (CVE-2026-109618 & CVE-2026-109619)",
+      "url": "https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis",
+      "datePublished": "2026-10-23",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "AI News Roundup: GPT-6.1 Sol, Gemini 4 Argon, OpenAI's Training Pause, Google's Orbital TPUs, and More (Sept 27 – Oct 4, 2026)",
+      "url": "https://hassannazir.dev/blogs/ai-news-roundup-gpt-6-1-sol-gemini-4-argon-openai-pause",
+      "datePublished": "2026-10-04",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Anthropic's Claude Lineup in October 2026: Sonnet 5.5, Opus 5.5, Fable 5.1, Mythos 5.1, and What Is Officially Coming Next",
+      "url": "https://hassannazir.dev/blogs/anthropic-claude-models-october-2026-lineup-roadmap",
+      "datePublished": "2026-10-04",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "LinkedIn Automation With Claude in Chrome: What Works, What Gets Accounts Restricted, and a Safe Human-in-the-Loop Workflow",
+      "url": "https://hassannazir.dev/blogs/linkedin-automation-claude-in-chrome-safe-workflow",
+      "datePublished": "2026-10-04",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "AI Infrastructure Moves: AWS's $1B+ Synopsys Deal, HPE's $1.2B Vultr Order, and the Reality of Orbital AI Compute",
+      "url": "https://hassannazir.dev/blogs/ai-infrastructure-deals-aws-synopsys-hpe-vultr-orbital-compute",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads",
+      "url": "https://hassannazir.dev/blogs/ai-powered-threat-detection",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Anthropic's Leaked IPO Prospectus: The Numbers, the 'Existential Risk' Warning, and What Enterprise AI Buyers Should Take From It",
+      "url": "https://hassannazir.dev/blogs/anthropic-ipo-prospectus-risk-factors-explained",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Transformer Attention Mechanisms Explained: From Scaled Dot-Product to FlashAttention, GQA, MLA and Sparse Attention",
+      "url": "https://hassannazir.dev/blogs/deep-learning-transformers-attention-mechanisms-2025",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "OpenAI Dots vs Meta Muse for Small Business: The Always-On Agent Era Arrives",
+      "url": "https://hassannazir.dev/blogs/openai-dots-vs-meta-muse-always-on-agents",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Trump's 'Super Intelligence' Executive Order and the White House SI Accord: What Changed and What It Means for AI Teams",
+      "url": "https://hassannazir.dev/blogs/trump-super-intelligence-executive-order-si-accord",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model",
+      "url": "https://hassannazir.dev/blogs/zero-trust-architecture-implementation",
+      "datePublished": "2026-09-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Pixel Canary on Vercel AI Gateway: The Stealth Coding Model, Next.js Evals, and How to Use It",
+      "url": "https://hassannazir.dev/blogs/pixel-canary-vercel-ai-gateway",
+      "datePublished": "2026-09-27",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Claude Opus 5.5: The Complete Guide to Anthropic's New Agentic AI Model",
+      "url": "https://hassannazir.dev/blogs/opus-5-5",
+      "datePublished": "2026-09-23",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data",
+      "url": "https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer",
+      "datePublished": "2026-09-18",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide",
+      "url": "https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant",
+      "datePublished": "2026-09-16",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The FDE Guide to Building Production Evaluation Harnesses for Messy Enterprise Data",
+      "url": "https://hassannazir.dev/blogs/building-eval-harnesses-for-messy-enterprise-data",
+      "datePublished": "2026-09-14",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Embedding with Non-Technical Operators: The FDE Field Guide to Requirement Discovery",
+      "url": "https://hassannazir.dev/blogs/embedding-with-non-technical-operators-fde-field-guide",
+      "datePublished": "2026-09-11",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Day 1 to Production in 30 Days: The Architecture of an FDE Sprint",
+      "url": "https://hassannazir.dev/blogs/day-one-to-production-fde-sprint-architecture",
+      "datePublished": "2026-09-08",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful)",
+      "url": "https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The MCP Tool Schema Explosion: Why Connecting 20 Servers Kills Agent Context (And How JIT Routing Fixes It)",
+      "url": "https://hassannazir.dev/blogs/mcp-tool-schema-explosion-jit-routing",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Server-Sent Events vs. WebSockets: Architecting Low-Latency Streaming for Multi-Agent UIs",
+      "url": "https://hassannazir.dev/blogs/streaming-agent-responses-sse-vs-websockets",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Synthetic Data Echo Chamber: How to Fine-Tune Domain Models Without Triggering Mode Collapse",
+      "url": "https://hassannazir.dev/blogs/synthetic-data-echo-chamber-model-collapse",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The FDE Playbook: How I Rescue Failing $2M Enterprise AI Pilots in 14 Days",
+      "url": "https://hassannazir.dev/blogs/the-fde-playbook-saving-failing-enterprise-ai-pilots",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Why n8n Beats Code-First Agent Frameworks for 90% of Enterprise Automations",
+      "url": "https://hassannazir.dev/blogs/why-n8n-beats-langchain-deterministic-automations",
+      "datePublished": "2026-09-02",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Why Fixed-Token Chunking Destroys Code Search (And How AST-Aware Splitting Fixes It)",
+      "url": "https://hassannazir.dev/blogs/chunking-strategies-that-break-code-search",
+      "datePublished": "2026-09-01",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Taming the Monolith: Safely Injecting AI Agents into 10-Year-Old Enterprise Codebases",
+      "url": "https://hassannazir.dev/blogs/legacy-codebase-ai-integration-without-breaking-prod",
+      "datePublished": "2026-09-01",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Stop Burning 4,000 Thinking Tokens on Regex: Architecting Cognitive Sharding for Reasoning Models",
+      "url": "https://hassannazir.dev/blogs/reasoning-models-token-bleed-cognitive-sharding",
+      "datePublished": "2026-09-01",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Scaling Self-Hosted n8n to 100k Daily Executions with Kubernetes and Redis Queues",
+      "url": "https://hassannazir.dev/blogs/self-hosting-n8n-high-availability-kubernetes",
+      "datePublished": "2026-09-01",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Air-Gapped AI Blueprint: Deploying Sovereign LLMs in Regulated Defense and Banking",
+      "url": "https://hassannazir.dev/blogs/air-gapped-on-prem-ai-deployment-blueprint",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Dark Side of HyDE: Why Hypothetical Document Embeddings Fail on Precise Technical Queries",
+      "url": "https://hassannazir.dev/blogs/hyde-failure-modes-technical-retrieval",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Making 8B Models Tool-Call Like GPT-4: Grammatically Constrained Logit Masking for On-Prem AI",
+      "url": "https://hassannazir.dev/blogs/making-8b-models-tool-call-constrained-fsm-logits",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Masking the 4-Second Wait: Optimistic UI Patterns for High-Latency AI Workflows",
+      "url": "https://hassannazir.dev/blogs/optimistic-ui-patterns-for-slow-llm-inference",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The $12,000 Typo: Why Your Multi-Agent DAG Is Silently Evicting KV-Caches on Every Turn",
+      "url": "https://hassannazir.dev/blogs/silent-kv-cache-eviction-multi-agent-dag",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Handling the Tsunami: Webhook Backpressure and Rate Limiting in High-Volume AI Workflows",
+      "url": "https://hassannazir.dev/blogs/webhook-backpressure-rate-limiting-ai-workflows",
+      "datePublished": "2026-08-30",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Taming the Unstructured: Accurate Table and Chart Extraction from Scanned PDF Documents",
+      "url": "https://hassannazir.dev/blogs/multimodal-rag-messy-scanned-pdf-tables",
+      "datePublished": "2026-08-28",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Next.js Server Components and AI SDK: The 5 Subtle Gotchas That Break Production Streaming",
+      "url": "https://hassannazir.dev/blogs/nextjs-server-components-ai-streaming-gotchas",
+      "datePublished": "2026-08-28",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Pydantic Trap: Why Strict Structured Outputs Cause Silent Semantic Truncation in Production",
+      "url": "https://hassannazir.dev/blogs/pydantic-structured-output-schema-traps",
+      "datePublished": "2026-08-28",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Slashing $4,000/Month: The Complete Guide to Migrating from Zapier to Self-Hosted n8n",
+      "url": "https://hassannazir.dev/blogs/replacing-zapier-with-self-hosted-n8n-cost-breakdown",
+      "datePublished": "2026-08-28",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Shadow AI Crisis: Regaining Control Over Unsanctioned Prompts in Enterprise Ops",
+      "url": "https://hassannazir.dev/blogs/shadow-ai-in-enterprise-operations",
+      "datePublished": "2026-08-28",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Your Coding Agent Did Not Fix the Bug: Solving Test Degradation Drift in Autonomous CI Systems",
+      "url": "https://hassannazir.dev/blogs/autonomous-coding-agents-test-degradation-drift",
+      "datePublished": "2026-08-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Building Bulletproof Human-in-the-Loop Approval Workflows with Slack and n8n",
+      "url": "https://hassannazir.dev/blogs/human-in-the-loop-approval-workflows-slack-n8n",
+      "datePublished": "2026-08-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Judge is Blind: Why LLM-as-a-Judge Correlates Poorly with Human Domain Experts",
+      "url": "https://hassannazir.dev/blogs/rag-eval-why-llm-as-a-judge-fails",
+      "datePublished": "2026-08-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Fortified LLM Gateway: Defending Against Direct and Indirect Prompt Injection Attacks",
+      "url": "https://hassannazir.dev/blogs/securing-ai-endpoints-prompt-injection-defense",
+      "datePublished": "2026-08-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Zero-Downtime Database Migrations Using Autonomous Verification Agents",
+      "url": "https://hassannazir.dev/blogs/zero-downtime-database-migrations-with-ai-agents",
+      "datePublished": "2026-08-25",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Translating Ambiguity into Code: How Forward Deployed Engineers Bridge the Executive-Dev Divide",
+      "url": "https://hassannazir.dev/blogs/bridging-the-stakeholder-developer-ai-gap",
+      "datePublished": "2026-08-22",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Context Poisoning: Why Your AI Agent Gets Dumber the Longer You Chat with It (And How Vector Pruning Saves It)",
+      "url": "https://hassannazir.dev/blogs/context-poisoning-long-session-agentic-memory",
+      "datePublished": "2026-08-22",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "When Workflows Fail at 3 AM: Designing Dead-Letter Queues and Auto-Rollback in n8n",
+      "url": "https://hassannazir.dev/blogs/dead-letter-queues-automated-rollback-n8n",
+      "datePublished": "2026-08-22",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Reranker Advantage: Slashing Hallucinations by 40% with Two-Stage Retrieval",
+      "url": "https://hassannazir.dev/blogs/reranking-benchmarks-cohere-vs-bge-vs-cross-encoders",
+      "datePublished": "2026-08-22",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The 3-Second Blindspot: Solving DOM Volatility in Vision-Based Browser Agents",
+      "url": "https://hassannazir.dev/blogs/browser-agents-dom-volatility-action-buffering",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Hierarchical RAG: Architecting Document Trees for Sub-Second Retrieval Across 100k Pages",
+      "url": "https://hassannazir.dev/blogs/context-caching-hierarchical-rag-pipelines",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "LoRA vs. QLoRA vs. Full Parameter Tuning in 2026: Practical Benchmarks for Enterprise Domain Models",
+      "url": "https://hassannazir.dev/blogs/lora-vs-qlora-vs-full-finetuning-2026",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Breaking the Loop: Resolving State Deadlocks in Autonomous Multi-Agent DAGs",
+      "url": "https://hassannazir.dev/blogs/multi-agent-deadlocks-langgraph-cycle-resolution",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Zero-Leakage Credential Security in Multi-Tenant n8n Architectures",
+      "url": "https://hassannazir.dev/blogs/multi-tenant-credential-security-n8n",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Beyond HTTP 500s: Building Observability for Semantic Drift in Production AI",
+      "url": "https://hassannazir.dev/blogs/observability-for-soft-errors-in-production-llms",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "PostgreSQL pgvector vs. Pinecone and Qdrant: A 10-Million Vector Production Benchmark",
+      "url": "https://hassannazir.dev/blogs/pgvector-vs-dedicated-vector-dbs-10m-benchmark",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Silent Semantic Regressions: Why Distributed Agents Need Invariant Gates, Not Just Unit Tests",
+      "url": "https://hassannazir.dev/blogs/soft-failures-distributed-agents-invariant-checkpoints",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The Build vs. Buy Lie: What Enterprise AI Actually Costs in Years Two and Three",
+      "url": "https://hassannazir.dev/blogs/the-real-cost-of-building-vs-buying-ai-systems",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Sub-Millisecond AI: Client-Side Semantic Caching for High-Frequency User Queries",
+      "url": "https://hassannazir.dev/blogs/zero-latency-client-side-caching-repetitive-prompts",
+      "datePublished": "2026-08-21",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
     }
   ]
 }

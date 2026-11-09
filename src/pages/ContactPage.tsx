@@ -20,7 +20,7 @@ export default function ContactPage() {
         title="Contact Hassan Nazir | Book a 30 Minute Call"
         description="Send Hassan Nazir a short brief or book a 30 minute call about AI automation, agents, n8n workflows or full-stack software. Remote, with US, UK and EU overlap."
         url={url}
-        image="/images/og/default.jpg"
+        image="/images/og/contact.jpg"
         jsonLd={[schema, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Contact', url }])]}
       />
       <PageShell>

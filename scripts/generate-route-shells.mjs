@@ -49,6 +49,10 @@ const serviceNames = {
   'n8n-automation-consultant': 'AI Automations & n8n',
   'full-stack-software-development': 'Full-Stack Software Development',
 };
+
+// Quick answers: shown on /about and published as FAQPage data. Same file the React page reads.
+const quickAnswers = JSON.parse(await readFile(path.resolve('src/data/answers.json'), 'utf8')).items.map(({ q, a }) => [q, a]);
+
 const disciplineLabel = { 'full-stack': 'Full-stack', ml: 'Applied ML', automation: 'Automation', security: 'Security' };
 
 // Sort newest first
@@ -191,14 +195,14 @@ const routes = [
     description: 'Who Hassan Nazir is, how he works with teams, the stack he covers from interface to infrastructure, and six years of QA, full-stack, ML and security work.',
     type: 'AboutPage',
     heading: 'QA, then full-stack, then architecture, then AI. Same person throughout.',
-    summary: 'I join teams that have a messy operation and a deadline, and I stay until the software holding it together is running.',
+    summary: 'I join teams with a complex operation and a deadline, and I stay accountable until the software behind it is running in production.',
   },
   {
     route: '/work',
     title: 'Work: Live Products and Open Source | Hassan Nazir',
     description: 'Live products and public source code by Hassan Nazir: AI agents, n8n automation, ML pipelines, security tooling and full-stack software, each with its own write-up.',
     type: 'CollectionPage',
-    heading: 'Things that are running somewhere right now.',
+    heading: 'Products and code running in production.',
     summary: `${work.length} projects. Live products people use, and public source you can read.`,
   },
   ...work.map((project) => ({
@@ -216,7 +220,7 @@ const routes = [
     title: 'Contact Hassan Nazir | Book a 30 Minute Call',
     description: 'Send Hassan Nazir a short brief or book a 30 minute call about AI automation, agents, n8n workflows or full-stack software. Remote, with US, UK and EU overlap.',
     type: 'ContactPage',
-    heading: 'Bring me the part that keeps breaking.',
+    heading: 'Tell me what needs to work.',
     summary: 'A few lines is enough. What it is, what it should do, and what it does instead.',
   },
   {
@@ -431,6 +435,7 @@ for (const route of routes) {
   const canonical = `${siteUrl}${route.route}`;
   const ogKey = route.type === 'BlogPosting' ? route.article.slug
     : route.type === 'Service' ? `service-${route.route.split('/').pop()}`
+    : route.type === 'Project' ? `work-${route.project.slug}`
     : route.route.slice(1);
   const ogImage = existsSync(path.join(publicDir, 'images', 'og', `${ogKey}.jpg`))
     ? `${siteUrl}/images/og/${ogKey}.jpg`
@@ -506,7 +511,10 @@ for (const route of routes) {
   let bodyContent = '';
   if (route.type === 'BlogPosting') {
     // The shell already renders the title as the page's single <h1>; drop the markdown's own H1.
-    const articleHtml = markdownToHtml(route.content.replace(/^\s*#\s+.+\r?\n/, ''));
+    // The shell's own <h1> is the title; demote any further body H1s to H2 so each page has exactly one.
+    const articleHtml = markdownToHtml(route.content.replace(/^\s*#\s+.+\r?\n/, ''))
+      .replace(/<h1(\s|>)/g, '<h2$1')
+      .replace(/<\/h1>/g, '</h2>');
     bodyContent = `
       <article>
         <h1>${escapeHtml(route.heading)}</h1>
@@ -591,13 +599,19 @@ for (const route of routes) {
         <p>Hassan Nazir is a forward deployed engineer based in Islamabad and Dubai, working remotely with US, UK and EU teams. He started in QA, moved into full-stack, then architecture, then applied AI. Credentials: CEH-P, PEH, ISO/IEC 27001. BS Computer Science, Air University.</p>
         <h2>Career</h2>
         <ul>
+          <li>AI Environment Engineer, Outsentia (Oct 2026 to now, full-time)</li>
+          <li>ML Researcher, Anthology (Oct 2026 to now, part-time contract): inference optimisation, GPU kernels, frontier LLM research</li>
           <li>AI Architect, Uno OS (May 2026 to now)</li>
-          <li>Software Architect and Full-Stack Engineer, GridCore (Aug 2021 to now)</li>
+          <li>Software Architect and Full-Stack Engineer, GridCore (Aug 2021 to Oct 2026)</li>
           <li>Senior AI Engineer, NDT Legacy Group (Aug 2025 to Apr 2026)</li>
           <li>Senior AI Engineer, Schmoozzer (Oct 2025 to Jan 2026)</li>
           <li>Lead QA Engineer, Brilliant Gaming (Feb 2025 to Sep 2025)</li>
           <li>QA Executive, Touchstone Communications (2020 to 2023)</li>
         </ul>
+        <h2>Quick answers</h2>
+        <dl>
+          ${quickAnswers.map(([q, a]) => `<dt>${escapeHtml(q)}</dt><dd>${escapeHtml(a)}</dd>`).join('\n          ')}
+        </dl>
         <h2>Selected work</h2>${workLinkList(work.filter((w) => w.glyph || w.kind === 'product').slice(0, 8))}
         <h2>Services</h2>
         <ul>${services.map((sv) => `<li><a href="/services/${sv.slug}">${escapeHtml(sv.serviceType)}</a></li>`).join('')}</ul>
@@ -691,10 +705,22 @@ for (const route of routes) {
     `;
   }
 
+  const crumbs = [{ name: 'Home', url: `${siteUrl}/` }];
+  const section = route.route.split('/')[1];
+  const sectionNames = { services: 'Services', blogs: 'Blogs', work: 'Work', about: 'About', contact: 'Contact' };
+  if (sectionNames[section]) crumbs.push({ name: sectionNames[section], url: `${siteUrl}/${section}` });
+  if (route.route.split('/').length > 2) crumbs.push({ name: route.heading, url: canonical });
+  const graph = [
+    { ...schema, '@context': undefined },
+    { '@type': 'BreadcrumbList', itemListElement: crumbs.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.name, item: c.url })) },
+    ...(route.type === 'AboutPage' ? [{ '@type': 'FAQPage', mainEntity: quickAnswers.map(([q, a]) => ({ '@type': 'Question', name: q, acceptedAnswer: { '@type': 'Answer', text: a } })) }] : []),
+  ];
+  const pageGraph = { '@context': 'https://schema.org', '@graph': JSON.parse(JSON.stringify(graph)) };
+
   let html = template
     .replace(/<title>.*?<\/title>/, () => `<title>${escapeHtml(route.title)}</title>`)
     .replace(/(<link rel="canonical" href=")[^"]*("[^>]*>)/, (_match, p1, p2) => `${p1}${canonical}${p2}`)
-    .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, () => `<script type="application/ld+json" data-rh="true">${JSON.stringify(schema)}</script>`)
+    .replace(/<script type="application\/ld\+json" data-rh="true">[\s\S]*?<\/script>/, () => `<script type="application/ld+json" data-rh="true">${JSON.stringify(pageGraph)}</script>`)
     .replace(/\s*<!-- prepaint-hero:start -->[\s\S]*?<!-- prepaint-hero:end -->/, '')
     .replace(/<main class="crawler-fallback">[\s\S]*?<\/main>/, () => `<main class="crawler-fallback">${bodyContent}</main>`);
 
