@@ -1,5 +1,149 @@
 [
   {
+    "title": "GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months",
+    "summary": "OpenAI launched GPT-6 Cyber on November 5, 2026, and one of its headline results is a critical Brotli decoder flaw that was quietly fixed in source in February but not released until October. Here is what happened, why the patch gap is the real story, and what to check in your stack today.",
+    "tags": [
+      "GPT-6 Cyber",
+      "OpenAI",
+      "Brotli",
+      "CVE-2026-111497",
+      "Node.js",
+      "Vulnerability Management",
+      "AI Security"
+    ],
+    "date": "2026-11-08",
+    "slug": "gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap",
+    "url": "/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap"
+  },
+  {
+    "title": "Polymarket Lost 2.7 Million USD to a Monitoring Script: Why Every Third Party Tag on a Money Page Is Production Code",
+    "summary": "On October 29, 2026, a compromised performance monitoring script turned into a wallet drainer on Polymarket. No passwords were stolen and no private keys were needed. Here is how the attack worked, what is still unverified, and the controls to put on any page that moves money.",
+    "tags": [
+      "Polymarket",
+      "DebugBear",
+      "Supply Chain Security",
+      "Third Party Scripts",
+      "Web Security",
+      "Incident Analysis",
+      "Content Security Policy"
+    ],
+    "date": "2026-11-05",
+    "slug": "polymarket-debugbear-third-party-script-wallet-drainer-supply-chain",
+    "url": "/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain"
+  },
+  {
+    "title": "The 6.3 Billion Dollar Binance Heist: One DevOps Laptop, One Service Container, and Withdrawals Nobody Stopped",
+    "summary": "On October 29, 2026, roughly 6.3 billion USD left Binance wallets in about 20 minutes. The FBI blames North Korea, and Binance points at a compromised DevOps laptop and a service container. Here is what is confirmed, what is not, and the withdrawal controls every team moving money or data should check this week.",
+    "tags": [
+      "Binance",
+      "Crypto Security",
+      "TraderTraitor",
+      "DevOps Security",
+      "Incident Analysis",
+      "Hot Wallets",
+      "Insider Access"
+    ],
+    "date": "2026-11-03",
+    "slug": "binance-6-3-billion-hack-devops-laptop-withdrawal-controls",
+    "url": "/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls"
+  },
+  {
+    "title": "Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers",
+    "summary": "In October 2026, attackers reached refrigeration controllers at hundreds of French supermarkets and heated the cold rooms to about 50 degrees Celsius. On November 1 Fortune reported the Pentagon is probing similar failures at US military commissaries. Here is what is confirmed, what is not, and what to do about the boring box in your own plant room.",
+    "tags": [
+      "Danfoss",
+      "OT Security",
+      "Industrial Control Systems",
+      "Critical Infrastructure",
+      "Incident Analysis",
+      "End of Life Devices",
+      "Network Segmentation"
+    ],
+    "date": "2026-11-02",
+    "slug": "french-supermarket-fridge-hack-danfoss-controllers-ot-exposure",
+    "url": "/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure"
+  },
+  {
+    "title": "A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor",
+    "summary": "On October 29, 2026, tampered builds of the Claude Code extension sat in Cursor's marketplace for about 11 hours and tried to install a persistent SSH backdoor. Here is what the loader did, why it mostly failed, why that is not a clean bill of health, and how to check your machines.",
+    "tags": [
+      "Cursor",
+      "Claude Code",
+      "Supply Chain Security",
+      "VS Code Extensions",
+      "SSH Backdoor",
+      "Developer Security",
+      "Incident Analysis"
+    ],
+    "date": "2026-11-01",
+    "slug": "trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor",
+    "url": "/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor"
+  },
+  {
+    "title": "Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check",
+    "summary": "Cloudflare disclosed on October 26, 2026 that 155 GLM-5.3 responses on Workers AI carried data from other customers' requests. The trigger was a very long prompt, the cause was an over-promised context window, and the lesson applies to every team that hosts or buys LLM inference.",
+    "tags": [
+      "Cloudflare",
+      "Workers AI",
+      "SGLang",
+      "KV Cache",
+      "LLM Security",
+      "Multi-Tenancy",
+      "Incident Analysis"
+    ],
+    "date": "2026-10-31",
+    "slug": "cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation",
+    "url": "/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation"
+  },
+  {
+    "title": "EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched",
+    "summary": "Forever Security disclosed a flaw class it calls EMBRACE across Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop. Cursor and Copilot are fixed, while Codex and VS Code were still unpatched at publication. Here is how it works, what is unverified, and what I would do on a developer fleet today.",
+    "tags": [
+      "EMBRACE",
+      "AI Coding Tools",
+      "Cursor",
+      "VS Code",
+      "Codex",
+      "Claude Desktop",
+      "Prompt Injection",
+      "Developer Security"
+    ],
+    "date": "2026-10-30",
+    "slug": "embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode",
+    "url": "/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode"
+  },
+  {
+    "title": "Sony So-net and plala Breach: 2.58 Million Records, 54,401 Mailbox Passwords, and the Parts Nobody Has Explained",
+    "summary": "Sony Network Communications disclosed on October 27, 2026 that attackers got into the So-net and plala member database, exposing about 2.58 million records and 54,401 email passwords. Here is what is confirmed, what is missing, and what I would change in my own systems after reading it.",
+    "tags": [
+      "Sony",
+      "So-net",
+      "plala",
+      "Data Breach",
+      "Security Incident",
+      "Email Security",
+      "Incident Response"
+    ],
+    "date": "2026-10-29",
+    "slug": "sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords",
+    "url": "/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords"
+  },
+  {
+    "title": "Railway Breach Explained: What Leaked, What to Rotate, and Why Stored Secrets Are the New Target",
+    "summary": "On October 21, 2026, Railway disclosed that an unauthorized party may have accessed customer environment variables and decrypted some of them. A factual breakdown of what is confirmed, what is not, the exact rotation order I would follow, and why AI provider keys are now the prize.",
+    "tags": [
+      "Railway",
+      "Security Incident",
+      "Secrets Management",
+      "AI API Keys",
+      "DevSecOps",
+      "Platform Security"
+    ],
+    "date": "2026-10-25",
+    "slug": "railway-breach-environment-variables-secrets-rotation-playbook",
+    "url": "/blogs/railway-breach-environment-variables-secrets-rotation-playbook"
+  },
+  {
     "title": "PHP2Shell: The Ghost in the Worker (CVE-2026-109618 & CVE-2026-109619)",
     "summary": "From a Marvel-style comic chronicle of the heist inside Worker Process 40912 to an exhaustive systems research paper: the complete technical autopsy of PHP2Shell (CVE-2026-109618 & CVE-2026-109619).",
     "tags": [

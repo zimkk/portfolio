@@ -5,10 +5,163 @@
     <link>https://hassannazir.dev/blogs</link>
     <description>Technical field guides, production architectures, and deep dives on Forward Deployed Engineering, AI automations, agentic systems, security, and full-stack software development.</description>
     <language>en-US</language>
-    <lastBuildDate>Thu, 22 Oct 2026 19:50:42 GMT</lastBuildDate>
+    <lastBuildDate>Mon, 09 Nov 2026 06:13:53 GMT</lastBuildDate>
     <atom:link href="https://hassannazir.dev/feed.xml" rel="self" type="application/rss+xml"/>
     <docs>https://www.rssboard.org/rss-specification</docs>
     
+    <item>
+      <title>GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months</title>
+      <link>https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap</guid>
+      <pubDate>Sun, 08 Nov 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>OpenAI launched GPT-6 Cyber on November 5, 2026, and one of its headline results is a critical Brotli decoder flaw that was quietly fixed in source in February but not released until October. Here is what happened, why the patch gap is the real story, and what to check in your stack today.</description>
+      <category>Security Engineering</category>
+      <category>GPT-6 Cyber</category>
+      <category>OpenAI</category>
+      <category>Brotli</category>
+      <category>CVE-2026-111497</category>
+      <category>Node.js</category>
+      <category>Vulnerability Management</category>
+      <category>AI Security</category>
+      <media:content url="https://hassannazir.dev/images/og/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>Polymarket Lost 2.7 Million USD to a Monitoring Script: Why Every Third Party Tag on a Money Page Is Production Code</title>
+      <link>https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain</guid>
+      <pubDate>Thu, 05 Nov 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>On October 29, 2026, a compromised performance monitoring script turned into a wallet drainer on Polymarket. No passwords were stolen and no private keys were needed. Here is how the attack worked, what is still unverified, and the controls to put on any page that moves money.</description>
+      <category>Security Engineering</category>
+      <category>Polymarket</category>
+      <category>DebugBear</category>
+      <category>Supply Chain Security</category>
+      <category>Third Party Scripts</category>
+      <category>Web Security</category>
+      <category>Incident Analysis</category>
+      <category>Content Security Policy</category>
+      <media:content url="https://hassannazir.dev/images/og/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>The 6.3 Billion Dollar Binance Heist: One DevOps Laptop, One Service Container, and Withdrawals Nobody Stopped</title>
+      <link>https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls</guid>
+      <pubDate>Tue, 03 Nov 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>On October 29, 2026, roughly 6.3 billion USD left Binance wallets in about 20 minutes. The FBI blames North Korea, and Binance points at a compromised DevOps laptop and a service container. Here is what is confirmed, what is not, and the withdrawal controls every team moving money or data should check this week.</description>
+      <category>Security Engineering</category>
+      <category>Binance</category>
+      <category>Crypto Security</category>
+      <category>TraderTraitor</category>
+      <category>DevOps Security</category>
+      <category>Incident Analysis</category>
+      <category>Hot Wallets</category>
+      <category>Insider Access</category>
+      <media:content url="https://hassannazir.dev/images/og/binance-6-3-billion-hack-devops-laptop-withdrawal-controls.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers</title>
+      <link>https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure</guid>
+      <pubDate>Mon, 02 Nov 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>In October 2026, attackers reached refrigeration controllers at hundreds of French supermarkets and heated the cold rooms to about 50 degrees Celsius. On November 1 Fortune reported the Pentagon is probing similar failures at US military commissaries. Here is what is confirmed, what is not, and what to do about the boring box in your own plant room.</description>
+      <category>Security Engineering</category>
+      <category>Danfoss</category>
+      <category>OT Security</category>
+      <category>Industrial Control Systems</category>
+      <category>Critical Infrastructure</category>
+      <category>Incident Analysis</category>
+      <category>End of Life Devices</category>
+      <category>Network Segmentation</category>
+      <media:content url="https://hassannazir.dev/images/og/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor</title>
+      <link>https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor</guid>
+      <pubDate>Sun, 01 Nov 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>On October 29, 2026, tampered builds of the Claude Code extension sat in Cursor's marketplace for about 11 hours and tried to install a persistent SSH backdoor. Here is what the loader did, why it mostly failed, why that is not a clean bill of health, and how to check your machines.</description>
+      <category>Security Engineering</category>
+      <category>Cursor</category>
+      <category>Claude Code</category>
+      <category>Supply Chain Security</category>
+      <category>VS Code Extensions</category>
+      <category>SSH Backdoor</category>
+      <category>Developer Security</category>
+      <category>Incident Analysis</category>
+      <media:content url="https://hassannazir.dev/images/og/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check</title>
+      <link>https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation</guid>
+      <pubDate>Sat, 31 Oct 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Cloudflare disclosed on October 26, 2026 that 155 GLM-5.3 responses on Workers AI carried data from other customers' requests. The trigger was a very long prompt, the cause was an over-promised context window, and the lesson applies to every team that hosts or buys LLM inference.</description>
+      <category>Security Engineering</category>
+      <category>Cloudflare</category>
+      <category>Workers AI</category>
+      <category>SGLang</category>
+      <category>KV Cache</category>
+      <category>LLM Security</category>
+      <category>Multi-Tenancy</category>
+      <category>Incident Analysis</category>
+      <media:content url="https://hassannazir.dev/images/og/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched</title>
+      <link>https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode</guid>
+      <pubDate>Fri, 30 Oct 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Forever Security disclosed a flaw class it calls EMBRACE across Cursor, GitHub Copilot, Codex, VS Code and Claude Desktop. Cursor and Copilot are fixed, while Codex and VS Code were still unpatched at publication. Here is how it works, what is unverified, and what I would do on a developer fleet today.</description>
+      <category>Security Engineering</category>
+      <category>EMBRACE</category>
+      <category>AI Coding Tools</category>
+      <category>Cursor</category>
+      <category>VS Code</category>
+      <category>Codex</category>
+      <category>Claude Desktop</category>
+      <category>Prompt Injection</category>
+      <category>Developer Security</category>
+      <media:content url="https://hassannazir.dev/images/og/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>Sony So-net and plala Breach: 2.58 Million Records, 54,401 Mailbox Passwords, and the Parts Nobody Has Explained</title>
+      <link>https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords</guid>
+      <pubDate>Thu, 29 Oct 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>Sony Network Communications disclosed on October 27, 2026 that attackers got into the So-net and plala member database, exposing about 2.58 million records and 54,401 email passwords. Here is what is confirmed, what is missing, and what I would change in my own systems after reading it.</description>
+      <category>Security Engineering</category>
+      <category>Sony</category>
+      <category>So-net</category>
+      <category>plala</category>
+      <category>Data Breach</category>
+      <category>Security Incident</category>
+      <category>Email Security</category>
+      <category>Incident Response</category>
+      <media:content url="https://hassannazir.dev/images/og/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
+    <item>
+      <title>Railway Breach Explained: What Leaked, What to Rotate, and Why Stored Secrets Are the New Target</title>
+      <link>https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook</link>
+      <guid isPermaLink="true">https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook</guid>
+      <pubDate>Sun, 25 Oct 2026 00:00:00 GMT</pubDate>
+      <dc:creator>Hassan Nazir</dc:creator>
+      <description>On October 21, 2026, Railway disclosed that an unauthorized party may have accessed customer environment variables and decrypted some of them. A factual breakdown of what is confirmed, what is not, the exact rotation order I would follow, and why AI provider keys are now the prize.</description>
+      <category>Security Engineering</category>
+      <category>Railway</category>
+      <category>Security Incident</category>
+      <category>Secrets Management</category>
+      <category>AI API Keys</category>
+      <category>DevSecOps</category>
+      <category>Platform Security</category>
+      <media:content url="https://hassannazir.dev/images/og/railway-breach-environment-variables-secrets-rotation-playbook.jpg" medium="image" type="image/jpeg" width="1200" height="630" />
+    </item>
     <item>
       <title>PHP2Shell: The Ghost in the Worker (CVE-2026-109618 &amp; CVE-2026-109619)</title>
       <link>https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis</link>

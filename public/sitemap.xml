@@ -152,6 +152,60 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap</loc>
+    <lastmod>2026-11-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain</loc>
+    <lastmod>2026-11-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls</loc>
+    <lastmod>2026-11-03</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure</loc>
+    <lastmod>2026-11-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor</loc>
+    <lastmod>2026-11-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation</loc>
+    <lastmod>2026-10-31</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode</loc>
+    <lastmod>2026-10-30</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords</loc>
+    <lastmod>2026-10-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook</loc>
+    <lastmod>2026-10-25</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis</loc>
     <lastmod>2026-10-23</lastmod>
     <changefreq>monthly</changefreq>
