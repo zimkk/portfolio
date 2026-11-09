@@ -56,3 +56,7 @@ const allBlogPosts: BlogPost[] = Object.entries(mdxModules).map(([filePath, rawC
 export const blogPosts: BlogPost[] = allBlogPosts.sort(
   (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
 );
+
+// Field-note numbers: the oldest post is #001, the newest has the highest number.
+const noteNumbers = new Map(blogPosts.map((post, index) => [post.slug, blogPosts.length - index]));
+export const noteLabel = (slug: string) => `#${String(noteNumbers.get(slug) ?? 0).padStart(3, '0')}`;

@@ -5,7 +5,8 @@ import { SiteFooter, StandaloneNav } from '../components/hn/chrome';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { schemaIds, siteConfig } from '../config/metadata';
-import { blogPosts } from '../data/blogs';
+import { blogPosts, noteLabel } from '../data/blogs';
+import Ico from '../components/hn/graphics/Ico';
 
 const POSTS_PER_PAGE = 5;
 
@@ -121,11 +122,11 @@ const JournalPage: React.FC = () => {
         <div className="mx-auto max-w-6xl px-4 pt-32 pb-8 sm:px-6 lg:px-8">
           <div className="border-b border-[var(--line)] pb-8">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-xs font-semibold tracking-wider text-[var(--accent-text)] uppercase">
-                Engineering Field Notes &amp; Production Architectures
+              <span className="hn-blog-eyebrow">
+                <Ico size={15} /> Field notes <i>{blogPosts.length} entries, newest first</i>
               </span>
-              <h1 className="text-4xl font-semibold tracking-tight text-[var(--fg)] sm:text-5xl md:text-6xl font-['Satoshi']">
-                Blogs
+              <h1 className="hn-blog-title">
+                I write down <span>what broke.</span>
               </h1>
               <p className="mt-2 max-w-3xl text-base text-[var(--fg-3)] sm:text-lg leading-relaxed">
                 Technical field notes and implementation guides on enterprise AI automations, autonomous multi-agent systems, full-stack software development, and cloud security.
@@ -271,10 +272,12 @@ const JournalPage: React.FC = () => {
               ) : (
                 <div className="divide-y divide-[var(--line)]">
                   {currentDisplayPosts.map((post) => (
-                    <article key={post.id} className="py-8 first:pt-0 group">
+                    <article key={post.id} className="hn-blog-row py-8 group">
                       <div className="space-y-3.5">
                         {/* Meta: Date & Read Time */}
                         <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--fg-3)] font-mono">
+                          <span className="hn-note-no">{noteLabel(post.slug)}</span>
+                          {post.slug === blogPosts[0].slug && <span className="hn-note-latest"><Ico size={12} /> Latest</span>}
                           <time dateTime={post.publishedAt} className="flex items-center gap-1.5 text-[var(--fg-2)]">
                             <Calendar className="h-3.5 w-3.5 text-[var(--fg-3)]" />
                             {formatDate(post.publishedAt)}
@@ -368,21 +371,6 @@ const JournalPage: React.FC = () => {
           </div>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 border-t border-[var(--line)] bg-[var(--bg)] py-12 text-center text-xs text-[var(--fg-3)]">
-          <div className="mx-auto max-w-6xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <strong className="text-[var(--fg)]">Hassan Nazir</strong>
-              <p className="mt-0.5 text-[var(--fg-3)]">Forward Deployed Engineer · Applied AI</p>
-            </div>
-            <div className="flex items-center gap-6 font-mono">
-              <Link to="/" className="hover:text-[var(--accent-text)] transition">Home</Link>
-              <Link to="/services" className="hover:text-[var(--accent-text)] transition">Services</Link>
-              <Link to="/blogs" className="text-[var(--accent-text)] font-medium">Blogs</Link>
-              <a href="/#contact" className="hover:text-[var(--accent-text)] transition">Contact</a>
-            </div>
-          </div>
-        </footer>
         <SiteFooter />
       </main>
     </PageTransition>

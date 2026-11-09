@@ -21,7 +21,8 @@ import { SiteFooter, StandaloneNav } from '../components/hn/chrome';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
-import { blogPosts } from '../data/blogs';
+import { blogPosts, noteLabel } from '../data/blogs';
+import Ico from '../components/hn/graphics/Ico';
 import CodeBlock from '../components/blog/CodeBlock';
 import AlertBox, { AlertType } from '../components/blog/AlertBox';
 import TOCInline, { extractHeadingsFromMarkdown } from '../components/blog/TOCInline';
@@ -184,6 +185,7 @@ const ArticlePage: React.FC = () => {
             {/* Header / Post Meta */}
             <header className="border-b border-[var(--line)] pb-10 text-center">
               <div className="space-y-4">
+                <p className="hn-blog-eyebrow justify-center"><Ico size={15} /> Field note {noteLabel(post.slug)}</p>
                 <dl className="flex items-center justify-center gap-3 text-xs font-mono text-[var(--fg-3)]">
                   <dt className="sr-only">Published on</dt>
                   <dd className="flex items-center gap-1.5 text-[var(--fg-2)]">
@@ -355,7 +357,7 @@ const ArticlePage: React.FC = () => {
                 )}
 
                 {/* Markdown Content */}
-                <div className="prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--fg)] prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--line)] prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[var(--fg-body)] prose-p:leading-relaxed prose-p:text-base prose-a:text-[var(--accent-text)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--fg)] prose-code:text-[var(--accent-text)] prose-code:bg-[var(--tint)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[var(--fg-body)]">
+                <div className="hn-article prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--fg)] prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--line)] prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[var(--fg-body)] prose-p:leading-relaxed prose-p:text-base prose-a:text-[var(--accent-text)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--fg)] prose-code:text-[var(--accent-text)] prose-code:bg-[var(--tint)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[var(--fg-body)]">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
@@ -483,6 +485,12 @@ const ArticlePage: React.FC = () => {
                   </ReactMarkdown>
                 </div>
 
+                <div className="hn-endmark" aria-hidden="true">
+                  <i />
+                  <span><Ico size={14} /> End of note {noteLabel(post.slug)}</span>
+                  <i />
+                </div>
+
                 {/* Post Footer Links (Discuss & GitHub) */}
                 <div className="mt-12 flex flex-wrap items-center justify-between gap-4 border-t border-[var(--line)] pt-6 text-xs font-mono text-[var(--fg-3)]">
                   <div className="flex items-center gap-4">
@@ -586,21 +594,6 @@ const ArticlePage: React.FC = () => {
           </article>
         </div>
 
-        {/* Footer */}
-        <footer className="mt-20 border-t border-[var(--line)] bg-[var(--bg)] py-12 text-center text-xs text-[var(--fg-3)]">
-          <div className="mx-auto max-w-5xl px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div>
-              <strong className="text-[var(--fg)]">Hassan Nazir</strong>
-              <p className="mt-0.5 text-[var(--fg-3)]">Forward Deployed Engineer · Applied AI</p>
-            </div>
-            <div className="flex items-center gap-6">
-              <Link to="/" className="hover:text-[var(--accent-text)] transition">Home</Link>
-              <Link to="/services" className="hover:text-[var(--accent-text)] transition">Services</Link>
-              <Link to="/blogs" className="text-[var(--accent-text)] font-medium">Blogs</Link>
-              <a href="/#contact" className="hover:text-[var(--accent-text)] transition">Contact</a>
-            </div>
-          </div>
-        </footer>
         <SiteFooter />
       </main>
     </PageTransition>
