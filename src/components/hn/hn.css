@@ -319,8 +319,10 @@ html[data-theme] ::selection { background: var(--hn-accent); color: #fff; }
 .hn-method-grid { position: relative; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; }
 .hn-step-icon { display: grid; place-items: center; width: 72px; height: 72px; margin-bottom: 26px; border: 1px solid var(--line-strong); border-radius: 50%; background: var(--surface); transition: background .4s, border-color .4s, transform .4s var(--hn-ease), box-shadow .4s; }
 .hn-step:nth-child(even) .hn-step-icon { margin-top: 64px; }
-.hn-step.is-on .hn-step-icon { background: var(--accent-wash); border-color: var(--hn-accent); box-shadow: 0 0 0 6px var(--hn-accent-soft); }
-.hn-step-icon .hn-line { stroke: var(--accent-text); }
+.hn-step.is-on .hn-step-icon { background: var(--fg); border-color: var(--fg); box-shadow: 0 0 0 6px var(--hn-accent-soft); }
+/* Only the glyph carries the accent; the circle keeps its neutral style. */
+.hn-step-icon .hn-line { stroke: var(--accent-text); transition: stroke .4s; }
+.hn-step.is-on .hn-step-icon .hn-line { stroke: var(--hn-accent); }
 .hn-step-icon svg { width: 32px; height: 32px; transition: transform .4s var(--hn-ease); }
 .hn-step:hover .hn-step-icon { transform: scale(1.06); }
 .hn-step h3 { font-size: 23px; font-weight: 900; letter-spacing: -.035em; line-height: 1.05; }
