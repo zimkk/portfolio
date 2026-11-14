@@ -1,0 +1,143 @@
+---
+title: "Outlook Zero Day Leaks Your Hash"
+seoTitle: "Outlook Zero Day CVE-2026-124194: Patch Now"
+publishedAt: '2026-11-14'
+lastUpdated: '2026-11-14'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '10 min read'
+excerpt: "Microsoft fixed an Outlook spoofing flaw on November 10, 2026 that was already being exploited. Open one crafted message file and classic Outlook can hand your Windows NTLMv2 hash to an attacker. CISA wants federal agencies patched by November 24. Here is the mechanism, what is still unknown, and what to do this week."
+tags: ["Outlook", "CVE-2026-124194", "NTLM", "Zero Day", "CISA KEV", "Patch Tuesday", "Credential Relay", "Windows Security"]
+seoKeywords: ["CVE-2026-124194", "Outlook zero day", "Outlook NTLM hash leak", "CISA KEV Outlook", "November 2026 Patch Tuesday", "block outbound SMB", "restrict NTLM outgoing", "Outlook spoofing vulnerability"]
+image: '/images/blogs/ai-threat-detection.svg'
+---
+
+# Outlook Zero Day Leaks Your Hash
+
+Every Patch Tuesday has one line item that gets skimmed because the score looks boring. This month it is CVE-2026-124194, an Outlook bug with a CVSS score of 6.5 and a label of "spoofing". It is also the one flaw in the November 2026 release that Microsoft says was already being exploited when the fix shipped. That combination, a medium score with real attacks behind it, is exactly the kind of thing that sits unpatched for three weeks because nobody's dashboard turned red.
+
+I think this one deserves more attention than the score gives it. Not because it is a zero click disaster (it is not), but because the thing it leaks, a Windows NTLMv2 hash, is still one of the most useful currencies inside a corporate network.
+
+A note on sourcing before the details. I could not reach Microsoft's own advisory or the CISA catalog entry in this run. Everything below comes from security press and vendor blogs that quote them, and most of those outlets are repeating the same primary statement. I will say where something is unverified.
+
+## What Happened
+
+The timeline, as reported:
+
+- November 10, 2026: Microsoft published the CVE and shipped the fix in its monthly Patch Tuesday release, flagging it as exploited in the wild.
+- November 10, 2026: CISA added it to the Known Exploited Vulnerabilities catalog.
+- November 24, 2026: CISA's remediation deadline for US federal civilian agencies.
+
+Microsoft describes the weakness as the product UI not warning the user before an unsafe action. In practice, an attacker sends a crafted Outlook message file and gets the victim to open it. Outlook then reaches out to a network location the attacker controls, and it skips the external content warning it would normally show. Windows, helpfully, tries to authenticate to that location and sends NTLMv2 authentication data along.
+
+Microsoft says the Preview Pane is not an attack vector. The user has to open the file. So this is a one click flaw delivered by phishing, not something that fires when a message merely lands in an inbox.
+
+## The Facts at a Glance
+
+| Item | Detail | Status |
+|---|---|---|
+| CVE | CVE-2026-124194 | Reported by multiple outlets |
+| Class | Spoofing, missing warning before unsafe action (CWE-356) | Reported |
+| CVSS | 6.5, rated Moderate | Reported |
+| Trigger | Victim opens a crafted message file | Reported |
+| Preview Pane | Not an attack vector | Microsoft statement, relayed |
+| Exploited | Yes, CISA lists active exploitation | Reported |
+| Who and how many | Not disclosed | Unknown |
+| Indicators of compromise | None published | Unknown |
+| Ransomware use | Listed as unknown by CISA | Reported |
+
+The exact file type has not been named publicly as far as I can tell. One outlet says so explicitly. That matters for defenders, because it means you cannot write a clean mail gateway rule that says "block extension X" and call it done.
+
+## Why a Hash Is a Big Deal
+
+If you have never had to explain NTLM to a manager, here is the short version. NTLMv2 is a challenge and response protocol. When Windows authenticates to a server using it, it sends a value derived from the user's password rather than the password itself. That value is a hash, and it is not the plaintext.
+
+The reason defenders still care is that a hash can be used in two ways:
+
+1. Offline cracking. The attacker captures the hash and runs guesses against it on their own hardware, with no lockout and no logs on your side. Weak and medium passwords fall. Long random ones mostly do not.
+2. Relay. The attacker does not crack anything. They forward the authentication exchange to another server that accepts NTLM and act as the victim for that session. This works best where services do not require signing or channel protections.
+
+Which one matters for you depends on your environment. I am not going to claim that attackers in this campaign did one or the other, because nobody has published that. What I can say is that both are well known uses of a captured NTLM authentication, and both turn "someone opened an email attachment" into "someone has a foothold with a real user identity."
+
+The mechanism also explains why the bug is shaped the way it is. Normally Outlook warns you before it fetches content from outside. The flaw is that this warning is skipped in the crafted case. The network connection itself, over something like SMB, is standard Windows behavior. The bug is the missing speed bump.
+
+## Who Is Exposed
+
+From what has been reported, the affected builds are classic Outlook for Windows in Microsoft 365 Apps for Enterprise, Office LTSC 2021 and Office LTSC 2024, in both 32 bit and 64 bit installs. The fixed builds quoted for the LTSC lines are 16.0.14334.21048 for 2021 and 16.0.17932.21140 for 2024. For Microsoft 365 Apps you want the November 2026 security update or later on whatever update channel you run.
+
+A few caveats worth knowing:
+
+- The product to build mapping is not consistent across the articles I read, so check Microsoft's Office security release page for your channel and do not copy a build number from a blog.
+- One outlet reports that new Outlook for Windows is not part of this bug, and that Outlook on the web, Mac and mobile are not on Microsoft's list. That outlet also points out that classic Outlook may still be installed next to new Outlook, so check for it.
+- The same outlet says Office 2016 and 2019 are probably affected but out of support, so no fix is coming. That is the outlet's inference, not a Microsoft statement. Treat any such machine as a risk to isolate or retire.
+
+## Detection Is Behavioral
+
+No indicators of compromise have been published, so hunting by hash or domain is not an option. The useful signal is behavior, and it is a pretty narrow behavior at that. Outlook has no ordinary business making outbound SMB connections to the internet.
+
+Things worth looking for, based on guidance in the vendor write ups I read:
+
+- OUTLOOK.EXE starting an outbound connection on TCP 445 to an external or never seen destination soon after a message file was opened.
+- NTLM authentication attempts aimed at internet addresses. On Windows, the operational NTLM log under Applications and Services Logs, Microsoft, Windows, NTLM is where outgoing NTLM auditing lands once enabled.
+- A successful authentication to an internal service from an unusual source shortly after a suspicious Outlook event, or repeated authentication for the same identity from new places.
+
+If you cannot log outbound 445 today, that is the finding. Egress logging for that port is cheap and it pays for itself in incidents like this.
+
+## What To Do This Week
+
+Here is the order I would go in, cheapest and highest impact first.
+
+**1. Patch and verify, do not assume.** Deployment rings lag. Push the November 2026 Office update and then confirm builds on real endpoints. For Click to Run installs you can read the reported version from the registry:
+
+```powershell
+(Get-ItemProperty "HKLM:\SOFTWARE\Microsoft\Office\ClickToRun\Configuration").VersionToReport
+```
+
+Compare the result against the fixed build for your channel on Microsoft's release page. Do this on a sample first, then script it fleet wide.
+
+**2. Block outbound SMB at the perimeter.** Port 445 to the internet should not exist for workstations. If you do this one thing, the crafted file can still trigger the connection attempt, but it cannot complete. This is the control that makes a whole class of NTLM leak bugs boring.
+
+**3. Audit outgoing NTLM, then restrict it.** The Windows policy named "Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers" can be set to audit mode first. Run it for a while, find the legacy things that still depend on NTLM, and then move to blocking. Going straight to deny will break something old and important, so audit first.
+
+**4. Tell people one specific thing.** Generic phishing training does not help here. Say it plainly: do not open unexpected message file attachments, even ones that look like forwarded emails from a colleague.
+
+**5. If you suspect exposure, treat the account as exposed.** Preserve logs, review authentication activity after the file was opened, reset the password, revoke sessions, and check any privileged credentials tied to that user. A hash that was captured once can be cracked later, so a reset matters even if nothing looks wrong today.
+
+**6. Retire what cannot be patched.** Out of support Office versions on machines that read external mail are the weakest link in this story. Decide now whether they get an exception with compensating controls or a retirement date.
+
+Tip: if you only have an hour, do steps 1 and 2. Patch, then block outbound 445. Everything else is hardening on top.
+
+## One Thing Worth Noting About the Credits
+
+Several outlets report that one of the researchers credited by Microsoft, Benoit Sevens, used Anthropic's Claude model as part of the research, and that another researcher known as nono is also credited. I have only seen this relayed second hand and I did not verify it against Microsoft's own acknowledgment, so treat it as unconfirmed. I mention it because, if it holds up, it is another data point in a trend I keep seeing: AI assisted research is finding real bugs in mature products, and the time between discovery and exploitation keeps shrinking. The thing to take from it as a defender is not the tool, it is the tempo.
+
+## My Take
+
+I do not love how this one will be remembered. It is a 6.5, it needs a click, and it is a "spoofing" bug. Plenty of teams will park it behind the remote code execution fixes in the same release, and that is the wrong call when the vendor and CISA both say it is being used right now.
+
+I also think the real lesson is architectural. A single opened file making a desktop app authenticate outward is only dangerous because we still let desktops authenticate outward. NTLM over SMB to the internet is a legacy default that most organizations never had a reason to keep. Every few months a bug like this shows up, in Outlook or in some other app that renders a UNC path, and every time the best mitigation is the same boring network policy. We should stop treating that policy as optional hardening and start treating it as baseline.
+
+Finally, be honest about what we do not know. There are no published victims, no campaign scale, no infrastructure and no indicators. That is not comfort. It means the people exploiting this have a head start on the people defending against it, so the right posture is to patch on the assumption that you are in the target set, not to wait for evidence that you were.
+
+## Key Takeaways
+
+- CVE-2026-124194 is an Outlook spoofing flaw rated 6.5 that Microsoft fixed on November 10, 2026 after it was exploited in the wild.
+- A victim opening a crafted message file makes classic Outlook connect to an attacker controlled location without the usual warning, which can expose an NTLMv2 hash. The Preview Pane is not an attack vector.
+- CISA added it to the KEV catalog on November 10 and set a federal deadline of November 24, 2026.
+- Attackers, victims, campaign scale and indicators of compromise have not been published, and most press coverage repeats the same primary statements.
+- Patch and verify builds, block outbound SMB to the internet, audit then restrict outgoing NTLM, and hunt for Outlook making external port 445 connections.
+- Out of support Office versions will not get a fix, so isolate or retire them.
+
+## Related posts
+
+- [Microsoft 365 outage: what engineers learn](/blogs/microsoft-365-outage)
+- [The *sshole bug in OpenSSH on Alpine](/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass)
+- [Zero trust architecture implementation](/blogs/zero-trust-architecture-implementation)
+
+## Sources
+
+- [Cyber Security News: CISA confirms active exploitation of Outlook zero day](https://cybersecuritynews.com/active-exploitation-of-outlook-0-day-vulnerability/) (November 12, 2026)
+- [SecurityOnline: Outlook zero day CVE-2026-124194 exploited before November patch](https://securityonline.info/outlook-zero-day-cve-2026-124194/) (November 10, 2026)
+- [Office Watch: Classic Outlook bug leaks your Windows login](https://office-watch.com/?p=78156) (November 11, 2026)
+- [SOC Prime: CVE-2026-124194, Outlook zero day exploited to steal NTLM hashes](https://socprime.com/?p=57962) (November 11, 2026)
+- Microsoft's advisory and the CISA KEV entry are the primary sources. I did not open them directly, so everything above is as relayed by the outlets listed.
