@@ -32,7 +32,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({ className, children }) => 
   };
 
   return (
-    <div className="hn-code-island group relative my-6 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
+    <div className="hn-code-island group relative my-6 overflow-hidden rounded-xl border border-[var(--line)] bg-[var(--tint)]">
       {/* Top Titlebar */}
       <div className="flex items-center justify-between border-b border-[var(--line)] bg-[var(--tint)] px-4 py-2 text-xs font-mono text-[var(--fg-3)]">
         <div className="flex items-center gap-2">

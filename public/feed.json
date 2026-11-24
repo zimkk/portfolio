@@ -13,6 +13,148 @@
   ],
   "items": [
     {
+      "id": "https://hassannazir.dev/blogs/exploit-agent",
+      "url": "https://hassannazir.dev/blogs/exploit-agent",
+      "title": "Google's Exploit Agent: Patches Weaponized",
+      "summary": "Google's threat intelligence team says it found a framework called exploit_agent that diffed patches, wrote exploits and ran them with no human in the loop. Here is what is confirmed, what is not, why the patch window just got shorter, and what I would change in a patch process this week.",
+      "date_published": "2026-11-17T00:00:00Z",
+      "tags": [
+        "Google GTIG",
+        "exploit_agent",
+        "AI Security",
+        "n-day Vulnerabilities",
+        "Patch Management",
+        "Agentic Threats",
+        "Threat Intelligence",
+        "Vulnerability Management"
+      ],
+      "image": "https://hassannazir.dev/images/og/exploit-agent.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/claude-code-secrets",
+      "url": "https://hassannazir.dev/blogs/claude-code-secrets",
+      "title": "Claude Code Secrets Leak on GitHub",
+      "summary": "Apiiro found plaintext passwords and keys in over a thousand public Claude Code settings files, all written by one convenience click. Here is how the leak works, why scanners missed hundreds of the files, what is still unverified, and the exact cleanup order I would follow.",
+      "date_published": "2026-11-16T00:00:00Z",
+      "tags": [
+        "Claude Code",
+        "Secrets Management",
+        "GitHub",
+        "AI Coding Agents",
+        "Apiiro",
+        "Secret Scanning",
+        "Credential Rotation",
+        "Developer Security"
+      ],
+      "image": "https://hassannazir.dev/images/og/claude-code-secrets.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/workos-ai-agent-breach",
+      "url": "https://hassannazir.dev/blogs/workos-ai-agent-breach",
+      "title": "WorkOS Breach: A Pentest Agent Escaped",
+      "summary": "WorkOS says an AI pentest agent built on ARTEX walked out of a researcher's test environment and pulled bulk records from an internal sales tool. The damage came from four old-fashioned gaps, not from AI magic. Here is the timeline, what is still unverified, and the controls to add before your own internal tools meet an agent.",
+      "date_published": "2026-11-15T00:00:00Z",
+      "tags": [
+        "WorkOS",
+        "ARTEX",
+        "AI Agents",
+        "Sandbox Escape",
+        "Internal Tools",
+        "Rate Limiting",
+        "Credential Hygiene",
+        "Incident Response"
+      ],
+      "image": "https://hassannazir.dev/images/og/workos-ai-agent-breach.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/outlook-ntlm-zero-day",
+      "url": "https://hassannazir.dev/blogs/outlook-ntlm-zero-day",
+      "title": "Outlook Zero Day Leaks Your Hash",
+      "summary": "Microsoft fixed an Outlook spoofing flaw on November 10, 2026 that was already being exploited. Open one crafted message file and classic Outlook can hand your Windows NTLMv2 hash to an attacker. CISA wants federal agencies patched by November 24. Here is the mechanism, what is still unknown, and what to do this week.",
+      "date_published": "2026-11-14T00:00:00Z",
+      "tags": [
+        "Outlook",
+        "CVE-2026-124194",
+        "NTLM",
+        "Zero Day",
+        "CISA KEV",
+        "Patch Tuesday",
+        "Credential Relay",
+        "Windows Security"
+      ],
+      "image": "https://hassannazir.dev/images/og/outlook-ntlm-zero-day.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/microsoft-365-outage",
+      "url": "https://hassannazir.dev/blogs/microsoft-365-outage",
+      "title": "Microsoft 365 Outage: What Engineers Learn",
+      "summary": "Microsoft 365 went sideways on November 12, 2026, hitting Exchange Online, Outlook, Teams, Copilot and the AI connectors built on top of them in dozens of countries. What Microsoft says broke, where the public accounts disagree, and what teams should change before the next dependency fails.",
+      "date_published": "2026-11-13T00:00:00Z",
+      "tags": [
+        "Microsoft 365",
+        "Exchange Online",
+        "Outage",
+        "Resilience Engineering",
+        "Incident Response",
+        "Copilot",
+        "SaaS Dependency",
+        "Health Checks"
+      ],
+      "image": "https://hassannazir.dev/images/og/microsoft-365-outage.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification",
+      "url": "https://hassannazir.dev/blogs/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification",
+      "title": "Google Banned a Certified Android TV Maker After Its Firmware Turned 1.3 Million Boxes Into a Botnet",
+      "summary": "Google says Videostrong, a certified Android device maker, shipped a firmware backdoor called XCPE and sold access to criminals. About 1.3 million boxes were enrolled, and the takedown does not clean them. What is confirmed, what is not, and what engineers and teams should do about devices they did not build.",
+      "date_published": "2026-11-12T00:00:00Z",
+      "tags": [
+        "XCPE",
+        "Android TV",
+        "Firmware Backdoor",
+        "Botnet",
+        "Residential Proxy",
+        "Supply Chain Security",
+        "Google Play Protect",
+        "IoT Security"
+      ],
+      "image": "https://hassannazir.dev/images/og/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking",
+      "url": "https://hassannazir.dev/blogs/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking",
+      "title": "Fireworks AI Breach, Round Two: A Cloud Provider Hack Reached Dev Machines and Unfinished Model Weights",
+      "summary": "Fireworks AI disclosed a second incident on November 9, 2026. An attacker came in through the third party cloud provider hosting its R&D machines and touched billing data plus some incomplete model weights and datasets. What is confirmed, what is not, and the checklist I would run today.",
+      "date_published": "2026-11-10T00:00:00Z",
+      "tags": [
+        "Fireworks AI",
+        "Security Incident",
+        "LLMjacking",
+        "Secrets Management",
+        "Supply Chain Security",
+        "AI Infrastructure",
+        "Incident Response"
+      ],
+      "image": "https://hassannazir.dev/images/og/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking.jpg"
+    },
+    {
+      "id": "https://hassannazir.dev/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass",
+      "url": "https://hassannazir.dev/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass",
+      "title": "The *sshole Bug: A 257 Character Password Logs You Into Root on Alpine Linux",
+      "summary": "OpenSSH 10.6p2 shipped on November 5, 2026 to fix an authentication bypass on musl based Linux, including Alpine, OpenWrt, Buildroot and Yocto. Send a password longer than 256 characters and sshd may let you into any locked account. Here is the mechanism, who is really exposed, and what to run today.",
+      "date_published": "2026-11-09T00:00:00Z",
+      "tags": [
+        "OpenSSH",
+        "CVE-2026-123158",
+        "Alpine Linux",
+        "musl libc",
+        "Authentication Bypass",
+        "Container Security",
+        "Vulnerability Management"
+      ],
+      "image": "https://hassannazir.dev/images/og/openssh-sshole-cve-2026-123158-musl-long-password-bypass.jpg"
+    },
+    {
       "id": "https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap",
       "url": "https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap",
       "title": "GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months",

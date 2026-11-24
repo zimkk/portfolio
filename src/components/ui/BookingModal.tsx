@@ -43,8 +43,8 @@ function themedUrl() {
   const params = new URLSearchParams({
     hide_gdpr_banner: '1',
     hide_landing_page_details: '0',
-    background_color: dark ? '141417' : 'ffffff',
-    text_color: dark ? 'f2f2f4' : '111113',
+    background_color: dark ? '0a0a0a' : 'ffffff',
+    text_color: dark ? 'ededed' : '0a0f17',
     primary_color: '2f5bff',
   });
   return `${CALENDLY_URL}${CALENDLY_URL.includes('?') ? '&' : '?'}${params.toString()}`;
@@ -121,12 +121,11 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
               <div className="flex min-w-0 items-center gap-3.5">
                 <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-[var(--line)] bg-neutral-900">
                   <img src="/images/profile-hero.webp" alt="" className="h-full w-full object-cover" />
-                  <span className="absolute bottom-0 right-0 h-2.5 w-2.5 rounded-full bg-[#2F5BFF] ring-2 ring-[var(--surface)]" />
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2">
-                    <h2 className="text-sm font-bold tracking-tight">Hassan Nazir</h2>
-                    <span className="inline-block rounded border border-[#2F5BFF] bg-[#2F5BFF] px-1.5 font-mono text-[10px] uppercase tracking-wider text-white">30 min</span>
+                    <h2 className="text-sm font-semibold tracking-tight">Hassan Nazir</h2>
+                    <span className="font-mono text-[11px] uppercase tracking-wider text-[var(--fg-3)]">30 min</span>
                   </div>
                   <p className="truncate text-xs text-[var(--fg-2)]">{status === 'booked' ? 'Booked. The invite is on its way to your inbox.' : 'Pick a time that suits you'}</p>
                 </div>
@@ -153,7 +152,7 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
 
             <div className="relative flex-1 overflow-hidden">
               {status === 'booked' && (
-                <div className="absolute left-1/2 top-4 z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-[#2F5BFF] px-4 py-2 text-sm font-semibold text-white shadow-lg">
+                <div className="absolute left-1/2 top-4 z-10 inline-flex -translate-x-1/2 items-center gap-2 rounded-full bg-[var(--btn-bg)] px-4 py-2 text-sm font-semibold text-[var(--btn-fg)]">
                   <Check size={16} /> Booked. See you then.
                 </div>
               )}
@@ -167,8 +166,8 @@ const BookingModal: React.FC<BookingModalProps> = ({ isOpen, onClose }) => {
                   <p className="text-base font-semibold">The calendar didn't load.</p>
                   <p className="max-w-sm text-sm text-[var(--fg-2)]">It may be blocked by an extension. You can book directly on Calendly, or just email me.</p>
                   <div className="flex flex-wrap justify-center gap-3">
-                    <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--btn-bg)] px-5 py-2.5 text-sm font-bold text-[var(--btn-fg)]">Book on Calendly <ArrowUpRight size={14} /></a>
-                    <a href="mailto:hassannazir955@gmail.com?subject=Booking%20a%20call" className="inline-flex items-center gap-2 rounded-full border border-[var(--line-strong)] px-5 py-2.5 text-sm font-bold">Email instead</a>
+                    <a href={CALENDLY_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 rounded-full bg-[var(--btn-bg)] px-5 py-2.5 text-sm font-semibold text-[var(--btn-fg)]">Book on Calendly <ArrowUpRight size={14} /></a>
+                    <a href="mailto:hassannazir955@gmail.com?subject=Booking%20a%20call" className="inline-flex items-center gap-2 rounded-full border border-[var(--line)] px-5 py-2.5 text-sm font-semibold">Email instead</a>
                   </div>
                 </div>
               ) : (

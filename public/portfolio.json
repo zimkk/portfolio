@@ -3,7 +3,7 @@
   "@type": "ProfilePage",
   "@id": "https://hassannazir.dev/#profile",
   "url": "https://hassannazir.dev",
-  "dateModified": "2026-11-09",
+  "dateModified": "2026-11-24",
   "mainEntity": {
     "@type": "Person",
     "@id": "https://hassannazir.dev/#hassan-nazir",
@@ -237,6 +237,78 @@
     }
   ],
   "subjectOf": [
+    {
+      "@type": "BlogPosting",
+      "headline": "Google's Exploit Agent: Patches Weaponized",
+      "url": "https://hassannazir.dev/blogs/exploit-agent",
+      "datePublished": "2026-11-17",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Claude Code Secrets Leak on GitHub",
+      "url": "https://hassannazir.dev/blogs/claude-code-secrets",
+      "datePublished": "2026-11-16",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "WorkOS Breach: A Pentest Agent Escaped",
+      "url": "https://hassannazir.dev/blogs/workos-ai-agent-breach",
+      "datePublished": "2026-11-15",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Outlook Zero Day Leaks Your Hash",
+      "url": "https://hassannazir.dev/blogs/outlook-ntlm-zero-day",
+      "datePublished": "2026-11-14",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Microsoft 365 Outage: What Engineers Learn",
+      "url": "https://hassannazir.dev/blogs/microsoft-365-outage",
+      "datePublished": "2026-11-13",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Google Banned a Certified Android TV Maker After Its Firmware Turned 1.3 Million Boxes Into a Botnet",
+      "url": "https://hassannazir.dev/blogs/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification",
+      "datePublished": "2026-11-12",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "Fireworks AI Breach, Round Two: A Cloud Provider Hack Reached Dev Machines and Unfinished Model Weights",
+      "url": "https://hassannazir.dev/blogs/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking",
+      "datePublished": "2026-11-10",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
+    {
+      "@type": "BlogPosting",
+      "headline": "The *sshole Bug: A 257 Character Password Logs You Into Root on Alpine Linux",
+      "url": "https://hassannazir.dev/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass",
+      "datePublished": "2026-11-09",
+      "author": {
+        "@id": "https://hassannazir.dev/#hassan-nazir"
+      }
+    },
     {
       "@type": "BlogPosting",
       "headline": "GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months",

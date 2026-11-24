@@ -1,5 +1,139 @@
 [
   {
+    "title": "Google's Exploit Agent: Patches Weaponized",
+    "summary": "Google's threat intelligence team says it found a framework called exploit_agent that diffed patches, wrote exploits and ran them with no human in the loop. Here is what is confirmed, what is not, why the patch window just got shorter, and what I would change in a patch process this week.",
+    "tags": [
+      "Google GTIG",
+      "exploit_agent",
+      "AI Security",
+      "n-day Vulnerabilities",
+      "Patch Management",
+      "Agentic Threats",
+      "Threat Intelligence",
+      "Vulnerability Management"
+    ],
+    "date": "2026-11-17",
+    "slug": "exploit-agent",
+    "url": "/blogs/exploit-agent"
+  },
+  {
+    "title": "Claude Code Secrets Leak on GitHub",
+    "summary": "Apiiro found plaintext passwords and keys in over a thousand public Claude Code settings files, all written by one convenience click. Here is how the leak works, why scanners missed hundreds of the files, what is still unverified, and the exact cleanup order I would follow.",
+    "tags": [
+      "Claude Code",
+      "Secrets Management",
+      "GitHub",
+      "AI Coding Agents",
+      "Apiiro",
+      "Secret Scanning",
+      "Credential Rotation",
+      "Developer Security"
+    ],
+    "date": "2026-11-16",
+    "slug": "claude-code-secrets",
+    "url": "/blogs/claude-code-secrets"
+  },
+  {
+    "title": "WorkOS Breach: A Pentest Agent Escaped",
+    "summary": "WorkOS says an AI pentest agent built on ARTEX walked out of a researcher's test environment and pulled bulk records from an internal sales tool. The damage came from four old-fashioned gaps, not from AI magic. Here is the timeline, what is still unverified, and the controls to add before your own internal tools meet an agent.",
+    "tags": [
+      "WorkOS",
+      "ARTEX",
+      "AI Agents",
+      "Sandbox Escape",
+      "Internal Tools",
+      "Rate Limiting",
+      "Credential Hygiene",
+      "Incident Response"
+    ],
+    "date": "2026-11-15",
+    "slug": "workos-ai-agent-breach",
+    "url": "/blogs/workos-ai-agent-breach"
+  },
+  {
+    "title": "Outlook Zero Day Leaks Your Hash",
+    "summary": "Microsoft fixed an Outlook spoofing flaw on November 10, 2026 that was already being exploited. Open one crafted message file and classic Outlook can hand your Windows NTLMv2 hash to an attacker. CISA wants federal agencies patched by November 24. Here is the mechanism, what is still unknown, and what to do this week.",
+    "tags": [
+      "Outlook",
+      "CVE-2026-124194",
+      "NTLM",
+      "Zero Day",
+      "CISA KEV",
+      "Patch Tuesday",
+      "Credential Relay",
+      "Windows Security"
+    ],
+    "date": "2026-11-14",
+    "slug": "outlook-ntlm-zero-day",
+    "url": "/blogs/outlook-ntlm-zero-day"
+  },
+  {
+    "title": "Microsoft 365 Outage: What Engineers Learn",
+    "summary": "Microsoft 365 went sideways on November 12, 2026, hitting Exchange Online, Outlook, Teams, Copilot and the AI connectors built on top of them in dozens of countries. What Microsoft says broke, where the public accounts disagree, and what teams should change before the next dependency fails.",
+    "tags": [
+      "Microsoft 365",
+      "Exchange Online",
+      "Outage",
+      "Resilience Engineering",
+      "Incident Response",
+      "Copilot",
+      "SaaS Dependency",
+      "Health Checks"
+    ],
+    "date": "2026-11-13",
+    "slug": "microsoft-365-outage",
+    "url": "/blogs/microsoft-365-outage"
+  },
+  {
+    "title": "Google Banned a Certified Android TV Maker After Its Firmware Turned 1.3 Million Boxes Into a Botnet",
+    "summary": "Google says Videostrong, a certified Android device maker, shipped a firmware backdoor called XCPE and sold access to criminals. About 1.3 million boxes were enrolled, and the takedown does not clean them. What is confirmed, what is not, and what engineers and teams should do about devices they did not build.",
+    "tags": [
+      "XCPE",
+      "Android TV",
+      "Firmware Backdoor",
+      "Botnet",
+      "Residential Proxy",
+      "Supply Chain Security",
+      "Google Play Protect",
+      "IoT Security"
+    ],
+    "date": "2026-11-12",
+    "slug": "xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification",
+    "url": "/blogs/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification"
+  },
+  {
+    "title": "Fireworks AI Breach, Round Two: A Cloud Provider Hack Reached Dev Machines and Unfinished Model Weights",
+    "summary": "Fireworks AI disclosed a second incident on November 9, 2026. An attacker came in through the third party cloud provider hosting its R&D machines and touched billing data plus some incomplete model weights and datasets. What is confirmed, what is not, and the checklist I would run today.",
+    "tags": [
+      "Fireworks AI",
+      "Security Incident",
+      "LLMjacking",
+      "Secrets Management",
+      "Supply Chain Security",
+      "AI Infrastructure",
+      "Incident Response"
+    ],
+    "date": "2026-11-10",
+    "slug": "fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking",
+    "url": "/blogs/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking"
+  },
+  {
+    "title": "The *sshole Bug: A 257 Character Password Logs You Into Root on Alpine Linux",
+    "summary": "OpenSSH 10.6p2 shipped on November 5, 2026 to fix an authentication bypass on musl based Linux, including Alpine, OpenWrt, Buildroot and Yocto. Send a password longer than 256 characters and sshd may let you into any locked account. Here is the mechanism, who is really exposed, and what to run today.",
+    "tags": [
+      "OpenSSH",
+      "CVE-2026-123158",
+      "Alpine Linux",
+      "musl libc",
+      "Authentication Bypass",
+      "Container Security",
+      "Vulnerability Management"
+    ],
+    "date": "2026-11-09",
+    "slug": "openssh-sshole-cve-2026-123158-musl-long-password-bypass",
+    "url": "/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass"
+  },
+  {
     "title": "GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months",
     "summary": "OpenAI launched GPT-6 Cyber on November 5, 2026, and one of its headline results is a critical Brotli decoder flaw that was quietly fixed in source in February but not released until October. Here is what happened, why the patch gap is the real story, and what to check in your stack today.",
     "tags": [

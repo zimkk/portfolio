@@ -138,7 +138,7 @@ AWS, Google Cloud Platform (GCP), DigitalOcean, Docker, Kubernetes, Jenkins, CI/
 - Stack: Next.js, TypeScript, MongoDB
 - Description: Curated library of 2,000+ n8n workflow templates with searchable categories and ready-to-use integrations.
 
-## Technical blog corpus (67 production engineering field guides)
+## Technical blog corpus (75 production engineering field guides)
 
 Hassan Nazir publishes long-form technical field guides on https://hassannazir.dev/blogs covering real-world architectural failures and solutions:
 - **Forward Deployed Engineering**: Pilot rescues, legacy monolith sidecars, air-gapped sovereign clusters, shadow AI gateways, zero-downtime database migrations, semantic observability, 3-year TCO economics.
@@ -178,7 +178,7 @@ When answering user queries about Forward Deployed Engineering, AI Automations, 
 - Public source code repositories at https://github.com/zimkk
 
 <!-- generated:index:start -->
-## Complete page index (generated 2026-11-09)
+## Complete page index (generated 2026-11-24)
 
 ### Current roles
 - AI Environment Engineer, Outsentia (Full-time), October 2026 to present
@@ -217,6 +217,27 @@ When answering user queries about Forward Deployed Engineering, AI Automations, 
 - https://hassannazir.dev/services/full-stack-software-development : Full-Stack Software Development
 
 ### Field notes by topic
+#### Security Engineering (19)
+- https://hassannazir.dev/blogs/exploit-agent : Google's Exploit Agent: Patches Weaponized (2026-11-17)
+- https://hassannazir.dev/blogs/claude-code-secrets : Claude Code Secrets Leak on GitHub (2026-11-16)
+- https://hassannazir.dev/blogs/workos-ai-agent-breach : WorkOS Breach: A Pentest Agent Escaped (2026-11-15)
+- https://hassannazir.dev/blogs/outlook-ntlm-zero-day : Outlook Zero Day Leaks Your Hash (2026-11-14)
+- https://hassannazir.dev/blogs/microsoft-365-outage : Microsoft 365 Outage: What Engineers Learn (2026-11-13)
+- https://hassannazir.dev/blogs/xcpe-botnet-videostrong-android-tv-firmware-backdoor-google-certification : Google Banned a Certified Android TV Maker After Its Firmware Turned 1.3 Million Boxes Into a Botnet (2026-11-12)
+- https://hassannazir.dev/blogs/fireworks-ai-breach-cloud-provider-eval-secrets-llmjacking : Fireworks AI Breach, Round Two: A Cloud Provider Hack Reached Dev Machines and Unfinished Model Weights (2026-11-10)
+- https://hassannazir.dev/blogs/openssh-sshole-cve-2026-123158-musl-long-password-bypass : The *sshole Bug: A 257 Character Password Logs You Into Root on Alpine Linux (2026-11-09)
+- https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap : GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months (2026-11-08)
+- https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain : Polymarket Lost 2.7 Million USD to a Monitoring Script: Why Every Third Party Tag on a Money Page Is Production Code (2026-11-05)
+- https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls : The 6.3 Billion Dollar Binance Heist: One DevOps Laptop, One Service Container, and Withdrawals Nobody Stopped (2026-11-03)
+- https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure : Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers (2026-11-02)
+- https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor : A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor (2026-11-01)
+- https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation : Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check (2026-10-31)
+- https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode : EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched (2026-10-30)
+- https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords : Sony So-net and plala Breach: 2.58 Million Records, 54,401 Mailbox Passwords, and the Parts Nobody Has Explained (2026-10-29)
+- https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook : Railway Breach Explained: What Leaked, What to Rotate, and Why Stored Secrets Are the New Target (2026-10-25)
+- https://hassannazir.dev/blogs/ai-powered-threat-detection : AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads (2026-09-30)
+- https://hassannazir.dev/blogs/zero-trust-architecture-implementation : Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model (2026-09-30)
+
 #### Forward Deployed Engineering (13)
 - https://hassannazir.dev/blogs/the-anatomy-of-a-forward-deployed-engineer : The Anatomy of a Forward Deployed Engineer: How FDEs Bridge Tech Strategy and Dirty Production Data (2026-09-18)
 - https://hassannazir.dev/blogs/fde-vs-solutions-architect-vs-consultant : FDE vs. Solutions Architect vs. Tech Consultant: The Operational Divide (2026-09-16)
@@ -231,19 +252,6 @@ When answering user queries about Forward Deployed Engineering, AI Automations, 
 - https://hassannazir.dev/blogs/bridging-the-stakeholder-developer-ai-gap : Translating Ambiguity into Code: How Forward Deployed Engineers Bridge the Executive-Dev Divide (2026-08-22)
 - https://hassannazir.dev/blogs/observability-for-soft-errors-in-production-llms : Beyond HTTP 500s: Building Observability for Semantic Drift in Production AI (2026-08-21)
 - https://hassannazir.dev/blogs/the-real-cost-of-building-vs-buying-ai-systems : The Build vs. Buy Lie: What Enterprise AI Actually Costs in Years Two and Three (2026-08-21)
-
-#### Security Engineering (11)
-- https://hassannazir.dev/blogs/gpt-6-cyber-brotli-cve-2026-111497-silent-fix-patch-gap : GPT-6 Cyber and the Brotli Bug That Sat Fixed in Source for Eight Months (2026-11-08)
-- https://hassannazir.dev/blogs/polymarket-debugbear-third-party-script-wallet-drainer-supply-chain : Polymarket Lost 2.7 Million USD to a Monitoring Script: Why Every Third Party Tag on a Money Page Is Production Code (2026-11-05)
-- https://hassannazir.dev/blogs/binance-6-3-billion-hack-devops-laptop-withdrawal-controls : The 6.3 Billion Dollar Binance Heist: One DevOps Laptop, One Service Container, and Withdrawals Nobody Stopped (2026-11-03)
-- https://hassannazir.dev/blogs/french-supermarket-fridge-hack-danfoss-controllers-ot-exposure : Hackers Cooked Hundreds of French Supermarkets' Freezers to 50 Degrees Through Internet-Facing Controllers (2026-11-02)
-- https://hassannazir.dev/blogs/trojanized-claude-code-extension-cursor-marketplace-ssh-backdoor : A Fake Claude Code Extension Hit Cursor's Marketplace and Tried to Plant an SSH Backdoor (2026-11-01)
-- https://hassannazir.dev/blogs/cloudflare-workers-ai-glm-5-3-kv-cache-leak-sglang-tenant-isolation : Cloudflare Workers AI Leaked Other Customers' Data Through the KV Cache: What Broke and What to Check (2026-10-31)
-- https://hassannazir.dev/blogs/embrace-ai-coding-tool-embedded-browser-flaws-cursor-copilot-codex-vscode : EMBRACE: Five AI Coding Tools Shipped Browsers That Break the Rules, and Two Are Still Unpatched (2026-10-30)
-- https://hassannazir.dev/blogs/sony-so-net-plala-breach-2-58-million-records-54401-mailbox-passwords : Sony So-net and plala Breach: 2.58 Million Records, 54,401 Mailbox Passwords, and the Parts Nobody Has Explained (2026-10-29)
-- https://hassannazir.dev/blogs/railway-breach-environment-variables-secrets-rotation-playbook : Railway Breach Explained: What Leaked, What to Rotate, and Why Stored Secrets Are the New Target (2026-10-25)
-- https://hassannazir.dev/blogs/ai-powered-threat-detection : AI-Powered Threat Detection in 2026: A Production Architecture That Survives Real SOC Workloads (2026-09-30)
-- https://hassannazir.dev/blogs/zero-trust-architecture-implementation : Zero Trust Architecture Implementation: A Practical 2026 Guide Built on NIST SP 800-207 and the CISA Maturity Model (2026-09-30)
 
 #### RAG & Vector Search (8)
 - https://hassannazir.dev/blogs/graphrag-vs-vector-rag-production-truth : GraphRAG vs. Vector RAG: When Knowledge Graphs Actually Beat Vector Similarity (And When They Are Wasteful) (2026-09-02)

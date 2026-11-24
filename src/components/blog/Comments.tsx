@@ -134,13 +134,13 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
         </div>
 
         {/* Dual Mode Switcher Tabs */}
-        <div className="inline-flex rounded-xl border border-[var(--line)] bg-[var(--tint)] p-1 font-mono text-xs">
+        <div className="inline-flex rounded-full bg-[var(--tint)] p-1 font-mono text-xs">
           <button
             type="button"
             onClick={() => setCommentMode('guest')}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition ${
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
               commentMode === 'guest'
-                ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                ? 'bg-[var(--fg)] text-[var(--bg)]'
                 : 'text-[var(--fg-2)] hover:text-[var(--fg)]'
             }`}
           >
@@ -150,9 +150,9 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
           <button
             type="button"
             onClick={() => setCommentMode('github')}
-            className={`flex items-center gap-1.5 rounded-lg px-3 py-1.5 transition ${
+            className={`flex items-center gap-1.5 rounded-full px-3 py-1.5 transition ${
               commentMode === 'github'
-                ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                ? 'bg-[var(--fg)] text-[var(--bg)]'
                 : 'text-[var(--fg-2)] hover:text-[var(--fg)]'
             }`}
           >
@@ -167,7 +167,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
         <div className="space-y-8">
           <form
             onSubmit={handleGuestSubmit}
-            className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-5 sm:p-6 backdrop-blur-sm"
+            className="rounded-[22px] bg-[var(--tint)] p-5 sm:p-6"
           >
             <h4 className="text-base font-semibold text-[var(--fg)] mb-4">
               Leave a response
@@ -243,7 +243,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                 <button
                   type="submit"
                   disabled={isSubmitting || !authorName.trim() || !commentText.trim()}
-                  className="inline-flex items-center gap-2 rounded-xl bg-[#2F5BFF] px-5 py-2.5 text-xs font-mono font-bold text-white transition hover:bg-[#1E46E8] disabled:opacity-40 disabled:cursor-not-allowed shadow-md"
+                  className="inline-flex items-center gap-2 rounded-full bg-[var(--btn-bg)] px-5 py-2.5 text-sm font-semibold text-[var(--btn-fg)] transition hover:bg-[var(--btn-hover)] disabled:opacity-40 disabled:cursor-not-allowed shadow-md"
                 >
                   <Send className="h-3.5 w-3.5" />
                   <span>{isSubmitting ? 'Posting...' : 'Post Comment'}</span>
@@ -299,7 +299,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
 
       {/* Mode 2: GitHub Discussions (Giscus) */}
       {commentMode === 'github' && (
-        <div className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-6 backdrop-blur-sm">
+        <div className="rounded-[22px] bg-[var(--tint)] p-6">
           <div className="mb-4 flex items-center gap-2 text-xs font-mono text-[var(--fg-2)]">
             <Github className="h-4 w-4 text-[var(--fg)]" />
             <span>Comments synced with GitHub Discussions on zimkk/portfolio</span>

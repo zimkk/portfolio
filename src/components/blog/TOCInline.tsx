@@ -44,7 +44,7 @@ export const TOCInline: React.FC<TOCInlineProps> = ({ headings, className = '' }
   return (
     <nav
       aria-label="Table of contents"
-      className={`my-6 rounded-xl border border-[var(--line)] bg-[var(--tint)] p-5 backdrop-blur-sm ${className}`}
+      className={`my-6 rounded-[14px] bg-[var(--tint)] p-5 ${className}`}
     >
       <div className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-[var(--fg-3)]">
         <ListOrdered className="h-4 w-4 text-[var(--accent-text)]" />
