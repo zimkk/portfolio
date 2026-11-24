@@ -1,8 +1,7 @@
-import { createContext, ReactNode, useContext, useEffect, useRef, useState } from 'react';
+import { createContext, ReactNode, useContext, useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import { ArrowUpRight, Github, Linkedin, Mail, Menu, Monitor, Moon, Rss, Sun, X } from 'lucide-react';
+import { Menu, Monitor, Moon, Sun, X } from 'lucide-react';
 import { ThemePref, useBooking, useClock, useInView, useThemePref } from './hooks';
-import Ico from './graphics/Ico';
 import { projectPath, projects, SERVICE_NAMES } from '../../data/work';
 import './hn.css';
 
@@ -60,35 +59,13 @@ type NavProps = { onBook: () => void; onPrefetch?: () => void };
 export function SiteNav({ onBook, onPrefetch }: NavProps) {
   const location = useLocation();
   const [scrolled, setScrolled] = useState(false);
-  const [onAlt, setOnAlt] = useState(false);
   const [open, setOpen] = useState(false);
-  const progress = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
-    let frame = 0;
-    const onScroll = () => {
-      cancelAnimationFrame(frame);
-      frame = requestAnimationFrame(() => {
-        setScrolled(window.scrollY > 12);
-        // Match the nav to whichever band sits under it.
-        const probe = 34;
-        setOnAlt(Array.from(document.querySelectorAll('.hn .hn-alt')).some((element) => {
-          if (element.closest('.hn-nav, .hn-footer')) return false;
-          const rect = element.getBoundingClientRect();
-          return rect.top <= probe && rect.bottom >= probe;
-        }));
-        const max = document.documentElement.scrollHeight - window.innerHeight;
-        if (progress.current) progress.current.style.transform = `scaleX(${max > 0 ? window.scrollY / max : 0})`;
-      });
-    };
+    const onScroll = () => setScrolled(window.scrollY > 8);
     onScroll();
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onScroll);
-    return () => {
-      cancelAnimationFrame(frame);
-      window.removeEventListener('scroll', onScroll);
-      window.removeEventListener('resize', onScroll);
-    };
+    return () => window.removeEventListener('scroll', onScroll);
   }, [location.pathname]);
 
   useEffect(() => setOpen(false), [location.pathname]);
@@ -103,11 +80,10 @@ export function SiteNav({ onBook, onPrefetch }: NavProps) {
   }, [open]);
 
   const navClass = ({ isActive }: { isActive: boolean }) => (isActive ? 'is-active' : undefined);
-  const theme = !open && onAlt ? 'hn-alt' : 'hn-light';
 
   return (
     <div className="hn-scope">
-      <header className={`hn-nav ${theme}${scrolled || open ? ' is-scrolled' : ''}`}>
+      <header className={`hn-nav hn-light${scrolled && !open ? ' is-scrolled' : ''}`}>
         <div className="hn-frame hn-nav-inner">
           <Link to="/" className="hn-brand" aria-label="Hassan Nazir, home">
             <Monogram />
@@ -119,40 +95,26 @@ export function SiteNav({ onBook, onPrefetch }: NavProps) {
           <div className="hn-nav-right">
             <NavClock />
             <button type="button" className="hn-btn hn-btn-primary" onClick={onBook} onPointerEnter={onPrefetch} onFocus={onPrefetch}>
-              <Ico /> Book a call
+              Book a call
             </button>
             <button type="button" className="hn-menu-btn" aria-expanded={open} aria-controls="hn-mobile-menu" aria-label={open ? 'Close menu' : 'Open menu'} onClick={() => setOpen((value) => !value)}>
               {open ? <X size={18} /> : <Menu size={18} />}
             </button>
           </div>
         </div>
-        <span ref={progress} className="hn-progress" aria-hidden="true" />
       </header>
       <div id="hn-mobile-menu" className={`hn-mobile-menu hn-light${open ? ' is-open' : ''}`} aria-hidden={!open}>
         <nav aria-label="Mobile">
-          {[{ to: '/', label: 'Home' }, ...NAV_LINKS].map((link, index) => (
+          {[{ to: '/', label: 'Home' }, ...NAV_LINKS].map((link) => (
             <Link key={link.to} to={link.to} tabIndex={open ? 0 : -1} onClick={() => setOpen(false)}>
-              {link.label}<span>0{index + 1}</span>
+              {link.label}
             </Link>
           ))}
         </nav>
         <button type="button" className="hn-btn hn-btn-primary" tabIndex={open ? 0 : -1} onClick={() => { setOpen(false); onBook(); }}>
-          <Ico /> Book 30 minutes
+          Book 30 minutes
         </button>
       </div>
-    </div>
-  );
-}
-
-/** Numbered section header: 02 label, then a hairline that draws itself in. */
-export function SectionHead({ index, label, aside }: { index: string; label: string; aside?: ReactNode }) {
-  const [ref, inView] = useInView<HTMLDivElement>({ once: true, rootMargin: '0px 0px -10% 0px' });
-  return (
-    <div ref={ref} className={`hn-section-head hn-mono${inView ? ' is-in' : ''}`}>
-      <b>{index}</b>
-      <span>{label}</span>
-      <i />
-      {aside}
     </div>
   );
 }
@@ -197,12 +159,12 @@ function ThemeSwitch() {
   );
 }
 
-/* ---------- Footer ---------- */
+/* ---------- Footer: always dark, in both themes ---------- */
 export function SiteFooter() {
   const year = new Date().getFullYear();
   const featured = projects.filter((project) => project.glyph || project.kind === 'product').slice(0, 6);
   return (
-    <footer className="hn-footer hn-alt hn-scope">
+    <footer className="hn-footer hn-scope">
       <div className="hn-frame hn-footer-top">
         <div className="hn-footer-brand">
           <Link to="/" className="hn-brand"><Monogram /> Hassan Nazir</Link>
@@ -217,7 +179,7 @@ export function SiteFooter() {
         <nav aria-label="Work">
           <h4 className="hn-mono">Work</h4>
           {featured.map((project) => <Link key={project.slug} to={projectPath(project.slug)}>{project.name}</Link>)}
-          <Link to="/work" className="is-more">All {projects.length} projects</Link>
+          <Link to="/work">All {projects.length} projects</Link>
         </nav>
         <nav aria-label="Services">
           <h4 className="hn-mono">Services</h4>
@@ -225,21 +187,16 @@ export function SiteFooter() {
         </nav>
         <nav aria-label="Elsewhere">
           <h4 className="hn-mono">Elsewhere</h4>
-          <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer"><Github size={14} />GitHub</a>
-          <a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer"><Linkedin size={14} />LinkedIn</a>
-          <a href="mailto:hassannazir955@gmail.com"><Mail size={14} />Email</a>
-          <a href="/feed.xml"><Rss size={14} />RSS</a>
+          <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a href="mailto:hassannazir955@gmail.com">Email</a>
+          <a href="/feed.xml">RSS</a>
         </nav>
-      </div>
-      <div className="hn-frame hn-footer-word" aria-hidden="true">
-        <svg viewBox="0 0 1200 160" preserveAspectRatio="xMidYMid meet">
-          <text x="2" y="138" textLength="1196" lengthAdjust="spacingAndGlyphs">HASSAN NAZIR</text>
-        </svg>
       </div>
       <div className="hn-frame hn-footer-base hn-mono">
         <span>© {year} Hassan Nazir</span>
         <span>Islamabad / Dubai</span>
-        <a href="https://github.com/zimkk/portfolio" target="_blank" rel="noopener noreferrer">Built in the open <ArrowUpRight size={12} /></a>
+        <a href="https://github.com/zimkk/portfolio" target="_blank" rel="noopener noreferrer">Source on GitHub</a>
       </div>
     </footer>
   );

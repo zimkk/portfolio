@@ -193,68 +193,6 @@ export function ServiceGlyph({ slug, className = 'hn-svc-glyph' }: { slug: strin
   }
 }
 
-/* ------------------------------------------------------------------ */
-/* Method icons: 34 x 34.                                              */
-/* ------------------------------------------------------------------ */
-
-export function MethodIcon({ name }: { name: 'eye' | 'flask' | 'plug' | 'pulse' }) {
-  return (
-    <svg viewBox="0 0 34 34" aria-hidden="true">
-      {name === 'eye' && <><path d="M2 17C8 7 26 7 32 17C26 27 8 27 2 17Z" className="hn-line" /><circle cx="17" cy="17" r="5" className="hn-line" /><circle cx="17" cy="17" r="1.6" fill="var(--fg)" /></>}
-      {name === 'flask' && <><path d="M12 3h10M14 3v10L6 27a3 3 0 0 0 2.6 4.5h16.8A3 3 0 0 0 28 27L20 13V3" className="hn-line" /><path d="M9.5 22h15" className="hn-line" /></>}
-      {name === 'plug' && <><path d="M12 3v8M22 3v8M8 11h18v6a9 9 0 0 1-18 0zM17 26v6" className="hn-line" /></>}
-      {name === 'pulse' && <path d="M2 18h7l3-8 5 16 4-12 3 4h8" className="hn-line" />}
-    </svg>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Remote working terms (services page).                               */
-/* ------------------------------------------------------------------ */
-
-export function TermIcon({ name }: { name: 'overlap' | 'record' | 'shield' }) {
-  return (
-    <svg viewBox="0 0 48 48" aria-hidden="true">
-      {name === 'overlap' && <><circle cx="18" cy="24" r="14" className="hn-line" /><circle cx="30" cy="24" r="14" className="hn-line" /><path d="M24 12.6a14 14 0 0 1 0 22.8a14 14 0 0 1 0-22.8z" className="g-accent" /></>}
-      {name === 'record' && <><rect x="10" y="6" width="28" height="36" rx="4" className="hn-line" /><path d="M16 16h16M16 23h16M16 30h9" className="hn-line" /><circle cx="35" cy="37" r="7" className="g-accent" /></>}
-      {name === 'shield' && <><path d="M24 5l15 6v11c0 10-6 17-15 21C15 39 9 32 9 22V11z" className="g-accent" /><path d="M17 24l5 5 9-10" className="hn-line" /></>}
-    </svg>
-  );
-}
-
-/* ------------------------------------------------------------------ */
-/* Larger decorative pieces.                                           */
-/* ------------------------------------------------------------------ */
-
-export function ProofArt() {
-  return (
-    <svg viewBox="0 0 140 140" className="hn-proof-art" aria-hidden="true">
-      <rect x="8" y="16" width="124" height="108" rx="14" className="g-paper" />
-      <path d="M8 38h124" className="hn-line" />
-      <circle cx="22" cy="27" r="3.5" className="hn-line" />
-      <circle cx="34" cy="27" r="3.5" className="hn-line" />
-      <path d="M36 56v52M36 72c0-10 30-6 30-18M36 92c0-10 56-6 56-22" className="hn-line" />
-      <circle cx="36" cy="56" r="6" className="g-paper" />
-      <circle cx="66" cy="54" r="6" className="g-paper" />
-      <circle cx="92" cy="70" r="7" className="g-accent g-pulse" />
-      <circle cx="36" cy="108" r="6" className="g-paper" />
-    </svg>
-  );
-}
-
-export function CtaArt() {
-  return (
-    <svg viewBox="0 0 520 360" className="hn-cta-art" aria-hidden="true">
-      <path d="M40 300C120 300 120 180 200 180S280 60 360 60 440 140 500 140" className="hn-line-soft" strokeDasharray="3 8" />
-      <path d="M40 300C120 300 120 180 200 180" className="hn-line" />
-      {[[40, 300], [200, 180], [360, 60]].map(([x, y], index) => (
-        <circle key={index} cx={x} cy={y} r={index === 1 ? 14 : 9} fill={index === 1 ? 'var(--hn-accent)' : 'var(--fg)'} stroke="var(--bg)" strokeWidth="1.6" />
-      ))}
-      <circle cx="500" cy="140" r="9" fill="none" stroke="#4a4842" strokeWidth="1.6" />
-    </svg>
-  );
-}
-
 export function BrokenCable() {
   return (
     <svg viewBox="0 0 480 360" aria-hidden="true">

@@ -24,7 +24,7 @@ export default function ContactPage() {
         jsonLd={[schema, breadcrumbSchema([{ name: 'Home', url: siteConfig.url }, { name: 'Contact', url }])]}
       />
       <PageShell>
-        <ContactSection index="01" headingLevel="h1" first />
+        <ContactSection headingLevel="h1" first />
       </PageShell>
     </>
   );

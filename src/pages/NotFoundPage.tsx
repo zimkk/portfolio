@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowLeft, ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
 import SEOHead from '../components/ui/SEOHead';
 import { SiteFooter, SiteNav } from '../components/hn/chrome';
 import { useBooking } from '../components/hn/hooks';
@@ -71,10 +71,10 @@ export default function NotFoundPage() {
       <SEOHead title="Page not found | Hassan Nazir" description="This page does not exist or has moved." noindex />
       <div className="hn">
         <SiteNav onBook={openBooking} onPrefetch={prefetch} />
-        <main className="hn-404 hn-alt">
+        <main className="hn-404">
           <div className="hn-frame hn-404-grid">
             <div>
-              <span className="hn-chip">HTTP 404</span>
+              <span className="hn-404-code hn-mono">HTTP 404</span>
               <h1>{joke ? joke.title.replace(/\n/g, ' ') : 'Diagnosing the situation'}</h1>
               {subtitle && <p className="hn-lede">{subtitle}</p>}
               <div className="hn-404-term" aria-label="Diagnostic output">
@@ -83,9 +83,9 @@ export default function NotFoundPage() {
               </div>
               <div className="hn-404-actions">
                 <a href="/" className="hn-btn hn-btn-primary"><ArrowLeft size={16} /> Back to the start</a>
-                <a href="/blogs" className="hn-btn hn-btn-ghost">Read things that exist <ArrowUpRight size={16} /></a>
+                <a href="/blogs" className="hn-link">Read things that exist<ChevronRight size={16} /></a>
               </div>
-              {joke && <p className="hn-mono" style={{ marginTop: 26, color: 'var(--fg-2)' }}>{joke.footnote} · joke {joke.id}</p>}
+              {joke && <p className="hn-mono" style={{ marginTop: 26, color: 'var(--fg-3)' }}>{joke.footnote} · joke {joke.id}</p>}
             </div>
             <div className="hn-404-art"><BrokenCable /></div>
           </div>

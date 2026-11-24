@@ -22,7 +22,6 @@ import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
 import { blogPosts, noteLabel } from '../data/blogs';
-import Ico from '../components/hn/graphics/Ico';
 import CodeBlock from '../components/blog/CodeBlock';
 import AlertBox, { AlertType } from '../components/blog/AlertBox';
 import TOCInline, { extractHeadingsFromMarkdown } from '../components/blog/TOCInline';
@@ -79,7 +78,7 @@ const ArticlePage: React.FC = () => {
         <main className="min-h-screen bg-[var(--bg)] text-[var(--fg-body)]">
           <StandaloneNav />
           <div className="mx-auto max-w-4xl px-4 pt-40 pb-20 text-center">
-            <h1 className="text-3xl font-semibold text-[var(--fg)] sm:text-5xl font-['Satoshi']">Article not found</h1>
+            <h1 className="text-3xl font-semibold text-[var(--fg)] sm:text-5xl">Article not found</h1>
             <p className="mt-4 text-[var(--fg-3)]">The requested blog post could not be located.</p>
             <Link
               to="/blogs"
@@ -185,7 +184,7 @@ const ArticlePage: React.FC = () => {
             {/* Header / Post Meta */}
             <header className="border-b border-[var(--line)] pb-10 text-center">
               <div className="space-y-4">
-                <p className="hn-blog-eyebrow justify-center"><Ico size={15} /> Field note {noteLabel(post.slug)}</p>
+                <p className="hn-blog-eyebrow justify-center">Field note {noteLabel(post.slug)}</p>
                 <dl className="flex items-center justify-center gap-3 text-xs font-mono text-[var(--fg-3)]">
                   <dt className="sr-only">Published on</dt>
                   <dd className="flex items-center gap-1.5 text-[var(--fg-2)]">
@@ -199,12 +198,12 @@ const ArticlePage: React.FC = () => {
                   </dd>
                 </dl>
 
-                <h1 className="text-3xl font-semibold tracking-tight text-[var(--fg)] sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto font-['Satoshi']">
+                <h1 className="text-3xl font-semibold tracking-tight text-[var(--fg)] sm:text-4xl md:text-5xl leading-tight max-w-4xl mx-auto">
                   {post.title}
                 </h1>
 
                 <div className="flex items-center justify-center gap-2 pt-2">
-                  <span className="rounded-full border border-[#2F5BFF]/30 bg-[#2F5BFF]/10 px-3.5 py-1 text-xs font-mono font-semibold text-[var(--accent-text)] uppercase tracking-wider">
+                  <span className="text-xs font-mono text-[var(--accent-text)] uppercase tracking-wider">
                     {post.category}
                   </span>
                 </div>
@@ -339,7 +338,7 @@ const ArticlePage: React.FC = () => {
               <div className="xl:col-span-3 min-w-0">
                 {/* Cover Image */}
                 {post.image && !post.content.includes(post.image) && (
-                  <div className="mb-10 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
+                  <div className="mb-10 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)]">
                     <img
                       src={post.image}
                       alt={`${post.title} cover`}
@@ -357,7 +356,7 @@ const ArticlePage: React.FC = () => {
                 )}
 
                 {/* Markdown Content */}
-                <div className="hn-article prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--fg)] prose-headings:font-['Satoshi'] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--line)] prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[var(--fg-body)] prose-p:leading-relaxed prose-p:text-base prose-a:text-[var(--accent-text)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--fg)] prose-code:text-[var(--accent-text)] prose-code:bg-[var(--tint)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[var(--fg-body)]">
+                <div className="hn-article prose prose-invert max-w-none prose-headings:font-semibold prose-headings:tracking-tight prose-headings:text-[var(--fg)] prose-h1:text-3xl prose-h2:text-2xl prose-h2:border-b prose-h2:border-[var(--line)] prose-h2:pb-3 prose-h2:mt-10 prose-h3:text-xl prose-p:text-[var(--fg-body)] prose-p:leading-relaxed prose-p:text-base prose-a:text-[var(--accent-text)] prose-a:no-underline hover:prose-a:underline prose-strong:text-[var(--fg)] prose-code:text-[var(--accent-text)] prose-code:bg-[var(--tint)] prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:before:content-none prose-code:after:content-none prose-ul:my-4 prose-ol:my-4 prose-li:text-[var(--fg-body)]">
                   <ReactMarkdown
                     remarkPlugins={[remarkGfm, remarkMath]}
                     rehypePlugins={[rehypeKatex]}
@@ -370,7 +369,7 @@ const ArticlePage: React.FC = () => {
                         if (text.trim().toLowerCase() === post.title.trim().toLowerCase()) return null;
                         const id = slugify(text);
                         return (
-                          <h2 id={id} className="group scroll-mt-24 font-['Satoshi']">
+                          <h2 id={id} className="group scroll-mt-24">
                             <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">{children}</a>
                           </h2>
                         );
@@ -381,7 +380,7 @@ const ArticlePage: React.FC = () => {
                         const text = getNodeText(children);
                         const id = slugify(text);
                         return (
-                          <h2 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
+                          <h2 id={id} className="group scroll-mt-24" {...props}>
                             <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">
                               {children}
                             </a>
@@ -392,7 +391,7 @@ const ArticlePage: React.FC = () => {
                         const text = getNodeText(children);
                         const id = slugify(text);
                         return (
-                          <h3 id={id} className="group scroll-mt-24 font-['Satoshi']" {...props}>
+                          <h3 id={id} className="group scroll-mt-24" {...props}>
                             <a href={`#${id}`} className="no-underline text-[var(--fg)] hover:text-[var(--accent-text)]">
                               {children}
                             </a>
@@ -403,7 +402,7 @@ const ArticlePage: React.FC = () => {
                       // Custom Markdown Image Renderer
                       img({ src, alt, ...props }: any) {
                         return (
-                          <figure className="my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)] shadow-2xl">
+                          <figure className="my-8 overflow-hidden rounded-2xl border border-[var(--line)] bg-[var(--tint)]">
                             <img
                               src={src}
                               alt={alt || ''}
@@ -423,7 +422,7 @@ const ArticlePage: React.FC = () => {
                       // Custom Table Components for Proper Alignment & Overflow Containment
                       table({ children, ...props }: any) {
                         return (
-                          <div className="my-8 overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--tint)] shadow-xl">
+                          <div className="my-8 overflow-x-auto rounded-xl border border-[var(--line)] bg-[var(--tint)]">
                             <table className="w-full border-collapse text-left text-sm" {...props}>
                               {children}
                             </table>
@@ -495,9 +494,7 @@ const ArticlePage: React.FC = () => {
                 </div>
 
                 <div className="hn-endmark" aria-hidden="true">
-                  <i />
-                  <span><Ico size={14} /> End of note {noteLabel(post.slug)}</span>
-                  <i />
+                  End of note {noteLabel(post.slug)}
                 </div>
 
                 {/* Post Footer Links (Discuss & GitHub) */}
@@ -579,7 +576,7 @@ const ArticlePage: React.FC = () => {
                             <span className="text-[11px] font-mono text-[var(--accent-text)] uppercase tracking-wider">
                               {item.category} • {item.readTime}
                             </span>
-                            <h4 className="mt-2 text-base font-semibold text-[var(--fg)] transition group-hover:text-[var(--accent-text)] font-['Satoshi']">
+                            <h4 className="mt-2 text-base font-semibold text-[var(--fg)] transition group-hover:text-[var(--accent-text)]">
                               {item.title}
                             </h4>
                             <p className="mt-2 text-xs text-[var(--fg-3)] line-clamp-2 leading-relaxed">

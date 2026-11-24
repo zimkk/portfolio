@@ -1,12 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { Search, X, ArrowRight, Tag as TagIcon, Clock, Calendar, ChevronLeft, ChevronRight } from 'lucide-react';
+import { Search, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { SiteFooter, StandaloneNav } from '../components/hn/chrome';
 import PageTransition from '../components/ui/PageTransition';
 import SEOHead from '../components/ui/SEOHead';
 import { schemaIds, siteConfig } from '../config/metadata';
 import { blogPosts, noteLabel } from '../data/blogs';
-import Ico from '../components/hn/graphics/Ico';
 
 const POSTS_PER_PAGE = 5;
 
@@ -119,17 +118,17 @@ const JournalPage: React.FC = () => {
         <StandaloneNav />
 
         {/* Hero Section */}
-        <div className="mx-auto max-w-6xl px-4 pt-32 pb-8 sm:px-6 lg:px-8">
+        <div className="hn-frame pt-32 pb-8">
           <div className="border-b border-[var(--line)] pb-8">
             <div className="flex flex-col gap-3">
               <span className="hn-blog-eyebrow">
-                <Ico size={15} /> Field notes <i>{blogPosts.length} entries, newest first</i>
+                {blogPosts.length} field notes, newest first
               </span>
               <h1 className="hn-blog-title">
-                Field notes from <span>production work.</span>
+                Field notes from production work.
               </h1>
-              <p className="mt-2 max-w-3xl text-base text-[var(--fg-3)] sm:text-lg leading-relaxed">
-                Technical field notes and implementation guides on enterprise AI automations, autonomous multi-agent systems, full-stack software development, and cloud security.
+              <p className="mt-4 max-w-2xl text-lg text-[var(--fg-2)] sm:text-xl leading-relaxed">
+                Agents, RAG, automation, security, and what it takes to run AI in production.
               </p>
             </div>
 
@@ -147,7 +146,7 @@ const JournalPage: React.FC = () => {
                 value={searchQuery}
                 onChange={handleSearchChange}
                 placeholder="Search articles by title, topic, or keyword..."
-                className="block w-full rounded-xl border border-[var(--line)] bg-[var(--tint)] py-3 pr-10 pl-10 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] transition-all focus:border-[#2F5BFF] focus:bg-[var(--tint)] focus:ring-1 focus:ring-[#2F5BFF] focus:outline-none font-['Satoshi']"
+                className="block w-full rounded-xl border border-[var(--line)] bg-[var(--tint)] py-3 pr-10 pl-10 text-sm text-[var(--fg-body)] placeholder-[var(--fg-3)] transition-all focus:border-[#2F5BFF] focus:bg-[var(--tint)] focus:ring-1 focus:ring-[#2F5BFF] focus:outline-none"
               />
               {searchQuery && (
                 <button
@@ -166,12 +165,11 @@ const JournalPage: React.FC = () => {
           <div className="mt-10 flex flex-col lg:flex-row lg:gap-12">
             {/* Compact Static Sidebar Container with Internal Scrollable List */}
             <aside className="mb-8 w-full shrink-0 lg:mb-0 lg:w-72">
-              <div className="sticky top-28 rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-5 backdrop-blur-md shadow-xl">
+              <div className="sticky top-28 rounded-[22px] bg-[var(--tint)] p-5">
                 {/* Header */}
                 <div className="mb-3 flex items-center justify-between border-b border-[var(--line)] pb-3">
                   <h2 className="flex items-center gap-2 font-mono text-xs font-semibold tracking-wider text-[var(--fg-3)] uppercase">
-                    <TagIcon className="h-3.5 w-3.5 text-[var(--accent-text)]" />
-                    Filter by Topic
+                    Filter by topic
                   </h2>
                   {activeTag !== 'ALL' && (
                     <button
@@ -201,13 +199,13 @@ const JournalPage: React.FC = () => {
                   onClick={() => handleTagSelect('ALL')}
                   className={`mb-2 flex items-center justify-between rounded-xl px-3.5 py-2 text-xs font-medium transition-colors w-full text-left font-mono ${
                     activeTag === 'ALL'
-                      ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                      ? 'bg-[var(--fg)] text-[var(--bg)]'
                       : 'text-[var(--fg-2)] hover:bg-[var(--hover)] hover:text-[var(--fg)] border border-transparent'
                   }`}
                 >
                   <span>All Writing</span>
                   <span className={`text-[11px] font-mono ${activeTag === 'ALL' ? 'text-white' : 'text-[var(--fg-3)]'}`}>
-                    ({blogPosts.length})
+                    {blogPosts.length}
                   </span>
                 </button>
 
@@ -226,13 +224,13 @@ const JournalPage: React.FC = () => {
                           onClick={() => handleTagSelect(tag)}
                           className={`flex items-center justify-between rounded-xl px-3.5 py-2 text-xs font-medium transition-colors w-full text-left font-mono ${
                             isSelected
-                              ? 'bg-[#2F5BFF] text-white font-bold shadow-md'
+                              ? 'bg-[var(--fg)] text-[var(--bg)]'
                               : 'text-[var(--fg-2)] hover:bg-[var(--hover)] hover:text-[var(--fg)] border border-transparent'
                           }`}
                         >
                           <span className="truncate">{tag}</span>
-                          <span className={`ml-2 text-[11px] font-mono shrink-0 ${isSelected ? 'text-white' : 'text-[var(--fg-3)]'}`}>
-                            ({tagCounts[tag]})
+                          <span className={`ml-2 text-[11px] font-mono shrink-0 ${isSelected ? 'text-[var(--bg)]' : 'text-[var(--fg-3)]'}`}>
+                            {tagCounts[tag]}
                           </span>
                         </button>
                       );
@@ -277,24 +275,14 @@ const JournalPage: React.FC = () => {
                         {/* Meta: Date & Read Time */}
                         <div className="flex flex-wrap items-center gap-3 text-xs text-[var(--fg-3)] font-mono">
                           <span className="hn-note-no">{noteLabel(post.slug)}</span>
-                          {post.slug === blogPosts[0].slug && <span className="hn-note-latest"><Ico size={12} /> Latest</span>}
-                          <time dateTime={post.publishedAt} className="flex items-center gap-1.5 text-[var(--fg-2)]">
-                            <Calendar className="h-3.5 w-3.5 text-[var(--fg-3)]" />
-                            {formatDate(post.publishedAt)}
-                          </time>
-                          <span>•</span>
-                          <span className="flex items-center gap-1.5 text-[var(--fg-2)]">
-                            <Clock className="h-3.5 w-3.5 text-[var(--fg-3)]" />
-                            {post.readTime}
-                          </span>
-                          <span>•</span>
-                          <span className="rounded-md bg-[#2F5BFF]/10 border border-[#2F5BFF]/20 px-2.5 py-0.5 text-[11px] text-[var(--accent-text)] font-mono uppercase tracking-wider font-semibold">
-                            {post.category}
-                          </span>
+                          {post.slug === blogPosts[0].slug && <span className="hn-note-latest">Latest</span>}
+                          <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+                          <span>{post.readTime}</span>
+                          <span className="uppercase tracking-wider">{post.category}</span>
                         </div>
 
                         {/* Title */}
-                        <h2 className="text-2xl font-semibold tracking-tight text-[var(--fg)] transition-colors group-hover:text-[var(--accent-text)] sm:text-3xl font-['Satoshi'] leading-snug">
+                        <h2 className="text-2xl font-semibold tracking-tight text-[var(--fg)] transition-colors group-hover:text-[var(--accent-text)] sm:text-3xl leading-snug">
                           <Link to={`/blogs/${post.slug}`}>
                             {post.title}
                           </Link>
@@ -307,7 +295,7 @@ const JournalPage: React.FC = () => {
                               key={tag}
                               type="button"
                               onClick={() => handleTagSelect(tag)}
-                              className="rounded-lg bg-[var(--tint)] border border-[var(--line)] px-2.5 py-1 text-xs font-mono text-[var(--fg-2)] transition hover:border-[#2F5BFF]/40 hover:text-[var(--accent-text)]"
+                              className="rounded-full bg-[var(--tint)] px-2.5 py-1 text-xs font-mono text-[var(--fg-2)] transition hover:text-[var(--accent-text)]"
                             >
                               {tag}
                             </button>
@@ -315,20 +303,9 @@ const JournalPage: React.FC = () => {
                         </div>
 
                         {/* Excerpt */}
-                        <p className="text-sm leading-relaxed text-[var(--fg-3)] line-clamp-3">
+                        <p className="text-base leading-relaxed text-[var(--fg-2)] line-clamp-3">
                           {post.excerpt}
                         </p>
-
-                        {/* Read More Link */}
-                        <div className="pt-2">
-                          <Link
-                            to={`/blogs/${post.slug}`}
-                            className="inline-flex items-center gap-2 text-xs font-mono font-semibold text-[var(--accent-text)] transition group-hover:translate-x-1"
-                          >
-                            <span>Read the article</span>
-                            <ArrowRight className="h-3.5 w-3.5" />
-                          </Link>
-                        </div>
                       </div>
                     </article>
                   ))}

@@ -1,16 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, Check, Github, Linkedin, Mail, Send } from 'lucide-react';
+import { ArrowRight, Check, ChevronRight } from 'lucide-react';
 import { EMAILJS_CONFIG } from '../../config/emailjs';
-import { Reveal, SectionHead, useBookingCtx } from './chrome';
+import { Reveal, useBookingCtx } from './chrome';
 import { useInView } from './hooks';
 import Ico from './graphics/Ico';
 import { RepoGlyph } from './graphics/glyphs';
 import StackExplode from './graphics/StackExplode';
-import MethodPath from './graphics/MethodPath';
 import CareerTimeline from './graphics/CareerTimeline';
 import CareerGraph from './graphics/CareerGraph';
-import ProfileCard from './graphics/ProfileCard';
 import Clocks from './graphics/Clocks';
 import { DISCIPLINE_LABEL, Post, Project, products, projectPath, repos, useRelatedPosts } from '../../data/work';
 import answers from '../../data/answers.json';
@@ -18,15 +16,23 @@ import answers from '../../data/answers.json';
 const formatDate = (value: string) => new Date(`${value}T00:00:00`).toLocaleDateString('en-GB', { day: '2-digit', month: 'short', year: 'numeric' });
 const host = (url: string) => new URL(url).hostname.replace(/^www\./, '');
 
+/** The quiet second action in a section: "See the work ›". */
+export function MoreLink({ to, children }: { to: string; children: React.ReactNode }) {
+  return <Link to={to} className="hn-link">{children}<ChevronRight size={16} /></Link>;
+}
+
 /* ---------- Who shows up ---------- */
-export function WhoSection({ index = '02', teaser = false }: { index?: string; teaser?: boolean }) {
+export function WhoSection({ teaser = false }: { teaser?: boolean }) {
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-who-title">
-      <SectionHead index={index} label="Who shows up" />
       <div className="hn-who">
-        <ProfileCard />
+        <Reveal>
+          <figure className="hn-portrait">
+            <img src="/images/profile-hero.webp" width="768" height="768" loading="lazy" decoding="async" alt="Portrait of Hassan Nazir" />
+          </figure>
+        </Reveal>
         <Reveal className="hn-who-copy">
-          <h2 id="hn-who-title" className="hn-title">The person you talk to is the person who <span className="hn-mark">builds it.</span></h2>
+          <h2 id="hn-who-title" className="hn-title">The person you talk to builds it.</h2>
           <p className="hn-lede">I'm Hassan. I started in QA, moved into full-stack, then architecture, then AI. Which is why I test the unhappy path first, and why I don't trust a demo until it has met real data.</p>
           <dl className="hn-facts">
             <div><dt className="hn-mono">Based</dt><dd>Islamabad and Dubai</dd></div>
@@ -36,12 +42,7 @@ export function WhoSection({ index = '02', teaser = false }: { index?: string; t
             {!teaser && <div><dt className="hn-mono">Studied</dt><dd>BS Computer Science, Air University</dd></div>}
             {!teaser && <div><dt className="hn-mono">Now</dt><dd>AI Environment Engineer at Outsentia, ML Researcher at Anthology, AI Architect at Uno OS</dd></div>}
           </dl>
-          {teaser && (
-            <div className="hn-section-cta">
-              <Link to="/about" className="hn-btn hn-btn-ghost">More about me <ArrowRight size={16} /></Link>
-              <Link to="/services" className="hn-link">How I work with teams <ArrowRight size={14} /></Link>
-            </div>
-          )}
+          {teaser && <div className="hn-section-cta"><MoreLink to="/about">More about me</MoreLink></div>}
         </Reveal>
       </div>
     </section>
@@ -49,42 +50,51 @@ export function WhoSection({ index = '02', teaser = false }: { index?: string; t
 }
 
 /* ---------- Range, method, career ---------- */
-export function RangeSection({ index = '03' }: { index?: string }) {
+export function RangeSection() {
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-range-title">
-      <SectionHead index={index} label="Range" />
-      <Reveal>
-        <h2 id="hn-range-title" className="hn-title">The whole stack, from interface <span className="hn-mark">to infrastructure.</span></h2>
-        <p className="hn-lede" style={{ marginTop: 22, marginBottom: 20 }}>Hover a layer. Security isn't one of them. It runs through all of them.</p>
+      <Reveal className="hn-head">
+        <h2 id="hn-range-title" className="hn-title">The whole stack, from interface to infrastructure.</h2>
+        <p className="hn-lede">Hover a layer. Security isn't one of them. It runs through all of them.</p>
       </Reveal>
       <StackExplode />
     </section>
   );
 }
 
-export function MethodSection({ index = '04' }: { index?: string }) {
+const STEPS = [
+  { title: 'Understand the work', body: 'Watch the workflow, read the logs, and talk to the people who run it today.' },
+  { title: 'Prove the risky part', body: 'Build the smallest thing that tests the riskiest assumption, on real data.' },
+  { title: 'Integrate it', body: 'Into your auth, your data and your deployment pipeline, not alongside them.' },
+  { title: 'Run and hand over', body: 'Monitor it, improve it, document it, and hand it over to the team properly.' },
+];
+
+export function MethodSection() {
   return (
-    <section className="hn-band hn-alt" aria-labelledby="hn-method-title">
-      <div className="hn-frame">
-        <SectionHead index={index} label="Method" />
-        <Reveal>
-          <h2 id="hn-method-title" className="hn-title" style={{ marginBottom: 'clamp(40px, 6vw, 72px)' }}>How an engagement <span className="hn-mark">runs.</span></h2>
-        </Reveal>
-        <MethodPath />
-        <div className="hn-section-cta" style={{ marginTop: 40 }}>
-          <Link to="/services/forward-deployed-engineer" className="hn-link">What forward deployed engineering means here <ArrowRight size={14} /></Link>
-        </div>
+    <section className="hn-section hn-frame" aria-labelledby="hn-method-title">
+      <Reveal className="hn-head">
+        <h2 id="hn-method-title" className="hn-title">How an engagement runs.</h2>
+      </Reveal>
+      <ol className="hn-steps">
+        {STEPS.map((step) => (
+          <li key={step.title}>
+            <h3>{step.title}</h3>
+            <p>{step.body}</p>
+          </li>
+        ))}
+      </ol>
+      <div className="hn-section-cta">
+        <MoreLink to="/services/forward-deployed-engineer">What forward deployed engineering means here</MoreLink>
       </div>
     </section>
   );
 }
 
-export function CareerSection({ index = '05' }: { index?: string }) {
+export function CareerSection() {
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-career-title">
-      <SectionHead index={index} label="Career" />
-      <Reveal>
-        <h2 id="hn-career-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Six years, every role <span className="hn-mark">on one timeline.</span></h2>
+      <Reveal className="hn-head">
+        <h2 id="hn-career-title" className="hn-title">Six years, every role on one timeline.</h2>
       </Reveal>
       <CareerTimeline />
     </section>
@@ -92,73 +102,42 @@ export function CareerSection({ index = '05' }: { index?: string }) {
 }
 
 /** Career as a git log: branches for each discipline, merging into the current role. */
-export function CareerLogSection({ index = '05' }: { index?: string }) {
+export function CareerLogSection() {
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-career-log-title">
-      <SectionHead index={index} label="Career" />
-      <Reveal>
-        <h2 id="hn-career-log-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Six years across QA, <span className="hn-mark">full‑stack and AI.</span></h2>
+      <Reveal className="hn-head">
+        <h2 id="hn-career-log-title" className="hn-title">Six years across QA, full‑stack and AI.</h2>
       </Reveal>
       <CareerGraph />
-      <div className="hn-section-cta" style={{ marginTop: 36 }}>
-        <Link to="/about" className="hn-btn hn-btn-ghost">The full timeline <ArrowRight size={16} /></Link>
+      <div className="hn-section-cta">
+        <MoreLink to="/about">The full timeline</MoreLink>
       </div>
     </section>
   );
 }
 
 /* ---------- Work ---------- */
-function WorkShowcase() {
-  const [active, setActive] = useState(0);
-  const current = products[active];
+export function WorkSection({ cta = true }: { cta?: boolean }) {
   return (
-    <div className="hn-work">
-      <div className="hn-work-list">
-        {products.map((project, index) => (
-          <Link
-            key={project.slug}
-            to={projectPath(project.slug)}
-            className={`hn-work-row${index === active ? ' is-active' : ''}`}
-            onPointerEnter={() => setActive(index)}
-            onFocus={() => setActive(index)}
-          >
-            <span className="hn-mono">0{index + 1}</span>
-            <div>
+    <section className="hn-section hn-frame" aria-labelledby="hn-work-title">
+      <Reveal className="hn-head">
+        <h2 id="hn-work-title" className="hn-title">Live, in production.</h2>
+      </Reveal>
+      <div className="hn-work">
+        {products.map((project) => (
+          <Link key={project.slug} to={projectPath(project.slug)} className="hn-work-item">
+            {project.image && <div className="hn-shot"><img src={project.image} width="720" height="450" loading="lazy" decoding="async" alt={`${project.name} interface`} /></div>}
+            <div className="hn-work-cap">
               <h3>{project.name}</h3>
-              <p>{project.summary}</p>
+              {project.live && <span className="hn-mono">{host(project.live)}</span>}
             </div>
-            <ArrowRight size={24} />
-            {project.image && <div className="hn-work-shot"><img src={project.image} width="720" height="450" loading="lazy" decoding="async" alt={`${project.name} interface`} /></div>}
+            <p>{project.summary}</p>
           </Link>
         ))}
       </div>
-      <div className="hn-work-preview" aria-hidden="true">
-        <div className="hn-browser">
-          <div className="hn-browser-bar"><i /><i /><i /><span>{current.live ? host(current.live) : current.name}</span></div>
-          <div className="hn-browser-view">
-            {products.map((project, index) => project.image && (
-              <img key={project.slug} src={project.image} width="720" height="450" loading="lazy" decoding="async" alt="" className={index === active ? 'is-active' : undefined} />
-            ))}
-          </div>
-        </div>
-        <div className="hn-work-meta hn-mono"><span>{current.stack.slice(0, 2).join(' · ')}</span><span><Ico size={13} /> Live</span></div>
-      </div>
-    </div>
-  );
-}
-
-export function WorkSection({ index = '03', cta = true }: { index?: string; cta?: boolean }) {
-  return (
-    <section className="hn-section hn-frame" aria-labelledby="hn-work-title">
-      <SectionHead index={index} label="Work" aside={<span>{products.length} live products</span>} />
-      <Reveal>
-        <h2 id="hn-work-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Live, in <span className="hn-mark">production.</span></h2>
-      </Reveal>
-      <WorkShowcase />
       {cta && (
-        <div className="hn-section-cta" style={{ marginTop: 36 }}>
-          <Link to="/work" className="hn-btn hn-btn-ghost">All work <ArrowRight size={16} /></Link>
-          <Link to="/services/full-stack-software-development" className="hn-link">Full-stack software development <ArrowRight size={14} /></Link>
+        <div className="hn-section-cta">
+          <MoreLink to="/work">All work</MoreLink>
         </div>
       )}
     </section>
@@ -168,33 +147,25 @@ export function WorkSection({ index = '03', cta = true }: { index?: string; cta?
 export function RepoCard({ project }: { project: Project }) {
   return (
     <Link to={projectPath(project.slug)} className="hn-repo">
+      {project.glyph ? <RepoGlyph repo={project.glyph} /> : <span className="hn-repo-glyph hn-repo-placeholder"><Ico size={52} /></span>}
       <span className="hn-repo-top hn-mono">{DISCIPLINE_LABEL[project.discipline]}</span>
-      {project.glyph ? <RepoGlyph repo={project.glyph} /> : <span className="hn-repo-glyph hn-repo-placeholder"><Ico size={46} /></span>}
-      <div>
-        <h3>{project.name}</h3>
-        <p>{project.summary}</p>
-      </div>
-      <div className="hn-repo-foot">
-        {project.highlights.slice(0, 2).map((item) => <span key={item} className="hn-chip">{item}</span>)}
-      </div>
+      <h3>{project.name}</h3>
+      <p>{project.summary}</p>
     </Link>
   );
 }
 
-export function BuildLogSection({ index = '04', limit, cta = true }: { index?: string; limit?: number; cta?: boolean }) {
+export function BuildLogSection({ limit, cta = true }: { limit?: number; cta?: boolean }) {
   const featured = repos.filter((project) => project.glyph);
   const shown = limit ? featured.slice(0, limit) : featured;
   const smaller = repos.filter((project) => !project.glyph);
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-build-title">
-      <SectionHead index={index} label="Build log" />
-      <div className="hn-build-head">
-        <Reveal>
-          <h2 id="hn-build-title" className="hn-title">Public source. <span className="hn-mark">Read the code.</span></h2>
-        </Reveal>
-        <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" className="hn-btn hn-btn-ghost"><Github size={17} /> github.com/zimkk</a>
-      </div>
-      <div className={`hn-repos${limit ? ' is-short' : ''}`}>
+      <Reveal className="hn-head is-split">
+        <h2 id="hn-build-title" className="hn-title">Public source. Read the code.</h2>
+        <a href="https://github.com/zimkk" target="_blank" rel="noopener noreferrer" className="hn-link">github.com/zimkk<ChevronRight size={16} /></a>
+      </Reveal>
+      <div className="hn-repos">
         {shown.map((project) => <RepoCard key={project.slug} project={project} />)}
       </div>
       {!limit && (
@@ -207,8 +178,8 @@ export function BuildLogSection({ index = '04', limit, cta = true }: { index?: s
         </div>
       )}
       {cta && limit && (
-        <div className="hn-section-cta" style={{ marginTop: 36 }}>
-          <Link to="/work" className="hn-btn hn-btn-ghost">Every project <ArrowRight size={16} /></Link>
+        <div className="hn-section-cta">
+          <MoreLink to="/work">Every project</MoreLink>
         </div>
       )}
     </section>
@@ -231,14 +202,13 @@ function NoteList({ notes }: { notes: Note[] }) {
           <time className="hn-mono" dateTime={note.date}>{formatDate(note.date)}</time>
           <h3>{note.title}</h3>
           <span className="hn-mono">{note.tags?.[0] ?? 'Field note'}</span>
-          <ArrowRight size={22} />
         </Link>
       ))}
     </div>
   );
 }
 
-export function WritingSection({ index = '05' }: { index?: string }) {
+export function WritingSection() {
   const [ref, near] = useInView<HTMLDivElement>({ once: true, rootMargin: '600px 0px' });
   const [notes, setNotes] = useState<Note[]>(fallbackNotes);
   const [total, setTotal] = useState<number | null>(null);
@@ -249,7 +219,7 @@ export function WritingSection({ index = '05' }: { index?: string }) {
       .then((response) => (response.ok ? response.json() : Promise.reject(response.status)))
       .then((items: Note[]) => {
         if (cancelled || !Array.isArray(items) || !items.length) return;
-        setNotes(items.slice(0, 3));
+        setNotes(items.slice(0, 4));
         setTotal(items.length);
       })
       .catch(() => undefined);
@@ -257,15 +227,13 @@ export function WritingSection({ index = '05' }: { index?: string }) {
   }, [near]);
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-writing-title">
-      <SectionHead index={index} label="Writing" />
-      <Reveal>
-        <h2 id="hn-writing-title" className="hn-title" style={{ marginBottom: 'clamp(32px, 5vw, 56px)' }}>Field notes from <span className="hn-mark">production work.</span></h2>
+      <Reveal className="hn-head">
+        <h2 id="hn-writing-title" className="hn-title">Field notes from production work.</h2>
       </Reveal>
       <div ref={ref}>
         <NoteList notes={notes} />
-        <div className="hn-writing-foot">
-          <p className="hn-lede">{total ? `${total} field notes` : 'Field notes'} on agents, RAG, automation, security and what it takes to run AI in production.</p>
-          <Link to="/blogs" className="hn-link">Read them all <ArrowRight size={16} /></Link>
+        <div className="hn-section-cta">
+          <MoreLink to="/blogs">{total ? `Read all ${total} field notes` : 'Read every field note'}</MoreLink>
         </div>
       </div>
     </section>
@@ -273,19 +241,19 @@ export function WritingSection({ index = '05' }: { index?: string }) {
 }
 
 /** Related field notes for a page, matched on keywords. Renders nothing until there is a match. */
-export function RelatedPosts({ keywords, index, title = 'Related field notes' }: { keywords: string[]; index: string; title?: string }) {
+export function RelatedPosts({ keywords, title = 'Related field notes' }: { keywords: string[]; title?: string }) {
   const posts = useRelatedPosts(keywords, 3);
   if (!posts.length) return null;
   return (
-    <section className="hn-section hn-frame" aria-label={title}>
-      <SectionHead index={index} label={title} />
+    <section className="hn-section hn-frame">
+      <div className="hn-head"><h2 className="hn-title-sm">{title}</h2></div>
       <NoteList notes={posts} />
     </section>
   );
 }
 
 /* ---------- Contact ---------- */
-export function ContactSection({ index = '06', headingLevel = 'h2', first = false }: { index?: string; headingLevel?: 'h1' | 'h2'; first?: boolean }) {
+export function ContactSection({ headingLevel = 'h2', first = false }: { headingLevel?: 'h1' | 'h2'; first?: boolean }) {
   const { openBooking, prefetch } = useBookingCtx();
   const form = useRef<HTMLFormElement>(null);
   const [formState, setFormState] = useState({ name: '', email: '', message: '' });
@@ -313,20 +281,17 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
   };
 
   return (
-    <section className="hn-band hn-alt" aria-labelledby="hn-contact-title" style={first ? { marginTop: 0, marginBottom: 0, paddingTop: 'clamp(120px, 16vh, 170px)' } : { marginBottom: 0 }}>
-      <div className="hn-frame">
-        <SectionHead index={index} label="Contact" />
-        <div className="hn-contact">
+    <section className={first ? 'hn-frame' : 'hn-section hn-frame'} aria-labelledby="hn-contact-title">
+      <div className={`hn-contact${first ? ' is-page' : ''}`}>
           <Reveal>
-            <Heading id="hn-contact-title" className="hn-title">Tell me what <span className="hn-mark">needs to work.</span></Heading>
+            <Heading id="hn-contact-title" className="hn-title">Tell me what needs to work.</Heading>
             <p className="hn-lede">A few lines is enough. What it is, what it should do, and what it does instead.</p>
             <Clocks />
             <div className="hn-direct">
-              <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes</button>
-              <a href="mailto:hassannazir955@gmail.com" className="hn-btn hn-btn-ghost"><Mail size={16} /> Email</a>
-              <a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer" className="hn-btn hn-btn-ghost"><Linkedin size={16} /> LinkedIn</a>
+              <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}>Book 30 minutes</button>
+              <a href="mailto:hassannazir955@gmail.com" className="hn-link">Email</a>
+              <a href="https://linkedin.com/in/hassannazirrr" target="_blank" rel="noopener noreferrer" className="hn-link">LinkedIn</a>
             </div>
-            <p className="hn-contact-more">Not sure what to ask for? <Link to="/services" className="hn-link">See the five ways I work with teams</Link></p>
           </Reveal>
           <Reveal delay={120}>
             <form
@@ -355,12 +320,11 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
                   {submitState === 'sent' ? <><Check size={16} /> Sent. I'll reply soon.</> : submitState === 'error' ? 'That did not send. Email hassannazir955@gmail.com instead.' : 'Goes straight to my inbox.'}
                 </p>
                 <button type="submit" className="hn-btn hn-btn-primary" disabled={submitState === 'sending'}>
-                  {submitState === 'sending' ? 'Sending' : 'Send it'} <Send size={16} />
+                  {submitState === 'sending' ? 'Sending' : 'Send it'} <ArrowRight size={16} />
                 </button>
               </div>
             </form>
           </Reveal>
-        </div>
       </div>
     </section>
   );
@@ -369,12 +333,11 @@ export function ContactSection({ index = '06', headingLevel = 'h2', first = fals
 /** Plain, citable answers to the questions people (and answer engines) ask most. */
 export const QUICK_ANSWERS = answers.items;
 
-export function QuickAnswersSection({ index }: { index: string }) {
+export function QuickAnswersSection() {
   return (
     <section className="hn-section hn-frame" aria-labelledby="hn-answers-title">
-      <SectionHead index={index} label="Quick answers" />
-      <Reveal>
-        <h2 id="hn-answers-title" className="hn-title-sm" style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}>The short version.</h2>
+      <Reveal className="hn-head">
+        <h2 id="hn-answers-title" className="hn-title">The short version.</h2>
       </Reveal>
       <dl className="hn-answers">
         {QUICK_ANSWERS.map((item) => (
@@ -388,33 +351,28 @@ export function QuickAnswersSection({ index }: { index: string }) {
   );
 }
 
-/** Compact page header used by /about, /work and /contact. */
-export function PageHero({ eyebrow, title, mark, lede, children }: { eyebrow: string; title: string; mark?: string; lede: string; children?: React.ReactNode }) {
+/** Page header used by /about and /work: a headline, one line, the action. */
+export function PageHero({ title, lede, children }: { title: string; lede: string; children?: React.ReactNode }) {
   return (
-    <section className="hn-page-hero hn-alt">
-      <div className="hn-frame">
-        <p className="hn-hero-eyebrow hn-mono"><span><Ico size={16} /> {eyebrow}</span></p>
-        <h1 className="hn-title">{title} {mark && <span className="hn-mark">{mark}</span>}</h1>
-        <p className="hn-lede">{lede}</p>
-        {children && <div className="hn-hero-actions">{children}</div>}
-      </div>
+    <section className="hn-page-hero hn-frame">
+      <h1 className="hn-title">{title}</h1>
+      <p className="hn-lede">{lede}</p>
+      {children && <div className="hn-hero-actions">{children}</div>}
     </section>
   );
 }
 
-
-/** Closing band used at the end of inner pages. */
+/** How every inner page ends: one headline, one line, one action. */
 export function CtaBand({ heading, line }: { heading: string; line: string }) {
   const { openBooking, prefetch } = useBookingCtx();
   return (
-    <section className="hn-band hn-alt hn-cta" style={{ marginBottom: 0 }}>
+    <section className="hn-cta">
       <div className="hn-frame">
-        <p className="hn-mono" style={{ color: 'var(--fg-3)', marginBottom: 18 }}>Start with the operation</p>
         <h2>{heading}</h2>
         <p>{line}</p>
         <div className="hn-cta-actions">
-          <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes</button>
-          <Link to="/contact" className="hn-btn hn-btn-ghost">Send a short brief <ArrowRight size={16} /></Link>
+          <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}>Book 30 minutes</button>
+          <MoreLink to="/contact">Send a short brief</MoreLink>
         </div>
       </div>
     </section>

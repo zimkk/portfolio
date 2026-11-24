@@ -169,7 +169,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
             onSubmit={handleGuestSubmit}
             className="rounded-2xl border border-[var(--line)] bg-[var(--tint)] p-5 sm:p-6 backdrop-blur-sm"
           >
-            <h4 className="font-['Satoshi'] text-base font-semibold text-[var(--fg)] mb-4">
+            <h4 className="text-base font-semibold text-[var(--fg)] mb-4">
               Leave a response
             </h4>
 
@@ -275,7 +275,7 @@ export const Comments: React.FC<CommentsProps> = ({ slug }) => {
                         <div className="h-7 w-7 rounded-full bg-[#2F5BFF]/20 border border-[#2F5BFF]/40 flex items-center justify-center font-mono text-xs font-bold text-[var(--accent-text)]">
                           {comm.avatarSeed}
                         </div>
-                        <strong className="text-sm font-semibold text-[var(--fg)] font-['Satoshi']">
+                        <strong className="text-sm font-semibold text-[var(--fg)]">
                           {comm.author}
                         </strong>
                       </div>

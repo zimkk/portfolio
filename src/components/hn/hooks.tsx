@@ -19,7 +19,7 @@ function applyTheme(pref: ThemePref) {
   const root = document.documentElement;
   root.dataset.theme = dark ? 'dark' : 'light';
   root.dataset.themePref = pref;
-  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0B0B0D' : '#FFFFFF');
+  document.querySelector('meta[name="theme-color"]')?.setAttribute('content', dark ? '#0A0A0A' : '#FFFFFF');
   window.dispatchEvent(new CustomEvent('hn-theme'));
 }
 

@@ -18,7 +18,7 @@ The public portfolio, services hub and engineering blog of **Hassan Nazir**, For
 
 ## ⚡ Overview & Features
 
-- **Clean light/dark design system**: white `#FFFFFF` and grey `#F5F5F7` surfaces, ink `#111113` type and one blue accent `#2F5BFF`, with pill buttons and rounded cards. The theme follows the system setting and can be switched in the footer.
+- **Light/dark design system**: one white canvas, ink `#0A0F17` type and one blue accent `#2F5BFF`. Instrument Sans for text, IBM Plex Mono for labels. Sections are separated by space, with no bands, card borders or shadows. The theme follows the system setting and can be switched in the footer.
 - **Hand-built interactive SVGs**: a 3D d20 hero where every face links to a real role, project or credential, a roles-only git-style career graph, a gantt career timeline and an icosahedron status marker.
 - **Real routes**: `/about`, `/work`, `/work/:slug`, `/services/:slug`, `/blogs/:slug` and `/contact`, all internally cross-linked. Work, career and quick-answer content each come from one JSON file in `src/data/`.
 - **Gold-Standard File-Based `.mdx` Blog Architecture**: 67 production engineering field guides located in `data/blog/*.mdx` with YAML frontmatter, dynamically indexed at build time using `import.meta.glob` and `gray-matter`.

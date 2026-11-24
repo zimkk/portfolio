@@ -1,12 +1,11 @@
 import { Link, useParams } from 'react-router-dom';
-import Ico from '../components/hn/graphics/Ico';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Mail } from 'lucide-react';
+import { ArrowLeft, ChevronRight } from 'lucide-react';
 import SEOHead from '../components/ui/SEOHead';
 import { breadcrumbSchema, schemaIds, siteConfig } from '../config/metadata';
-import { Reveal, SectionHead, SiteFooter, SiteNav } from '../components/hn/chrome';
+import { Reveal, SiteFooter, SiteNav } from '../components/hn/chrome';
 import { useBooking } from '../components/hn/hooks';
-import { CtaArt, ProofArt, ServiceGlyph, TermIcon } from '../components/hn/graphics/glyphs';
-import { RelatedPosts, RepoCard } from '../components/hn/sections';
+import { ServiceGlyph } from '../components/hn/graphics/glyphs';
+import { MoreLink, RelatedPosts, RepoCard } from '../components/hn/sections';
 import { projectsForService } from '../data/work';
 
 const PROJECT_CONTACT_HREF = 'mailto:hassannazir955@gmail.com?subject=Project%20inquiry';
@@ -248,15 +247,13 @@ const ServicesPage = () => {
   const service = slug ? servicePages.find((item) => item.slug === slug) : undefined;
 
   const cta = (heading: string, line: string) => (
-    <section className="hn-band hn-alt hn-cta" style={{ marginBottom: 0 }}>
-      <div className="hn-frame" style={{ position: 'relative' }}>
-        <CtaArt />
-        <p className="hn-mono" style={{ color: 'var(--fg-2)', marginBottom: 18 }}>Start with the operation</p>
+    <section className="hn-cta">
+      <div className="hn-frame">
         <h2>{heading}</h2>
         <p>{line}</p>
         <div className="hn-cta-actions">
-          <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes <ArrowUpRight size={16} /></button>
-          <a href={PROJECT_CONTACT_HREF} className="hn-btn hn-btn-ghost"><Mail size={16} /> Send a short brief</a>
+          <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}>Book 30 minutes</button>
+          <a href={PROJECT_CONTACT_HREF} className="hn-link">Send a short brief<ChevronRight size={16} /></a>
         </div>
       </div>
     </section>
@@ -268,11 +265,9 @@ const ServicesPage = () => {
         <SEOHead title="Service not found | Hassan Nazir" description="This service page does not exist." noindex />
         <div className="hn">
           <SiteNav onBook={openBooking} onPrefetch={prefetch} />
-          <main className="hn-page-hero hn-alt" style={{ minHeight: '70vh' }}>
-            <div className="hn-frame">
-              <h1 className="hn-title">That service does not exist.</h1>
-              <p className="hn-lede"><Link to="/services" className="hn-link">See the ones that do <ArrowUpRight size={16} /></Link></p>
-            </div>
+          <main className="hn-page-hero hn-frame" style={{ minHeight: '60vh' }}>
+            <h1 className="hn-title">That service does not exist.</h1>
+            <p className="hn-lede"><MoreLink to="/services">See the ones that do</MoreLink></p>
           </main>
           <SiteFooter />
         </div>
@@ -296,41 +291,36 @@ const ServicesPage = () => {
         <div className="hn">
           <SiteNav onBook={openBooking} onPrefetch={prefetch} />
           <main>
-            <section className="hn-page-hero hn-alt" aria-labelledby="hn-svc-title">
-              <div className="hn-frame">
-                <SectionHead index="01" label="Services" aside={<span>{servicePages.length} ways to work together</span>} />
-                <h1 id="hn-svc-title" className="hn-title">Pick the problem. <span className="hn-mark">Not the buzzword.</span></h1>
-                <p className="hn-lede">Five kinds of engagement. Same rule for all of them: I stay accountable from the first conversation to the thing running in production.</p>
-              </div>
+            <section className="hn-page-hero hn-frame" aria-labelledby="hn-svc-title">
+              <h1 id="hn-svc-title" className="hn-title">Pick the problem. Not the buzzword.</h1>
+              <p className="hn-lede">Five kinds of engagement. One rule: I stay accountable until it runs in production.</p>
             </section>
 
-            <section className="hn-section hn-frame" aria-label="All services">
+            <section className="hn-frame" aria-label="All services" style={{ paddingTop: 'clamp(56px, 7vw, 96px)' }}>
               <div className="hn-svc-list">
-                {servicePages.map((item, index) => (
+                {servicePages.map((item) => (
                   <Link key={item.slug} to={`/services/${item.slug}`} className="hn-svc-row">
-                    <span className="hn-mono">0{index + 1}</span>
                     <ServiceGlyph slug={item.slug} />
                     <h2>{item.name}</h2>
                     <p>{item.hero}</p>
-                    <ArrowUpRight size={26} />
+                    <ChevronRight size={22} />
                   </Link>
                 ))}
               </div>
             </section>
 
             <section className="hn-section hn-frame" aria-labelledby="hn-remote-title">
-              <SectionHead index="02" label="Remote, properly" />
-              <Reveal>
-                <h2 id="hn-remote-title" className="hn-title-sm" style={{ maxWidth: '18ch', marginBottom: 'clamp(32px, 5vw, 56px)' }}>Built for distributed US and European teams. No invented local office.</h2>
+              <Reveal className="hn-head">
+                <h2 id="hn-remote-title" className="hn-title">Remote, with US and European teams.</h2>
               </Reveal>
               <div className="hn-terms">
-                <Reveal className="hn-term"><TermIcon name="overlap" /><h3>Working overlap</h3><p>Scheduled sessions for discovery, architecture, reviews and releases. Focused async work in between.</p></Reveal>
-                <Reveal className="hn-term" delay={90}><TermIcon name="record" /><h3>Decisions written down</h3><p>Architecture, interfaces, assumptions, test evidence and runbooks, so the knowledge outlives the engagement.</p></Reveal>
-                <Reveal className="hn-term" delay={180}><TermIcon name="shield" /><h3>Governance aware</h3><p>Designed around access, audit, retention and data residency, without making compliance claims I can't back.</p></Reveal>
+                <Reveal className="hn-term"><h3>Working overlap</h3><p>Scheduled sessions for discovery, architecture, reviews and releases. Focused async work in between.</p></Reveal>
+                <Reveal className="hn-term" delay={90}><h3>Decisions written down</h3><p>Architecture, interfaces, assumptions, test evidence and runbooks, so the knowledge outlives the engagement.</p></Reveal>
+                <Reveal className="hn-term" delay={180}><h3>Governance aware</h3><p>Designed around access, audit, retention and data residency, without making compliance claims I can't back.</p></Reveal>
               </div>
             </section>
 
-            {cta('Bring the workflow that is expensive, unclear or stuck.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
+            {cta('Bring the workflow that is stuck.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
           </main>
           <SiteFooter />
         </div>
@@ -360,39 +350,32 @@ const ServicesPage = () => {
       <div className="hn">
         <SiteNav onBook={openBooking} onPrefetch={prefetch} />
         <main>
-          <section className="hn-page-hero hn-alt" aria-labelledby="hn-svc-detail-title">
-            <div className="hn-frame hn-svc-detail-hero">
+          <section className="hn-page-hero hn-frame hn-svc-detail-hero" aria-labelledby="hn-svc-detail-title">
             <div>
               <Link to="/services" className="hn-crumb hn-mono"><ArrowLeft size={14} /> Services / {service.name}</Link>
               <h1 id="hn-svc-detail-title" className="hn-title">{service.hero}</h1>
               <p className="hn-lede">{service.directAnswer}</p>
               <div className="hn-hero-actions">
-                <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}><Ico /> Book 30 minutes</button>
-                <Link to={service.proof.href} className="hn-link">See the proof <ArrowRight size={16} /></Link>
+                <button type="button" className="hn-btn hn-btn-primary" onClick={openBooking} onPointerEnter={prefetch} onFocus={prefetch}>Book 30 minutes</button>
+                <MoreLink to={service.proof.href}>See the proof</MoreLink>
               </div>
             </div>
             <div className="hn-svc-art" aria-hidden="true"><ServiceGlyph slug={service.slug} className="" /></div>
-            </div>
           </section>
 
           <section className="hn-section hn-frame" aria-labelledby="hn-fit-title">
-            <SectionHead index="01" label="When it fits" />
             <div className="hn-fit">
-              <Reveal><h2 id="hn-fit-title" className="hn-title-sm">This fits when the <span className="hn-mark">handoffs</span> are the problem.</h2></Reveal>
+              <Reveal><h2 id="hn-fit-title" className="hn-title-sm">This fits when the handoffs are the problem.</h2></Reveal>
               <ul>
                 {service.fit.map((item) => (
-                  <li key={item}>
-                    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="11" cy="11" r="10" className="g-accent" /><path d="M6.5 11.5l3 3 6-7" className="hn-line" /></svg>
-                    {item}
-                  </li>
+                  <li key={item}>{item}</li>
                 ))}
               </ul>
             </div>
           </section>
 
           <section className="hn-section hn-frame" aria-labelledby="hn-built-title">
-            <SectionHead index="02" label="What gets built" />
-            <Reveal><h2 id="hn-built-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>Shaped around the result, not a template.</h2></Reveal>
+            <Reveal className="hn-head"><h2 id="hn-built-title" className="hn-title-sm">Shaped around the result, not a template.</h2></Reveal>
             <div className="hn-outcomes">
               {service.outcomes.map((item, index) => (
                 <Reveal key={item.title} className="hn-outcome" delay={index * 80}>
@@ -405,8 +388,7 @@ const ServicesPage = () => {
           </section>
 
           <section className="hn-section hn-frame" aria-labelledby="hn-process-title">
-            <SectionHead index="03" label="How the work moves" />
-            <Reveal><h2 id="hn-process-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>Four steps. Each one ends in something you can check.</h2></Reveal>
+            <Reveal className="hn-head"><h2 id="hn-process-title" className="hn-title-sm">Four steps. Each ends in something you can check.</h2></Reveal>
             <ol className="hn-process">
               {service.process.map((item) => (
                 <li key={item.title}><h3>{item.title}</h3><p>{item.body}</p></li>
@@ -416,30 +398,24 @@ const ServicesPage = () => {
           </section>
 
           <section className="hn-section hn-frame" aria-labelledby="hn-proof-title">
-            <SectionHead index="04" label="Proof" />
             <Reveal className="hn-proof">
-              <ProofArt />
-              <div>
-                <h2 id="hn-proof-title">{service.proof.title}</h2>
-                <p>{service.proof.body}</p>
-                <Link to={service.proof.href} className="hn-link">{service.proof.label} <ArrowRight size={16} /></Link>
-              </div>
+              <h2 id="hn-proof-title">{service.proof.title}</h2>
+              <p>{service.proof.body}</p>
+              <MoreLink to={service.proof.href}>{service.proof.label}</MoreLink>
             </Reveal>
           </section>
 
           {projectsForService(service.slug).length > 0 && (
             <section className="hn-section hn-frame" aria-labelledby="hn-svc-work-title">
-              <SectionHead index="05" label="Work behind this" />
-              <h2 id="hn-svc-work-title" className="hn-title-sm" style={{ marginBottom: 'clamp(24px, 4vw, 40px)' }}>Projects where this is what the job was.</h2>
-              <div className="hn-repos is-short is-three">
+              <div className="hn-head"><h2 id="hn-svc-work-title" className="hn-title-sm">Projects where this was the job.</h2></div>
+              <div className="hn-repos">
                 {projectsForService(service.slug).slice(0, 6).map((project) => <RepoCard key={project.slug} project={project} />)}
               </div>
             </section>
           )}
 
           <section className="hn-section hn-frame" aria-labelledby="hn-faq-title">
-            <SectionHead index="06" label="Questions" />
-            <Reveal><h2 id="hn-faq-title" className="hn-title-sm" style={{ marginBottom: 'clamp(28px, 4vw, 48px)' }}>What technical buyers usually ask.</h2></Reveal>
+            <Reveal className="hn-head"><h2 id="hn-faq-title" className="hn-title-sm">What technical buyers usually ask.</h2></Reveal>
             <div className="hn-faq">
               {service.faq.map((item) => (
                 <details key={item.question}>
@@ -450,11 +426,10 @@ const ServicesPage = () => {
             </div>
           </section>
 
-          <RelatedPosts index="07" keywords={service.keywords.concat(service.technologies).map((word) => word.toLowerCase().replace(/ (consultant|services|engineer|developer|consulting)$/, ''))} />
+          <RelatedPosts keywords={service.keywords.concat(service.technologies).map((word) => word.toLowerCase().replace(/ (consultant|services|engineer|developer|consulting)$/, ''))} />
 
           <section className="hn-section hn-frame" aria-labelledby="hn-related-title">
-            <SectionHead index="08" label="Related services" />
-            <h2 id="hn-related-title" className="hn-sr">Related engineering services</h2>
+            <div className="hn-head"><h2 id="hn-related-title" className="hn-title-sm">Related engineering services</h2></div>
             <div className="hn-related">
               {servicePages.filter((item) => item.slug !== service.slug).map((item) => (
                 <Link to={`/services/${item.slug}`} key={item.slug}>
@@ -465,7 +440,7 @@ const ServicesPage = () => {
             </div>
           </section>
 
-          {cta('Describe the system, the constraint, and what needs to change.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
+          {cta('Describe the system and what must change.', 'Thirty minutes is usually enough to tell whether I am the right person for it.')}
         </main>
         <SiteFooter />
       </div>
