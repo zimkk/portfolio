@@ -1,0 +1,133 @@
+---
+title: "Check Point Management Servers Hit"
+seoTitle: "Check Point GT13: Patch and Hunt Now"
+publishedAt: '2026-11-27'
+lastUpdated: '2026-11-27'
+author: "Hassan Nazir"
+category: "Security Engineering"
+readTime: '9 min read'
+excerpt: "GreyNoise says an unattributed actor called GT13 took over Check Point Security Management Servers at 22 organizations in 17 countries using a bug that was patched in July. Here is what was stolen, why the management plane is the crown jewel, what is still unverified about the AI angle, and the exact order I would work through this week."
+tags: ["Check Point", "GreyNoise", "CVE-2026-16232", "Firewall Security", "Management Plane", "Incident Response", "Patch Management", "Threat Hunting"]
+seoKeywords: ["Check Point GT13", "CVE-2026-16232", "Check Point Security Management Server compromised", "GreyNoise Check Point campaign", "SmartConsole authentication bypass", "Check Point Trusted Clients", "firewall management server breach", "Check Point internal CA stolen"]
+image: '/images/blogs/ai-threat-detection.svg'
+---
+
+# Check Point Management Servers Hit
+
+On November 23, 2026, GreyNoise published a report on an intrusion campaign it tracks as GT13. According to the report, an unattributed actor compromised Check Point Security Management Servers at 22 organizations spread across 17 countries. The victims include government bodies, banks and other financial firms, and companies in energy, transport, mining and manufacturing. The initial bug is not new. Check Point fixed it in July. What is new is how much real damage an old, known, already patched flaw can still do when the box it lives on is the one that controls your firewalls.
+
+I want to walk through this one carefully, because a lot of the headlines lean on the phrase "AI driven" and that is the least proven part of the story. The part that should worry you is much more boring and much more actionable.
+
+## What happened, in order
+
+GreyNoise says it watched the activity between October 17 and November 2, 2026, and then lost visibility. Because the actor kept persistent access to victim devices, GreyNoise believes the campaign is probably still running. The researchers saw 99 source IP addresses, a mix of compromised Check Point devices and commercial VPN exit nodes, and a compromised Rejetto HTTP File Server that acted as a relay box. That relay held command output and stolen data, so it was effectively the actor's back office.
+
+The bug at the center is CVE-2026-16232. It is an authentication bypass in the SmartConsole login process of Check Point Security Management Server and Multi-Domain Security Management Server. An unauthenticated attacker can obtain an application login token and then log in through SmartConsole with full administrator rights. Check Point published the advisory in July with a note that it was already being exploited, and CISA added it to its Known Exploited Vulnerabilities list on July 22, 2026.
+
+So the timeline is awkward for everyone. The fix has existed for months, the exploit status was public from day one, and a public Metasploit style module exists. GreyNoise says the actor's script looks like an adaptation of it. Check Point's own statement, given to BleepingComputer on November 25, makes exactly that point: the vulnerability and the protections are not new.
+
+## What the attacker actually did
+
+This is where the story gets serious. Per GreyNoise, the actor ran more than 100 management tasks against multiple servers through a tunnel into one victim network. The observed activity included:
+
+- Copying the firewall database and the internal certificate authority files.
+- Harvesting credentials and configuration data from a second server and sending them back to the relay.
+- Minting a new certificate inside one victim environment.
+- Unloading security policies, which in practice switches off the firewall rules those gateways were enforcing.
+- Scanning internal networks, spraying passwords and trying exploits against domain controllers, Citrix NetScaler, Ivanti Connect Secure, Microsoft Exchange and VMware vCenter.
+
+On October 26 the actor also tried a bulk certificate operation across all 24 compromised management servers. That one failed, but it is how GreyNoise could line up the victims. One error message mentioned a preload entry in the system's library preload file, which GreyNoise says may point to an implant. Treat that as a lead to check, not a finding.
+
+Here is the short version of what is established and what is not.
+
+| Question | Where it stands |
+|---|---|
+| Were management servers compromised? | Reported by GreyNoise, confirmed in outline by Check Point's statement that CVE-2026-16232 was used |
+| How many victims? | 22 organizations, 24 management servers, 17 countries (GreyNoise) |
+| How did the actor first get in? | Unknown. GreyNoise could not determine when or how the servers were first breached |
+| Is the campaign still active? | Unknown. GreyNoise lost visibility on November 2 and assumes it continues |
+| Is it AI driven? | Unconfirmed. GreyNoise assesses the behavior looks automated, but says AI use is not proven |
+| Who is behind it? | Not attributed to any known group or country |
+| Is it the same as the PHP2Shell wave? | No. GreyNoise and Check Point say the two campaigns overlap in time but are separate |
+
+That last row matters, because many teams will lump these together. I covered the gateway side in my [PHP2Shell analysis](https://hassannazir.dev/blogs/php2shell-cve-2026-109618-cve-2026-109619-rce-analysis). That was about unpatched security gateways. This one is about the management server that controls them. Different box, different bug, different cleanup.
+
+## Why the management plane is the crown jewel
+
+A firewall gateway enforces policy. A management server defines it. The management server holds the rulebase, the object database, the administrator accounts and the internal certificate authority that the gateways trust. If an attacker owns that server, they do not need to break through your firewall. They can edit it.
+
+That has a few nasty consequences that patching alone does not undo:
+
+1. Stolen administrator credentials keep working after the bug is fixed.
+2. A copied internal CA lets someone issue certificates that your own infrastructure trusts.
+3. A copied firewall database is a full map of your network, your NAT rules and your VPN setup, which is gold for the next stage of an attack.
+4. Policy changes made while the attacker had admin rights can sit quietly in the rulebase for weeks.
+
+This is why I keep saying the same thing in security reviews: the order of operations is not patch, then relax. It is restrict, patch, hunt, then rotate. Installing the hotfix tells you nothing about whether you were already compromised the week before.
+
+## The AI angle, handled honestly
+
+Cybersecurity Dive and several other outlets lead with the AI framing. GreyNoise's own wording is more careful. It assesses that GT13 may have operated an AI powered offensive tool, based on behavior, automation and custom tooling, while stating the use of AI is unconfirmed. I am treating that as an unverified claim.
+
+Does it change what you should do? Not really. Whether a human or a script ran those 100 plus tasks, the defense is identical. If anything, the AI discussion distracts from the real lesson: an exploit that was public and patched for four months still compromised two dozen of the most sensitive servers in these environments. Speed of automation matters less when the door was left open by configuration.
+
+## What made servers exposed
+
+Check Point's advisory says successful remote exploitation needs two things at once. The management server must be reachable over the internet, and the Trusted Clients list, which controls which machines may connect with SmartConsole, must be unrestricted. Check Point also says it saw exploitation affect a small number of customers with a very specific configuration.
+
+I would not take comfort from "very specific". Leaving Trusted Clients open and exposing the management IP is a common shortcut for remote administration, managed service access and quick lab setups. Plenty of real networks look exactly like that, especially where a provider manages the firewalls for several customers. If your estate is run by an MSSP or an integrator, their management server is part of your attack surface, and you may not even know where it sits.
+
+The fixed releases, per Check Point's advisory as summarized by Rescana, are Jumbo Hotfix Accumulator R82.10 from Take 36, R82 from Take 118 and R81.20 from Take 158. R81 and R81.10 are end of support, so those need an upgrade to a supported branch, not a hotfix. One more wrinkle: public vulnerability records disagree slightly on the boundary Take. My advice is to install the newest recommended Take for your branch, not the bare minimum number.
+
+## What I would do this week
+
+Here is the order I would use, in plain steps.
+
+1. Inventory every Security Management Server and Multi-Domain server you or a provider run, including standby, disaster recovery and lab copies. Forgotten lab servers are exactly the ones that stay exposed.
+2. Cut the exposure first. In SmartConsole, open Manage and Settings, then Permissions and Administrators, then Trusted Clients, and make sure nothing uses the type Any. Limit management access to known admin subnets and confirm the implied rules for control connections are on.
+3. Patch to a fixed Jumbo Hotfix Take from the advisory.
+4. Hunt before you trust the server. Check Point documents audit log searches for logins that used an application token. Any hit that you cannot tie to a known admin name and IP deserves a real investigation.
+5. Look at the operating system too. Unknown SSH keys and unexpected entries in the preload file are the two artifacts GreyNoise mentioned.
+6. If anything looks wrong, assume the firewall database, admin credentials and internal CA are in someone else's hands. Isolate the server, keep logs off the box, rebuild from known good media, rotate credentials and plan certificate renewal with vendor support.
+7. Check the neighbors. The actor probed domain controllers, NetScaler, Ivanti, Exchange and vCenter from inside the management network, so review those for the same window.
+
+For the on box checks, a minimal starting point looks like this on the management server's shell. Run it read only and compare the output with what you expect.
+
+```bash
+# any library preload entries at all deserve a second look
+cat /etc/ld.so.preload
+
+# list authorized SSH keys for root and for every home directory
+cat /root/.ssh/authorized_keys /home/*/.ssh/authorized_keys
+```
+
+**Tip:** save the output off the box before you change anything. If the server is compromised, you want evidence that the attacker could not edit.
+
+## What I would ask my providers
+
+If a managed provider touches your firewalls, send three questions today. Do you run a management server that controls gateways protecting us? Is it on a fixed Take with Trusted Clients restricted and no internet exposure? Have you searched the audit logs for application token logins since at least July, and will you tell us what you find? A vague answer to any of those is an answer.
+
+## My take
+
+This is a patch management story wearing an AI costume. The vulnerability was disclosed, flagged as exploited, listed by CISA and had public exploit code, and the damage still reached at least 22 organizations. The AI discussion is interesting, but unproven, and it should not change anyone's to-do list.
+
+The deeper lesson is about where we spend security attention. Teams harden internet facing gateways and then leave the controller for those gateways reachable from anywhere with an open allow list. The management plane deserves the strictest network rules in the building: no internet exposure, a short list of admin source addresses, MFA in front of any jump host, and logging that ships off the server in real time.
+
+I also think vendors and CISA lists need to do better at the last mile. A KEV entry with a three day federal deadline in July does not help a private company that never reads it. If you run any Check Point management server, treat this post as your July notice and act on it today.
+
+## Key Takeaways
+
+- GreyNoise reports that an actor it calls GT13 compromised Check Point Security Management Servers at 22 organizations in 17 countries, with confirmed activity from October 17 to November 2, 2026, and likely still ongoing.
+- The bug used is CVE-2026-16232, a SmartConsole authentication bypass that Check Point patched and flagged as exploited in July. Check Point says exposure needs an internet reachable server and unrestricted Trusted Clients.
+- Stolen material reportedly includes firewall databases, credentials and internal CA files, and the actor unloaded security policies in at least one case, so patching alone does not clean up.
+- The AI driven label is unconfirmed. GreyNoise itself says AI use is not proven, and the attacker is not attributed to any known group.
+- This is separate from the PHP2Shell gateway attacks, even though the dates overlap.
+- Order of work: restrict access, patch, hunt in the audit logs, then rotate credentials and certificates if you find anything.
+- Most of the coverage repeats GreyNoise's report, with Check Point's short statement as the main extra source. No independent confirmation of the victim count exists yet.
+
+## Sources
+
+- [GreyNoise: An Active Intrusion Campaign Against Check Point Security Management Servers](https://www.greynoise.io/blog) (primary source, published November 23, 2026, referenced through the coverage below, I did not read the original page directly)
+- [BleepingComputer: Hackers compromise Check Point Servers in 22 organizations](https://www.bleepingcomputer.com/news/security/hackers-compromise-check-point-servers-in-22-organizations/) (November 24, 2026, updated November 25 with Check Point's statement)
+- [Cybersecurity Dive: AI-enabled campaign targets Check Point Security Management servers](https://www.cybersecuritydive.com/news/ai-enabled-campaign-targets-check-point-security-management-servers/875622/) (November 24, 2026)
+- [Rescana: Check Point SmartConsole CVE-2026-16232 Exploited in GT13 Management Server Intrusions](https://www.rescana.com/post/checkpoint-smartconsole-cve-2026-16232-gt13-management-server-intrusions-patch-and-hunt-now) (November 26, 2026, summarizes Check Point's advisory sk185169 and the CISA KEV entry)
